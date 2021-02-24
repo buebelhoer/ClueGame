@@ -1,2 +1,13 @@
 // Rooms and room cards
-Room, 
+Room, Brown, B
+Room, Mines Market, MM
+Room, Maple, MA
+Room, CoorsTek, CK
+Room, CTLM, CT
+Room, Elm, E
+Room, Alderson, A
+Room, Studemt Center, S
+Room, Rec Center, R
+// other spaces on board
+Space, Unused, X
+Space, Walkway, W
