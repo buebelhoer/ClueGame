@@ -1,0 +1,71 @@
+commit 7385c2edaf6d896976e3a380bf29429e7cccc89e
+Author: bMorgan1 <ben.morgan5000@gmail.com>
+Date:   Fri Feb 26 18:23:50 2021 -0700
+
+    added comments
+
+commit 665e0d1a967b2d68f114edc871f90fffac6ad7e1
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Thu Feb 25 19:12:04 2021 -0700
+
+    added more tests for calculation of movement, and added more comments
+
+commit 9a4fc62af9fb4efa7697f5950f17fed0bae636f4
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Thu Feb 25 18:25:05 2021 -0700
+
+    inplemeneted tests. Note due to git/saros conflicts, several commits made by brendan were lost
+
+commit 0cfc234a8da88588a2ae8cee1ef3bb4dc19f9ed3
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Thu Feb 25 17:33:15 2021 -0700
+
+    added classes in experiment package
+
+commit 6befcd2910c75bcea2073d4c6c4a1d44fe8b8897
+Author: bMorgan1 <ben.morgan5000@gmail.com>
+Date:   Thu Feb 25 17:20:58 2021 -0700
+
+    added TestBoardCell class
+
+commit 41562d2e1e795fcd35acd85ddec677bc13b0ae21
+Author: bMorgan1 <ben.morgan5000@gmail.com>
+Date:   Thu Feb 25 17:13:12 2021 -0700
+
+    set up eclipse project, experiment package, and tests package
+
+commit 44846d41f2ac458bfdbf61c74964da99ea9da950
+Author: bMorgan1 <ben.morgan5000@gmail.com>
+Date:   Thu Feb 25 17:04:09 2021 -0700
+
+    added reame
+
+commit 40991f8bb9c0da189d483f91241b5bc86294c8cf
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Tue Feb 23 18:25:08 2021 -0700
+
+    added csv file
+
+commit 6f2bccab92fa5b39fa948a65d60f383ca77a4dcd
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Tue Feb 23 18:22:32 2021 -0700
+
+    added room layout
+
+commit a8e14cdd3a101d86827d8d28d704219f191c8b31
+Author: bMorgan1 <ben.morgan5000@gmail.com>
+Date:   Tue Feb 23 17:58:11 2021 -0700
+
+    finished setup layout file
+
+commit 887dfc05cb5657fb3bbf94ce8534bf62bcec407e
+Author: bMorgan1 <ben.morgan5000@gmail.com>
+Date:   Tue Feb 23 17:50:17 2021 -0700
+
+    added setup txt file
+
+commit 998f14ea0754fb9cd48c075ffd2466666a7e0738
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Tue Feb 23 17:46:02 2021 -0700
+
+    added excel file
