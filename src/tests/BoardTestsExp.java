@@ -1,3 +1,4 @@
+//Authors: Brendan Uebelhoer, Ben Morgan
 package tests;
 
 import static org.junit.Assert.assertTrue;
@@ -14,6 +15,7 @@ import org.junit.Assert.*;
 public class BoardTestsExp {
 	TestBoard board;
 	
+	//runs with each test, no need to overwrite or reinitialize other places
 	@BeforeEach
 	public void setUp() {
 		board = new TestBoard();
@@ -21,28 +23,32 @@ public class BoardTestsExp {
 	
 	@Test
 	public void testAdjecency() {
-		TestBoardCell cell = board.getCell(0, 0);
+		TestBoardCell cell = board.getCell(0, 0); //top left corner
 		Set<TestBoardCell> testList = cell.getAdjList();
 		assertTrue(testList.contains(board.getCell(1, 0)));
 		assertTrue(testList.contains(board.getCell(0, 1)));
 		assertEquals(testList.size(), 2);
-		cell = board.getCell(3, 3);
+		
+		cell = board.getCell(3, 3); 			//bottom right corner
 		testList = cell.getAdjList();
 		assertTrue(testList.contains(board.getCell(2, 3)));
 		assertTrue(testList.contains(board.getCell(3, 2)));
 		assertEquals(testList.size(), 2);
-		cell = board.getCell(1, 3);
+		
+		cell = board.getCell(1, 3);				//middle right side
 		testList = cell.getAdjList();
 		assertTrue(testList.contains(board.getCell(1, 2)));
 		assertTrue(testList.contains(board.getCell(2, 3)));
 		assertTrue(testList.contains(board.getCell(0, 3)));
 		assertEquals(testList.size(), 3);
-		cell = board.getCell(3, 0);
+		
+		cell = board.getCell(3, 0);				//lower left corner
 		testList = cell.getAdjList();
 		assertTrue(testList.contains(board.getCell(3, 1)));
 		assertTrue(testList.contains(board.getCell(2, 0)));
 		assertEquals(testList.size(), 2);
-		cell = board.getCell(1, 1);
+		
+		cell = board.getCell(1, 1); 			//middle ish
 		testList = cell.getAdjList();
 		assertTrue(testList.contains(board.getCell(0, 1)));
 		assertTrue(testList.contains(board.getCell(1, 0)));

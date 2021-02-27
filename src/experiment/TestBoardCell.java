@@ -1,3 +1,4 @@
+//Authors: Brendan Uebelhoer, Ben Morgan
 package experiment;
 
 import java.util.*;
@@ -5,12 +6,13 @@ import java.util.*;
 public class TestBoardCell {
 	private int row;
 	private int column;
-	private boolean isRoom;
+	private boolean isRoom;  //indicates if cell is a part of a room rather than a walkspace, etc.
 	
-	private Set<TestBoardCell> adjList;
+	private Set<TestBoardCell> adjList;  //list of adjacent cells (including teleports)
 	
 	private boolean occupied;
 	
+	//initializes variables
 	public TestBoardCell(int row, int column) {
 		super();
 		this.row = row;
