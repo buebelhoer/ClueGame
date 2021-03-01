@@ -1,9 +1,9 @@
 // Rooms and room cards
 Room, Brown, B
-Room, Mines Market, MM
-Room, Maple, MA
-Room, CoorsTek, CK
-Room, CTLM, CT
+Room, Mines Market, M
+Room, Maple, P
+Room, CoorsTek, C
+Room, CTLM, T
 Room, Elm, E
 Room, Alderson, A
 Room, Studemt Center, S

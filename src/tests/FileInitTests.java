@@ -32,7 +32,7 @@ public class FileInitTests {
 		// Board is singleton, get the only instance
 		board = Board.getInstance();
 		// set the file names to use my config files
-		board.setConfigFiles("ClueLayout306.csv", "ClueSetup306.txt");
+		board.setConfigFiles("ClueLayout.csv", "ClueSetup.txt");
 		// Initialize will load BOTH config files
 		board.initialize();
 	}
@@ -41,10 +41,10 @@ public class FileInitTests {
 	public void testRoomLabels() {
 		// To ensure data is correctly loaded, test retrieving a few rooms
 		// from the hash, including the first and last in the file and a few others
-		assertEquals("Conservatory", board.getRoom('C').getName() );
-		assertEquals("Ballroom", board.getRoom('B').getName() );
-		assertEquals("Billiard Room", board.getRoom('R').getName() );
-		assertEquals("Dining Room", board.getRoom('D').getName() );
+		assertEquals("Elm", board.getRoom('E').getName() );
+		assertEquals("Brown", board.getRoom('B').getName() );
+		assertEquals("Maple", board.getRoom('P').getName() );
+		assertEquals("CoorsTek", board.getRoom('C').getName() );
 		assertEquals("Walkway", board.getRoom('W').getName() );
 	}
 
