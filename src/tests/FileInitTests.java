@@ -56,40 +56,61 @@ public class FileInitTests {
 	}
 
 	// Test a doorway in each direction (RIGHT/LEFT/UP/DOWN), plus
-	// two cells that are not a doorway.
-	// These cells are white on the planning spreadsheet
-	@Test
-	public void FourDoorDirections() {
-		BoardCell cell = board.getCell(8, 7);
-		assertTrue(cell.isDoorway());
-		assertEquals(DoorDirection.LEFT, cell.getDoorDirection());
-		cell = board.getCell(7, 12);
-		assertTrue(cell.isDoorway());
-		assertEquals(DoorDirection.UP, cell.getDoorDirection());
-		cell = board.getCell(4, 8);
-		assertTrue(cell.isDoorway());
-		assertEquals(DoorDirection.RIGHT, cell.getDoorDirection());
-		cell = board.getCell(16, 9);
-		assertTrue(cell.isDoorway());
-		assertEquals(DoorDirection.DOWN, cell.getDoorDirection());
-		// Test that walkways are not doors
-		cell = board.getCell(12, 14);
-		assertFalse(cell.isDoorway());
-	}
-	
+		// two cells that are not a doorway.
+		// These cells are white on the planning spreadsheet
+		@Test
+		public void FourDoorDirections() {
+			BoardCell cell = board.getCell(23, 0);
+			assertTrue(cell.isDoorway());
+			assertEquals(DoorDirection.DOWN, cell.getDoorDirection());
+			cell = board.getCell(6, 3);
+			assertTrue(cell.isDoorway());
+			assertEquals(DoorDirection.DOWN, cell.getDoorDirection());
+			cell = board.getCell(2, 5);
+			assertTrue(cell.isDoorway());
+			assertEquals(DoorDirection.LEFT, cell.getDoorDirection());
+			cell = board.getCell(20, 5);
+			assertTrue(cell.isDoorway());
+			assertEquals(DoorDirection.LEFT, cell.getDoorDirection());
+			cell = board.getCell(14, 7);
+			assertTrue(cell.isDoorway());
+			assertEquals(DoorDirection.LEFT, cell.getDoorDirection());
+			cell = board.getCell(6, 11);
+			assertTrue(cell.isDoorway());
+			assertEquals(DoorDirection.UP, cell.getDoorDirection());
+			cell = board.getCell(6, 12);
+			assertTrue(cell.isDoorway());
+			assertEquals(DoorDirection.UP, cell.getDoorDirection());
+			cell = board.getCell(17, 4);
+			assertTrue(cell.isDoorway());
+			assertEquals(DoorDirection.LEFT, cell.getDoorDirection());
+			cell = board.getCell(18, 8);
+			assertTrue(cell.isDoorway());
+			assertEquals(DoorDirection.LEFT, cell.getDoorDirection());
+			cell = board.getCell(18, 17);
+			assertTrue(cell.isDoorway());
+			assertEquals(DoorDirection.LEFT, cell.getDoorDirection());
+			cell = board.getCell(19, 19);
+			assertTrue(cell.isDoorway());
+			assertEquals(DoorDirection.LEFT, cell.getDoorDirection());
+			// Test that walkways are not doors
+			cell = board.getCell(6, 0);
+			assertFalse(cell.isDoorway());
+		}
+		
 
-	// Test that we have the correct number of doors
-	@Test
-	public void testNumberOfDoorways() {
-		int numDoors = 0;
-		for (int row = 0; row < board.getNumRows(); row++)
-			for (int col = 0; col < board.getNumColumns(); col++) {
-				BoardCell cell = board.getCell(row, col);
-				if (cell.isDoorway())
-					numDoors++;
-			}
-		Assert.assertEquals(17, numDoors);
-	}
+		// Test that we have the correct number of doors
+		@Test
+		public void testNumberOfDoorways() {
+			int numDoors = 0;
+			for (int row = 0; row < board.getNumRows(); row++)
+				for (int col = 0; col < board.getNumColumns(); col++) {
+					BoardCell cell = board.getCell(row, col);
+					if (cell.isDoorway())
+						numDoors++;
+				}
+			Assert.assertEquals(12, numDoors);
+		}
 
 	// Test a few room cells to ensure the room initial is correct.
 	@Test
