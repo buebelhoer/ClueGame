@@ -25,7 +25,7 @@ public class TestBoard {
 		targets = new HashSet<TestBoardCell>();
 	}
 
-	private void generateAdjacecies() {
+	private void generateAdjacecies() {     //adds neighboring cells to list if they are valid
 		for (int i = 0; i < NUM_ROWS; i++) {
 			for (int j = 0; j < NUM_COLS; j++) {
 				if (i > 0) {
@@ -48,8 +48,6 @@ public class TestBoard {
 	}
 
 	public void calcTargets( TestBoardCell startCell, int pathlength) { //fills targets with all possible moves
-		System.out.println(startCell.getRow() + " " + startCell.getColumn() + " " + startCell.isRoom());
-		
 		if (startCell.isOccupied()) { //if cell is occupied, cannot move to it
 			return;
 		}
@@ -59,12 +57,9 @@ public class TestBoard {
 		}
 		
 		if(pathlength == 0) { // no moves left, add current cell to targets
-			targets.add(startCell);
-			System.out.println("yay " +startCell.getRow() + " " + startCell.getColumn() + " " + startCell.isRoom());
-			
+			targets.add(startCell);	
 		} else if (startCell.isRoom()) { // if given cell is a room, all moves used up, and added to targets
 			targets.add(startCell);
-			System.out.println("yay " +startCell.getRow() + " " + startCell.getColumn() + " " + startCell.isRoom());
 		} else {
 			visited.add(startCell); // add cell to visited
 			
