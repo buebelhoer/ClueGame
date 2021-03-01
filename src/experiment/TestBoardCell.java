@@ -43,6 +43,14 @@ public class TestBoardCell {
 	public void addAdjacency(TestBoardCell cell) {
 		adjList.add(cell);
 	}
+
+	public int getRow() {
+		return row;
+	}
+
+	public int getColumn() {
+		return column;
+	}
 	
 	
 }

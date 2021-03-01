@@ -8,9 +8,9 @@ import java.util.Set;
 
 import org.junit.jupiter.api.*;
 
+
 import experiment.TestBoard;
 import experiment.TestBoardCell;
-import org.junit.Assert.*;
 
 public class BoardTestsExp {
 	TestBoard board;
@@ -68,7 +68,7 @@ public class BoardTestsExp {
 	}
 	
 	@Test
-	public void testCalcsRB() { // starts the player on the bottom right
+	public void testCalcsBR() { // starts the player on the bottom right
 		board.calcTargets(board.getCell(3, 3), 2);// 2 movement
 		Set<TestBoardCell> targets = board.getTargets();
 		assertTrue(targets.contains(board.getCell(1, 3)));
