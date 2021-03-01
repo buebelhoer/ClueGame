@@ -1,4 +1,14 @@
-Note, ben's commits for 13A-1 were lost due to saros/git conflict
+commit 78498ff15ce08c4f9d25b1ab27c62b42db10b6a6
+Author: bMorgan1 <ben.morgan5000@gmail.com>
+Date:   Sun Feb 28 19:59:05 2021 -0700
+
+    removed prints added comments
+
+commit e474641eeade16d226bd7cd084e9be03a160774b
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Sun Feb 28 19:53:20 2021 -0700
+
+    added 13a-1 submission
 
 commit 9df8449ef2cdb38e39ef0feb23f2124478e44b2d
 Author: Brendan <buebelhoer@mymail.mines.edu>
