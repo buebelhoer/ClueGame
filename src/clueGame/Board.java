@@ -7,8 +7,8 @@ import experiment.TestBoardCell;
 
 public class Board {
 	
-	private static final int NUM_ROWS = 4; // number of rows in the board
-	private static final int NUM_COLS = 4; // number of coloumn in the board
+	private static final int NUM_ROWS = 25; // number of rows in the board
+	private static final int NUM_COLS = 24; // number of coloumn in the board
 	private Set<BoardCell> visited;
 	
 	private BoardCell[][] board;//stores the board itself
