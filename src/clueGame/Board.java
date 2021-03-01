@@ -14,6 +14,8 @@ public class Board {
 	private BoardCell[][] board;//stores the board itself
 	private Set<BoardCell> targets;//stores the movable cells
 	
+	private String layoutConfigFile, setupConfigFile;
+	
 	private static Board instance = new Board();
 	// constructor is private to ensure only one can be created
 	private Board() {
@@ -93,4 +95,24 @@ public class Board {
 		return board[row][col];
 	}
 	
+	public void setConfigFiles(String layoutPath, String setupPath) {
+		layoutConfigFile = layoutPath;
+		setupPath = setupConfigFile;
+	}
+	
+	public Room getRoom(char c) {
+		return null;
+	}
+	
+	public void loadConfigFiles() {
+		
+	}
+	
+	public void loadSetupConfig() {
+		
+	}
+
+	public void loadLayoutConfig() {
+	
+	}
 }
