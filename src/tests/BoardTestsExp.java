@@ -95,7 +95,7 @@ public class BoardTestsExp {
 	@Test
 	public void testCalcsDoor() {
 		board.getCell(0, 1).setRoom(true); // sets a door directly right of the starting point
-		board.calcTargets(board.getCell(1, 1), 2); //starts top left, 2 movement
+		board.calcTargets(board.getCell(0, 0), 2); //starts top left, 2 movement
 		Set<TestBoardCell> targets = board.getTargets();
 		assertTrue(targets.contains(board.getCell(0, 1))); // should stop at the door
 		assertTrue(targets.contains(board.getCell(1, 1)));
@@ -106,7 +106,7 @@ public class BoardTestsExp {
 	@Test
 	public void testCalcOccupied() {
 		board.getCell(1, 0).setOccupied(true);//sets the spot directly below the player to occupied
-		board.calcTargets(board.getCell(1, 1), 2); //starts top left, 2 movement
+		board.calcTargets(board.getCell(0, 0), 2); //starts top left, 2 movement
 		Set<TestBoardCell> targets = board.getTargets();
 		assertTrue(targets.contains(board.getCell(0, 2)));
 		assertTrue(targets.contains(board.getCell(1, 1)));
