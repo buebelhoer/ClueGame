@@ -1,3 +1,23 @@
+Note, ben's commits for 13A-1 were lost due to saros/git conflict
+
+commit 9df8449ef2cdb38e39ef0feb23f2124478e44b2d
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Sun Feb 28 19:47:19 2021 -0700
+
+    fixed last 2 test, error was in test class, not code
+
+commit a9dc884e59c96083594b39720f0bce47d373ca34
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Sun Feb 28 19:45:38 2021 -0700
+
+    implemented get adjecencies, calc targets. 5/7 tests pass,door and occupied dont
+
+commit 6b38ddbda0eb56d16ff7a4cde5e7df523b145ea5
+Author: bMorgan1 <ben.morgan5000@gmail.com>
+Date:   Fri Feb 26 18:29:02 2021 -0700
+
+    added gitlog for turn-in
+
 commit 7385c2edaf6d896976e3a380bf29429e7cccc89e
 Author: bMorgan1 <ben.morgan5000@gmail.com>
 Date:   Fri Feb 26 18:23:50 2021 -0700
