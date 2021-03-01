@@ -3,6 +3,8 @@ package clueGame;
 
 import java.util.*;
 
+import experiment.TestBoardCell;
+
 public class Board {
 	
 	private static final int NUM_ROWS = 4; // number of rows in the board
@@ -12,7 +14,19 @@ public class Board {
 	private BoardCell[][] board;//stores the board itself
 	private Set<BoardCell> targets;//stores the movable cells
 	
-	public Board() {
+	private static Board instance = new Board();
+	// constructor is private to ensure only one can be created
+	private Board() {
+		super();
+	}
+	
+	// this method returns the only Board
+	public static Board getInstance() {
+		return instance;
+	}
+	
+	//initialize board
+	public void initialize() {
 		board = new BoardCell[NUM_ROWS][NUM_COLS]; //inits the board
 		visited = new HashSet<BoardCell>();
 		for (int i = 0; i < NUM_ROWS; i++) {
