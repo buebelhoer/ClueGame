@@ -104,6 +104,10 @@ public class Board {
 		return null;
 	}
 	
+	public Room getRoom(char c) {
+		return null;
+	}
+	
 	public void loadConfigFiles() {
 		
 	}
