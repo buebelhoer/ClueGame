@@ -6,6 +6,10 @@ public class Room {
 	BoardCell centerCell;
 	BoardCell labelCell;
 	
+	public Room() {
+		name = "test";
+	}
+	
 	public Room(String name, BoardCell centerCell, BoardCell labelCell) {
 		super();
 		this.name = name;

@@ -101,11 +101,11 @@ public class Board {
 	}
 	
 	public Room getRoom(BoardCell cell) {
-		return null;
+		return new Room();
 	}
 	
 	public Room getRoom(char c) {
-		return null;
+		return new Room();
 	}
 	
 	public void loadConfigFiles() {
