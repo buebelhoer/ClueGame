@@ -11,6 +11,11 @@ public class BoardCell {
 	private Set<BoardCell> adjList;  //list of adjacent cells (including teleports)
 	
 	private boolean occupied;
+	private DoorDirection doorDirection;
+	private Room room;
+	private boolean isLabel;
+	private boolean isRoomCenter;
+	private char secretPassage;
 	
 	//initializes variables
 	public BoardCell(int row, int column) {
@@ -53,7 +58,43 @@ public class BoardCell {
 	}
 	
 	public boolean isDoorway() {
-		return null;
+		return false;
+	}
+	
+	public Room getRoom() {
+		return room;
+	}
+
+	public DoorDirection getDoorDirection() {
+		return doorDirection;
+	}
+
+	public void setDoorDirection(DoorDirection doorDirection) {
+		this.doorDirection = doorDirection;
+	}
+
+	public boolean isLabel() {
+		return isLabel;
+	}
+
+	public void setLabel(boolean isLabel) {
+		this.isLabel = isLabel;
+	}
+
+	public boolean isRoomCenter() {
+		return isRoomCenter;
+	}
+
+	public void setRoomCenter(boolean isRoomCenter) {
+		this.isRoomCenter = isRoomCenter;
+	}
+
+	public char getSecretPassage() {
+		return secretPassage;
+	}
+
+	public void setSecretPassage(char secretPassage) {
+		this.secretPassage = secretPassage;
 	}
 	
 }

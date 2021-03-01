@@ -100,7 +100,7 @@ public class Board {
 		setupPath = setupConfigFile;
 	}
 	
-	public Room getRoom(char c) {
+	public Room getRoom(BoardCell cell) {
 		return null;
 	}
 	
@@ -115,4 +115,14 @@ public class Board {
 	public void loadLayoutConfig() {
 	
 	}
+	
+	public int getNumRows() {
+		return NUM_ROWS;
+	}
+
+	public int getNumColumns() {
+		return NUM_COLS;
+	}
+	
+	
 }
