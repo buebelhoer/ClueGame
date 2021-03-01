@@ -13,6 +13,10 @@ public class Room {
 		this.labelCell = labelCell;
 	}
 	
+	String getName() {
+		return name;
+	}
+	
 	
 	
 }

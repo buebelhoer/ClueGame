@@ -52,5 +52,8 @@ public class BoardCell {
 		return column;
 	}
 	
+	public boolean isDoorway() {
+		return null;
+	}
 	
 }
