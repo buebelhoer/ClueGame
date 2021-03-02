@@ -150,13 +150,12 @@ public class FileInitTests {
 		// test a walkway
 		cell = board.getCell(5, 0);
 		room = board.getRoom( cell ) ;
-		// Note for our purposes, walkways and closets are rooms
 		assertTrue( room != null );
 		assertEquals( room.getName(), "Walkway" ) ;
 		assertFalse( cell.isRoomCenter() );
 		assertFalse( cell.isLabel() );
 		
-		// test a closet
+		// test a invalid cell
 		cell = board.getCell(18, 0);
 		room = board.getRoom( cell ) ;
 		assertTrue( room != null );
