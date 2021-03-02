@@ -4,8 +4,6 @@ package tests;
  * This program tests that config files are loaded properly.
  */
 
-// Doing a static import allows me to write assertEquals rather than
-// Assert.assertEquals
 import static org.junit.Assert.*;
 
 import org.junit.Assert;
@@ -20,11 +18,10 @@ import clueGame.Room;
 public class FileInitTests {
 	// Constants that I will use to test whether the file was loaded correctly
 	public static final int LEGEND_SIZE = 11;
-	public static final int NUM_ROWS = 25;
+	public static final int NUM_ROWS = 24;
 	public static final int NUM_COLUMNS = 24;
 
-	// NOTE: I made Board static because I only want to set it up one
-	// time (using @BeforeAll), no need to do setup before each test.
+	// board static because setup is called before all so there should only be one instance
 	private static Board board;
 
 	@BeforeAll
@@ -33,7 +30,7 @@ public class FileInitTests {
 		board = Board.getInstance();
 		// set the file names to use my config files
 		board.setConfigFiles("ClueLayout.csv", "ClueSetup.txt");
-		// Initialize will load BOTH config files
+		// Initialize loads both config files
 		board.initialize();
 	}
 
