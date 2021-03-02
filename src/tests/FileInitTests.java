@@ -52,61 +52,70 @@ public class FileInitTests {
 		assertEquals(NUM_COLUMNS, board.getNumColumns());
 	}
 
-	// Test a doorway in each direction (RIGHT/LEFT/UP/DOWN), plus
-	// two cells that are not a doorway.
-	// These cells are white on the planning spreadsheet
+	// Test all doors and a few non-doors
 	@Test
-	public void FourDoorDirections() {
+	public void testDoors() {
 		BoardCell cell = board.getCell(23, 0);
 		assertTrue(cell.isDoorway());
 		assertEquals(DoorDirection.DOWN, cell.getDoorDirection());
+		
 		cell = board.getCell(6, 3);
 		assertTrue(cell.isDoorway());
 		assertEquals(DoorDirection.DOWN, cell.getDoorDirection());
+		
 		cell = board.getCell(2, 5);
 		assertTrue(cell.isDoorway());
 		assertEquals(DoorDirection.LEFT, cell.getDoorDirection());
+		
 		cell = board.getCell(20, 5);
 		assertTrue(cell.isDoorway());
 		assertEquals(DoorDirection.LEFT, cell.getDoorDirection());
+		
 		cell = board.getCell(14, 7);
 		assertTrue(cell.isDoorway());
 		assertEquals(DoorDirection.LEFT, cell.getDoorDirection());
+		
 		cell = board.getCell(6, 11);
 		assertTrue(cell.isDoorway());
 		assertEquals(DoorDirection.UP, cell.getDoorDirection());
+		
 		cell = board.getCell(6, 12);
 		assertTrue(cell.isDoorway());
 		assertEquals(DoorDirection.UP, cell.getDoorDirection());
+		
 		cell = board.getCell(17, 4);
 		assertTrue(cell.isDoorway());
 		assertEquals(DoorDirection.LEFT, cell.getDoorDirection());
+		
 		cell = board.getCell(18, 8);
 		assertTrue(cell.isDoorway());
 		assertEquals(DoorDirection.LEFT, cell.getDoorDirection());
+		
 		cell = board.getCell(18, 17);
 		assertTrue(cell.isDoorway());
 		assertEquals(DoorDirection.LEFT, cell.getDoorDirection());
+		
 		cell = board.getCell(19, 19);
 		assertTrue(cell.isDoorway());
 		assertEquals(DoorDirection.LEFT, cell.getDoorDirection());
+		
 		// Test that walkways are not doors
 		cell = board.getCell(6, 0);
 		assertFalse(cell.isDoorway());
 	}
 
 
-	// Test that we have the correct number of doors
+	//Count doors, should equal 12 (from layout sheet)
 	@Test
 	public void testNumberOfDoorways() {
-		int numDoors = 0;
-		for (int row = 0; row < board.getNumRows(); row++)
-			for (int col = 0; col < board.getNumColumns(); col++) {
-				BoardCell cell = board.getCell(row, col);
+		int count = 0;
+		for (int i = 0; i < board.getNumRows(); i++)
+			for (int j = 0; j < board.getNumColumns(); j++) {
+				BoardCell cell = board.getCell(i, j);
 				if (cell.isDoorway())
-					numDoors++;
+					count++;
 			}
-		Assert.assertEquals(12, numDoors);
+		Assert.assertEquals(12, count);
 	}
 
 	// Test a few room cells to ensure the room initial is correct.
