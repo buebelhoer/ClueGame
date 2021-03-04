@@ -1,7 +1,6 @@
 //Authors: Brendan Uebelhoer, Ben Morgan
 package clueGame;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.*;
