@@ -4,18 +4,26 @@ package clueGame;
 import java.util.*;
 
 public class BoardCell {
+	
 	private int row;
 	private int column;
-	private boolean isRoom;  //indicates if cell is a part of a room rather than a walkspace, etc.
+	
 	
 	private Set<BoardCell> adjList;  //list of adjacent cells (including teleports)
 	
-	private boolean occupied;
-	private DoorDirection doorDirection;
+	
+	
 	private Room room;
-	private boolean isLabel;
-	private boolean isRoomCenter;
-	private char secretPassage;
+	
+	
+	private boolean occupied;
+	
+	// These are optional, determined at setup
+	private DoorDirection doorDirection; // what direction the door from this cell goes, can be null
+	private boolean isLabel; // if the cell is the label of the room
+	private boolean isRoomCenter; // if the cell is the center of the room
+	private char secretPassage; // contains symbol of room that there is a secret passage to
+	private boolean isRoom;  //indicates if cell is a part of a room rather than a walkspace, etc.
 	
 	//initializes variables
 	public BoardCell(int row, int column) {
@@ -23,6 +31,12 @@ public class BoardCell {
 		this.row = row;
 		this.column = column;
 		adjList = new HashSet<BoardCell>();
+		
+		//assume all optionals are false, are overridden in board.loadlayoutconfig if necessary
+		doorDirection = DoorDirection.NONE;
+		occupied = false;
+		isLabel = false;
+		isRoom = false;		
 	}
 	
 	public boolean isOccupied() {
@@ -37,8 +51,10 @@ public class BoardCell {
 		return isRoom;
 	}
 
-	public void setRoom(boolean isRoom) {
-		this.isRoom = isRoom;
+	public void setRoom(Room r) {
+		this.isRoom = true;
+		
+		room = r;
 	}
 
 	public Set<BoardCell> getAdjList() {

@@ -6,15 +6,9 @@ public class Room {
 	BoardCell centerCell;
 	BoardCell labelCell;
 	
-	public Room() {
-		name = "test";
-	}
-	
-	public Room(String name, BoardCell centerCell, BoardCell labelCell) {
+	public Room(String name) {
 		super();
 		this.name = name;
-		this.centerCell = centerCell;
-		this.labelCell = labelCell;
 	}
 	
 	public String getName() {
