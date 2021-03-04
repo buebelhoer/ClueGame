@@ -1,0 +1,280 @@
+commit 4e945f56acbd061eb71c9eb294338ed28e329e56
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Mon Mar 1 21:31:12 2021 -0700
+
+    Added Tests.txt
+
+commit f41624029f96acdf7d3a6a8f583f88027cf1915e
+Merge: 34ecc4b 555c4e4
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Mon Mar 1 21:24:48 2021 -0700
+
+    Merge branch 'master' of https://github.com/buebelhoer/ClueLayout
+
+commit 34ecc4b78a1267dc1432583543de4472efa7d871
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Mon Mar 1 21:24:44 2021 -0700
+
+    added Comments
+
+commit 555c4e47ad76f77c35f90e1bd51de800f37dc1b4
+Author: bMorgan1 <ben.morgan5000@gmail.com>
+Date:   Mon Mar 1 21:23:45 2021 -0700
+
+    more minor test changes
+
+commit 24377c70da4949574faefc070efdd87dd600ade4
+Author: bMorgan1 <ben.morgan5000@gmail.com>
+Date:   Mon Mar 1 21:18:31 2021 -0700
+
+    minor fixes in tests
+
+commit 04ca067ee4af5ffa70e2f9b18ddfd15b23e04162
+Author: bMorgan1 <ben.morgan5000@gmail.com>
+Date:   Mon Mar 1 21:15:17 2021 -0700
+
+    fixed indentation
+
+commit 9e6deffba4f94b7ac9893b322ecd64cd81fb0123
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Mon Mar 1 21:14:16 2021 -0700
+
+    Update FileInitTests.java
+    
+    updated varibales
+
+commit cfed77d7dd87923d9216873008e02de1ca6648a9
+Author: bMorgan1 <ben.morgan5000@gmail.com>
+Date:   Mon Mar 1 21:10:53 2021 -0700
+
+    added gitlog
+
+commit 5da912f84a89512ca74a67e849fb7d5105dd5cca
+Merge: ba8aae2 0107417
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Sun Feb 28 21:55:56 2021 -0700
+
+    Merge branch 'master' of https://github.com/buebelhoer/ClueLayout
+
+commit ba8aae220cc37293c040c82432eb38b1dcf54765
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Sun Feb 28 21:55:06 2021 -0700
+
+    fixed test setup and 2 tests
+
+commit 0107417ac3080dea8a913b5407a6d1d84ab80cf9
+Author: bMorgan1 <ben.morgan5000@gmail.com>
+Date:   Sun Feb 28 21:48:25 2021 -0700
+
+    door tests
+
+commit b520821dd79beaf497ad051c113679a7ce93e4ed
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Sun Feb 28 21:36:52 2021 -0700
+
+    Fixed invalid 2 character room deliniators
+
+commit c4575e7bfc3007be493e47ab65dab818e7cae412
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Sun Feb 28 21:21:37 2021 -0700
+
+    Create FileInitTests.java
+
+commit 8dcd298017b9735a683cffa0d77afcd86e197370
+Author: bMorgan1 <ben.morgan5000@gmail.com>
+Date:   Sun Feb 28 21:19:08 2021 -0700
+
+    made edits to make 306 tests fail
+
+commit 4dfa1de5129d7e61680aa96524f483d82845b198
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Sun Feb 28 21:13:32 2021 -0700
+
+    changed constant boardsize so that files run correctly
+
+commit 42a3357aaefb6e68e36cc9fe233dc1d4e6234e68
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Sun Feb 28 21:08:28 2021 -0700
+
+    added more getters
+
+commit c55245d0b99976290375562d1e31107525206f32
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Sun Feb 28 21:04:16 2021 -0700
+
+    added more getters/setters
+
+commit e0c6f8b4ef02b9474366d56e3b10c12026eb9d41
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Sun Feb 28 20:50:22 2021 -0700
+
+    added minor getter functions
+
+commit 4e08ed7103f7b1bf5d4f8878348db3da94c9833e
+Author: bMorgan1 <ben.morgan5000@gmail.com>
+Date:   Sun Feb 28 20:49:55 2021 -0700
+
+    added config file method stubs and instance variables
+
+commit 84d69d0dd3d14444f8480aa1c53eb4b0dd733609
+Merge: d73fcb2 b2ff036
+Author: bMorgan1 <ben.morgan5000@gmail.com>
+Date:   Sun Feb 28 20:40:53 2021 -0700
+
+    Merge branch 'master' of https://github.com/buebelhoer/ClueLayout
+
+commit d73fcb25e92240d3ca59f10e28e5a287dd7c095f
+Author: bMorgan1 <ben.morgan5000@gmail.com>
+Date:   Sun Feb 28 20:39:41 2021 -0700
+
+    added singleton methods to Board
+
+commit b2ff036ad516142a070ecd9a12b1323347320a48
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Sun Feb 28 20:24:01 2021 -0700
+
+    implemented BadConfigFormatException
+
+commit 20ef74a73b689c7732fc76661f05a23ead553d09
+Author: bMorgan1 <ben.morgan5000@gmail.com>
+Date:   Sun Feb 28 20:22:18 2021 -0700
+
+    copied over test board to real board file
+
+commit 0a0e7f518c3aeebf93893e8e611a43af9e307ed3
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Sun Feb 28 20:20:50 2021 -0700
+
+    implemented room class
+
+commit 677c179dfb0b56fb6ac262c6e07c257549171e34
+Author: bMorgan1 <ben.morgan5000@gmail.com>
+Date:   Sun Feb 28 20:19:31 2021 -0700
+
+    copied test to real board cell file
+
+commit 0e46e5a5720c2d38e263e512ecce4c3eae50ef84
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Sun Feb 28 20:17:41 2021 -0700
+
+    implemented DoorDirection
+
+commit 6c75c155a10d97fea3cee181985ea576bd055984
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Sun Feb 28 20:11:10 2021 -0700
+
+    added required classes but for real this time
+
+commit b3c4175a0461dab43c68cb7d7f6116e688c1bcae
+Author: bMorgan1 <ben.morgan5000@gmail.com>
+Date:   Sun Feb 28 20:06:58 2021 -0700
+
+    prepped turn in 13A
+
+commit 8a4bc9a9c133370c852c00fb773cea3a9a0dbb89
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Sun Feb 28 20:04:17 2021 -0700
+
+    added starter fiels for 13A-2
+
+commit 78498ff15ce08c4f9d25b1ab27c62b42db10b6a6
+Author: bMorgan1 <ben.morgan5000@gmail.com>
+Date:   Sun Feb 28 19:59:05 2021 -0700
+
+    removed prints added comments
+
+commit e474641eeade16d226bd7cd084e9be03a160774b
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Sun Feb 28 19:53:20 2021 -0700
+
+    added 13a-1 submission
+
+commit 9df8449ef2cdb38e39ef0feb23f2124478e44b2d
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Sun Feb 28 19:47:19 2021 -0700
+
+    fixed last 2 test, error was in test class, not code
+
+commit a9dc884e59c96083594b39720f0bce47d373ca34
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Sun Feb 28 19:45:38 2021 -0700
+
+    implemented get adjecencies, calc targets. 5/7 tests pass,door and occupied dont
+
+commit 6b38ddbda0eb56d16ff7a4cde5e7df523b145ea5
+Author: bMorgan1 <ben.morgan5000@gmail.com>
+Date:   Fri Feb 26 18:29:02 2021 -0700
+
+    added gitlog for turn-in
+
+commit 7385c2edaf6d896976e3a380bf29429e7cccc89e
+Author: bMorgan1 <ben.morgan5000@gmail.com>
+Date:   Fri Feb 26 18:23:50 2021 -0700
+
+    added comments
+
+commit 665e0d1a967b2d68f114edc871f90fffac6ad7e1
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Thu Feb 25 19:12:04 2021 -0700
+
+    added more tests for calculation of movement, and added more comments
+
+commit 9a4fc62af9fb4efa7697f5950f17fed0bae636f4
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Thu Feb 25 18:25:05 2021 -0700
+
+    inplemeneted tests. Note due to git/saros conflicts, several commits made by brendan were lost
+
+commit 0cfc234a8da88588a2ae8cee1ef3bb4dc19f9ed3
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Thu Feb 25 17:33:15 2021 -0700
+
+    added classes in experiment package
+
+commit 6befcd2910c75bcea2073d4c6c4a1d44fe8b8897
+Author: bMorgan1 <ben.morgan5000@gmail.com>
+Date:   Thu Feb 25 17:20:58 2021 -0700
+
+    added TestBoardCell class
+
+commit 41562d2e1e795fcd35acd85ddec677bc13b0ae21
+Author: bMorgan1 <ben.morgan5000@gmail.com>
+Date:   Thu Feb 25 17:13:12 2021 -0700
+
+    set up eclipse project, experiment package, and tests package
+
+commit 44846d41f2ac458bfdbf61c74964da99ea9da950
+Author: bMorgan1 <ben.morgan5000@gmail.com>
+Date:   Thu Feb 25 17:04:09 2021 -0700
+
+    added reame
+
+commit 40991f8bb9c0da189d483f91241b5bc86294c8cf
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Tue Feb 23 18:25:08 2021 -0700
+
+    added csv file
+
+commit 6f2bccab92fa5b39fa948a65d60f383ca77a4dcd
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Tue Feb 23 18:22:32 2021 -0700
+
+    added room layout
+
+commit a8e14cdd3a101d86827d8d28d704219f191c8b31
+Author: bMorgan1 <ben.morgan5000@gmail.com>
+Date:   Tue Feb 23 17:58:11 2021 -0700
+
+    finished setup layout file
+
+commit 887dfc05cb5657fb3bbf94ce8534bf62bcec407e
+Author: bMorgan1 <ben.morgan5000@gmail.com>
+Date:   Tue Feb 23 17:50:17 2021 -0700
+
+    added setup txt file
+
+commit 998f14ea0754fb9cd48c075ffd2466666a7e0738
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Tue Feb 23 17:46:02 2021 -0700
+
+    added excel file
