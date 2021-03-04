@@ -7,8 +7,8 @@ import experiment.TestBoardCell;
 
 public class Board {
 	
-	private static final int NUM_ROWS = 25; // number of rows in the board
-	private static final int NUM_COLS = 24; // number of coloumn in the board
+	private int numRows = 25; // number of rows in the board
+	private int numCols = 24; // number of column in the board
 	private Set<BoardCell> visited;
 	
 	private BoardCell[][] board;//stores the board itself
@@ -29,10 +29,10 @@ public class Board {
 	
 	//initialize board
 	public void initialize() {
-		board = new BoardCell[NUM_ROWS][NUM_COLS]; //inits the board
+		board = new BoardCell[numRows][numCols]; //inits the board
 		visited = new HashSet<BoardCell>();
-		for (int i = 0; i < NUM_ROWS; i++) {
-			for (int j = 0; j < NUM_COLS; j++) {
+		for (int i = 0; i < numRows; i++) {
+			for (int j = 0; j < numCols; j++) {
 				board[i][j] = new BoardCell(i,j); // fills in the cells with their cords
 			}
 		}
@@ -42,13 +42,13 @@ public class Board {
 	}
 
 	private void generateAdjacecies() {     //adds neighboring cells to list if they are valid
-		for (int i = 0; i < NUM_ROWS; i++) {
-			for (int j = 0; j < NUM_COLS; j++) {
+		for (int i = 0; i < numRows; i++) {
+			for (int j = 0; j < numCols; j++) {
 				if (i > 0) {
 					board[i][j].addAdjacency(board[i-1][j]);
 				}
 				
-				if (i < NUM_ROWS - 1) {
+				if (i < numRows - 1) {
 					board[i][j].addAdjacency(board[i+1][j]);
 				}
 				
@@ -56,7 +56,7 @@ public class Board {
 					board[i][j].addAdjacency(board[i][j-1]);
 				}
 				
-				if (j < NUM_COLS - 1) {
+				if (j < numCols - 1) {
 					board[i][j].addAdjacency(board[i][j+1]);
 				}
 			}
@@ -121,11 +121,11 @@ public class Board {
 	}
 	
 	public int getNumRows() {
-		return NUM_ROWS;
+		return numRows;
 	}
 
 	public int getNumColumns() {
-		return NUM_COLS;
+		return numCols;
 	}
 	
 	
