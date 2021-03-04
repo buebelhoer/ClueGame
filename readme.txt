@@ -1,2 +1,2 @@
-Benjamin Morgan, Brendan Uebelhoer - Section A
+Benjamin Morgan, Brendan Uebelhoer : Section A
 No outside resources
