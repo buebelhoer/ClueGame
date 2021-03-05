@@ -13,7 +13,7 @@ public class Board {
 	 // number of column in the board
 	private int numCols;
 	
-	//stores the cells visited. used in targetfinding algorithm
+	//stores the cells visited. used in target finding algorithm
 	private Set<BoardCell> visited;
 
 	//stores the board itself
@@ -28,7 +28,7 @@ public class Board {
 	//strings that hold the filename of the config files.
 	private String layoutConfigFile, setupConfigFile;
 
-	//specific instance of tjhe board
+	//specific instance of the board
 	private static Board instance = new Board();
 	
 	// constructor is private to ensure only one can be created
@@ -93,18 +93,18 @@ public class Board {
 		visited = new HashSet<BoardCell>();
 		targets = new HashSet<BoardCell>();
 		
-		//generates the list of adjecencies for each cell
-		generateAdjacecies();
+		//generates the list of adjacencies for each cell
+		generateAdjacencies();
 
 
 	}
 
 	 //Creates a map which stores what cells are adjacent to each other
-	private void generateAdjacecies() {    
+	private void generateAdjacencies() {    
 		for (int i = 0; i < numRows; i++) {
 			for (int j = 0; j < numCols; j++) {
 				
-				//logic makes sure it doesnt add a cell that is off the board
+				//logic makes sure it doesn't add a cell that is off the board
 				
 				if (i > 0) {
 					board[i][j].addAdjacency(board[i-1][j]);
@@ -153,7 +153,7 @@ public class Board {
 			// add cell to visited
 			visited.add(startCell);
 
-			//recursively calls calcTargets() on every adjecent cell
+			//recursively calls calcTargets() on every adjacent cell
 			for (BoardCell c: startCell.getAdjList()) {
 				calcTargets(c, pathlength - 1);
 			}
@@ -208,7 +208,7 @@ public class Board {
 	/*takes layout file and imports the data it holds into the proper locations
 	*file should be a rectangular .csv of the board, where each element is 
 	*a 1 or two letter symbol. first letter is the room in that cell and the
-	*second letter any specialpart of the cell, such as secret passages, doors
+	*second letter any special part of the cell, such as secret passages, doors
 	*etc. if not proper formated, will throw exception
 	*/
 	public void loadLayoutConfig() throws BadConfigFormatException {	
