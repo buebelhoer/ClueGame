@@ -217,19 +217,13 @@ public class Board {
 			FileReader reader = new FileReader(layoutConfigFile);
 			Scanner scanner = new Scanner(reader);  
 			
-			//sets the delimiter pattern to be a comma for csv files
-			scanner.useDelimiter(","); 
-
+			String[] tokens;
 			String token;
 			for (int i = 0; i < numRows; i++) {
-				for (int j = 0; j < numCols; j++) {
-					if (scanner.hasNext()) {
-						token = scanner.next();  //find and returns the next complete token from this scanner
-						System.out.println(token + " " + i + " " + j);
-					} else {
-						throw new BadConfigFormatException();
-					}
-					
+				tokens = scanner.nextLine().split(",");				
+				
+				for (int j = 0; j < numCols; j++) {	
+					token = tokens[j];
 					board[i][j].setRoom(roomMap.get(token.charAt(0)));
 
 					if (token.length() > 1) {
