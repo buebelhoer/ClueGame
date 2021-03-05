@@ -151,6 +151,23 @@ public class Board {
 	public void loadLayoutConfig() {
 		try {
 			FileReader reader = new FileReader(layoutConfigFile);
+			Scanner scanner = new Scanner(reader);
+			
+			String[] tokens = scanner.nextLine().split(",");
+			numCols = tokens.length;
+			
+			int count = 1;
+			while (scanner.hasNextLine()) {
+				count++;
+			}
+			
+			numRows = count;
+		} catch (FileNotFoundException e) {
+			System.out.println("Invalid filename");
+		}
+		
+		try {
+			FileReader reader = new FileReader(layoutConfigFile);
 			Scanner scanner = new Scanner(reader);  
 			scanner.useDelimiter(",");   //sets the delimiter pattern  
 
