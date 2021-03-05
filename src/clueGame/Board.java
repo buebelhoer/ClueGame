@@ -242,6 +242,7 @@ public class Board {
 							break;
 						case '#':
 							board[i][j].setLabel(true);
+							roomMap.get(token.charAt(0)).setLabelCell(board[i][j]);
 							break;
 						case '*':
 							board[i][j].setRoomCenter(true);
