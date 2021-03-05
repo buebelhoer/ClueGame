@@ -5,8 +5,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.*;
 
-import experiment.TestBoardCell;
-
 public class Board {
 
 	private int numRows = 25; // number of rows in the board
