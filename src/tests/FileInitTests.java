@@ -111,7 +111,7 @@ public class FileInitTests {
 				if (cell.isDoorway())
 					count++;
 			}
-		Assert.assertEquals(12, count);
+		Assert.assertEquals(14, count);
 	}
 
 	// Tests some cell to ensure they have the proper room.
