@@ -31,10 +31,11 @@ public class Board {
 
 	//initialize board
 	public void initialize() {
+		roomMap = new HashMap<Character, Room>();
 		loadSetupConfig();
 		loadLayoutConfig();
 		
-		board = new BoardCell[numRows][numCols]; //inits the board
+		board = new BoardCell[numRows][numCols]; //This needs to happen elsewhere
 		visited = new HashSet<BoardCell>();
 		for (int i = 0; i < numRows; i++) {
 			for (int j = 0; j < numCols; j++) {
@@ -44,7 +45,7 @@ public class Board {
 
 		generateAdjacecies();
 		targets = new HashSet<BoardCell>();
-		roomMap = new HashMap<Character, Room>();
+
 	}
 
 	private void generateAdjacecies() {     //adds neighboring cells to list if they are valid
