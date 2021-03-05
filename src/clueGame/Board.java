@@ -48,12 +48,12 @@ public class Board {
 		} catch (FileNotFoundException e) {
 			System.out.println(e);
 		}
-		
+		board = new BoardCell[numRows][numCols]; //This needs to happen elsewhere
 		roomMap = new HashMap<Character, Room>();
 		loadSetupConfig();
 		loadLayoutConfig();
 		
-		board = new BoardCell[numRows][numCols]; //This needs to happen elsewhere
+
 		visited = new HashSet<BoardCell>();
 		for (int i = 0; i < numRows; i++) {
 			for (int j = 0; j < numCols; j++) {
@@ -201,10 +201,11 @@ public class Board {
 			scanner.useDelimiter(",");   //sets the delimiter pattern  
 
 			String token;
-			for (int i = 0; i < numCols; i++) {
-				for (int j = 0; j < numCols; i++) {
+			for (int i = 0; i < numRows; i++) {
+				for (int j = 0; j < numCols; j++) {
 					token = scanner.next();  //find and returns the next complete token from this scanner
-
+					
+					board[i][j] = new BoardCell(i, j);
 					board[i][j].setRoom(roomMap.get(token.charAt(0)));
 
 					if (token.length() > 1) {
