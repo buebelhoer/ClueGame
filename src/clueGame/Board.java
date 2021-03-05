@@ -222,8 +222,17 @@ public class Board {
 				tokens = scanner.nextLine().split(",");				
 
 				for (int j = 0; j < numCols; j++) {	
-					token = tokens[j];
-					board[i][j].setRoom(roomMap.get(token.charAt(0)));
+					if (j < tokens.length) {
+						token = tokens[j];
+					} else {
+						throw new BadConfigFormatException();
+					}
+					
+					if (roomMap.get(token.charAt(0)) != null) {
+						board[i][j].setRoom(roomMap.get(token.charAt(0)));
+					} else {
+						throw new BadConfigFormatException();
+					}
 
 					if (token.length() > 1) {
 						switch (token.charAt(1)) {
