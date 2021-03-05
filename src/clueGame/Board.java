@@ -7,8 +7,8 @@ import java.util.*;
 
 public class Board {
 
-	private int numRows = 25; // number of rows in the board
-	private int numCols = 24; // number of column in the board
+	private int numRows; // number of rows in the board
+	private int numCols; // number of column in the board
 	private Set<BoardCell> visited;
 
 	private BoardCell[][] board;//stores the board itself
