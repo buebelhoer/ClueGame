@@ -31,6 +31,24 @@ public class Board {
 
 	//initialize board
 	public void initialize() {
+		try {
+			FileReader reader = new FileReader(layoutConfigFile);
+			Scanner scanner = new Scanner(reader);
+			
+			String[] tokens = scanner.nextLine().split(",");
+			numCols = tokens.length;
+			
+			int count = 1;
+			while (scanner.hasNextLine()) {
+				scanner.nextLine();
+				count++;
+			}
+			
+			numRows = count;
+		} catch (FileNotFoundException e) {
+			System.out.println(e);
+		}
+		
 		roomMap = new HashMap<Character, Room>();
 		loadSetupConfig();
 		loadLayoutConfig();
