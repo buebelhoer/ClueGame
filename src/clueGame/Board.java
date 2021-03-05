@@ -143,7 +143,7 @@ public class Board {
 			}
 		}
 		catch (FileNotFoundException e) {
-			System.out.println("Invalid filename");
+			System.out.println(e);
 		}
 
 	}
@@ -163,7 +163,7 @@ public class Board {
 			
 			numRows = count;
 		} catch (FileNotFoundException e) {
-			System.out.println("Invalid filename");
+			System.out.println(e);
 		}
 		
 		try {
@@ -207,7 +207,7 @@ public class Board {
 			}
 
 		} catch (FileNotFoundException e) {
-			System.out.println("Invalid filename");
+			System.out.println(e);
 		} 
 	}
 
