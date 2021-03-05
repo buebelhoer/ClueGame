@@ -9,16 +9,16 @@ public class Board {
 
 	// number of rows in the board
 	private int numRows;
-	
-	 // number of column in the board
+
+	// number of column in the board
 	private int numCols;
-	
+
 	//stores the cells visited. used in target finding algorithm
 	private Set<BoardCell> visited;
 
 	//stores the board itself
 	private BoardCell[][] board;
-	
+
 	//stores the movable cells
 	private Set<BoardCell> targets;
 
@@ -30,7 +30,7 @@ public class Board {
 
 	//specific instance of the board
 	private static Board instance = new Board();
-	
+
 	// constructor is private to ensure only one can be created
 	private Board() {
 		super();
@@ -43,42 +43,6 @@ public class Board {
 
 	//initialize board
 	public void initialize() {
-		// quickly scans the file in order 
-		try {
-			FileReader reader = new FileReader(layoutConfigFile);
-			Scanner scanner = new Scanner(reader);
-			
-			//gets the first line of a file, then puts it into a string
-			//array based on values separated by commas
-			String[] tokens = scanner.nextLine().split(",");
-			//sets the size of the board
-			numCols = tokens.length;
-			
-			//counts the number of line in the layout file, and uses it to
-			//set the number of rows in the board
-			numRows = 1;
-			while (scanner.hasNextLine()) {
-				scanner.nextLine();
-				numRows++;
-			}
-			
-		} catch (FileNotFoundException e) {
-			System.out.println(e);
-		}
-		
-		// allocates the board
-		board = new BoardCell[numRows][numCols];
-		
-		//allocates each cell within the board
-		for (int i = 0; i < numRows; i++) {
-			for (int j = 0; j < numCols; j++) {
-				board[i][j] = new BoardCell(i, j);
-			}
-		}
-		// allocates the map. uses HashMap as order doesnt matter 
-		roomMap = new HashMap<Character, Room>();
-		
-
 		// BadCOnfigException indicates invalid format in the config files
 		try {
 			//loads the setup file
@@ -88,24 +52,24 @@ public class Board {
 		} catch (BadConfigFormatException e) {
 			System.out.println(e.getMessage());
 		}
-		
+
 		// allocates the visited and target sets
 		visited = new HashSet<BoardCell>();
 		targets = new HashSet<BoardCell>();
-		
+
 		//generates the list of adjacencies for each cell
 		generateAdjacencies();
 
 
 	}
 
-	 //Creates a map which stores what cells are adjacent to each other
+	//Creates a map which stores what cells are adjacent to each other
 	private void generateAdjacencies() {    
 		for (int i = 0; i < numRows; i++) {
 			for (int j = 0; j < numCols; j++) {
-				
+
 				//logic makes sure it doesn't add a cell that is off the board
-				
+
 				if (i > 0) {
 					board[i][j].addAdjacency(board[i-1][j]);
 				}
@@ -124,10 +88,10 @@ public class Board {
 			}
 		}
 	}
-	
+
 	//calculates valid targets to move to from the given location
 	public void calcTargets( BoardCell startCell, int pathlength) { //fills targets with all possible moves
-		
+
 		//Base Case
 		//if cell is occupied, cannot move to it
 		if (startCell.isOccupied()) { 
@@ -138,17 +102,17 @@ public class Board {
 		if (visited.contains(startCell)) { 
 			return;
 		}
-		
+
 		//Base Case
 		// no moves left, add current cell to targets
 		if(pathlength == 0) { 
 			targets.add(startCell);	
-		
-		//Base Case
-		// if given cell is a room, all moves used up, and added to targets
+
+			//Base Case
+			// if given cell is a room, all moves used up, and added to targets
 		} else if (startCell.isRoom()) { 
 			targets.add(startCell);
-		//Recursive Case
+			//Recursive Case
 		} else {
 			// add cell to visited
 			visited.add(startCell);
@@ -161,8 +125,10 @@ public class Board {
 			visited.remove(startCell); 
 		}
 	}
-	
+
 	public void loadSetupConfig() throws BadConfigFormatException {
+		// allocates the map. uses HashMap as order doesnt matter 
+		roomMap = new HashMap<Character, Room>();
 		try {
 			FileReader reader = new FileReader(setupConfigFile);
 			Scanner scanner = new Scanner(reader);
@@ -170,16 +136,16 @@ public class Board {
 
 			while (scanner.hasNextLine()) {
 				String data = scanner.nextLine(); // first element of a line should be what type it is.
-				
+
 				if (data.charAt(0) == '/' && data.charAt(1) == '/') {
 					continue;
 				}
-				
+
 				int commaIndex = data.indexOf(',');
 				String dataType = data.substring(0, commaIndex);
 				data = data.substring(commaIndex+1);
 				data = data.stripLeading();
-				
+
 				switch (dataType) {
 				case "Room":
 				case "Space":
@@ -189,6 +155,7 @@ public class Board {
 					data = data.substring(commaIndex+1);
 					data = data.stripLeading();
 					char roomSymbol = data.charAt(0);
+					System.out.println(dataType + " " + roomName + " " + roomSymbol);
 					roomMap.put(roomSymbol, new Room(roomName));
 					break;
 				}
@@ -206,22 +173,54 @@ public class Board {
 	}
 
 	/*takes layout file and imports the data it holds into the proper locations
-	*file should be a rectangular .csv of the board, where each element is 
-	*a 1 or two letter symbol. first letter is the room in that cell and the
-	*second letter any special part of the cell, such as secret passages, doors
-	*etc. if not proper formated, will throw exception
-	*/
+	 *file should be a rectangular .csv of the board, where each element is 
+	 *a 1 or two letter symbol. first letter is the room in that cell and the
+	 *second letter any special part of the cell, such as secret passages, doors
+	 *etc. if not proper formated, will throw exception
+	 */
 	public void loadLayoutConfig() throws BadConfigFormatException {	
+		// quickly scans the file in order 
+		try {
+			FileReader reader = new FileReader(layoutConfigFile);
+			Scanner scanner = new Scanner(reader);
+
+			//gets the first line of a file, then puts it into a string
+			//array based on values separated by commas
+			String[] tokens = scanner.nextLine().split(",");
+			//sets the size of the board
+			numCols = tokens.length;
+
+			//counts the number of line in the layout file, and uses it to
+			//set the number of rows in the board
+			numRows = 1;
+			while (scanner.hasNextLine()) {
+				scanner.nextLine();
+				numRows++;
+			}
+
+		} catch (FileNotFoundException e) {
+			System.out.println(e);
+		}
+
+		// allocates the board
+		board = new BoardCell[numRows][numCols];
+
+		//allocates each cell within the board
+		for (int i = 0; i < numRows; i++) {
+			for (int j = 0; j < numCols; j++) {
+				board[i][j] = new BoardCell(i, j);
+			}
+		}
 		try {
 			//loads the layout file into a scanner to read
 			FileReader reader = new FileReader(layoutConfigFile);
 			Scanner scanner = new Scanner(reader);  
-			
+
 			String[] tokens;
 			String token;
 			for (int i = 0; i < numRows; i++) {
 				tokens = scanner.nextLine().split(",");				
-				
+
 				for (int j = 0; j < numCols; j++) {	
 					token = tokens[j];
 					board[i][j].setRoom(roomMap.get(token.charAt(0)));
@@ -263,8 +262,8 @@ public class Board {
 	/*
 	 * ALL CODE BENEATH THIS POINT SHOULD BE GETTER/SETTERS
 	 */
-	
-	
+
+
 	public Set<BoardCell> getTargets() {
 		return targets;
 	}
