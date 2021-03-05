@@ -225,6 +225,7 @@ public class Board {
 				for (int j = 0; j < numCols; j++) {
 					if (scanner.hasNext()) {
 						token = scanner.next();  //find and returns the next complete token from this scanner
+						System.out.println(token + " " + i + " " + j);
 					} else {
 						throw new BadConfigFormatException();
 					}
