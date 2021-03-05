@@ -5,17 +5,17 @@ import java.util.*;
 
 public class BoardCell {
 	
+	//the position of this cell in the board, declared at creation
 	private int row;
 	private int column;
 	
+	//list of adjacent cells (including teleports)
+	private Set<BoardCell> adjList;
 	
-	private Set<BoardCell> adjList;  //list of adjacent cells (including teleports)
-	
-	
-	
+	// stores the type of room this cell represents. can be walkway or closet
 	private Room room;
 	
-	
+	//whether or not there is currently a player in this cell
 	private boolean occupied;
 	
 	// These are optional, determined at setup
@@ -28,8 +28,11 @@ public class BoardCell {
 	//initializes variables
 	public BoardCell(int row, int column) {
 		super();
+		//only way to set row and col should be constructor
 		this.row = row;
 		this.column = column;
+		
+		// allocates as a Hashset, order should matter
 		adjList = new HashSet<BoardCell>();
 		
 		//assume all optionals are false, are overridden in board.loadlayoutconfig if necessary
@@ -38,6 +41,10 @@ public class BoardCell {
 		isLabel = false;
 		isRoom = false;		
 	}
+	
+	/*
+	 * All functions below this point should be getters/setters
+	 */
 	
 	public boolean isOccupied() {
 		return occupied;
@@ -53,8 +60,11 @@ public class BoardCell {
 
 	public void setRoom(Room r) {
 		this.isRoom = true;
-		
 		room = r;
+	}
+	
+	public Room getRoom() {
+		return room;
 	}
 
 	public Set<BoardCell> getAdjList() {
@@ -74,11 +84,7 @@ public class BoardCell {
 	}
 	
 	public boolean isDoorway() {
-		return false;
-	}
-	
-	public Room getRoom() {
-		return room;
+		return doorDirection != DoorDirection.NONE;
 	}
 
 	public DoorDirection getDoorDirection() {
