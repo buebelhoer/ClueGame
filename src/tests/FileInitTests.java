@@ -48,10 +48,10 @@ public class FileInitTests {
 		assertEquals(NUM_COLUMNS, board.getNumColumns());
 	}
 
-	// Test all doors and a few non-doors
+	// Test most doors and a few non-doors
 	@Test
 	public void testDoors() {
-		BoardCell cell = board.getCell(23, 0);
+		BoardCell cell = board.getCell(13, 0);
 		assertTrue(cell.isDoorway());
 		assertEquals(DoorDirection.DOWN, cell.getDoorDirection());
 		
@@ -67,7 +67,7 @@ public class FileInitTests {
 		assertTrue(cell.isDoorway());
 		assertEquals(DoorDirection.LEFT, cell.getDoorDirection());
 		
-		cell = board.getCell(14, 7);
+		cell = board.getCell(15, 7);
 		assertTrue(cell.isDoorway());
 		assertEquals(DoorDirection.LEFT, cell.getDoorDirection());
 		
@@ -79,21 +79,21 @@ public class FileInitTests {
 		assertTrue(cell.isDoorway());
 		assertEquals(DoorDirection.UP, cell.getDoorDirection());
 		
-		cell = board.getCell(17, 4);
+		cell = board.getCell(5, 17);
 		assertTrue(cell.isDoorway());
-		assertEquals(DoorDirection.LEFT, cell.getDoorDirection());
+		assertEquals(DoorDirection.RIGHT, cell.getDoorDirection());
 		
-		cell = board.getCell(18, 8);
+		cell = board.getCell(8, 18);
 		assertTrue(cell.isDoorway());
-		assertEquals(DoorDirection.LEFT, cell.getDoorDirection());
+		assertEquals(DoorDirection.RIGHT, cell.getDoorDirection());
 		
-		cell = board.getCell(18, 17);
+		cell = board.getCell(17, 18);
 		assertTrue(cell.isDoorway());
-		assertEquals(DoorDirection.LEFT, cell.getDoorDirection());
+		assertEquals(DoorDirection.RIGHT, cell.getDoorDirection());
 		
 		cell = board.getCell(19, 19);
 		assertTrue(cell.isDoorway());
-		assertEquals(DoorDirection.LEFT, cell.getDoorDirection());
+		assertEquals(DoorDirection.DOWN, cell.getDoorDirection());
 		
 		// Test that walkways are not doors
 		cell = board.getCell(6, 0);
@@ -144,7 +144,7 @@ public class FileInitTests {
 		assertFalse( cell.isDoorway()) ;
 
 		// tests label cell
-		cell = board.getCell(3, 20);
+		cell = board.getCell(2, 20);
 		room = board.getRoom( cell ) ;
 		assertTrue( room != null );
 		assertEquals( room.getName(), "CoorsTek" ) ;
@@ -152,7 +152,7 @@ public class FileInitTests {
 		assertTrue( room.getLabelCell() == cell );
 
 		// tests room cell
-		cell = board.getCell(19, 11);
+		cell = board.getCell(20, 11);
 		room = board.getRoom( cell ) ;
 		assertTrue( room != null );
 		assertEquals( room.getName(), "Student Center" ) ;
