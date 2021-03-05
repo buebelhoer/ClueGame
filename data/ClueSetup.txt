@@ -6,7 +6,7 @@ Room, CoorsTek, C
 Room, CTLM, T
 Room, Elm, E
 Room, Alderson, A
-Room, Studemt Center, S
+Room, Student Center, S
 Room, Rec Center, R
 // other spaces on board
 Space, Unused, X
