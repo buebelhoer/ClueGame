@@ -118,24 +118,30 @@ public class Board {
 		try {
 			FileReader reader = new FileReader(setupConfigFile);
 			Scanner scanner = new Scanner(reader);
-			scanner.useDelimiter(",");
+
 
 			while (scanner.hasNextLine()) {
-				String dataType = scanner.next(); // first element of a line should be what type it is.
-
+				String data = scanner.nextLine(); // first element of a line should be what type it is.
+				
+				if (data.charAt(0) == '/' && data.charAt(1) == '/') {
+					continue;
+				}
+				
+				int commaIndex = data.indexOf(',');
+				String dataType = data.substring(0, commaIndex);
+				data = data.substring(commaIndex+1);
+				data = data.stripLeading();
+				
 				switch (dataType) {
 				case "Room":
-				{
-					String roomName = scanner.next();
-					char roomSymbol = scanner.next().charAt(0);
-					roomMap.put(roomSymbol, new Room(roomName));
-					break;
-				}
 				case "Space":
 				{
-					String spaceName = scanner.next();
-					char spaceSymbol = scanner.next().charAt(0);
-					roomMap.put(spaceSymbol, new Room(spaceName));
+					commaIndex = data.indexOf(',');
+					String roomName = data.substring(0,commaIndex);
+					data = data.substring(commaIndex+1);
+					data = data.stripLeading();
+					char roomSymbol = data.charAt(0);
+					roomMap.put(roomSymbol, new Room(roomName));
 					break;
 				}
 				default:
