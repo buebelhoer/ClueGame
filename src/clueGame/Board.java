@@ -7,18 +7,30 @@ import java.util.*;
 
 public class Board {
 
-	private int numRows; // number of rows in the board
-	private int numCols; // number of column in the board
+	// number of rows in the board
+	private int numRows;
+	
+	 // number of column in the board
+	private int numCols;
+	
+	//stores the cells visited. used in targetfinding algorithm
 	private Set<BoardCell> visited;
 
-	private BoardCell[][] board;//stores the board itself
-	private Set<BoardCell> targets;//stores the movable cells
+	//stores the board itself
+	private BoardCell[][] board;
+	
+	//stores the movable cells
+	private Set<BoardCell> targets;
 
+	//maps the character symbol of a room to the room object itself
 	private Map<Character,Room> roomMap;
 
+	//strings that hold the filename of the config files.
 	private String layoutConfigFile, setupConfigFile;
 
+	//specific instance of tjhe board
 	private static Board instance = new Board();
+	
 	// constructor is private to ensure only one can be created
 	private Board() {
 		super();
@@ -31,49 +43,69 @@ public class Board {
 
 	//initialize board
 	public void initialize() {
+		// quickly scans the file in order 
 		try {
 			FileReader reader = new FileReader(layoutConfigFile);
 			Scanner scanner = new Scanner(reader);
 			
+			//gets the first line of a file, then puts it into a string
+			//array based on values separated by commas
 			String[] tokens = scanner.nextLine().split(",");
+			//sets the size of the board
 			numCols = tokens.length;
 			
-			int count = 1;
+			//counts the number of line in the layout file, and uses it to
+			//set the number of rows in the board
+			numRows = 1;
 			while (scanner.hasNextLine()) {
 				scanner.nextLine();
-				count++;
+				numRows++;
 			}
 			
-			numRows = count;
 		} catch (FileNotFoundException e) {
 			System.out.println(e);
 		}
-		board = new BoardCell[numRows][numCols]; //This needs to happen elsewhere
-		roomMap = new HashMap<Character, Room>();
-		loadSetupConfig();
 		
+		// allocates the board
+		board = new BoardCell[numRows][numCols];
+		
+		//allocates each cell within the board
+		for (int i = 0; i < numRows; i++) {
+			for (int j = 0; j < numCols; j++) {
+				board[i][j] = new BoardCell(i, j);
+			}
+		}
+		// allocates the map. uses HashMap as order doesnt matter 
+		roomMap = new HashMap<Character, Room>();
+		
+
+		// BadCOnfigException indicates invalid format in the config files
 		try {
+			//loads the setup file
+			loadSetupConfig();
+			//loads the config file
 			loadLayoutConfig();
 		} catch (BadConfigFormatException e) {
 			System.out.println(e.getMessage());
 		}
 		
-
+		// allocates the visited and target sets
 		visited = new HashSet<BoardCell>();
-		for (int i = 0; i < numRows; i++) {
-			for (int j = 0; j < numCols; j++) {
-				board[i][j] = new BoardCell(i,j); // fills in the cells with their cords
-			}
-		}
-
-		generateAdjacecies();
 		targets = new HashSet<BoardCell>();
+		
+		//generates the list of adjecencies for each cell
+		generateAdjacecies();
+
 
 	}
 
-	private void generateAdjacecies() {     //adds neighboring cells to list if they are valid
+	 //Creates a map which stores what cells are adjacent to each other
+	private void generateAdjacecies() {    
 		for (int i = 0; i < numRows; i++) {
 			for (int j = 0; j < numCols; j++) {
+				
+				//logic makes sure it doesnt add a cell that is off the board
+				
 				if (i > 0) {
 					board[i][j].addAdjacency(board[i-1][j]);
 				}
@@ -92,53 +124,45 @@ public class Board {
 			}
 		}
 	}
-
+	
+	//calculates valid targets to move to from the given location
 	public void calcTargets( BoardCell startCell, int pathlength) { //fills targets with all possible moves
-		if (startCell.isOccupied()) { //if cell is occupied, cannot move to it
+		
+		//Base Case
+		//if cell is occupied, cannot move to it
+		if (startCell.isOccupied()) { 
 			return;
 		}
-
-		if (visited.contains(startCell)) { // if cell is already visited, cannot move to it
+		//Base Case
+		//if cell is already visited, cannot move to it
+		if (visited.contains(startCell)) { 
 			return;
 		}
-
-		if(pathlength == 0) { // no moves left, add current cell to targets
+		
+		//Base Case
+		// no moves left, add current cell to targets
+		if(pathlength == 0) { 
 			targets.add(startCell);	
-		} else if (startCell.isRoom()) { // if given cell is a room, all moves used up, and added to targets
+		
+		//Base Case
+		// if given cell is a room, all moves used up, and added to targets
+		} else if (startCell.isRoom()) { 
 			targets.add(startCell);
+		//Recursive Case
 		} else {
-			visited.add(startCell); // add cell to visited
+			// add cell to visited
+			visited.add(startCell);
 
+			//recursively calls calcTargets() on every adjecent cell
 			for (BoardCell c: startCell.getAdjList()) {
 				calcTargets(c, pathlength - 1);
 			}
-
-			visited.remove(startCell); // removes cell from visited after all paths forward have been explore
+			// removes cell from visited after all paths forward have been explore
+			visited.remove(startCell); 
 		}
 	}
-
-	public Set<BoardCell> getTargets() {
-		return targets;
-	}
-
-	public BoardCell getCell( int row, int col ) {
-		return board[row][col];
-	}
-
-	public Room getRoom(BoardCell cell) {
-		return cell.getRoom();
-	}
-
-	public Room getRoom(char c) {
-		return roomMap.get(c);
-	}
-
-	public void setConfigFiles(String layoutFile, String setupFile) {
-		setupConfigFile = "data/" + setupFile;
-		layoutConfigFile = "data/" +layoutFile;
-	}
-
-	public void loadSetupConfig() {
+	
+	public void loadSetupConfig() throws BadConfigFormatException {
 		try {
 			FileReader reader = new FileReader(setupConfigFile);
 			Scanner scanner = new Scanner(reader);
@@ -169,7 +193,7 @@ public class Board {
 					break;
 				}
 				default:
-					continue;
+					throw new BadConfigFormatException();
 				}
 
 
@@ -181,11 +205,20 @@ public class Board {
 
 	}
 
+	/*takes layout file and imports the data it holds into the proper locations
+	*file should be a rectangular .csv of the board, where each element is 
+	*a 1 or two letter symbol. first letter is the room in that cell and the
+	*second letter any specialpart of the cell, such as secret passages, doors
+	*etc. if not proper formated, will throw exception
+	*/
 	public void loadLayoutConfig() throws BadConfigFormatException {	
 		try {
+			//loads the layout file into a scanner to read
 			FileReader reader = new FileReader(layoutConfigFile);
 			Scanner scanner = new Scanner(reader);  
-			scanner.useDelimiter(",");   //sets the delimiter pattern  
+			
+			//sets the delimiter pattern to be a comma for csv files
+			scanner.useDelimiter(","); 
 
 			String token;
 			for (int i = 0; i < numRows; i++) {
@@ -196,7 +229,6 @@ public class Board {
 						throw new BadConfigFormatException();
 					}
 					
-					board[i][j] = new BoardCell(i, j);
 					board[i][j].setRoom(roomMap.get(token.charAt(0)));
 
 					if (token.length() > 1) {
@@ -230,6 +262,32 @@ public class Board {
 		} catch (FileNotFoundException e) {
 			System.out.println(e);
 		} 
+	}
+
+	/*
+	 * ALL CODE BENEATH THIS POINT SHOULD BE GETTER/SETTERS
+	 */
+	
+	
+	public Set<BoardCell> getTargets() {
+		return targets;
+	}
+
+	public BoardCell getCell( int row, int col ) {
+		return board[row][col];
+	}
+
+	public Room getRoom(BoardCell cell) {
+		return cell.getRoom();
+	}
+
+	public Room getRoom(char c) {
+		return roomMap.get(c);
+	}
+
+	public void setConfigFiles(String layoutFile, String setupFile) {
+		setupConfigFile = "data/" + setupFile;
+		layoutConfigFile = "data/" +layoutFile;
 	}
 
 	public int getNumRows() {
