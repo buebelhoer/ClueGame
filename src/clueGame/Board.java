@@ -31,6 +31,9 @@ public class Board {
 
 	//initialize board
 	public void initialize() {
+		loadSetupConfig();
+		loadLayoutConfig();
+		
 		board = new BoardCell[numRows][numCols]; //inits the board
 		visited = new HashSet<BoardCell>();
 		for (int i = 0; i < numRows; i++) {
@@ -148,7 +151,7 @@ public class Board {
 
 	}
 
-	public void loadLayoutConfig() {
+	public void loadLayoutConfig() {	
 		try {
 			FileReader reader = new FileReader(layoutConfigFile);
 			Scanner scanner = new Scanner(reader);
