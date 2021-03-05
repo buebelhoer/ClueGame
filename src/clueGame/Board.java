@@ -107,8 +107,8 @@ public class Board {
 	}
 
 	public void setConfigFiles(String layoutFile, String setupFile) {
-		setupConfigFile = setupFile;
-		layoutConfigFile = layoutFile;
+		setupConfigFile = "data/" + setupFile;
+		layoutConfigFile = "data/" +layoutFile;
 	}
 
 	public void loadSetupConfig() {
