@@ -51,7 +51,12 @@ public class Board {
 		board = new BoardCell[numRows][numCols]; //This needs to happen elsewhere
 		roomMap = new HashMap<Character, Room>();
 		loadSetupConfig();
-		loadLayoutConfig();
+		
+		try {
+			loadLayoutConfig();
+		} catch (BadConfigFormatException e) {
+			System.out.println(e.getMessage());
+		}
 		
 
 		visited = new HashSet<BoardCell>();
@@ -176,25 +181,7 @@ public class Board {
 
 	}
 
-	public void loadLayoutConfig() {	
-		try {
-			FileReader reader = new FileReader(layoutConfigFile);
-			Scanner scanner = new Scanner(reader);
-			
-			String[] tokens = scanner.nextLine().split(",");
-			numCols = tokens.length;
-			
-			int count = 1;
-			while (scanner.hasNextLine()) {
-				scanner.nextLine();
-				count++;
-			}
-			
-			numRows = count;
-		} catch (FileNotFoundException e) {
-			System.out.println(e);
-		}
-		
+	public void loadLayoutConfig() throws BadConfigFormatException {	
 		try {
 			FileReader reader = new FileReader(layoutConfigFile);
 			Scanner scanner = new Scanner(reader);  
@@ -203,7 +190,11 @@ public class Board {
 			String token;
 			for (int i = 0; i < numRows; i++) {
 				for (int j = 0; j < numCols; j++) {
-					token = scanner.next();  //find and returns the next complete token from this scanner
+					if (scanner.hasNext()) {
+						token = scanner.next();  //find and returns the next complete token from this scanner
+					} else {
+						throw new BadConfigFormatException();
+					}
 					
 					board[i][j] = new BoardCell(i, j);
 					board[i][j].setRoom(roomMap.get(token.charAt(0)));
@@ -227,7 +218,7 @@ public class Board {
 							break;
 						case '*':
 							board[i][j].setRoomCenter(true);
-							roomMap.get(token.charAt(1)).setCenterCell(board[i][j]);
+							roomMap.get(token.charAt(0)).setCenterCell(board[i][j]);
 							break;
 						default:
 							board[i][j].setSecretPassage(token.charAt(1));
