@@ -161,6 +161,7 @@ public class Board {
 			
 			int count = 1;
 			while (scanner.hasNextLine()) {
+				scanner.nextLine();
 				count++;
 			}
 			
