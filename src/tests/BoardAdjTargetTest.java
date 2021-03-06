@@ -93,7 +93,7 @@ public class BoardAdjTargetTest {
 		assertTrue(adjList.contains(board.getCell(11, 16)));
 		
 		//19, 16
-		cell = board.getCell(11, 15);
+		cell = board.getCell(19, 16);
 		adjList = cell.getAdjList();
 		assertEquals(adjList.size(), 4);
 		assertTrue(adjList.contains(board.getCell(18, 16)));
