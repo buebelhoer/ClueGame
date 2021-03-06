@@ -65,6 +65,7 @@ public class Board {
 
 	//Creates a map which stores what cells are adjacent to each other
 	private void generateAdjacencies() {    
+		/*
 		for (int i = 0; i < numRows; i++) {
 			for (int j = 0; j < numCols; j++) {
 
@@ -86,7 +87,8 @@ public class Board {
 					board[i][j].addAdjacency(board[i][j+1]);
 				}
 			}
-		}
+			
+		}*/
 	}
 
 	//calculates valid targets to move to from the given location

@@ -1,3 +1,209 @@
+commit e92eee5163ab94395db28ede98491f89a2783cfb
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Fri Mar 5 21:41:34 2021 -0700
+
+    added remaining tests (edges, etc.)
+
+commit 9a4d8b4222c7dd891c0d3ca41ce0579d80d8acd9
+Merge: 6ae1866 df9ec99
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Fri Mar 5 21:31:59 2021 -0700
+
+    Merge branch 'master' of https://github.com/buebelhoer/ClueLayout
+
+commit 6ae186642cedc57e934b76205b8289fb78dfe72f
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Fri Mar 5 21:31:15 2021 -0700
+
+    implemented doorway target test
+
+commit df9ec99fb6b0ee4d8d4181f74eeef06fff2332be
+Merge: f1265d9 19639c3
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Fri Mar 5 21:29:40 2021 -0700
+
+    Merge branch 'master' of https://github.com/buebelhoer/ClueGame
+
+commit f1265d94fc231ce01fbf5d374c0f75eb0ccca081
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Fri Mar 5 21:29:30 2021 -0700
+
+    implemented testTargetsOccupied
+
+commit 19639c34e44cf68ffc0c21b9437108f2f60f41e8
+Merge: cf2cd5f 8b9fd0d
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Fri Mar 5 21:16:21 2021 -0700
+
+    Merge branch 'master' of https://github.com/buebelhoer/ClueLayout
+
+commit cf2cd5f3c3293a650532489929d7da61372fb6b9
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Fri Mar 5 21:16:14 2021 -0700
+
+    implemented room target test
+
+commit 8b9fd0d11456beeadcb4420ca8a79b991c8d4c00
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Fri Mar 5 21:09:46 2021 -0700
+
+    implemented testTargetsNoValidMoves
+
+commit ff7195139e327889b9c27545f0138f63ea637dd9
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Fri Mar 5 21:07:01 2021 -0700
+
+    implemented testTargetsRoomPassage, added swap to git ignore
+
+commit 5dd2409a1c7dc48edadd777b2ec897339c15e2d1
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Fri Mar 5 20:59:57 2021 -0700
+
+    fixed git things
+
+commit 8d72773904e3d01d101fa047ea41650814e5f9f7
+Merge: 533e443 34df24d
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Fri Mar 5 20:47:58 2021 -0700
+
+    Merge branch 'master' of https://github.com/buebelhoer/ClueGame
+
+commit 533e44327286dc8cecffa77f6fc01504948b92eb
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Fri Mar 5 20:47:48 2021 -0700
+
+    Update BoardAdjTargetTest.java
+
+commit 34df24db894b1a8f63302bfd1ad30479f447c0ad
+Merge: bb0a515 1c40a41
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Fri Mar 5 20:47:20 2021 -0700
+
+    Merge branch 'master' of https://github.com/buebelhoer/ClueLayout
+
+commit bb0a515889ce81134ba2e3e0b1718d5631318ab4
+Author: Benjamin <Benjamin@138.67.218.77>
+Date:   Fri Mar 5 20:43:06 2021 -0700
+
+    pushing to pull
+
+commit 1c40a4153c00f91fac8adfa96208e4b67d0908c8
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Fri Mar 5 20:41:31 2021 -0700
+
+    Implemented Testtargetwalkways2
+
+commit e449da040069f22a40679c8f0bf8db49c7ce450b
+Author: Benjamin <Benjamin@138.67.218.77>
+Date:   Fri Mar 5 20:12:02 2021 -0700
+
+    oopsed didnt change row col after copy
+
+commit b28464184282894f6b957901dd698361465ce49a
+Merge: 9a66d02 c3d760a
+Author: Benjamin <Benjamin@138.67.218.77>
+Date:   Fri Mar 5 20:10:40 2021 -0700
+
+    Merge branch 'master' of https://github.com/buebelhoer/ClueLayout
+
+commit 9a66d02ce1bfc3d2af205c738cd38b8c26b10373
+Author: Benjamin <Benjamin@138.67.218.77>
+Date:   Fri Mar 5 20:09:14 2021 -0700
+
+    added walk adj test
+
+commit c3d760ae1d189662e151b499b951cfc50eb2c467
+Merge: a425f9b 5ea549d
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Fri Mar 5 20:07:03 2021 -0700
+
+    Merge branch 'master' of https://github.com/buebelhoer/ClueGame
+
+commit a425f9b05546e35bdfc986cd1f7339b0a2fad5ce
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Fri Mar 5 20:07:00 2021 -0700
+
+    implemented testTargetsWalkways1
+
+commit 5ea549de0573024c7c9e7e2c9f88d8f7c548f40e
+Author: Benjamin <Benjamin@138.67.218.77>
+Date:   Fri Mar 5 19:57:00 2021 -0700
+
+    added door adj test
+
+commit ea609c392b9188ed152d055a10ec989ae39cca16
+Merge: f4f50c7 0480c11
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Fri Mar 5 19:31:44 2021 -0700
+
+    Merge branch 'master' of https://github.com/buebelhoer/ClueGame
+
+commit f4f50c73c55f025e361e54f710b7f6593782f706
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Fri Mar 5 19:31:41 2021 -0700
+
+    Update ClueLayout.xlsx
+
+commit 0480c11c52315907972deeaa1201951dde39eec6
+Author: Benjamin <Benjamin@138.67.218.77>
+Date:   Fri Mar 5 19:27:24 2021 -0700
+
+    # WARNING: head commit changed in the meantime
+    
+    added room adj test
+
+commit f17874b8845ea838ffecd2b28ed6882b81f3f80d
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Fri Mar 5 19:16:56 2021 -0700
+
+    Update ClueLayout.xlsx
+
+commit 25753b6260f7eb26f3167b6bbbec531dce4735ed
+Merge: 2a604b8 17a7c00
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Fri Mar 5 18:56:07 2021 -0700
+
+    Merge branch 'master' of https://github.com/buebelhoer/ClueGame
+
+commit 2a604b80d72ea9654f849bc6623a23416bdc752b
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Fri Mar 5 18:55:58 2021 -0700
+
+    added more function stubs
+
+commit 17a7c0090bfabe734bbe2cf0ef60fab78c56af8f
+Merge: 73603b5 a9118dd
+Author: Benjamin <Benjamin@138.67.218.77>
+Date:   Fri Mar 5 18:38:34 2021 -0700
+
+    Merge branch 'master' of https://github.com/buebelhoer/ClueLayout
+
+commit 73603b57bec032181e06364442a4aa116f14575c
+Author: Benjamin <Benjamin@138.67.218.77>
+Date:   Fri Mar 5 18:38:27 2021 -0700
+
+    removed uneeded import
+
+commit a9118ddef698133f0b0c692d85d827fa39bd1e79
+Merge: 7217d5b d467470
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Fri Mar 5 18:37:32 2021 -0700
+
+    Merge branch 'master' of https://github.com/buebelhoer/ClueGame
+
+commit 7217d5b2a7d8345539b5cffc9727ad0e225e03e5
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Fri Mar 5 18:37:23 2021 -0700
+
+    added test adj skeleton
+
+commit d4674706f07a08fb0d77daa4de0dc377686f0caf
+Merge: d1ebc2f 7c98b58
+Author: Benjamin <Benjamin@138.67.218.77>
+Date:   Fri Mar 5 18:29:30 2021 -0700
+
+    Merge branch 'master' of https://github.com/buebelhoer/ClueLayout
+
 commit d1ebc2f2a8f2c64e75e7d41d40efe5c1d753b227
 Author: Benjamin <Benjamin@138.67.218.77>
 Date:   Fri Mar 5 18:29:20 2021 -0700
