@@ -1,9 +1,15 @@
 package tests;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.Set;
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import clueGame.Board;
+import clueGame.BoardCell;
 
 public class BoardAdjTargetTest {
 	//board used to testing
@@ -11,7 +17,7 @@ public class BoardAdjTargetTest {
 	
 	@BeforeAll
 	public static void setUp() {
-		//calls stardard setup functions
+		//calls standard setup functions
 		board = Board.getInstance();
 		board.setConfigFiles("ClueLayout.csv", "ClueSetup.txt");
 		board.initialize();
@@ -20,7 +26,25 @@ public class BoardAdjTargetTest {
 	@Test
 	public void testRoomAdjacencies()
 	{
-		//TODO fill in function, test room centers
+		//Test brown
+		BoardCell cell = board.getCell(2, 2);
+		Set<BoardCell> adjList = cell.getAdjList();
+		assertEquals(adjList.size(), 1);
+		assertTrue(adjList.contains(board.getCell(3, 5)));
+		
+		//Test market
+		cell = board.getCell(3, 11);
+		adjList = cell.getAdjList();
+		assertEquals(adjList.size(), 2);
+		assertTrue(adjList.contains(board.getCell(6, 11)));
+		assertTrue(adjList.contains(board.getCell(6, 12)));
+		
+		//Test CK
+		cell = board.getCell(3, 20);
+		adjList = cell.getAdjList();
+		assertEquals(adjList.size(), 2);
+		assertTrue(adjList.contains(board.getCell(5, 17)));
+		assertTrue(adjList.contains(board.getCell(6, 18)));
 	}
 	
 	@Test
@@ -66,7 +90,7 @@ public class BoardAdjTargetTest {
 	
 	@Test
 	public void testTargetsOccuied() {
-		//TODO test targets with an inconvinient occupied cell
+		//TODO test targets with an inconvenient occupied cell
 	}
 	
 	@Test
