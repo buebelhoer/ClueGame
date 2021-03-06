@@ -150,13 +150,7 @@ public class Board {
 				case "Room":
 				case "Space":
 				{
-					commaIndex = data.indexOf(',');
-					String roomName = data.substring(0,commaIndex);
-					data = data.substring(commaIndex+1);
-					data = data.stripLeading();
-					char roomSymbol = data.charAt(0);
-					System.out.println(dataType + " " + roomName + " " + roomSymbol);
-					roomMap.put(roomSymbol, new Room(roomName));
+					addRoom(data);
 					break;
 				}
 				default:
@@ -172,6 +166,16 @@ public class Board {
 
 	}
 
+	private void addRoom(String data) {
+		int commaIndex;
+		commaIndex = data.indexOf(',');
+		String roomName = data.substring(0,commaIndex);
+		data = data.substring(commaIndex+1);
+		data = data.stripLeading();
+		char roomSymbol = data.charAt(0);
+		roomMap.put(roomSymbol, new Room(roomName));
+	}
+
 	/*takes layout file and imports the data it holds into the proper locations
 	 *file should be a rectangular .csv of the board, where each element is 
 	 *a 1 or two letter symbol. first letter is the room in that cell and the
@@ -179,39 +183,9 @@ public class Board {
 	 *etc. if not proper formated, will throw exception
 	 */
 	public void loadLayoutConfig() throws BadConfigFormatException {	
-		//TODO: refactor
-		// quickly scans the file in order 
-				try {
-					FileReader reader = new FileReader(layoutConfigFile);
-					Scanner scanner = new Scanner(reader);
-
-					//gets the first line of a file, then puts it into a string
-					//array based on values separated by commas
-					String[] tokens = scanner.nextLine().split(",");
-					//sets the size of the board
-					numCols = tokens.length;
-
-					//counts the number of line in the layout file, and uses it to
-					//set the number of rows in the board
-					numRows = 1;
-					while (scanner.hasNextLine()) {
-						scanner.nextLine();
-						numRows++;
-					}
-
-				} catch (FileNotFoundException e) {
-					System.out.println(e);
-				}
-
-		// allocates the board
-		board = new BoardCell[numRows][numCols];
-
-		//allocates each cell within the board
-		for (int i = 0; i < numRows; i++) {
-			for (int j = 0; j < numCols; j++) {
-				board[i][j] = new BoardCell(i, j);
-			}
-		}
+		countRowsCols();
+		generateBoard();
+		
 		try {
 			//loads the layout file into a scanner to read
 			FileReader reader = new FileReader(layoutConfigFile);
@@ -235,38 +209,79 @@ public class Board {
 						throw new BadConfigFormatException();
 					}
 
-					if (token.length() > 1) {
-						switch (token.charAt(1)) {
-						case '<':
-							board[i][j].setDoorDirection(DoorDirection.LEFT);
-							break;
-						case '>': 
-							board[i][j].setDoorDirection(DoorDirection.RIGHT);
-							break;
-						case 'v': 
-							board[i][j].setDoorDirection(DoorDirection.DOWN);
-							break;
-						case '^': 
-							board[i][j].setDoorDirection(DoorDirection.UP);
-							break;
-						case '#':
-							board[i][j].setLabel(true);
-							roomMap.get(token.charAt(0)).setLabelCell(board[i][j]);
-							break;
-						case '*':
-							board[i][j].setRoomCenter(true);
-							roomMap.get(token.charAt(0)).setCenterCell(board[i][j]);
-							break;
-						default:
-							board[i][j].setSecretPassage(token.charAt(1));
-						}
-					}
+					parseSecondCharacter(token, i, j);
 				}
 			}
 
 		} catch (FileNotFoundException e) {
 			System.out.println(e);
 		} 
+	}
+
+	private void parseSecondCharacter(String token, int row, int column) {
+		if (token.length() > 1) {
+			switch (token.charAt(1)) {
+			case '<':
+				board[row][column].setDoorDirection(DoorDirection.LEFT);
+				break;
+			case '>': 
+				board[row][column].setDoorDirection(DoorDirection.RIGHT);
+				break;
+			case 'v': 
+				board[row][column].setDoorDirection(DoorDirection.DOWN);
+				break;
+			case '^': 
+				board[row][column].setDoorDirection(DoorDirection.UP);
+				break;
+			case '#':
+				board[row][column].setLabel(true);
+				roomMap.get(token.charAt(0)).setLabelCell(board[row][column]);
+				break;
+			case '*':
+				board[row][column].setRoomCenter(true);
+				roomMap.get(token.charAt(0)).setCenterCell(board[row][column]);
+				break;
+			default:
+				board[row][column].setSecretPassage(token.charAt(1));
+			}
+		}
+	}
+
+	private void generateBoard() {
+		// allocates the board
+		board = new BoardCell[numRows][numCols];
+
+		//allocates each cell within the board
+		for (int i = 0; i < numRows; i++) {
+			for (int j = 0; j < numCols; j++) {
+				board[i][j] = new BoardCell(i, j);
+			}
+		}
+	}
+
+	private void countRowsCols() {
+		// quickly scans the file in order 
+		try {
+			FileReader reader = new FileReader(layoutConfigFile);
+			Scanner scanner = new Scanner(reader);
+
+			//gets the first line of a file, then puts it into a string
+			//array based on values separated by commas
+			String[] tokens = scanner.nextLine().split(",");
+			//sets the size of the board
+			numCols = tokens.length;
+
+			//counts the number of line in the layout file, and uses it to
+			//set the number of rows in the board
+			numRows = 1;
+			while (scanner.hasNextLine()) {
+				scanner.nextLine();
+				numRows++;
+			}
+
+		} catch (FileNotFoundException e) {
+			System.out.println(e);
+		}
 	}
 
 	/*
