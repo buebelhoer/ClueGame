@@ -219,8 +219,17 @@ public class BoardAdjTargetTest {
 		//TODO test targets with an inconvenient occupied cell
 	}
 
+	//this should never produce a valid move
 	@Test
 	public void testTargetsNoValidMoves() {
-		//TODO tests targets where there are no valid moves
+		//move of 1
+		board.calcTargets(board.getCell(22, 2), 1);
+		Set<BoardCell> targets = board.getTargets();
+		assertEquals(0, targets.size());
+		
+		//move of 6
+		board.calcTargets(board.getCell(22, 2), 6);
+		targets = board.getTargets();
+		assertEquals(0, targets.size());
 	}
 }
