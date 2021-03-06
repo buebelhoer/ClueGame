@@ -100,8 +100,50 @@ public class BoardAdjTargetTest {
 		assertTrue(adjList.contains(board.getCell(20, 16)));
 		assertTrue(adjList.contains(board.getCell(19, 15)));
 		assertTrue(adjList.contains(board.getCell(19, 17)));
+		
+		//19, 8
+		cell = board.getCell(19, 8);
+		adjList = cell.getAdjList();
+		assertEquals(adjList.size(), 3);
+		assertTrue(adjList.contains(board.getCell(19, 7)));
+		assertTrue(adjList.contains(board.getCell(18, 8)));
+		assertTrue(adjList.contains(board.getCell(20, 8)));
 	}
-
+	
+	@Test
+	public void testNonCenterAdjacencies() {
+		//5, 1
+		BoardCell cell = board.getCell(0, 10);
+		Set<BoardCell> adjList = cell.getAdjList();
+		assertEquals(adjList.size(), 0);
+	}
+	
+	@Test
+	public void testEdgeRWalkwayAdjacencies() {
+		BoardCell cell = board.getCell(7, 23);
+		Set<BoardCell> adjList = cell.getAdjList();
+		assertEquals(adjList.size(), 1);
+		assertTrue(adjList.contains(board.getCell(7, 22)));
+	}
+	
+	@Test
+	public void testEdgeBWalkwayAdjacencies() {
+		BoardCell cell = board.getCell(23, 7);
+		Set<BoardCell> adjList = cell.getAdjList();
+		assertEquals(adjList.size(), 1);
+		assertTrue(adjList.contains(board.getCell(22, 7)));
+	}
+	
+	@Test
+	public void testEdgeTWalkwayAdjacencies() {
+		BoardCell cell = board.getCell(0, 6);
+		Set<BoardCell> adjList = cell.getAdjList();
+		assertEquals(adjList.size(), 3);
+		assertTrue(adjList.contains(board.getCell(0, 5)));
+		assertTrue(adjList.contains(board.getCell(0, 7)));
+		assertTrue(adjList.contains(board.getCell(1, 6)));
+	}	
+	
 	/*
 	 * Target Tests:
 	 * each function represents testing of targets from a single cell
