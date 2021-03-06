@@ -110,7 +110,7 @@ public class BoardAdjTargetTest {
 	@Test
 	public void testTargetsWalkways1(){
 		//tests a move of 1
-		board.calcTargets(board.getCell(7, 8), 2);
+		board.calcTargets(board.getCell(7, 8), 1);
 		Set<BoardCell> targets = board.getTargets();
 		assertTrue(targets.contains(board.getCell(6, 8)));
 		assertTrue(targets.contains(board.getCell(7, 7)));
@@ -187,7 +187,11 @@ public class BoardAdjTargetTest {
 
 	@Test
 	public void testTargetsRoomPassage() {
-		//TODO test targets inside a room with a secret passage
+		//tests a move of 1
+		board.calcTargets(board.getCell(22, 2), 1);
+		Set<BoardCell> targets = board.getTargets();
+		
+		
 	}
 
 	@Test
