@@ -50,7 +50,30 @@ public class BoardAdjTargetTest {
 	@Test
 	public void testDoorwayAdjacencies()
 	{
-		//TODO fill in function, tests doorways
+		//13, 3
+		BoardCell cell = board.getCell(13, 3);
+		Set<BoardCell> adjList = cell.getAdjList();
+		assertEquals(adjList.size(), 3);
+		assertTrue(adjList.contains(board.getCell(10, 3)));
+		assertTrue(adjList.contains(board.getCell(13, 2)));
+		assertTrue(adjList.contains(board.getCell(13, 4)));
+		
+		//15, 11
+		cell = board.getCell(13, 3);
+		adjList = cell.getAdjList();
+		assertEquals(adjList.size(), 3);
+		assertTrue(adjList.contains(board.getCell(20, 11)));
+		assertTrue(adjList.contains(board.getCell(15, 10)));
+		assertTrue(adjList.contains(board.getCell(15, 12)));
+		
+		//6, 18
+		cell = board.getCell(13, 3);
+		adjList = cell.getAdjList();
+		assertEquals(adjList.size(), 4);
+		assertTrue(adjList.contains(board.getCell(3, 20)));
+		assertTrue(adjList.contains(board.getCell(6, 17)));
+		assertTrue(adjList.contains(board.getCell(6, 19)));
+		assertTrue(adjList.contains(board.getCell(7, 18)));
 	}
 	
 	@Test
