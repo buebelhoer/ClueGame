@@ -154,12 +154,35 @@ public class BoardAdjTargetTest {
 	//tests a cell at the bottom, somewhat isolated
 	@Test
 	public void testTargetsWalkways2(){
-		
+		//tests a move of 1
+		board.calcTargets(board.getCell(23, 16), 1);
+		Set<BoardCell> targets = board.getTargets();
+		assertTrue(targets.contains(board.getCell(22, 16)));
+		assertEquals(1, targets.size());
+
+		//tests a move of 2
+		board.calcTargets(board.getCell(23, 16), 2);
+		targets = board.getTargets();
+		assertTrue(targets.contains(board.getCell(21, 16)));
+		assertEquals(1, targets.size());
+
+		//tests a move of 6
+		board.calcTargets(board.getCell(23, 16), 2);
+		targets = board.getTargets();
+		assertTrue(targets.contains(board.getCell(17, 16)));
+		assertTrue(targets.contains(board.getCell(18, 15)));
+		assertTrue(targets.contains(board.getCell(18, 17)));
+		assertTrue(targets.contains(board.getCell(19, 16)));
+		assertTrue(targets.contains(board.getCell(19, 18)));
+		assertTrue(targets.contains(board.getCell(20, 15)));
+		assertTrue(targets.contains(board.getCell(20, 17)));
+		assertTrue(targets.contains(board.getCell(21, 18)));
+		assertEquals(8, targets.size());
 	}
 
 	@Test
 	public void testTargetsRoom() {
-		
+
 	}
 
 	@Test
@@ -167,8 +190,8 @@ public class BoardAdjTargetTest {
 		//tests a move of 1
 		board.calcTargets(board.getCell(22, 2), 1);
 		Set<BoardCell> targets = board.getTargets();
-		
-		
+
+
 	}
 
 	@Test
