@@ -109,7 +109,46 @@ public class BoardAdjTargetTest {
 	
 	@Test
 	public void testTargetsWalkways1(){
-		//TODO test targets from a random walkway
+		//tests a move of 1
+		board.calcTargets(board.getCell(7, 8), 2);
+		Set<BoardCell> targets = board.getTargets();
+		assertTrue(targets.contains(board.getCell(6, 8)));
+		assertTrue(targets.contains(board.getCell(7, 7)));
+		assertTrue(targets.contains(board.getCell(7, 9)));
+		assertTrue(targets.contains(board.getCell(8, 8)));
+		assertEquals(4, targets.size());
+		
+		//tests a move of 2
+		board.calcTargets(board.getCell(7, 8), 2);
+		targets = board.getTargets();
+		assertTrue(targets.contains(board.getCell(5, 8)));
+		assertTrue(targets.contains(board.getCell(6, 7)));
+		assertTrue(targets.contains(board.getCell(6, 9)));
+		assertTrue(targets.contains(board.getCell(7, 10)));
+		assertTrue(targets.contains(board.getCell(8, 7)));
+		assertTrue(targets.contains(board.getCell(8, 9)));
+		assertTrue(targets.contains(board.getCell(9, 8)));
+		assertEquals(7, targets.size());
+		
+		//tests a move of 4
+		board.calcTargets(board.getCell(7, 8), 4);
+		targets = board.getTargets();
+		assertTrue(targets.contains(board.getCell(4, 7)));
+		assertTrue(targets.contains(board.getCell(5, 6)));
+		assertTrue(targets.contains(board.getCell(5, 8)));
+		assertTrue(targets.contains(board.getCell(6, 5)));
+		assertTrue(targets.contains(board.getCell(6, 7)));
+		assertTrue(targets.contains(board.getCell(6, 9)));
+		assertTrue(targets.contains(board.getCell(6, 11)));
+		assertTrue(targets.contains(board.getCell(7, 10)));
+		assertTrue(targets.contains(board.getCell(7, 12)));
+		assertTrue(targets.contains(board.getCell(8, 7)));
+		assertTrue(targets.contains(board.getCell(8, 9)));
+		assertTrue(targets.contains(board.getCell(8, 11)));
+		assertTrue(targets.contains(board.getCell(9, 8)));
+		assertTrue(targets.contains(board.getCell(10, 7)));
+		assertTrue(targets.contains(board.getCell(11, 8)));
+		assertEquals(15, targets.size());
 	}
 	
 	@Test
