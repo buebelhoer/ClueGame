@@ -235,7 +235,36 @@ public class BoardAdjTargetTest {
 
 	@Test
 	public void testTargetsDoorway() {
-		//TODO tests targets inside a doorway
+		//tests a move of 1
+		board.calcTargets(board.getCell(19, 19), 1);
+		Set<BoardCell> targets = board.getTargets();
+		assertTrue(targets.contains(board.getCell(19, 18)));
+		assertTrue(targets.contains(board.getCell(18, 19)));
+		assertTrue(targets.contains(board.getCell(19, 20)));
+		assertTrue(targets.contains(board.getCell(22, 21)));
+		assertEquals(4, targets.size());
+
+		//tests a move of 2
+		board.calcTargets(board.getCell(19, 19), 2);
+		targets = board.getTargets();
+		assertTrue(targets.contains(board.getCell(22, 21)));
+		assertTrue(targets.contains(board.getCell(20, 18)));
+		assertTrue(targets.contains(board.getCell(19, 17)));
+		assertTrue(targets.contains(board.getCell(18, 18)));
+		assertTrue(targets.contains(board.getCell(18, 20)));
+		assertTrue(targets.contains(board.getCell(19, 21)));
+		assertEquals(6, targets.size());
+
+		//tests a move of 4
+		board.calcTargets(board.getCell(19, 19), 4);
+		targets = board.getTargets();
+		assertTrue(targets.contains(board.getCell(22, 21)));
+		assertTrue(targets.contains(board.getCell(20, 18)));
+		assertTrue(targets.contains(board.getCell(13, 20)));
+		assertTrue(targets.contains(board.getCell(18, 18)));
+		assertTrue(targets.contains(board.getCell(19, 23)));
+		assertTrue(targets.contains(board.getCell(19, 15)));
+		assertEquals(13, targets.size());
 	}
 
 	@Test
