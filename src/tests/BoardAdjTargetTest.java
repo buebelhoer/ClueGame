@@ -218,7 +218,7 @@ public class BoardAdjTargetTest {
 		//Secret passage room
 		assertTrue(targets.contains(board.getCell(3, 20)));
 		assertEquals(2, targets.size());
-		
+
 		//tests a move of 3
 		board.calcTargets(board.getCell(22, 2), 3);
 		targets = board.getTargets();
@@ -268,18 +268,35 @@ public class BoardAdjTargetTest {
 	}
 
 	@Test
-	public void testTargetsOccuied() {
-		//TODO test targets with an inconvenient occupied cell
+	public void testTargetsOccupied() {
+		board.getCell(2, 17).setOccupied(true);
+		board.getCell(4, 16).setOccupied(true);
+
+		//tests move of 2
+		board.calcTargets(board.getCell(1, 16), 2);
+		Set<BoardCell> targets = board.getTargets();
+		assertTrue(targets.contains(board.getCell(0, 17)));
+		assertTrue(targets.contains(board.getCell(3, 16)));
+		assertEquals(2, targets.size());
+
+		//tests move of 5
+		board.calcTargets(board.getCell(1, 16), 5);
+		targets = board.getTargets();
+		assertTrue(targets.contains(board.getCell(5, 17)));
+		assertEquals(1, targets.size());
+		
 	}
 
 	//this should never produce a valid move
 	@Test
 	public void testTargetsNoValidMoves() {
+		//sets only cell that can be move to to occupied
+		board.getCell(19, 22).setOccupied(true);
 		//move of 1
 		board.calcTargets(board.getCell(22, 2), 1);
 		Set<BoardCell> targets = board.getTargets();
 		assertEquals(0, targets.size());
-		
+
 		//move of 6
 		board.calcTargets(board.getCell(22, 2), 6);
 		targets = board.getTargets();
