@@ -302,5 +302,9 @@ public class Board {
 		return numCols;
 	}
 
+	public Set<BoardCell> getAdjList(int i, int j) {
+		return board[i][j].getAdjList(); 
+	}
+
 
 }
