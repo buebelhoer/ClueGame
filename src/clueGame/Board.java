@@ -179,28 +179,29 @@ public class Board {
 	 *etc. if not proper formated, will throw exception
 	 */
 	public void loadLayoutConfig() throws BadConfigFormatException {	
+		//TODO: refactor
 		// quickly scans the file in order 
-		try {
-			FileReader reader = new FileReader(layoutConfigFile);
-			Scanner scanner = new Scanner(reader);
+				try {
+					FileReader reader = new FileReader(layoutConfigFile);
+					Scanner scanner = new Scanner(reader);
 
-			//gets the first line of a file, then puts it into a string
-			//array based on values separated by commas
-			String[] tokens = scanner.nextLine().split(",");
-			//sets the size of the board
-			numCols = tokens.length;
+					//gets the first line of a file, then puts it into a string
+					//array based on values separated by commas
+					String[] tokens = scanner.nextLine().split(",");
+					//sets the size of the board
+					numCols = tokens.length;
 
-			//counts the number of line in the layout file, and uses it to
-			//set the number of rows in the board
-			numRows = 1;
-			while (scanner.hasNextLine()) {
-				scanner.nextLine();
-				numRows++;
-			}
+					//counts the number of line in the layout file, and uses it to
+					//set the number of rows in the board
+					numRows = 1;
+					while (scanner.hasNextLine()) {
+						scanner.nextLine();
+						numRows++;
+					}
 
-		} catch (FileNotFoundException e) {
-			System.out.println(e);
-		}
+				} catch (FileNotFoundException e) {
+					System.out.println(e);
+				}
 
 		// allocates the board
 		board = new BoardCell[numRows][numCols];
