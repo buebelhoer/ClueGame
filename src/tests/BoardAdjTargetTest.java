@@ -78,7 +78,28 @@ public class BoardAdjTargetTest {
 	
 	@Test
 	public void testWalkwayAdjacencies() {
-		//TODO fill in function, tests walkways
+		//5, 1
+		BoardCell cell = board.getCell(5, 0);
+		Set<BoardCell> adjList = cell.getAdjList();
+		assertEquals(adjList.size(), 1);
+		assertTrue(adjList.contains(board.getCell(5, 1)));
+		
+		//11, 15
+		cell = board.getCell(11, 15);
+		adjList = cell.getAdjList();
+		assertEquals(adjList.size(), 3);
+		assertTrue(adjList.contains(board.getCell(10, 15)));
+		assertTrue(adjList.contains(board.getCell(12, 15)));
+		assertTrue(adjList.contains(board.getCell(11, 16)));
+		
+		//19, 16
+		cell = board.getCell(11, 15);
+		adjList = cell.getAdjList();
+		assertEquals(adjList.size(), 4);
+		assertTrue(adjList.contains(board.getCell(18, 16)));
+		assertTrue(adjList.contains(board.getCell(20, 16)));
+		assertTrue(adjList.contains(board.getCell(19, 15)));
+		assertTrue(adjList.contains(board.getCell(19, 17)));
 	}
 	
 	/*
