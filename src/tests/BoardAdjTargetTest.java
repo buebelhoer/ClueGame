@@ -182,7 +182,31 @@ public class BoardAdjTargetTest {
 
 	@Test
 	public void testTargetsRoom() {
+		//tests a move of 1
+		board.calcTargets(board.getCell(13, 20), 1);
+		Set<BoardCell> targets = board.getTargets();
+		assertTrue(targets.contains(board.getCell(8, 18)));
+		assertTrue(targets.contains(board.getCell(19, 18)));
+		assertEquals(2, targets.size());
 
+		//tests a move of 2
+		board.calcTargets(board.getCell(13, 20), 2);
+		targets = board.getTargets();
+		assertTrue(targets.contains(board.getCell(7, 18)));
+		assertTrue(targets.contains(board.getCell(8, 17)));
+		assertTrue(targets.contains(board.getCell(17, 17)));
+		assertTrue(targets.contains(board.getCell(18, 18)));
+		assertEquals(4, targets.size());
+
+		//tests a move of 4
+		board.calcTargets(board.getCell(13, 20), 4);
+		targets = board.getTargets();
+		assertTrue(targets.contains(board.getCell(7, 20)));
+		assertTrue(targets.contains(board.getCell(19, 19)));
+		assertTrue(targets.contains(board.getCell(17, 15)));
+		assertTrue(targets.contains(board.getCell(10, 15)));
+		assertTrue(targets.contains(board.getCell(10, 17)));
+		assertEquals(19, targets.size());
 	}
 
 	@Test
