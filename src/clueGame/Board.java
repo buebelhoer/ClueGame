@@ -127,7 +127,7 @@ public class Board {
 	}
 
 	public void loadSetupConfig() throws BadConfigFormatException {
-		// allocates the map. uses HashMap as order doesnt matter 
+		// allocates the map. uses HashMap as order doesn't matter 
 		roomMap = new HashMap<Character, Room>();
 		try {
 			FileReader reader = new FileReader(setupConfigFile);
