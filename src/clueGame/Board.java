@@ -159,7 +159,11 @@ public class Board {
 	
 	//calculates valid targets to move to from the given location
 	public void calcTargets( BoardCell startCell, int pathlength) { //fills targets with all possible moves
+		targets.clear();
+		calcTargetsRecursive(startCell, pathlength);
+	}
 
+	private void calcTargetsRecursive(BoardCell startCell, int pathlength) {
 		//Base Case
 		//if cell is occupied, cannot move to it
 		if (startCell.isOccupied()) { 
@@ -187,7 +191,7 @@ public class Board {
 
 			//recursively calls calcTargets() on every adjacent cell
 			for (BoardCell c: startCell.getAdjList()) {
-				calcTargets(c, pathlength - 1);
+				calcTargetsRecursive(c, pathlength - 1);
 			}
 			// removes cell from visited after all paths forward have been explore
 			visited.remove(startCell); 
