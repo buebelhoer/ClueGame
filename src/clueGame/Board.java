@@ -109,7 +109,7 @@ public class Board {
 
 		private BoardCell getDoorDest(int i, int j) {
 			//default initializes to UP direction to be overwritten later if needed
-			BoardCell cell = board[i+1][j];
+			BoardCell cell = board[i-1][j];
 			
 			//gets cell in door direction to get room from
 			switch(board[i][j].getDoorDirection()) {
@@ -117,7 +117,7 @@ public class Board {
 				//this is the default case, so nothing is done
 				break;
 			case DOWN:
-				cell = board[i-1][j];
+				cell = board[i+1][j];
 				break;
 			case LEFT:
 				cell = board[i][j-1];
@@ -280,6 +280,7 @@ public class Board {
 					parseSecondCharacter(token, i, j);
 				}
 			}
+			generateDoorways();
 
 		} catch (FileNotFoundException e) {
 			System.out.println(e);
@@ -291,19 +292,15 @@ public class Board {
 			switch (token.charAt(1)) {
 			case '<':
 				board[row][column].setDoorDirection(DoorDirection.LEFT);
-				getDoorDest(row, column).getRoom().addDoorway(board[row][column]);
 				break;
 			case '>': 
 				board[row][column].setDoorDirection(DoorDirection.RIGHT);
-				getDoorDest(row, column).getRoom().addDoorway(board[row][column]);
 				break;
 			case 'v': 
 				board[row][column].setDoorDirection(DoorDirection.DOWN);
-				getDoorDest(row, column).getRoom().addDoorway(board[row][column]);
 				break;
 			case '^': 
 				board[row][column].setDoorDirection(DoorDirection.UP);
-				getDoorDest(row, column).getRoom().addDoorway(board[row][column]);
 				break;
 			case '#':
 				board[row][column].setLabel(true);
@@ -315,6 +312,17 @@ public class Board {
 				break;
 			default:
 				board[row][column].setSecretPassage(token.charAt(1));
+			}
+		}
+	}
+
+	//fils the set of doorways to each room
+	private void generateDoorways() {
+		for (int i = 0; i < numRows; i++) {
+			for (int j = 0; j < numCols; j++) {
+				if (board[i][j].isDoorway()) {
+					getDoorDest(i, j).getRoom().addDoorway(board[i][j]);
+				}
 			}
 		}
 	}
