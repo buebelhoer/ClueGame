@@ -70,20 +70,19 @@ public class Board {
 			for (int j = 0; j < numCols; j++) {
 
 				//logic makes sure it doesn't add a cell that is off the board
-
-				if (i > 0) {
+				if (checkCell(i - 1, j)) {
 					board[i][j].addAdjacency(board[i-1][j]);
 				}
-
-				if (i < numRows - 1) {
+				
+				if (checkCell(i + 1, j)) {
 					board[i][j].addAdjacency(board[i+1][j]);
 				}
 
-				if (j > 0) {
+				if (checkCell(i, j - 1)) {
 					board[i][j].addAdjacency(board[i][j-1]);
 				}
 
-				if (j < numCols - 1) {
+				if (checkCell(i, j + 1)) {
 					board[i][j].addAdjacency(board[i][j+1]);
 				}
 			}
