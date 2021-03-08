@@ -61,7 +61,7 @@ public class BoardCell {
 	}
 
 	public void setRoom(Room r) {
-		this.isRoom = true;
+		if (!(r.getName().equals("Walkway") || r.getName().equals("Unused"))) this.isRoom = true;
 		room = r;
 	}
 	
