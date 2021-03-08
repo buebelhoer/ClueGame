@@ -22,6 +22,7 @@ public class BoardCell {
 	private DoorDirection doorDirection; // what direction the door from this cell goes, can be null
 	private boolean isLabel; // if the cell is the label of the room
 	private boolean isRoomCenter; // if the cell is the center of the room
+	private boolean isSecretPassage; //if is secret tunnel
 	private char secretPassage; // contains symbol of room that there is a secret passage to
 	private boolean isRoom;  //indicates if cell is a part of a room rather than a walkspace, etc.
 	
@@ -39,7 +40,8 @@ public class BoardCell {
 		doorDirection = DoorDirection.NONE;
 		occupied = false;
 		isLabel = false;
-		isRoom = false;		
+		isRoom = false;
+		isSecretPassage = false;
 	}
 	
 	/*
@@ -117,6 +119,7 @@ public class BoardCell {
 
 	public void setSecretPassage(char secretPassage) {
 		this.secretPassage = secretPassage;
+		isSecretPassage = true;
 	}
 	
 }
