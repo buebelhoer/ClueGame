@@ -17,7 +17,7 @@ public class Room {
 	//Set manually from setter function
 	BoardCell labelCell;
 	
-	//tracks the cells corrisponding with the doorway cells and the secret passage cells
+	//tracks the cells corresponding with the doorway cells and the secret passage cells
 	Set<BoardCell> exits;
 	
 	public Room(String name) {
@@ -46,8 +46,8 @@ public class Room {
 		this.labelCell = labelCell;
 	}
 	
-	public void addExit(BoardCell doorway) {
-		exits.add(doorway);
+	public void addExit(BoardCell exit) {
+		exits.add(exit);
 	}
 
 	public Set<BoardCell> getExits() {
