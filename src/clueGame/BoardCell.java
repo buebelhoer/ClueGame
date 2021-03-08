@@ -121,5 +121,8 @@ public class BoardCell {
 		this.secretPassage = secretPassage;
 		isSecretPassage = true;
 	}
-	
+
+	public boolean isSecretPassage() {
+		return isSecretPassage;
+	}
 }
