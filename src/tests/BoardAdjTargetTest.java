@@ -26,12 +26,14 @@ public class BoardAdjTargetTest {
 	@Test
 	public void testRoomAdjacencies()
 	{
-		//Test brown
+		//Test brown has secret pasage
 		BoardCell cell = board.getCell(2, 2);
 		Set<BoardCell> adjList = cell.getAdjList();
-		assertEquals(adjList.size(), 1);
-		assertTrue(adjList.contains(board.getCell(3, 5)));
-
+		assertTrue(adjList.contains(board.getCell(2, 5)));
+		//secret passage cell
+		assertTrue(adjList.contains(board.getCell(22, 21)));
+		assertEquals(2, adjList.size());
+		
 		//Test market
 		cell = board.getCell(3, 11);
 		adjList = cell.getAdjList();
@@ -39,12 +41,14 @@ public class BoardAdjTargetTest {
 		assertTrue(adjList.contains(board.getCell(6, 11)));
 		assertTrue(adjList.contains(board.getCell(6, 12)));
 
-		//Test CK
+		//Test CK, has secret passage
 		cell = board.getCell(3, 20);
 		adjList = cell.getAdjList();
-		assertEquals(adjList.size(), 2);
 		assertTrue(adjList.contains(board.getCell(5, 17)));
 		assertTrue(adjList.contains(board.getCell(6, 18)));
+		//secret passage cell
+		assertTrue(adjList.contains(board.getCell(22, 2)));
+		assertEquals(3, adjList.size());
 	}
 
 	@Test
@@ -59,7 +63,7 @@ public class BoardAdjTargetTest {
 		assertTrue(adjList.contains(board.getCell(13, 4)));
 
 		//15, 11
-		cell = board.getCell(13, 3);
+		cell = board.getCell(15, 11);
 		adjList = cell.getAdjList();
 		assertEquals(adjList.size(), 3);
 		assertTrue(adjList.contains(board.getCell(20, 11)));
@@ -67,7 +71,7 @@ public class BoardAdjTargetTest {
 		assertTrue(adjList.contains(board.getCell(15, 12)));
 
 		//6, 18
-		cell = board.getCell(13, 3);
+		cell = board.getCell(6, 18);
 		adjList = cell.getAdjList();
 		assertEquals(adjList.size(), 4);
 		assertTrue(adjList.contains(board.getCell(3, 20)));
@@ -78,10 +82,10 @@ public class BoardAdjTargetTest {
 
 	@Test
 	public void testWalkwayAdjacencies() {
-		//5, 1
+		//5, 0
 		BoardCell cell = board.getCell(5, 0);
 		Set<BoardCell> adjList = cell.getAdjList();
-		assertEquals(adjList.size(), 1);
+		assertEquals(1, adjList.size());
 		assertTrue(adjList.contains(board.getCell(5, 1)));
 
 		//11, 15
@@ -112,7 +116,7 @@ public class BoardAdjTargetTest {
 	
 	@Test
 	public void testNonCenterAdjacencies() {
-		//5, 1
+		//0, 10
 		BoardCell cell = board.getCell(0, 10);
 		Set<BoardCell> adjList = cell.getAdjList();
 		assertEquals(adjList.size(), 0);

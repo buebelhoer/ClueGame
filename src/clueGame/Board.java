@@ -88,7 +88,7 @@ public class Board {
 						board[i][j].addAdjacency(getDoorDest(i, j));
 					}
 					if (board[i][j].isSecretPassage()) {
-						board[i][j].addAdjacency(getSecretPassage(i, j));
+						board[i][j].addAdjacency(getSecretPassageDest(i, j));
 					}
 					if (board[i][j].isRoomCenter()) {
 						//adds each doorway cell to the adj
@@ -100,7 +100,7 @@ public class Board {
 			}
 		}
 
-	private BoardCell getSecretPassage(int i, int j) {
+	private BoardCell getSecretPassageDest(int i, int j) {
 		BoardCell cell = board[i][j];
 		Room passageRoom = roomMap.get(cell.getSecretPassage());
 		BoardCell passageCell = passageRoom.getCenterCell();
@@ -280,7 +280,7 @@ public class Board {
 					parseSecondCharacter(token, i, j);
 				}
 			}
-			generateDoorways();
+			generateExits();
 
 		} catch (FileNotFoundException e) {
 			System.out.println(e);
@@ -317,11 +317,14 @@ public class Board {
 	}
 
 	//fils the set of doorways to each room
-	private void generateDoorways() {
+	private void generateExits() {
 		for (int i = 0; i < numRows; i++) {
 			for (int j = 0; j < numCols; j++) {
 				if (board[i][j].isDoorway()) {
 					getDoorDest(i, j).getRoom().addDoorway(board[i][j]);
+				}
+				if (board[i][j].isSecretPassage()) {
+					board[i][j].getRoom().addDoorway(getSecretPassageDest(i, j));
 				}
 			}
 		}
