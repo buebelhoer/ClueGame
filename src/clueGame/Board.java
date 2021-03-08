@@ -90,15 +90,36 @@ public class Board {
 		}
 	}
 
+	//checks if a cell is a valid cell to add to the adjacency list
 	private boolean checkCell(int y, int x) {
+		//if the row is within the board
+		if(y < 0 || y >= numRows) {
+			return false;
+		}
+		//if the col is within the board
+		if (x < 0 || x >= numCols) {
+			return false;
+		}
+		//if the cell is an unused cell
+		if (checkUnused(y,x)) {
+			return false;
+		}
+		//if the cell is a room
+		if (board[y][x].isRoom()) {
+			return false;
+		}
+		//if none of the previous conditions are true, the cell is assumed to be valid
+		return true;
+	}
+	
+	
+	//checks if the given cell is part of a room, and not the center
+	private boolean checkDoorway(int y, int x) {
 		
 	}
 	
-	private boolean checkDoorway(int x, int y) {
-		
-	}
-	
-	private boolean checkUnused(int x, int y) {
+	private boolean checkUnused(int y, int x) {
+		return board[y][x].getRoom() == roomMap.get('X');
 		
 	}
 	
