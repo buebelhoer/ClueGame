@@ -120,7 +120,6 @@ public class Board {
 	
 	private boolean checkUnused(int y, int x) {
 		return board[y][x].getRoom() == roomMap.get('X');
-		
 	}
 	
 	//calculates valid targets to move to from the given location
