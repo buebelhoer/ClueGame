@@ -149,12 +149,6 @@ public class Board {
 		return true;
 	}
 	
-	
-	//checks if the given cell is part of a room, and not the center
-	private boolean checkDoorway(int y, int x) {
-		
-	}
-	
 	private boolean checkUnused(int y, int x) {
 		return board[y][x].getRoom() == roomMap.get('X');
 	}
