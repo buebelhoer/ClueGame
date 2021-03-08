@@ -64,31 +64,55 @@ public class Board {
 	}
 
 	//Creates a map which stores what cells are adjacent to each other
-	private void generateAdjacencies() {    
-		
-		for (int i = 0; i < numRows; i++) {
-			for (int j = 0; j < numCols; j++) {
+		private void generateAdjacencies() {    
+			
+			for (int i = 0; i < numRows; i++) {
+				for (int j = 0; j < numCols; j++) {
 
-				//logic makes sure it doesn't add a cell that is off the board
-				if (checkCell(i - 1, j)) {
-					board[i][j].addAdjacency(board[i-1][j]);
-				}
+					//logic makes sure it doesn't add a cell that is off the board
+					if (checkCell(i - 1, j)) {
+						board[i][j].addAdjacency(board[i-1][j]);
+					}
+					
+					if (checkCell(i + 1, j)) {
+						board[i][j].addAdjacency(board[i+1][j]);
+					}
+
+					if (checkCell(i, j - 1)) {
+						board[i][j].addAdjacency(board[i][j-1]);
+					}
+
+					if (checkCell(i, j + 1)) {
+						board[i][j].addAdjacency(board[i][j+1]);
+					}
 				
-				if (checkCell(i + 1, j)) {
-					board[i][j].addAdjacency(board[i+1][j]);
-				}
-
-				if (checkCell(i, j - 1)) {
-					board[i][j].addAdjacency(board[i][j-1]);
-				}
-
-				if (checkCell(i, j + 1)) {
-					board[i][j].addAdjacency(board[i][j+1]);
+					if (board[i][j].isDoorway()) {
+						board[i][j].addAdjacency(getDoorDest(i, j));
+					}
 				}
 			}
-			
 		}
-	}
+
+		private BoardCell getDoorDest(int i, int j) {
+			//default initializes to UP direction to be overwritten later if needed
+			BoardCell cell = board[i+1][j];
+			
+			//gets cell in door direction to get room from
+			switch(board[i][j].getDoorDirection()) {
+			case DOWN:
+				cell = board[i-1][j];
+				break;
+			case LEFT:
+				cell = board[i][j-1];
+				break;
+			case RIGHT:
+				cell = board[i][j+1];
+				break;
+			}
+			
+			//returns destination cell
+			return cell.getRoom().getCenterCell();
+		}
 
 	//checks if a cell is a valid cell to add to the adjacency list
 	private boolean checkCell(int y, int x) {
