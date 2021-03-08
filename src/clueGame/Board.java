@@ -166,7 +166,7 @@ public class Board {
 	private void calcTargetsRecursive(BoardCell startCell, int pathlength) {
 		//Base Case
 		//if cell is occupied, cannot move to it
-		if (startCell.isOccupied()) { 
+		if (startCell.isOccupied() && !startCell.isRoomCenter()) { 
 			return;
 		}
 		//Base Case
