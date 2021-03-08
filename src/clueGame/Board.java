@@ -59,8 +59,6 @@ public class Board {
 
 		//generates the list of adjacencies for each cell
 		generateAdjacencies();
-
-
 	}
 
 	//Creates a map which stores what cells are adjacent to each other
@@ -287,15 +285,19 @@ public class Board {
 			switch (token.charAt(1)) {
 			case '<':
 				board[row][column].setDoorDirection(DoorDirection.LEFT);
+				getDoorDest(row, column).getRoom().addDoorway(board[row][column]);
 				break;
 			case '>': 
 				board[row][column].setDoorDirection(DoorDirection.RIGHT);
+				getDoorDest(row, column).getRoom().addDoorway(board[row][column]);
 				break;
 			case 'v': 
 				board[row][column].setDoorDirection(DoorDirection.DOWN);
+				getDoorDest(row, column).getRoom().addDoorway(board[row][column]);
 				break;
 			case '^': 
 				board[row][column].setDoorDirection(DoorDirection.UP);
+				getDoorDest(row, column).getRoom().addDoorway(board[row][column]);
 				break;
 			case '#':
 				board[row][column].setLabel(true);
