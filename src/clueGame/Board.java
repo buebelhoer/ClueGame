@@ -90,6 +90,12 @@ public class Board {
 					if (board[i][j].isSecretPassage()) {
 						board[i][j].addAdjacency(getSecretPassage(i, j));
 					}
+					if (board[i][j].isRoomCenter()) {
+						//adds each doorway cell to the adj
+						for (BoardCell c :board[i][j].getRoom().getDoorways()) {
+							board[i][j].addAdjacency(c);
+						}
+					}
 				}
 			}
 		}
