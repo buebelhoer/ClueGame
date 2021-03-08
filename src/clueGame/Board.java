@@ -90,6 +90,18 @@ public class Board {
 		}
 	}
 
+	private boolean checkCell(int y, int x) {
+		
+	}
+	
+	private boolean checkDoorway(int x, int y) {
+		
+	}
+	
+	private boolean checkUnused(int x, int y) {
+		
+	}
+	
 	//calculates valid targets to move to from the given location
 	public void calcTargets( BoardCell startCell, int pathlength) { //fills targets with all possible moves
 
