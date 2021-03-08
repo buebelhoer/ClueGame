@@ -89,9 +89,19 @@ public class Board {
 					if (board[i][j].isDoorway()) {
 						board[i][j].addAdjacency(getDoorDest(i, j));
 					}
+					if (board[i][j].isSecretPassage()) {
+						board[i][j].addAdjacency(getSecretPassage(i, j));
+					}
 				}
 			}
 		}
+
+	private BoardCell getSecretPassage(int i, int j) {
+		BoardCell cell = board[i][j];
+		Room passageRoom = roomMap.get(cell.getSecretPassage());
+		BoardCell passageCell = passageRoom.getCenterCell();
+		return passageCell;
+	}
 
 		private BoardCell getDoorDest(int i, int j) {
 			//default initializes to UP direction to be overwritten later if needed
@@ -99,6 +109,9 @@ public class Board {
 			
 			//gets cell in door direction to get room from
 			switch(board[i][j].getDoorDirection()) {
+			case UP:
+				//this is the default case, so nothing is done
+				break;
 			case DOWN:
 				cell = board[i-1][j];
 				break;
