@@ -17,12 +17,13 @@ public class Room {
 	//Set manually from setter function
 	BoardCell labelCell;
 	
-	Set<BoardCell> doorways;
+	//tracks the cells corrisponding with the doorway cells and the secret passage cells
+	Set<BoardCell> exits;
 	
 	public Room(String name) {
 		super();
 		this.name = name;
-		doorways = new HashSet<BoardCell>();
+		exits = new HashSet<BoardCell>();
 	}
 	
 	public String getName() {
@@ -45,12 +46,12 @@ public class Room {
 		this.labelCell = labelCell;
 	}
 	
-	public void addDoorway(BoardCell doorway) {
-		doorways.add(doorway);
+	public void addExit(BoardCell doorway) {
+		exits.add(doorway);
 	}
 
-	public Set<BoardCell> getDoorways() {
-		return doorways;
+	public Set<BoardCell> getExits() {
+		return exits;
 	}
 			
 }
