@@ -160,41 +160,41 @@ public class Board {
 	//calculates valid targets to move to from the given location
 	public void calcTargets( BoardCell startCell, int pathlength) { //fills targets with all possible moves
 		targets.clear();
-		calcTargetsRecursive(startCell, pathlength);
+		calcTargetsRecursive(startCell, pathlength, startCell);
 	}
 
-	private void calcTargetsRecursive(BoardCell startCell, int pathlength) {
+	private void calcTargetsRecursive(BoardCell currentCell, int pathlength, BoardCell startCell) {
 		//Base Case
 		//if cell is occupied, cannot move to it
-		if (startCell.isOccupied() && !startCell.isRoomCenter()) { 
+		if (currentCell.isOccupied() && !currentCell.isRoomCenter()) { 
 			return;
 		}
 		//Base Case
 		//if cell is already visited, cannot move to it
-		if (visited.contains(startCell)) { 
+		if (visited.contains(currentCell)) { 
 			return;
 		}
 
 		//Base Case
 		// no moves left, add current cell to targets
 		if(pathlength == 0) { 
-			targets.add(startCell);	
+			targets.add(currentCell);	
 
 			//Base Case
 			// if given cell is a room, all moves used up, and added to targets
-		} else if (startCell.isRoom()) { 
-			targets.add(startCell);
+		} else if (currentCell.isRoom() && !currentCell.equals(startCell)) { 
+			targets.add(currentCell);
 			//Recursive Case
 		} else {
 			// add cell to visited
-			visited.add(startCell);
+			visited.add(currentCell);
 
 			//recursively calls calcTargets() on every adjacent cell
-			for (BoardCell c: startCell.getAdjList()) {
-				calcTargetsRecursive(c, pathlength - 1);
+			for (BoardCell c: currentCell.getAdjList()) {
+				calcTargetsRecursive(c, pathlength - 1, startCell);
 			}
 			// removes cell from visited after all paths forward have been explore
-			visited.remove(startCell); 
+			visited.remove(currentCell); 
 		}
 	}
 
