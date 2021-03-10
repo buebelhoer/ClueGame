@@ -1,3 +1,158 @@
+commit 07da30bb9049bc1b621f7ef1561d9311a303b416
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Mon Mar 8 14:04:36 2021 -0700
+
+    changed calctargetsrecursive to track starting cell, fixed tests
+
+commit be6da865230d4db5fd1dfd6ce52ae40555e548ea
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Mon Mar 8 13:47:19 2021 -0700
+
+    made so occupied rooms are available
+
+commit 92b047a3f56ca8a41e53fae6a2dc988f97652f14
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Mon Mar 8 13:39:08 2021 -0700
+
+    added recurive wrapper to calc targets
+
+commit 8f2d142752ecc0f1299bfee7c700855ee5a80771
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Mon Mar 8 13:22:17 2021 -0700
+
+    refactored gerate doorways to generate exits to include secret passage . fixed test errors
+
+commit ab3997fd599ef753f9db760b0f3895938d840edb
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Mon Mar 8 13:06:52 2021 -0700
+
+    fixed genreate doorways ot not null pointer
+
+commit 26f1a734a82bbdddc588a764cad89844ace9cfb9
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Mon Mar 8 12:53:14 2021 -0700
+
+    added center cell logic
+
+commit 92f085b668caae5476c1e3821699bc2aa0f691aa
+Merge: aa273ba fb42f60
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Mon Mar 8 12:50:52 2021 -0700
+
+    Merge branch 'master' of https://github.com/buebelhoer/ClueLayout
+
+commit aa273ba3adc4ad54dc6a15dd342a8a86238fc11d
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Mon Mar 8 12:50:47 2021 -0700
+
+    added doorways to rooms
+
+commit fb42f6000a27a208616bd8e0d9d199a1565173b1
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Mon Mar 8 12:50:21 2021 -0700
+
+    added tracking of doorways by Room
+
+commit b2aed4f95625686456debc8e294c1a01e305d07a
+Merge: 0345be3 6fbc0ef
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Mon Mar 8 12:40:49 2021 -0700
+
+    Merge branch 'master' of https://github.com/buebelhoer/ClueLayout
+
+commit 0345be3e65df3f736e7bf6d70a4ccee01cf808ba
+Merge: 06db8a6 32f168e
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Mon Mar 8 12:40:33 2021 -0700
+
+    Merge branch 'master' of https://github.com/buebelhoer/ClueLayout
+
+commit 6fbc0efe7bc4328991c8341f0ee6d13676a852dd
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Mon Mar 8 12:40:33 2021 -0700
+
+    removed unused funtion
+
+commit 06db8a69685eb10b007dfbc40b2803f64beecd79
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Mon Mar 8 12:40:21 2021 -0700
+
+    oops added unused and walkways as "rooms"
+
+commit 32f168e128979abb365ce76e4e0f5036646729b7
+Merge: 2a72ee6 4272a3f
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Mon Mar 8 12:30:45 2021 -0700
+
+    Merge branch 'master' of https://github.com/buebelhoer/ClueGame
+
+commit 2a72ee6143768268f4f5d14d581e1756485fb063
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Mon Mar 8 12:30:37 2021 -0700
+
+    added secret passage adj logic
+
+commit 4272a3f22549d96c8352c58a3dd7606c2c1327f2
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Mon Mar 8 12:30:03 2021 -0700
+
+    forgot to add getter
+
+commit c3f0b5d2f6b4220dc468bfe3027c4f50bf641dc6
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Mon Mar 8 12:26:36 2021 -0700
+
+    added isSecretPassage
+
+commit 6c9a78be045a4fc5f821999fa9ec25b7db437f91
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Mon Mar 8 12:21:10 2021 -0700
+
+    added room adj
+
+commit f8c421c812e8da70bb048c4a8fe27f2b0314623e
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Mon Mar 8 12:19:01 2021 -0700
+
+    cleaned up code
+
+commit 549e055cbd1382bb847eec7e65e2550de09dee51
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Mon Mar 8 12:16:24 2021 -0700
+
+    implemented checkcell
+
+commit e9801908dfd030e615da09ea3dfa16b16fac62d0
+Merge: e5bfd20 4d6bd8b
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Mon Mar 8 11:56:46 2021 -0700
+
+    Merge branch 'master' of https://github.com/buebelhoer/ClueLayout
+
+commit e5bfd201c44cb198b791ada3d57784d282220267
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Mon Mar 8 11:56:38 2021 -0700
+
+    added helper calls to genAdj
+
+commit 4d6bd8b9a9fecee4bba5c3e94080c6619bb9d2a4
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Mon Mar 8 11:55:28 2021 -0700
+
+    added function stubs for adj
+
+commit c58de6e1ad053f9b77266dd6154437d6baba256b
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Mon Mar 8 11:51:52 2021 -0700
+
+    uncommented generate adjecencies
+
+commit eb3d534bd6536afec5903a4d4b7da5cf80d4a90d
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Fri Mar 5 21:46:33 2021 -0700
+
+    submission for c14a-2
+
 commit e92eee5163ab94395db28ede98491f89a2783cfb
 Author: bMorgan01 <ben.morgan5000@gmail.com>
 Date:   Fri Mar 5 21:41:34 2021 -0700

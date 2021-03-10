@@ -1,5 +1,8 @@
 package clueGame;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Room {
 
 	//Name of the room
@@ -14,9 +17,13 @@ public class Room {
 	//Set manually from setter function
 	BoardCell labelCell;
 	
+	//tracks the cells corresponding with the doorway cells and the secret passage cells
+	Set<BoardCell> exits;
+	
 	public Room(String name) {
 		super();
 		this.name = name;
+		exits = new HashSet<BoardCell>();
 	}
 	
 	public String getName() {
@@ -39,4 +46,12 @@ public class Room {
 		this.labelCell = labelCell;
 	}
 	
+	public void addExit(BoardCell exit) {
+		exits.add(exit);
+	}
+
+	public Set<BoardCell> getExits() {
+		return exits;
+	}
+			
 }

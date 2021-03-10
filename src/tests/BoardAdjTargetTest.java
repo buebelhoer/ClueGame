@@ -26,12 +26,14 @@ public class BoardAdjTargetTest {
 	@Test
 	public void testRoomAdjacencies()
 	{
-		//Test brown
+		//Test brown has secret pasage
 		BoardCell cell = board.getCell(2, 2);
 		Set<BoardCell> adjList = cell.getAdjList();
-		assertEquals(adjList.size(), 1);
-		assertTrue(adjList.contains(board.getCell(3, 5)));
-
+		assertTrue(adjList.contains(board.getCell(2, 5)));
+		//secret passage cell
+		assertTrue(adjList.contains(board.getCell(22, 21)));
+		assertEquals(2, adjList.size());
+		
 		//Test market
 		cell = board.getCell(3, 11);
 		adjList = cell.getAdjList();
@@ -39,12 +41,14 @@ public class BoardAdjTargetTest {
 		assertTrue(adjList.contains(board.getCell(6, 11)));
 		assertTrue(adjList.contains(board.getCell(6, 12)));
 
-		//Test CK
+		//Test CK, has secret passage
 		cell = board.getCell(3, 20);
 		adjList = cell.getAdjList();
-		assertEquals(adjList.size(), 2);
 		assertTrue(adjList.contains(board.getCell(5, 17)));
 		assertTrue(adjList.contains(board.getCell(6, 18)));
+		//secret passage cell
+		assertTrue(adjList.contains(board.getCell(22, 2)));
+		assertEquals(3, adjList.size());
 	}
 
 	@Test
@@ -59,7 +63,7 @@ public class BoardAdjTargetTest {
 		assertTrue(adjList.contains(board.getCell(13, 4)));
 
 		//15, 11
-		cell = board.getCell(13, 3);
+		cell = board.getCell(15, 11);
 		adjList = cell.getAdjList();
 		assertEquals(adjList.size(), 3);
 		assertTrue(adjList.contains(board.getCell(20, 11)));
@@ -67,7 +71,7 @@ public class BoardAdjTargetTest {
 		assertTrue(adjList.contains(board.getCell(15, 12)));
 
 		//6, 18
-		cell = board.getCell(13, 3);
+		cell = board.getCell(6, 18);
 		adjList = cell.getAdjList();
 		assertEquals(adjList.size(), 4);
 		assertTrue(adjList.contains(board.getCell(3, 20)));
@@ -78,10 +82,10 @@ public class BoardAdjTargetTest {
 
 	@Test
 	public void testWalkwayAdjacencies() {
-		//5, 1
+		//5, 0
 		BoardCell cell = board.getCell(5, 0);
 		Set<BoardCell> adjList = cell.getAdjList();
-		assertEquals(adjList.size(), 1);
+		assertEquals(1, adjList.size());
 		assertTrue(adjList.contains(board.getCell(5, 1)));
 
 		//11, 15
@@ -112,7 +116,7 @@ public class BoardAdjTargetTest {
 	
 	@Test
 	public void testNonCenterAdjacencies() {
-		//5, 1
+		//0, 10
 		BoardCell cell = board.getCell(0, 10);
 		Set<BoardCell> adjList = cell.getAdjList();
 		assertEquals(adjList.size(), 0);
@@ -228,7 +232,7 @@ public class BoardAdjTargetTest {
 		board.calcTargets(board.getCell(13, 20), 1);
 		Set<BoardCell> targets = board.getTargets();
 		assertTrue(targets.contains(board.getCell(8, 18)));
-		assertTrue(targets.contains(board.getCell(19, 18)));
+		assertTrue(targets.contains(board.getCell(17, 18)));
 		assertEquals(2, targets.size());
 
 		//tests a move of 2
@@ -246,9 +250,8 @@ public class BoardAdjTargetTest {
 		assertTrue(targets.contains(board.getCell(7, 20)));
 		assertTrue(targets.contains(board.getCell(19, 19)));
 		assertTrue(targets.contains(board.getCell(17, 15)));
-		assertTrue(targets.contains(board.getCell(10, 15)));
 		assertTrue(targets.contains(board.getCell(10, 17)));
-		assertEquals(19, targets.size());
+		assertEquals(20, targets.size());
 	}
 
 	@Test
@@ -256,7 +259,7 @@ public class BoardAdjTargetTest {
 		//tests a move of 1
 		board.calcTargets(board.getCell(22, 2), 1);
 		Set<BoardCell> targets = board.getTargets();
-		assertTrue(targets.contains(board.getCell(20, 6)));
+		assertTrue(targets.contains(board.getCell(20, 5)));
 		//Secret passage room
 		assertTrue(targets.contains(board.getCell(3, 20)));
 		assertEquals(2, targets.size());
@@ -335,12 +338,12 @@ public class BoardAdjTargetTest {
 		//sets only cell that can be move to to occupied
 		board.getCell(19, 22).setOccupied(true);
 		//move of 1
-		board.calcTargets(board.getCell(22, 2), 1);
+		board.calcTargets(board.getCell(22, 23), 1);
 		Set<BoardCell> targets = board.getTargets();
 		assertEquals(0, targets.size());
 
 		//move of 6
-		board.calcTargets(board.getCell(22, 2), 6);
+		board.calcTargets(board.getCell(22, 23), 6);
 		targets = board.getTargets();
 		assertEquals(0, targets.size());
 	}
