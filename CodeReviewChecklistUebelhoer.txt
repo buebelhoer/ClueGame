@@ -1,0 +1,5 @@
+1. Consistent use of loop variables for row/col
+2. Descriptive Variable Names
+3. Sufficent comments
+4. functions organized in a logical way
+5. proper getters/setters and private vars where applicable

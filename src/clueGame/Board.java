@@ -43,7 +43,7 @@ public class Board {
 
 	//initialize board
 	public void initialize() {
-		// BadCOnfigException indicates invalid format in the config files
+		// BadConfigException indicates invalid format in the config files
 		try {
 			//loads the setup file
 			loadSetupConfig();
@@ -432,7 +432,7 @@ public class Board {
 
 	public void setConfigFiles(String layoutFile, String setupFile) {
 		setupConfigFile = "data/" + setupFile;
-		layoutConfigFile = "data/" +layoutFile;
+		layoutConfigFile = "data/" + layoutFile;
 	}
 
 	public int getNumRows() {
