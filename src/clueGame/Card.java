@@ -6,6 +6,7 @@ public class Card {
 	private CardType cardType;
 	
 	
+	
 	public boolean equals(Card target) {
 		return target.getCardName() == this.cardName;
 	}

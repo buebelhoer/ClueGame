@@ -21,9 +21,9 @@ Weapon, Laser
 Weapon, Math Homework
 
 // Players
-Player, Mark Baldwin
-Player, PCJ
-Player, Blaster
-Player, Paone
-Player, CPW
-Player, Marvin
+Player, Blaster, Human
+Player, Mark Baldwin, Computer
+Player, PCJ, Computer
+Player, Paone, Computer
+Player, CPW, Computer
+Player, Marvin, Computer
