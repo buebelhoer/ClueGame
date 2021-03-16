@@ -27,6 +27,9 @@ public class Board {
 
 	//strings that hold the filename of the config files.
 	private String layoutConfigFile, setupConfigFile;
+	
+	//list of players
+	private ArrayList<Player> playerList;
 
 	//specific instance of the board
 	private static Board instance = new Board();
@@ -447,5 +450,7 @@ public class Board {
 		return board[i][j].getAdjList(); 
 	}
 
-
+	public ArrayList<Player> getPlayerList() {
+		return playerList;
+	}
 }
