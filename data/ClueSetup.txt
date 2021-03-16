@@ -11,3 +11,19 @@ Room, Rec Center, R
 // other spaces on board
 Space, Unused, X
 Space, Walkway, W
+
+//Weapons
+Weapon, Sulfuric Acid
+Weapon, Laptop
+Weapon, Mines Market Food
+Weapon, Keystone
+Weapon, Laser
+Weapon, Math Homework
+
+// Players
+Player, Mark Baldwin
+Player, PCJ
+Player, Blaster
+Player, Paone
+Player, CPW
+Player, Marvin
