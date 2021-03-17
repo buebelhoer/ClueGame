@@ -126,8 +126,7 @@ public class Board {
 	private BoardCell getSecretPassageDest(int row, int column) {
 		BoardCell cell = board[row][column];
 		Room passageRoom = roomMap.get(cell.getSecretPassage());
-		BoardCell passageCell = passageRoom.getCenterCell();
-		return passageCell;
+		return passageRoom.getCenterCell();
 	}
 	
 	//returns the center cell of the room that the door leads to
