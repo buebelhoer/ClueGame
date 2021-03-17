@@ -270,6 +270,10 @@ public class Board {
 				case "Space":
 					addRoom(data);
 					break;
+				case "Weapon":
+					break;
+				case "Person":
+					break;
 				default:
 					//invalid card type
 					throw new BadConfigFormatException("Invalid card type: " + dataType);
