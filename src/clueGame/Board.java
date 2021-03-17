@@ -60,8 +60,8 @@ public class Board {
 		}
 
 		// allocates the visited and target sets
-		visited = new HashSet<BoardCell>();
-		targets = new HashSet<BoardCell>();
+		visited = new HashSet<>();
+		targets = new HashSet<>();
 
 		//generates the list of adjacencies for each cell
 		generateAdjacencies();
@@ -238,8 +238,8 @@ public class Board {
 	 */
 	public void loadSetupConfig() throws BadConfigFormatException {
 		// allocates the map. uses HashMap as order doesn't matter 
-		roomMap = new HashMap<Character, Room>();
-		playerList = new ArrayList<Player>();
+		roomMap = new HashMap<>();
+		playerList = new ArrayList<>();
 
 		playerCount = 0;
 		try {
