@@ -1,5 +1,6 @@
 package tests;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.BeforeAll;
@@ -7,6 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import clueGame.Board;
+import clueGame.Player;
 
 public class GameSetupTests {
 
@@ -21,7 +23,9 @@ public class GameSetupTests {
 	
 	@Test
 	public void testPlayersLoaded() {
-		assertEquals(6, board.getPlayerList().length());
+		assertEquals(6, board.getPlayerList().size());
+		assertEquals(board.getPlayerCount(), board.getPlayerList().size());
+		assertFalse(board.getPlayerList().contains(null));
 	}
 	
 	@Test
