@@ -2,6 +2,7 @@ package clueGame;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Arrays;
 
 public class BadConfigFormatException extends Exception {
 
@@ -18,7 +19,7 @@ public class BadConfigFormatException extends Exception {
 		try {
 			FileWriter writer = new FileWriter("ErrorLog.txt");
 			writer.write(Message);
-			writer.write(super.getStackTrace().toString());
+			writer.write(Arrays.toString(super.getStackTrace()));
 			writer.close();
 		} catch (IOException e) {
 			e.printStackTrace();
