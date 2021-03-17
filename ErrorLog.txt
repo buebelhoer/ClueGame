@@ -1,1 +1,1 @@
-Invalid card type: Weapon[Ljava.lang.StackTraceElement;@68999068
+Invalid card type: Player[Ljava.lang.StackTraceElement;@3835c46

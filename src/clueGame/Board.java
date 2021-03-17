@@ -274,7 +274,7 @@ public class Board {
 					break;
 				case "Weapon":
 					break;
-				case "Person":
+				case "Player":
 					break;
 				default:
 					//invalid card type
