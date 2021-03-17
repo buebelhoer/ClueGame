@@ -30,6 +30,9 @@ public class Board {
 	
 	//list of players
 	private ArrayList<Player> playerList;
+	
+	//number of players in the game
+	private int playerCount;
 
 	//specific instance of the board
 	private static Board instance = new Board();
@@ -237,14 +240,19 @@ public class Board {
 	public void loadSetupConfig() throws BadConfigFormatException {
 		// allocates the map. uses HashMap as order doesn't matter 
 		roomMap = new HashMap<Character, Room>();
+		playerCount = 0;
 		try {
-			//creates a scnnaer to read from the config file
+			//creates a scanner to read from the config file
 			FileReader reader = new FileReader(setupConfigFile);
 			Scanner scanner = new Scanner(reader);
 
 
 			while (scanner.hasNextLine()) {
 				String data = scanner.nextLine(); // first element of a line should be what type it is.
+				
+				//Checks if line is empty
+				if(data == "") continue;
+				
 				
 				//checks if line is a comment
 				if (data.charAt(0) == '/' && data.charAt(1) == '/') {
@@ -260,10 +268,8 @@ public class Board {
 				switch (dataType) {
 				case "Room": //rooms and spaces are treated the same
 				case "Space":
-				{
 					addRoom(data);
 					break;
-				}
 				default:
 					//invalid card type
 					throw new BadConfigFormatException("Invalid card type: " + dataType);
@@ -453,4 +459,14 @@ public class Board {
 	public ArrayList<Player> getPlayerList() {
 		return playerList;
 	}
+
+	public int getPlayerCount() {
+		return playerCount;
+	}
+
+	public void setPlayerCount(int playerCount) {
+		this.playerCount = playerCount;
+	}
+	
+	
 }

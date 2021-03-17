@@ -1,1 +1,1 @@
-Invalid card type: Rom[Ljava.lang.StackTraceElement;@24959ca4
+Invalid card type: Weapon[Ljava.lang.StackTraceElement;@68999068

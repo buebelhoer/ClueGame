@@ -4,6 +4,32 @@ import java.awt.Color;
 import java.util.ArrayList;
 
 public abstract class Player {
+	
+	
+	
+	public Player(String name, Color color, int row, int column, ArrayList<Card> hand) {
+		super();
+		this.name = name;
+		this.color = color;
+		this.row = row;
+		this.column = column;
+		this.hand = hand;
+	}
+	
+	
+
+	public Player(String name, Color color, int row, int column) {
+		super();
+		this.name = name;
+		this.color = color;
+		this.row = row;
+		this.column = column;
+	}
+	
+	
+
+
+
 	//The name of the player
 	private String name;
 	
@@ -24,6 +50,10 @@ public abstract class Player {
 		return hand;
 	}
 
+	/*
+	 * all getters below this point are used for testing only
+	 */
+	
 	public String getName() {
 		return name;
 	}
