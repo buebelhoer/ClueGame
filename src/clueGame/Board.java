@@ -240,6 +240,8 @@ public class Board {
 	public void loadSetupConfig() throws BadConfigFormatException {
 		// allocates the map. uses HashMap as order doesn't matter 
 		roomMap = new HashMap<Character, Room>();
+		playerList = new ArrayList<Player>();
+
 		playerCount = 0;
 		try {
 			//creates a scanner to read from the config file
