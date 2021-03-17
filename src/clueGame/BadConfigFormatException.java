@@ -15,12 +15,11 @@ public class BadConfigFormatException extends Exception {
 		logError(message);
 	}
 	
-	private void logError(String Message) {
+	private void logError(String message) {
 		try {
 			FileWriter writer = new FileWriter("ErrorLog.txt");
-			writer.write(Message);
+			writer.write(message);
 			writer.write(Arrays.toString(super.getStackTrace()));
-			writer.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
