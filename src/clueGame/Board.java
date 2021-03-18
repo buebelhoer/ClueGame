@@ -113,7 +113,11 @@ public class Board {
 		for (int row = 0; row < numRows; row++) {
 			for (int column = 0; column < numCols; column++) {
 				if (board[row][column].isDoorway()) {//checks if the cell is a doorway
+					try {
 					getDoorDest(row, column).getRoom().addExit(board[row][column]); //adds cell to rooms exits
+					} catch (NullPointerException e) {
+						System.out.println(e);
+					}
 				}
 				if (board[row][column].isSecretPassage()) { //checks if a cell is a secret passage
 					board[row][column].getRoom().addExit(getSecretPassageDest(row, column)); //adds cell to rooms exits
