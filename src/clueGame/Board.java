@@ -252,7 +252,7 @@ public class Board {
 				String data = scanner.nextLine(); // first element of a line should be what type it is.
 				
 				//Checks if line is empty
-				if(data == "") continue;
+				if(data.isBlank()) continue;
 				
 				
 				//checks if line is a comment
