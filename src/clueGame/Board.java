@@ -199,7 +199,11 @@ public class Board {
 		visited.remove(startCell); 
 	}
 
-	//recursive logic to calctargts
+
+	/**
+	 * @param currentCell the cell that the path is generated from
+	 * @param pathlength the number of moves remaining to the path
+	 */
 	private void calcTargetsRecursive(BoardCell currentCell, int pathlength) {
 		
 		//Base Case
