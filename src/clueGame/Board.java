@@ -361,6 +361,12 @@ public class Board {
 	}
 
 	//checks for doorway, label cell, center cell, secret passage
+	/**
+	 * @param token String of text, where first char is room symbol and second char is special symbol
+	 * @param row Row of the cell corresponding to the token
+	 * @param column Col of the cell corresponding to the token
+	 * @throws BadConfigFormatException if the second character is not valid, or does not exist
+	 */
 	private void parseSecondCharacter(String token, int row, int column) throws BadConfigFormatException {
 		if (token.length() > 1) { //checks if there is a second char
 			switch (token.charAt(1)) { //acts according the what the char is
