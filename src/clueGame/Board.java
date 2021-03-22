@@ -99,7 +99,7 @@ public class Board {
 				player = player % playerList.size();
 			}
 		} catch (Exception e) {
-			//Probably caused by a 306 test that we still have to pass
+			System.out.println("Exception probably caused by a 306 test.");
 		}
 	}
 
@@ -314,26 +314,7 @@ public class Board {
 				data = data.substring(commaIndex+1);
 				data = data.stripLeading();
 
-				switch (dataType) {
-				case "Room": //rooms and spaces are treated the same
-
-					addRoom(data);
-					break;
-				case "Space":
-					addSpace(data);
-					break;
-				case "Weapon":
-					addWeapon(data);
-					break;
-				case "Player":
-					addPlayer(data);
-					break;
-				default:
-					//invalid card type
-					throw new BadConfigFormatException("Invalid card type: " + dataType);
-				}
-
-
+				addCards(data, dataType);
 			}
 		}
 		catch (FileNotFoundException e) {
@@ -341,6 +322,26 @@ public class Board {
 			System.out.println(e);
 		}
 
+	}
+
+	private void addCards(String data, String dataType) throws BadConfigFormatException {
+		switch (dataType) {
+		case "Room": //rooms and spaces are treated the same
+			addRoom(data);
+			break;
+		case "Space":
+			addSpace(data);
+			break;
+		case "Weapon":
+			addWeapon(data);
+			break;
+		case "Player":
+			addPlayer(data);
+			break;
+		default:
+			//invalid card type
+			throw new BadConfigFormatException("Invalid card type: " + dataType);
+		}
 	}
 
 	//helper function for when load setup determines it is adding a room card
