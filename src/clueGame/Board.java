@@ -13,18 +13,18 @@ public class Board {
 
 	// number of column in the board
 	private int numCols;
-	
+
 	//stores the board itself
 	private BoardCell[][] board;
-	
+
 	//stores cards changes as game progresses (i.e cards are drawn/removed from deck)
 	private ArrayList<Card> gameCards;
-	
+
 	//stores categorized cards, will not change as game progress, may prove useful later, may not
 	private ArrayList<Card> playerCards;
 	private ArrayList<Card> roomCards;
 	private ArrayList<Card> weaponCards;
-	
+
 	//stores game solution
 	private Solution solution;
 
@@ -39,10 +39,10 @@ public class Board {
 
 	//strings that hold the filename of the config files.
 	private String layoutConfigFile, setupConfigFile;
-	
+
 	//list of players
 	private ArrayList<Player> playerList;
-	
+
 	//number of players in the game
 	private int playerCount;
 
@@ -117,7 +117,7 @@ public class Board {
 				}
 			}
 		}
-		
+
 	}
 
 	//fills the set of doorways to each room
@@ -126,7 +126,7 @@ public class Board {
 			for (int column = 0; column < numCols; column++) {
 				if (board[row][column].isDoorway()) {//checks if the cell is a doorway
 					try {
-					getDoorDest(row, column).getRoom().addExit(board[row][column]); //adds cell to rooms exits
+						getDoorDest(row, column).getRoom().addExit(board[row][column]); //adds cell to rooms exits
 					} catch (NullPointerException e) {
 						System.out.println(e);
 					}
@@ -144,7 +144,7 @@ public class Board {
 		Room passageRoom = roomMap.get(cell.getSecretPassage());
 		return passageRoom.getCenterCell();
 	}
-	
+
 	//returns the center cell of the room that the door leads to
 	//calling this on a cell that is not a door will return null
 	private BoardCell getDoorDest(int row, int column) {
@@ -217,7 +217,7 @@ public class Board {
 	 * @param pathlength the number of moves remaining to the path
 	 */
 	private void calcTargetsRecursive(BoardCell currentCell, int pathlength) {
-		
+
 		//Base Case
 		//if cell is occupied, cannot move to it
 		if (currentCell.isOccupied() && !currentCell.isRoomCenter()) { 
@@ -274,11 +274,11 @@ public class Board {
 
 			while (scanner.hasNextLine()) {
 				String data = scanner.nextLine(); // first element of a line should be what type it is.
-				
+
 				//Checks if line is empty
 				if(data.isBlank()) continue;
-				
-				
+
+
 				//checks if line is a comment
 				if (data.charAt(0) == '/' && data.charAt(1) == '/') {
 					continue;
@@ -292,8 +292,11 @@ public class Board {
 
 				switch (dataType) {
 				case "Room": //rooms and spaces are treated the same
-				case "Space":
+
 					addRoom(data);
+					break;
+				case "Space":
+					addSpace(data);
 					break;
 				case "Weapon":
 					addWeapon(data);
@@ -313,7 +316,21 @@ public class Board {
 			//lol rip
 			System.out.println(e);
 		}
-		
+
+	}
+
+	//helper function for when load setup determines it is adding a room card
+	private void addSpace(String data) {
+		int commaIndex;
+		//parses out space name
+		commaIndex = data.indexOf(',');
+		String roomName = data.substring(0,commaIndex);
+		//parses out room symbol
+		data = data.substring(commaIndex+1);
+		data = data.stripLeading();
+		char roomSymbol = data.charAt(0);
+		//adds room to map of all rooms
+		roomMap.put(roomSymbol, new Room(roomName));
 	}
 
 	//helper function for when load setup determines it is adding a room card
@@ -332,7 +349,7 @@ public class Board {
 		gameCards.add(card);
 		roomCards.add(card);
 	}
-	
+
 	//helper function for when load setup determines it is adding a weapon card
 	private void addWeapon(String data) {
 		int commaIndex;
@@ -340,7 +357,7 @@ public class Board {
 		gameCards.add(card);
 		weaponCards.add(card);
 	}
-	
+
 	//helper function for when load setup determines it is adding a player card
 	private void addPlayer(String data) throws BadConfigFormatException {
 		int commaIndex;
@@ -349,13 +366,13 @@ public class Board {
 		String playerName = data.substring(0,commaIndex);
 		data = data.substring(commaIndex+1);
 		data = data.stripLeading();
-		
+
 		//parses out player type
 		commaIndex = data.indexOf(',');
 		String playerType = data.substring(0,commaIndex);
 		data = data.substring(commaIndex+1);
 		data = data.stripLeading();
-		
+
 		//parses out player color
 		String playerColor = data;
 
@@ -402,27 +419,27 @@ public class Board {
 		case "yellow":
 			color = Color.yellow;
 			break;
-			default:
-				throw new BadConfigFormatException("invlaid color: " + playerColor);
-			
+		default:
+			throw new BadConfigFormatException("invlaid color: " + playerColor);
+
 		}
-		
+
 		Player player;
-		
+
 		if (playerType == "human") {
 			player = new HumanPlayer(playerName, color);
 		} else {
 			player = new ComputerPlayer(playerName, color);
 		}
 		playerList.add(player);
-		
+
 		Card card = new Card(playerName, CardType.PERSON);
-		
+
 		gameCards.add(card);
 		playerCards.add(card);
-		
+
 		playerCount++;
-		
+
 	}
 
 	/*takes layout file and imports the data it holds into the proper locations
@@ -444,17 +461,17 @@ public class Board {
 			String token;
 			for (int row = 0; row < numRows; row++) {
 				tokens = scanner.nextLine().split(",");				
-				
+
 				//if there is a different number of elemenets than expected, throw an exception
 				if (tokens.length != numCols) {
 					throw new BadConfigFormatException("Invalid number of elements in a row. Expected: " + numCols + " Actual: " + tokens.length);
 				}
-				
+
 				//splits the line into each individual value
 				for (int column = 0; column < numCols; column++) {	
-					
+
 					token = tokens[column];
-					
+
 					if (roomMap.get(token.charAt(0)) != null) {
 						//sets the room of the cell based on the char
 						board[row][column].setRoom(roomMap.get(token.charAt(0)));
