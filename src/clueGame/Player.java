@@ -18,12 +18,10 @@ public abstract class Player {
 	
 	
 
-	public Player(String name, Color color, int row, int column) {
+	public Player(String name, Color color) {
 		super();
 		this.name = name;
 		this.color = color;
-		this.row = row;
-		this.column = column;
 	}
 	
 	//used only for testing

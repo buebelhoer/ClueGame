@@ -294,8 +294,10 @@ public class Board {
 					addRoom(data);
 					break;
 				case "Weapon":
+					addWeapon(data);
 					break;
 				case "Player":
+					addPlayer(data);
 					break;
 				default:
 					//invalid card type
@@ -310,9 +312,6 @@ public class Board {
 			System.out.println(e);
 		}
 		
-		//FIXME remove
-		playerList.add(new ComputerPlayer());
-
 	}
 
 	//helper function for when load setup determines it is adding a room card
@@ -335,16 +334,13 @@ public class Board {
 	//helper function for when load setup determines it is adding a weapon card
 	private void addWeapon(String data) {
 		int commaIndex;
-		//parses out weapon name
-		commaIndex = data.indexOf(',');
-		String weaponName = data.substring(0,commaIndex);
-		Card card = new Card(weaponName, CardType.WEAPON);
+		Card card = new Card(data, CardType.WEAPON);
 		gameCards.add(card);
 		weaponCards.add(card);
 	}
 	
 	//helper function for when load setup determines it is adding a player card
-	private void addPlayer(String data) {
+	private void addPlayer(String data) throws BadConfigFormatException {
 		int commaIndex;
 		//parses out player name
 		commaIndex = data.indexOf(',');
@@ -359,8 +355,7 @@ public class Board {
 		data = data.stripLeading();
 		
 		//parses out player color
-		commaIndex = data.indexOf(',');
-		String playerColor = data.substring(0,commaIndex);
+		String playerColor = data;
 
 		// converts the string representing a color into a instance of Color
 		Color color;
@@ -406,9 +401,24 @@ public class Board {
 			color = Color.yellow;
 			break;
 			default:
-				throws new BadConfigFormatException("invlaid color: " + playerColor)
+				throws new BadConfigFormatException("invlaid color: " + playerColor);
 			
 		}
+		
+		Player player;
+		
+		if (playerType == "human") {
+			player = new HumanPlayer(playerName, color);
+		} else {
+			player = new ComputerPlayer(playerName, color);
+		}
+		playerList.add(player);
+		
+		Card card = new Card(playerName, CardType.PERSON);
+		
+		gameCards.add(card);
+		playerCards.add(card);
+		
 	}
 
 	/*takes layout file and imports the data it holds into the proper locations
