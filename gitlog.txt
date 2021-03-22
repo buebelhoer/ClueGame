@@ -1,3 +1,484 @@
+commit 72659f039677f7817d8ec80ac38c63655b5f8ace
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Sun Mar 21 20:26:36 2021 -0600
+
+    rename addCards
+
+commit d88ea99f3995d457ef64c746e60b8beddaaefc63
+Merge: c7d44b3 c503682
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Sun Mar 21 20:24:57 2021 -0600
+
+    Merge branch 'master' of https://github.com/buebelhoer/ClueLayout
+
+commit c7d44b38c540f70bd2567ef4172dff3fe3ee37e8
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Sun Mar 21 20:24:49 2021 -0600
+
+    refactor: extract card switch statement to function
+
+commit c5036828a7eaa2ba9a5b40acfbdbf77cbeb21f93
+Author: Buebelhoer <buebelhoer@mymail.mines.edu>
+Date:   Sun Mar 21 20:22:29 2021 -0600
+
+    move color dedermining switch statement into method
+
+commit 7bedadef600d34b826592b644305fceae9ab3492
+Author: Buebelhoer <buebelhoer@mymail.mines.edu>
+Date:   Sun Mar 21 20:18:56 2021 -0600
+
+    fixed error in deal cards
+
+commit ad7d83924f0ba62ee6c0df9dd57a976fbe30877c
+Merge: 784ea85 e177e07
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Sun Mar 21 20:15:22 2021 -0600
+
+    Merge branch 'master' of https://github.com/buebelhoer/ClueLayout
+
+commit 784ea858f66f9cc0af49961277195e5f45974a8f
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Sun Mar 21 20:15:14 2021 -0600
+
+    fixed 306 test causing errors
+
+commit e177e073cad4027379d6863c20ff9a8da16baa59
+Author: Buebelhoer <buebelhoer@mymail.mines.edu>
+Date:   Sun Mar 21 20:14:15 2021 -0600
+
+    added try catch block to generatesolutions to accoutn for dumb 306 tests
+
+commit ca32f82f0d64d2032ff03368edfa399f8e60b45b
+Author: Buebelhoer <buebelhoer@mymail.mines.edu>
+Date:   Sun Mar 21 20:03:36 2021 -0600
+
+    fixed more github
+
+commit 4481f0c01f942b36a1bb225ad6f5f2f1f2cc0d2b
+Author: Buebelhoer <buebelhoer@mymail.mines.edu>
+Date:   Sun Mar 21 20:00:21 2021 -0600
+
+    fixed errors from github
+
+commit 7014c9f2bc7b2a3044f3c518d9dc827e49d54ef7
+Merge: c5c7cf9 7f8c953
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Sun Mar 21 19:53:43 2021 -0600
+
+    Merge branch 'master' of https://github.com/buebelhoer/ClueLayout
+
+commit c5c7cf9ff81c1ed4a8631c06e047da524d950ffa
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Sun Mar 21 19:53:36 2021 -0600
+
+    shuffled deck dealt cards
+
+commit 7f8c953329fa67a223c8429b07fdfa0b2eff0968
+Author: Buebelhoer <buebelhoer@mymail.mines.edu>
+Date:   Sun Mar 21 19:52:28 2021 -0600
+
+    fixed card dealing error
+
+commit 3eb92cc3e8a21f156f29a8ade46eb586ccc4c18e
+Author: Buebelhoer <buebelhoer@mymail.mines.edu>
+Date:   Sun Mar 21 19:49:42 2021 -0600
+
+    fixed soluiton tests
+
+commit 3a3c0c21e63322b52040e0ba1ebb58c2fa28832e
+Author: Buebelhoer <buebelhoer@mymail.mines.edu>
+Date:   Sun Mar 21 19:46:59 2021 -0600
+
+    fixed negative random value issues
+
+commit 6d7cb8fd936903c20f5fdc2317fad9546347b8b1
+Merge: 0325163 e74e887
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Sun Mar 21 19:41:14 2021 -0600
+
+    Merge branch 'master' of https://github.com/buebelhoer/ClueLayout
+
+commit 0325163750559c9cd138ac334f72c75a5946c657
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Sun Mar 21 19:41:03 2021 -0600
+
+    added skeleton for card deal
+
+commit e74e8871f515f6154321e4b9a7642125c9be5ac0
+Merge: 818dc06 dd6363b
+Author: Buebelhoer <buebelhoer@mymail.mines.edu>
+Date:   Sun Mar 21 19:39:56 2021 -0600
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 818dc066e5cfd74d9d5242ee9f04b44cafd269d7
+Author: Buebelhoer <buebelhoer@mymail.mines.edu>
+Date:   Sun Mar 21 19:39:52 2021 -0600
+
+    implemented genrate solution
+
+commit dd6363bd140755b47bb3fc344b8b1dab9d8e964d
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Sun Mar 21 19:38:24 2021 -0600
+
+    added calls to card dealings
+
+commit 4296cfd9f0681a8a0a243e33353eead43d9d6441
+Merge: f6cfed0 2c2be49
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Sun Mar 21 19:33:20 2021 -0600
+
+    Merge branch 'master' of https://github.com/buebelhoer/ClueLayout
+
+commit f6cfed024d4be03d463e8c1397e266999a55cf39
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Sun Mar 21 19:32:14 2021 -0600
+
+    .contains wasnt cooperating
+
+commit 2c2be49593d32bff8963c8cd4f5ecb6b957f9588
+Author: Buebelhoer <buebelhoer@mymail.mines.edu>
+Date:   Sun Mar 21 19:23:34 2021 -0600
+
+    fixed identifying human players as computers
+
+commit 2b40643b3516b9453d2c5a3003accd655a00c523
+Author: Buebelhoer <buebelhoer@mymail.mines.edu>
+Date:   Sun Mar 21 19:15:05 2021 -0600
+
+    fixed error where spaced created room cards
+
+commit 0f73f271b655fbc95b9b0724e4f1ee88d6cd0bf0
+Merge: c2be438 67026af
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Sun Mar 21 19:12:05 2021 -0600
+
+    Merge branch 'master' of https://github.com/buebelhoer/ClueLayout
+
+commit c2be4386d38fbcad69dd6a3f243647684c47c780
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Sun Mar 21 19:11:56 2021 -0600
+
+    git deleted solution apparently
+
+commit 67026afc3f778d672b0c3d31d1d51d2c98c8fb82
+Author: Buebelhoer <buebelhoer@mymail.mines.edu>
+Date:   Sun Mar 21 19:11:53 2021 -0600
+
+    incremented playercount
+
+commit 49ab35e6add0e08ce2731401d450ad90e21cf90b
+Author: Buebelhoer <buebelhoer@mymail.mines.edu>
+Date:   Sun Mar 21 19:08:27 2021 -0600
+
+    added semicolan
+
+commit 8ecf63240235c8f3f0a0fcd703a0b6ee8da3b697
+Merge: a97e069 342703b
+Author: Buebelhoer <buebelhoer@mymail.mines.edu>
+Date:   Sun Mar 21 19:06:50 2021 -0600
+
+    Merge remote-tracking branch 'origin/master'
+
+commit a97e069f3687b99fcb6b07903b25935ddcc3f2fa
+Author: Buebelhoer <buebelhoer@mymail.mines.edu>
+Date:   Sun Mar 21 19:06:04 2021 -0600
+
+    finished implementing playerloading
+
+commit 342703bb0631d259064d642a9a525387349198e2
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Sun Mar 21 19:00:47 2021 -0600
+
+    oops throw not throws
+
+commit c012c5fc857a21d04b69e649136ba371067a22c7
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Sun Mar 21 18:59:40 2021 -0600
+
+    implemented solution test
+    
+    filled solution class
+
+commit 7cde693f2fc4e0a6d25aa933c2ea266b879a7428
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Sun Mar 21 18:52:19 2021 -0600
+
+    implmented test cards dealt
+
+commit 84e26b96ec0992fff6fa6d98016ae60fe65a0f62
+Merge: 1ac20eb 8655ab9
+Author: Buebelhoer <buebelhoer@mymail.mines.edu>
+Date:   Sun Mar 21 18:51:35 2021 -0600
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 1ac20eba3f6d93a4fcd376bc99d9ef239f7f1e9e
+Author: Buebelhoer <buebelhoer@mymail.mines.edu>
+Date:   Sun Mar 21 18:51:32 2021 -0600
+
+    inplememented weapon loading , and starting playerloading
+
+commit 8655ab988f9c194fa8e640e7880ab1e6bbd08855
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Sun Mar 21 18:42:17 2021 -0600
+
+    testCardDeck implemented
+
+commit 6e21378733adb2de8931bb831c08720ba1d970ff
+Merge: 4464ad5 d567696
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Sun Mar 21 18:25:39 2021 -0600
+
+    Merge branch 'master' of https://github.com/buebelhoer/ClueLayout
+
+commit 4464ad5cd3424ae415a2f4b8ff5239b7e7197189
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Sun Mar 21 18:25:30 2021 -0600
+
+    added card structures
+
+commit d5676966712f1413bc74affc08afabf28e30bfbc
+Merge: 7f4dfb4 51597b4
+Author: Buebelhoer <buebelhoer@mymail.mines.edu>
+Date:   Sun Mar 21 18:24:58 2021 -0600
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 7f4dfb46b15fecd3fd19cd4db1abf7a855419a02
+Author: Buebelhoer <buebelhoer@mymail.mines.edu>
+Date:   Sun Mar 21 18:24:06 2021 -0600
+
+    implemented TestPlayerType()
+
+commit 51597b4c8cf54a2351c50afa3dc354c6a9b69130
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Sun Mar 21 18:12:37 2021 -0600
+
+    i dont remember what i did
+
+commit ad9b73c1860238b297e9df81cac1bc6eac0c5eff
+Author: Buebelhoer <buebelhoer@mymail.mines.edu>
+Date:   Sun Mar 21 18:06:58 2021 -0600
+
+    added Colors to ClueSetup
+
+commit add4d2f1a729d913ee3cbcada4255620ddf01bcd
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Wed Mar 17 18:20:13 2021 -0600
+
+    added refactor.txt
+
+commit 32d614321c48cd250224f61f8a0a58d88ec26081
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Wed Mar 17 18:16:25 2021 -0600
+
+    added more descriptive comment to parseSecondCharacter
+
+commit 2374fd26804fc86155d9f00e3879cb68db280000
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Wed Mar 17 18:14:04 2021 -0600
+
+    Added more descriptive comment to calcTargetsRecursive
+
+commit 59cc4611d08bcc864554c08888531c886cace305
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Wed Mar 17 18:10:45 2021 -0600
+
+    Added Try Catch Block to generateExits to catch a potential null pointer error
+
+commit 0c5586361d3100ed257b9dd2e88c7298fbe8c7e7
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Wed Mar 17 18:04:12 2021 -0600
+
+    refactor: use a proper string value comparison function rather than ==
+
+commit 4c837dc3cad86269f28f73ef6cee3c21b45163a8
+Merge: e82b868 e16905d
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Wed Mar 17 17:58:04 2021 -0600
+
+    Merge branch 'master' of https://github.com/buebelhoer/ClueLayout
+
+commit e82b868712f301c13afc2f8f64abc95fff7aa942
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Wed Mar 17 17:57:58 2021 -0600
+
+    refactored: returned passageCell directly instead of through temp var
+
+commit e16905dac23bd9201ff0ac7cd9e45ea32bea0570
+Merge: 24f255b fd20329
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Wed Mar 17 17:55:18 2021 -0600
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 24f255b4e56aaeead0b4a74549d3b41acb96d27c
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Wed Mar 17 17:55:04 2021 -0600
+
+    Removed redundant type info in set, map and array list allocation
+
+commit fd2032920aef3848f24b684d0cc10c40c018c9ef
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Wed Mar 17 17:53:52 2021 -0600
+
+    updated logError parameter to match camel case
+
+commit 96eb4a2f7d20c22b9369b73e76fbafab27d50ca9
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Wed Mar 17 17:50:58 2021 -0600
+
+    stack trace log file, refactored to use dedicated arrays tostring method
+
+commit 3d8d5e0d8693187dc126a623092ed0ab37d2f940
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Wed Mar 17 17:45:29 2021 -0600
+
+    Updated ClueSetup
+
+commit 5780253224a29ec6756ae4878ac0049c8d5ce7f1
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Tue Mar 16 18:24:23 2021 -0600
+
+    fixed typo
+
+commit e7ce8cef6c7754c2bf1190e055bf1458146ba656
+Merge: 4edc051 bf6073d
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Tue Mar 16 18:22:56 2021 -0600
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 4edc0519db347dfbfe2ad73f0be163fe07c8db95
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Tue Mar 16 18:22:51 2021 -0600
+
+    added cases for weapons and player in loadsetup
+
+commit bf6073d414d58def242bf44366ce208f6b6c2a5d
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Tue Mar 16 18:22:37 2021 -0600
+
+    forgot to initialize playerlist
+
+commit ab9eacc73d1799f8fbda626c37e130d82e09bfb3
+Merge: 695b4d0 ee667d5
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Tue Mar 16 18:18:09 2021 -0600
+
+    Merge branch 'master' of https://github.com/buebelhoer/ClueLayout
+
+commit 695b4d09579cfaba617a7567a7098154ac74c5f1
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Tue Mar 16 18:18:02 2021 -0600
+
+    implemented player loaded test
+
+commit ee667d5d83f8b27c2b9e0738dd9ff8525feb7905
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Tue Mar 16 18:17:38 2021 -0600
+
+    added playerCount to board
+
+commit e47ac92ecff8f99c6d8003eef7e84f533b5421a1
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Tue Mar 16 18:07:32 2021 -0600
+
+    fixed setup error
+
+commit e2e965af0f226843c67f69198f4d2ec9f6b21c3e
+Merge: 1e1dcd3 d01e6fa
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Tue Mar 16 18:01:40 2021 -0600
+
+    Merge branch 'master' of https://github.com/buebelhoer/ClueLayout
+
+commit 1e1dcd39873ae8c24d074d6d870443b4af5a85f5
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Tue Mar 16 17:59:52 2021 -0600
+
+    take push plz
+
+commit 1d5008096efc6c64322f7f6548e702237cda0ff5
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Tue Mar 16 17:59:37 2021 -0600
+
+    i need the setup plz, must push first
+
+commit d01e6faf782dd8f89536fed1de64c4fe7f94493f
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Tue Mar 16 17:58:14 2021 -0600
+
+    added test setup
+
+commit 014b672c44ef1ad2dabf8103fdb82828639dae83
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Tue Mar 16 17:49:41 2021 -0600
+
+    Added Test Outlines
+
+commit 2e5e60e7d0c6aa1a7645246269b7d2bca670a7d2
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Tue Mar 16 17:41:47 2021 -0600
+
+    Added weapon and player cards to ClueSetup
+
+commit 8ed0d47b792a7a4cc5d00b1be65b91c34c8f53fc
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Tue Mar 16 17:23:44 2021 -0600
+
+    implemented Card
+
+commit aba542ffe022849b5f0a817d85c4daf1b02a2e90
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Tue Mar 16 17:14:23 2021 -0600
+
+    implemented  CardType
+
+commit 9ff576f3a80997392a60bc743da193aa3e25cda8
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Tue Mar 16 17:10:50 2021 -0600
+
+    Added Classes for C18A-1
+
+commit 2b0cece60e3a99fc0cc29aeb2e1352e5c87f41c8
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Thu Mar 11 18:16:25 2021 -0700
+
+    code review submission
+
+commit e69b7d52a983f6f0b9b467adf4472d1241a87ab9
+Merge: f34cb18 c5d0e53
+Author: Buebelhoer <buebelhoer@mymail.mines.edu>
+Date:   Tue Mar 9 20:49:54 2021 -0700
+
+    Merge remote-tracking branch 'origin/master'
+
+commit f34cb184ac08b58839fba5fc8af066da2fb4eccf
+Author: Buebelhoer <buebelhoer@mymail.mines.edu>
+Date:   Tue Mar 9 20:49:44 2021 -0700
+
+    updated ClueLayout
+
+commit c5d0e53558fdb9f5b53e4c486b8c3ee723e80786
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Mon Mar 8 15:11:05 2021 -0700
+
+    refactored var names to be consisstent
+
+commit 907a30eba6173eb2b86272e73d01780c4ae6b14f
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Mon Mar 8 14:53:04 2021 -0700
+
+    commented and refactored code
+
+commit 08a2edb29691bef9ca0c07c8d6daf61fd2119317
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Mon Mar 8 14:07:50 2021 -0700
+
+    submission for c15A
+
 commit 07da30bb9049bc1b621f7ef1561d9311a303b416
 Author: Brendan <buebelhoer@mymail.mines.edu>
 Date:   Mon Mar 8 14:04:36 2021 -0700
