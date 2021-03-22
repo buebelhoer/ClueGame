@@ -40,10 +40,10 @@ public class GameSetupTests {
 	
 	@Test
 	public void testCardDeck() {
-		assertEquals(NUM_PLAYERS, board.getPlayerCards().size());
-		assertEquals(NUM_ROOMS, board.getRoomCards().size());
+		assertEquals(NUM_PLAYERS -1, board.getPlayerCards().size());
+		assertEquals(NUM_ROOMS -1, board.getRoomCards().size());
 		
-		assertEquals(NUM_WEAPONS, board.getWeaponCards().size());
+		assertEquals(NUM_WEAPONS -1, board.getWeaponCards().size());
 		
 		boolean foundAcid = false, foundLaptop = false, foundKeystone = false;
 		for (Card c : board.getWeaponCards()) {
@@ -64,14 +64,14 @@ public class GameSetupTests {
 		assertTrue(foundLaptop);
 		assertTrue(foundKeystone);
 		
-		assertEquals(NUM_PLAYERS+NUM_ROOMS+NUM_WEAPONS, board.getGameCards().size());
+		assertEquals(NUM_PLAYERS+NUM_ROOMS+NUM_WEAPONS-3, board.getGameCards().size());
 	}
 	
 	@Test
 	public void testSolution() {
-		assertEquals(board.getSolution().getPlayer().getCardType(), "Player");
-		assertEquals(board.getSolution().getRoom().getCardType(), "Room");
-		assertEquals(board.getSolution().getWeapon().getCardType(), "Weapon");
+		assertEquals(board.getSolution().getPlayer().getCardType(), CardType.PERSON);
+		assertEquals(board.getSolution().getRoom().getCardType(), CardType.ROOM);
+		assertEquals(board.getSolution().getWeapon().getCardType(), CardType.WEAPON);
 	}
 	
 	@Test
