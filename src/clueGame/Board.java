@@ -408,7 +408,7 @@ public class Board {
 			color = Color.yellow;
 			break;
 			default:
-				throws new BadConfigFormatException("invlaid color: " + playerColor)
+				throw new BadConfigFormatException("invlaid color: " + playerColor)
 			
 		}
 	}
