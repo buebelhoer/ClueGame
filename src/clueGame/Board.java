@@ -25,6 +25,8 @@ public class Board {
 	private ArrayList<Card> roomCards;
 	private ArrayList<Card> weaponCards;
 	
+	//stores game solution
+	private Solution solution;
 
 	//stores the cells visited. used in target finding algorithm
 	private Set<BoardCell> visited;
@@ -614,5 +616,9 @@ public class Board {
 
 	public ArrayList<Card> getWeaponCards() {
 		return weaponCards;
+	}
+
+	public Solution getSolution() {
+		return solution;
 	}
 }
