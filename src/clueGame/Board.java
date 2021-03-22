@@ -589,9 +589,9 @@ public class Board {
 	
 	
 	private void generateSolution() {
-		int roomIndex = random.nextInt();
-		int weaponIndex = random.nextInt();
-		int playerIndex = random.nextInt();
+		int roomIndex = random.nextInt(Integer.MAX_VALUE)%roomCards.size();
+		int weaponIndex = random.nextInt(Integer.MAX_VALUE)%weaponCards.size();
+		int playerIndex = random.nextInt(Integer.MAX_VALUE)%playerCards.size();
 		
 		solution = new Solution(playerCards.get(playerIndex), roomCards.get(roomIndex), weaponCards.get(weaponIndex));
 		
