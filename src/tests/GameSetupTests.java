@@ -58,7 +58,16 @@ public class GameSetupTests {
 	
 	@Test
 	public void testCardsDealt() {
+		int cardTotalTarget = NUM_PLAYERS+NUM_PLAYERS+NUM_WEAPONS;
+		int cardTotalSum = 0;
+		int cardsPerPlayer = (cardTotalTarget)/NUM_PLAYERS;
 		
+		for (Player p : board.getPlayerList()) {
+			cardTotalSum += p.getHand().size();
+			assertTrue(p.getHand().size() == cardsPerPlayer || p.getHand().size() == cardsPerPlayer + 1);
+		}
+		
+		assertEquals(cardTotalTarget, cardTotalSum);
 	}
 	
 }
