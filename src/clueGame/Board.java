@@ -1,6 +1,7 @@
 //Authors: Brendan Uebelhoer, Ben Morgan
 package clueGame;
 
+import java.awt.Color;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.*;
@@ -257,6 +258,10 @@ public class Board {
 		// allocates the map. uses HashMap as order doesn't matter 
 		roomMap = new HashMap<>();
 		playerList = new ArrayList<>();
+		gameCards = new ArrayList<>();
+		playerCards = new ArrayList<>();
+		weaponCards = new ArrayList<>();
+		roomCards = new ArrayList<>();
 
 		playerCount = 0;
 		try {
@@ -322,6 +327,88 @@ public class Board {
 		char roomSymbol = data.charAt(0);
 		//adds room to map of all rooms
 		roomMap.put(roomSymbol, new Room(roomName));
+		Card card = new Card(roomName, CardType.ROOM);
+		gameCards.add(card);
+		roomCards.add(card);
+	}
+	
+	//helper function for when load setup determines it is adding a weapon card
+	private void addWeapon(String data) {
+		int commaIndex;
+		//parses out weapon name
+		commaIndex = data.indexOf(',');
+		String weaponName = data.substring(0,commaIndex);
+		Card card = new Card(weaponName, CardType.WEAPON);
+		gameCards.add(card);
+		weaponCards.add(card);
+	}
+	
+	//helper function for when load setup determines it is adding a player card
+	private void addPlayer(String data) {
+		int commaIndex;
+		//parses out player name
+		commaIndex = data.indexOf(',');
+		String playerName = data.substring(0,commaIndex);
+		data = data.substring(commaIndex+1);
+		data = data.stripLeading();
+		
+		//parses out player type
+		commaIndex = data.indexOf(',');
+		String playerType = data.substring(0,commaIndex);
+		data = data.substring(commaIndex+1);
+		data = data.stripLeading();
+		
+		//parses out player color
+		commaIndex = data.indexOf(',');
+		String playerColor = data.substring(0,commaIndex);
+
+		// converts the string representing a color into a instance of Color
+		Color color;
+		switch (playerColor)
+		{
+		case "black":
+			color = Color.black;
+			break;
+		case "blue":
+			color = Color.blue;
+			break;
+		case "cyan":
+			color = Color.cyan;
+			break;
+		case "darkGray":
+			color = Color.darkGray;
+			break;
+		case "gray":
+			color = Color.gray;
+			break;
+		case "green":
+			color = Color.green;
+			break;
+		case "lightGray":
+			color = Color.lightGray;
+			break;
+		case "magenta":
+			color = Color.magenta;
+			break;
+		case "orange":
+			color = Color.orange;
+			break;
+		case "pink":
+			color = Color.pink;
+			break;
+		case "red":
+			color = Color.red;
+			break;
+		case "white":
+			color = Color.white;
+			break;
+		case "yellow":
+			color = Color.yellow;
+			break;
+			default:
+				throws new BadConfigFormatException("invlaid color: " + playerColor)
+			
+		}
 	}
 
 	/*takes layout file and imports the data it holds into the proper locations
