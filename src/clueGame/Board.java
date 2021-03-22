@@ -295,6 +295,9 @@ public class Board {
 			//lol rip
 			System.out.println(e);
 		}
+		
+		//FIXME remove
+		playerList.add(new ComputerPlayer());
 
 	}
 
