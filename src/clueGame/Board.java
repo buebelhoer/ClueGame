@@ -426,7 +426,7 @@ public class Board {
 
 		Player player;
 
-		if (playerType == "human") {
+		if (playerType.equals("Human")) {
 			player = new HumanPlayer(playerName, color);
 		} else {
 			player = new ComputerPlayer(playerName, color);
