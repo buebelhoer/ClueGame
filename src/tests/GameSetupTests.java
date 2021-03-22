@@ -53,7 +53,9 @@ public class GameSetupTests {
 	
 	@Test
 	public void testSolution() {
-		
+		assertEquals(board.getSolution().getPlayer().getCardType(), "Player");
+		assertEquals(board.getSolution().getRoom().getCardType(), "Room");
+		assertEquals(board.getSolution().getWeapon().getCardType(), "Weapon");
 	}
 	
 	@Test
