@@ -85,11 +85,18 @@ public class Board {
 		
 		generateSolution();
 		
+		Collections.shuffle(gameCards);
 		dealCards();
 	}
 	
 	private void dealCards() {
-		
+		int player = 0;
+		for (Card c : gameCards) {
+			playerList.get(player).addCard(c);
+			
+			player += 1;
+			player = player % playerList.size();
+		}
 	}
 
 	//Creates a map which stores what cells are adjacent to each other
@@ -582,9 +589,9 @@ public class Board {
 	
 	
 	private void generateSolution() {
-		int roomIndex = random.nextInt(Integer.MAX_VALUE)%roomCards.size();
-		int weaponIndex = random.nextInt(Integer.MAX_VALUE)%weaponCards.size();
-		int playerIndex = random.nextInt(Integer.MAX_VALUE)%playerCards.size();
+		int roomIndex = random.nextInt();
+		int weaponIndex = random.nextInt();
+		int playerIndex = random.nextInt();
 		
 		solution = new Solution(playerCards.get(playerIndex), roomCards.get(roomIndex), weaponCards.get(weaponIndex));
 		

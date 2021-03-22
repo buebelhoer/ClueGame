@@ -51,6 +51,10 @@ public abstract class Player {
 	public ArrayList<Card> getHand() {
 		return hand;
 	}
+	
+	public void addCard(Card c) {
+		hand.add(c);
+	}
 
 	/*
 	 * all getters below this point are used for testing only
