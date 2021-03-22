@@ -12,12 +12,21 @@ public class Board {
 
 	// number of column in the board
 	private int numCols;
+	
+	//stores the board itself
+	private BoardCell[][] board;
+	
+	//stores cards changes as game progresses (i.e cards are drawn/removed from deck)
+	private ArrayList<Card> gameCards;
+	
+	//stores categorized cards, will not change as game progress, may prove useful later, may not
+	private ArrayList<Card> playerCards;
+	private ArrayList<Card> roomCards;
+	private ArrayList<Card> weaponCards;
+	
 
 	//stores the cells visited. used in target finding algorithm
 	private Set<BoardCell> visited;
-
-	//stores the board itself
-	private BoardCell[][] board;
 
 	//stores the movable cells
 	private Set<BoardCell> targets;

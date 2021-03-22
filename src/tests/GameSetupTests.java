@@ -10,7 +10,10 @@ import clueGame.Board;
 import clueGame.Player;
 
 public class GameSetupTests {
-
+	final static int NUM_PLAYERS = 6;
+	final static int NUM_ROOMS = 9;
+	final static int NUM_WEAPONS = 6;
+	
 	private static Board board;
 	
 	@BeforeEach
@@ -22,7 +25,7 @@ public class GameSetupTests {
 	
 	@Test
 	public void testPlayersLoaded() {
-		assertEquals(6, board.getPlayerList().size());
+		assertEquals(NUM_PLAYERS, board.getPlayerList().size());
 		assertEquals(board.getPlayerCount(), board.getPlayerList().size());
 		assertFalse(board.getPlayerList().contains(null));
 	}
