@@ -40,7 +40,15 @@ public class GameSetupTests {
 	
 	@Test
 	public void testCardDeck() {
+		assertEquals(NUM_PLAYERS, board.getPlayerCards().size());
+		assertEquals(NUM_ROOMS, board.getRoomCards().size());
 		
+		assertEquals(NUM_WEAPONS, board.getWeaponCards().size());
+		assertTrue(board.getWeaponCards().contains(new Card("Sulfuric Acid", CardType.WEAPON)));
+		assertTrue(board.getWeaponCards().contains(new Card("Laptop", CardType.WEAPON)));
+		assertTrue(board.getWeaponCards().contains(new Card("Keystone", CardType.WEAPON)));
+		
+		assertEquals(NUM_PLAYERS+NUM_ROOMS+NUM_WEAPONS, board.getGameCards().size());
 	}
 	
 	@Test
