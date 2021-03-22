@@ -40,10 +40,10 @@ public class GameSetupTests {
 	
 	@Test
 	public void testCardDeck() {
-		assertEquals(NUM_PLAYERS -1, board.getPlayerCards().size());
-		assertEquals(NUM_ROOMS -1, board.getRoomCards().size());
+		assertEquals(NUM_PLAYERS, board.getPlayerCards().size());
+		assertEquals(NUM_ROOMS, board.getRoomCards().size());
 		
-		assertEquals(NUM_WEAPONS -1, board.getWeaponCards().size());
+		assertEquals(NUM_WEAPONS, board.getWeaponCards().size());
 		
 		boolean foundAcid = false, foundLaptop = false, foundKeystone = false;
 		for (Card c : board.getWeaponCards()) {
