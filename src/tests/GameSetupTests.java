@@ -1,13 +1,13 @@
 package tests;
 
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import clueGame.Board;
-import clueGame.Player;
+import clueGame.*;
 
 public class GameSetupTests {
 	final static int NUM_PLAYERS = 6;
@@ -32,7 +32,10 @@ public class GameSetupTests {
 	
 	@Test
 	public void testPlayerType() {
-		
+		assertTrue(board.getPlayerList().get(0) instanceof HumanPlayer);
+		for (int i = 1; i < board.getPlayerCount(); i++) {
+			assertTrue(board.getPlayerList().get(i) instanceof ComputerPlayer);
+		}
 	}
 	
 	@Test

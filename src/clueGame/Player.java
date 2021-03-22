@@ -26,6 +26,10 @@ public abstract class Player {
 		this.column = column;
 	}
 	
+	//used only for testing
+	public Player() {
+		super();
+	}
 	
 
 
