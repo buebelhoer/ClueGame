@@ -314,7 +314,7 @@ public class Board {
 				data = data.substring(commaIndex+1);
 				data = data.stripLeading();
 
-				addCards(data, dataType);
+				addCard(data, dataType);
 			}
 		}
 		catch (FileNotFoundException e) {
@@ -324,7 +324,7 @@ public class Board {
 
 	}
 
-	private void addCards(String data, String dataType) throws BadConfigFormatException {
+	private void addCard(String data, String dataType) throws BadConfigFormatException {
 		switch (dataType) {
 		case "Room": //rooms and spaces are treated the same
 			addRoom(data);
