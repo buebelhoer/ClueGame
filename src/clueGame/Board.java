@@ -498,6 +498,24 @@ public class Board {
 	public void setPlayerCount(int playerCount) {
 		this.playerCount = playerCount;
 	}
-	
-	
+
+	public ArrayList<Card> getGameCards() {
+		return gameCards;
+	}
+
+	public void setGameCards(ArrayList<Card> gameCards) {
+		this.gameCards = gameCards;
+	}
+
+	public ArrayList<Card> getPlayerCards() {
+		return playerCards;
+	}
+
+	public ArrayList<Card> getRoomCards() {
+		return roomCards;
+	}
+
+	public ArrayList<Card> getWeaponCards() {
+		return weaponCards;
+	}
 }
