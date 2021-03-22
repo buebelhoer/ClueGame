@@ -45,6 +45,9 @@ public class Board {
 
 	//number of players in the game
 	private int playerCount;
+	
+	//random number generator used in the game
+	private Random random;
 
 	//specific instance of the board
 	private static Board instance = new Board();
@@ -74,6 +77,8 @@ public class Board {
 		// allocates the visited and target sets
 		visited = new HashSet<>();
 		targets = new HashSet<>();
+		
+		random = new Random(System.currentTimeMillis());
 
 		//generates the list of adjacencies for each cell
 		generateAdjacencies();
@@ -573,6 +578,19 @@ public class Board {
 		} catch (FileNotFoundException e) {
 			System.out.println(e);
 		}
+	}
+	
+	
+	private void generateSolution() {
+		int roomIndex = random.nextInt();
+		int weaponIndex = random.nextInt();
+		int playerIndex = random.nextInt();
+		
+		solution = new Solution(playerCards.get(playerIndex), roomCards.get(roomIndex), weaponCards.get(weaponIndex));
+		
+		gameCards.remove(playerCards.get(playerIndex));
+		gameCards.remove(roomCards.get(roomIndex));
+		gameCards.remove(weaponCards.get(weaponIndex));
 	}
 
 	/*
