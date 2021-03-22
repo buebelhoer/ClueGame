@@ -419,6 +419,8 @@ public class Board {
 		gameCards.add(card);
 		playerCards.add(card);
 		
+		playerCount++;
+		
 	}
 
 	/*takes layout file and imports the data it holds into the proper locations
