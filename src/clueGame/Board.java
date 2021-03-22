@@ -82,6 +82,10 @@ public class Board {
 		
 		dealCards();
 	}
+	
+	private void dealCards() {
+		
+	}
 
 	//Creates a map which stores what cells are adjacent to each other
 	private void generateAdjacencies() {    
