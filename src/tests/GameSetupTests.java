@@ -44,9 +44,25 @@ public class GameSetupTests {
 		assertEquals(NUM_ROOMS, board.getRoomCards().size());
 		
 		assertEquals(NUM_WEAPONS, board.getWeaponCards().size());
-		assertTrue(board.getWeaponCards().contains(new Card("Sulfuric Acid", CardType.WEAPON)));
-		assertTrue(board.getWeaponCards().contains(new Card("Laptop", CardType.WEAPON)));
-		assertTrue(board.getWeaponCards().contains(new Card("Keystone", CardType.WEAPON)));
+		
+		boolean foundAcid = false, foundLaptop = false, foundKeystone = false;
+		for (Card c : board.getWeaponCards()) {
+			switch (c.getCardName()) {
+			case "Sulfuric Acid":
+				foundAcid = true;
+				break;
+			case "Laptop":
+				foundLaptop = true;
+				break;
+			case "Keystone":
+				foundKeystone = true;
+				break;
+			}
+		}
+		
+		assertTrue(foundAcid);
+		assertTrue(foundLaptop);
+		assertTrue(foundKeystone);
 		
 		assertEquals(NUM_PLAYERS+NUM_ROOMS+NUM_WEAPONS, board.getGameCards().size());
 	}

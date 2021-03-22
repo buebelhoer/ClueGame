@@ -1,1 +1,0 @@
-Invalid card type: Player[Ljava.lang.StackTraceElement;@3835c46
