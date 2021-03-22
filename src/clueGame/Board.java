@@ -82,6 +82,10 @@ public class Board {
 
 		//generates the list of adjacencies for each cell
 		generateAdjacencies();
+		
+		generateSolution();
+		
+		dealCards();
 	}
 
 	//Creates a map which stores what cells are adjacent to each other
