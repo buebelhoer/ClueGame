@@ -401,6 +401,27 @@ public class Board {
 		String playerColor = data;
 
 		// converts the string representing a color into a instance of Color
+		Color color = parseColors(playerColor);
+
+		Player player;
+
+		if (playerType.equals("Human")) {
+			player = new HumanPlayer(playerName, color);
+		} else {
+			player = new ComputerPlayer(playerName, color);
+		}
+		playerList.add(player);
+
+		Card card = new Card(playerName, CardType.PERSON);
+
+		gameCards.add(card);
+		playerCards.add(card);
+
+		playerCount++;
+
+	}
+
+	private Color parseColors(String playerColor) throws BadConfigFormatException {
 		Color color;
 		switch (playerColor)
 		{
@@ -447,23 +468,7 @@ public class Board {
 			throw new BadConfigFormatException("invlaid color: " + playerColor);
 
 		}
-
-		Player player;
-
-		if (playerType.equals("Human")) {
-			player = new HumanPlayer(playerName, color);
-		} else {
-			player = new ComputerPlayer(playerName, color);
-		}
-		playerList.add(player);
-
-		Card card = new Card(playerName, CardType.PERSON);
-
-		gameCards.add(card);
-		playerCards.add(card);
-
-		playerCount++;
-
+		return color;
 	}
 
 	/*takes layout file and imports the data it holds into the proper locations
