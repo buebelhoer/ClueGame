@@ -7,31 +7,6 @@ public abstract class Player {
 	
 	
 	
-	public Player(String name, Color color, int row, int column, ArrayList<Card> hand) {
-		super();
-		this.name = name;
-		this.color = color;
-		this.row = row;
-		this.column = column;
-		this.hand = hand;
-	}
-	
-	
-
-	public Player(String name, Color color) {
-		super();
-		this.name = name;
-		this.color = color;
-	}
-	
-	//used only for testing
-	public Player() {
-		super();
-	}
-	
-
-
-
 	//The name of the player
 	private String name;
 	
@@ -44,6 +19,33 @@ public abstract class Player {
 	// Cards currently held by the player
 	private ArrayList<Card> hand;
 	
+	public Player(String name, Color color, int row, int column, ArrayList<Card> hand) {
+		super();
+		this.name = name;
+		this.color = color;
+		this.row = row;
+		this.column = column;
+		this.hand = hand;
+	}
+
+
+
+	public Player(String name, Color color) {
+		super();
+		this.name = name;
+		this.color = color;
+		hand = new ArrayList<>();
+	}
+
+
+
+	//used only for testing
+	public Player() {
+		super();
+	}
+
+
+
 	public void updateHand(Card card) {
 		hand.add(card);
 	}
