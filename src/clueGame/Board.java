@@ -615,8 +615,7 @@ public class Board {
 	}
 
 	public boolean checkAccusation(Solution accusation) {
-		//TODO complete function
-		return false;
+		return accusation.equals(theAnswer);
 	}
 	
 	public Card checkSuggestion(Solution solution) {
@@ -696,5 +695,9 @@ public class Board {
 
 	public Solution getSolution() {
 		return theAnswer;
+	}
+	
+	public void setSolution(Solution s) {
+		theAnswer = s;
 	}
 }
