@@ -7,15 +7,16 @@ import java.util.Set;
 public class ComputerPlayer extends Player {
 	
 	Random random;
+	
+	Set<Card> seenCards;
 
 	public ComputerPlayer(String name, Color color, Random random) {
 		super(name, color);
 		this.random = random;
 	}
 	
-	public Solution generateSolution(Card room) {
-		//TODO complete function
-		return null;
+	public Solution createSolution() {
+		return new Solution();
 	}
 	
 	//selects the location of the next move. randomly selects, unless a room center is possible
@@ -35,6 +36,11 @@ public class ComputerPlayer extends Player {
 		return (BoardCell)targets.toArray()[random.nextInt(Integer.MAX_VALUE)%targets.size()];
 		
 	}
+
+	public void setSeenCards(Set<Card> seenCards) {
+		this.seenCards = seenCards;
+	}
+	
 	
 
 }

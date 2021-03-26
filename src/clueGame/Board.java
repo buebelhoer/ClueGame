@@ -704,6 +704,15 @@ public class Board {
 	public Solution getSolution() {
 		return theAnswer;
 	}
+
+    
+
+	public Map<String, Card> getCardMap() {
+		return cardMap;
+	}
+	
+	
+    
 	
 	public void setSolution(Solution s) {
 		theAnswer = s;
