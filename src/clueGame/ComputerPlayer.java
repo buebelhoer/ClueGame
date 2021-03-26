@@ -8,5 +8,15 @@ public class ComputerPlayer extends Player {
 		super(name, color);
 		// TODO Auto-generated constructor stub
 	}
+	
+	public Solution generateSolution(Card room) {
+		//TODO complete function
+		return null;
+	}
+	
+	public BoardCell selectMove(set<BoardCell> targets) {
+		//TODO
+		return null;
+	}
 
 }

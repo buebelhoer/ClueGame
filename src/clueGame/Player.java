@@ -44,6 +44,11 @@ public abstract class Player {
 		super();
 	}
 
+	
+	public Card disproveSuggestion(Solution suggestion) {
+		//TODO complete function
+		return null;
+	}
 
 
 	public void updateHand(Card card) {

@@ -26,7 +26,7 @@ public class Board {
 	private ArrayList<Card> weaponCards;
 
 	//stores game solution
-	private Solution solution;
+	private Solution theAnswer;
 
 	//stores the cells visited. used in target finding algorithm
 	private Set<BoardCell> visited;
@@ -604,7 +604,7 @@ public class Board {
 		int weaponIndex = random.nextInt(Integer.MAX_VALUE)%weaponCards.size();
 		int playerIndex = random.nextInt(Integer.MAX_VALUE)%playerCards.size();
 		
-		solution = new Solution(playerCards.get(playerIndex), roomCards.get(roomIndex), weaponCards.get(weaponIndex));
+		theAnswer = new Solution(playerCards.get(playerIndex), roomCards.get(roomIndex), weaponCards.get(weaponIndex));
 		
 		gameCards.remove(playerCards.get(playerIndex));
 		gameCards.remove(roomCards.get(roomIndex));
@@ -614,6 +614,16 @@ public class Board {
 		}
 	}
 
+	public boolean checkAccusation(Solution accusation) {
+		//TODO complete function
+		return false;
+	}
+	
+	public Card checkSuggestion(Solution solution) {
+		//TODO complete function
+		return null;
+	}
+	
 	/*
 	 * ALL CODE BENEATH THIS POINT SHOULD BE GETTER/SETTERS
 	 */
@@ -685,6 +695,6 @@ public class Board {
 	}
 
 	public Solution getSolution() {
-		return solution;
+		return theAnswer;
 	}
 }
