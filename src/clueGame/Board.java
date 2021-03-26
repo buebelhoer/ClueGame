@@ -627,8 +627,13 @@ public class Board {
 	}
 	
 	public Card checkSuggestion(Solution solution) {
-		//TODO complete function
-		return null;
+		ArrayList<Card> disproved = new ArrayList<>();
+		for (Player p : playerList) {
+			Card d = p.disproveSuggestion(solution);
+			if (!d.equals(null)) {
+				disproved.add(d);
+			}
+		}
 	}
 	
 	/*

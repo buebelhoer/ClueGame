@@ -45,12 +45,10 @@ public class GameSolutionTest {
 	}
 	
 	@Test
-	public void testCheckSuggestion() {
+	public void testDisproveSuggestion() {
 		//intentionally unseeded to ensure consistent results with randomness, prevents tests failing with
 		//a one in a million unlucky roll
 		Player testPlayer = new ComputerPlayer("Test Player", Color.red, new Random(), new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
-		board.setPlayerCount(1);
-		board.setPlayerList(new ArrayList<>(Arrays.asList(testPlayer)));
 		Solution testSolution;
 		
 		//Cards that do not match the solution
@@ -77,22 +75,22 @@ public class GameSolutionTest {
 		//Testing no available disprove
 		testPlayer.setHand(noDisproveHand);
 		testSolution = new Solution(playerTestSolutionCard, roomTestSolutionCard, weaponTestSolutionCard);
-		assertEquals(null, board.checkSuggestion(testSolution));
+		assertEquals(null, testPlayer.disproveSuggestion(testSolution));
 		
 		//Testing person disproves
 		testPlayer.setHand(personDisproveHand);
 		testSolution = new Solution(personTestCard, roomTestSolutionCard, weaponTestSolutionCard);
-		assertEquals(personTestCard, board.checkSuggestion(testSolution));
+		assertEquals(personTestCard, testPlayer.disproveSuggestion(testSolution));
 		
 		//Testing room disproves
 		testPlayer.setHand(roomDisproveHand);
 		testSolution = new Solution(playerTestSolutionCard, roomTestCard, weaponTestSolutionCard);
-		assertEquals(roomTestCard, board.checkSuggestion(testSolution));
+		assertEquals(roomTestCard, testPlayer.disproveSuggestion(testSolution));
 		
 		//Testing weapon disproves
 		testPlayer.setHand(weaponDisproveHand);
 		testSolution = new Solution(playerTestSolutionCard, roomTestSolutionCard, weaponTestCard);
-		assertEquals(weaponTestCard, board.checkSuggestion(testSolution));
+		assertEquals(weaponTestCard, testPlayer.disproveSuggestion(testSolution));
 		
 		//Testing random of two cards disproves
 		final int NUM_RUNS = 50;
@@ -101,9 +99,9 @@ public class GameSolutionTest {
 		for (int i = 0; i < NUM_RUNS; i++) {
 			testPlayer.setHand(twoDisproveHand);
 			testSolution = new Solution(personTestCard, roomTestCard, weaponTestSolutionCard);
-			if (board.checkSuggestion(testSolution).equals(personTestCard)) {
+			if (testPlayer.disproveSuggestion(testSolution).equals(personTestCard)) {
 				personCount++;
-			} else if (board.checkSuggestion(testSolution).equals(roomTestCard)) {
+			} else if (testPlayer.disproveSuggestion(testSolution).equals(roomTestCard)) {
 				roomCount++;
 			} else {
 				otherCount++;
