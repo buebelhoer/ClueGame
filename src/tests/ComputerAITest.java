@@ -30,7 +30,7 @@ public class ComputerAITest {
 	public void testMovement() {
 		Random random = new Random(System.currentTimeMillis());
 		//makes a player to test with
-		ComputerPlayer player = new ComputerPlayer("tester", Color.red, random);
+		ComputerPlayer player = new ComputerPlayer("tester", Color.red, random, board.getRoomCards(), board.getPersonCards(), board.getWeaponCards());
 		
 		
 		//tests that the cell chosen is in the possible options
@@ -77,10 +77,13 @@ public class ComputerAITest {
 		hand.add(cardMap.get("CTLM"));
 		
 		
-		Solution playerSol = player.createSuggestion();
-		assertTrue(hand.contains(playerSol.getRoom()));
-		assertTrue(hand.contains(playerSol.getPerson()));
-		assertTrue(hand.contains(playerSol.getWeapon()));
+		Solution playerSol = player.createSuggestion(cardMap.get("Brown"));
+		assertFalse(hand.contains(playerSol.getPerson()));
+		assertFalse(hand.contains(playerSol.getWeapon()));
+		board.getRoomCards().contains(playerSol.getRoom());
+		board.getPersonCards().contains(playerSol.getPerson());
+		board.getWeaponCards().contains(playerSol.getWeapon());
+		
 		
 		
 		
