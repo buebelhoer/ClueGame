@@ -103,6 +103,11 @@ public abstract class Player {
 		this.hand = hand;
 	}
 	
+	public void setLocation(int row, int column) {
+		this.row = row;
+		this.column = column;
+	}
+	
 	
 	
 	
