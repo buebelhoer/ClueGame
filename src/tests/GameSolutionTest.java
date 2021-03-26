@@ -57,9 +57,9 @@ public class GameSolutionTest {
 		Card weaponTestCard = new Card("Test Weapon", CardType.WEAPON);
 		
 		//Cards that make up the solution
-		Card playerTestSolutionCard = new Card("Test Player", CardType.PERSON);
-		Card roomTestSolutionCard = new Card("Test Room", CardType.ROOM);
-		Card weaponTestSolutionCard = new Card("Test Weapon", CardType.WEAPON);
+		Card playerTestSolutionCard = new Card("Solution Player", CardType.PERSON);
+		Card roomTestSolutionCard = new Card("Solution Room", CardType.ROOM);
+		Card weaponTestSolutionCard = new Card("Solution Weapon", CardType.WEAPON);
 
 		//Hand that has no cards that match solution
 		ArrayList<Card> noDisproveHand = new ArrayList<Card>(Arrays.asList(personTestCard, roomTestCard, weaponTestCard));

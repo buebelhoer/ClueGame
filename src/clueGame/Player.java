@@ -2,6 +2,7 @@ package clueGame;
 
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.Random;
 
 public abstract class Player {
 	
@@ -24,6 +25,9 @@ public abstract class Player {
 	ArrayList<Card> personCards;
 	ArrayList<Card> weaponCards;
 	
+	//Random number gen from host
+	Random rng;
+	
 	public Player(String name, Color color, int row, int column, ArrayList<Card> hand) {
 		super();
 		this.name = name;
@@ -42,7 +46,7 @@ public abstract class Player {
 		hand = new ArrayList<>();
 	}
 	
-	public Player(String name, Color color, ArrayList<Card> roomCards,  ArrayList<Card> personCards, ArrayList<Card> weaponCards) {
+	public Player(String name, Color color, Random rng, ArrayList<Card> roomCards,  ArrayList<Card> personCards, ArrayList<Card> weaponCards) {
 		super();
 		this.name = name;
 		this.color = color;
@@ -50,6 +54,7 @@ public abstract class Player {
 		this.roomCards = roomCards;
 		this.personCards = personCards;
 		this.weaponCards = weaponCards;
+		this.rng = rng;
 	}
 
 
@@ -61,8 +66,15 @@ public abstract class Player {
 
 	
 	public Card disproveSuggestion(Solution suggestion) {
-		//TODO complete function
-		return null;
+		ArrayList<Card> disproveEvidenceList = new ArrayList<>();
+		for (Card c: hand) {
+			if (c.equals(suggestion.getPerson()) || c.equals(suggestion.getRoom()) || c.equals(suggestion.getWeapon())) {
+				disproveEvidenceList.add(c);
+			}
+		}
+		
+		if (disproveEvidenceList.size() == 0) return null;
+		return disproveEvidenceList.get(rng.nextInt(disproveEvidenceList.size() - 1));
 	}
 
 

@@ -6,17 +6,12 @@ import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
 
-public class ComputerPlayer extends Player {
-	
-	Random random;
-	
+public class ComputerPlayer extends Player {	
 	Set<Card> seenCards;
 	
 	public ComputerPlayer(String name, Color color, Random random, ArrayList<Card> roomCards,  ArrayList<Card> personCards, ArrayList<Card> weaponCards) {
-		super(name, color,roomCards,personCards,weaponCards);
-		this.random = random;
+		super(name, color, random, roomCards,personCards,weaponCards);
 		seenCards = new HashSet<>();
-		
 	}
 	
 	public Solution createSuggestion(Card roomCard) {
@@ -25,11 +20,11 @@ public class ComputerPlayer extends Player {
 		
 		
 		do {
-			personCard = personCards.get(random.nextInt(Integer.MAX_VALUE)%personCards.size());
+			personCard = personCards.get(rng.nextInt(Integer.MAX_VALUE)%personCards.size());
 		} while (seenCards.contains(personCard));
 		
 		do {
-			weaponCard = weaponCards.get(random.nextInt(Integer.MAX_VALUE)%weaponCards.size());
+			weaponCard = weaponCards.get(rng.nextInt(Integer.MAX_VALUE)%weaponCards.size());
 		} while (seenCards.contains(weaponCard));
 		
 		
@@ -45,13 +40,12 @@ public class ComputerPlayer extends Player {
 		//checks for room center
 		for (BoardCell cell :targets) {
 			if(cell.isRoomCenter()) {
-				return cell;
 			}
 		}
 		
 		//I really hate this code, but its the best way to do this
 		//Randomly grabs an element of the targets and returns it
-		return (BoardCell)targets.toArray()[random.nextInt(Integer.MAX_VALUE)%targets.size()];
+		return (BoardCell)targets.toArray()[rng.nextInt(Integer.MAX_VALUE)%targets.size()];
 		
 	}
 
