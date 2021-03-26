@@ -12,6 +12,11 @@ public class Card {
 	}
 
 
+	public Card() {
+		// This is for testing
+	}
+
+
 	public boolean equals(Card target) {
 		return target.getCardName().equals(this.cardName);
 	}

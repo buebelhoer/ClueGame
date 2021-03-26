@@ -69,11 +69,17 @@ public class ComputerAITest {
 		Map<String,Card> cardMap = board.getCardMap();
 		
 		ArrayList<Card> hand = new ArrayList<>();
+		hand.add(cardMap.get("Blaster"));
+		hand.add(cardMap.get("Marvin"));
+		hand.add(cardMap.get("Laptop"));
+		hand.add(cardMap.get("Laser"));
+		hand.add(cardMap.get("Brown"));
+		hand.add(cardMap.get("CTLM"));
 		
-		player.updateHand();
+		
 		Solution playerSol = player.createSolution();
 		assertTrue(hand.contains(playerSol.getRoom()));
-		assertTrue(hand.contains(playerSol.getPlayer()));
+		assertTrue(hand.contains(playerSol.getPerson()));
 		assertTrue(hand.contains(playerSol.getWeapon()));
 		
 		

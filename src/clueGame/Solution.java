@@ -12,6 +12,17 @@ public class Solution {
 		this.weapon = weapon;
 	}
 
+	public Solution() {
+		// This is for testing only
+		super();
+		this.person = new Card();
+		this.room = new Card();
+		this.weapon = new Card();
+		
+	}
+
+
+
 	public Card getPerson() {
 		return person;
 	}
