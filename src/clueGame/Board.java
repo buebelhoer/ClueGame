@@ -36,6 +36,9 @@ public class Board {
 
 	//maps the character symbol of a room to the room object itself
 	private Map<Character,Room> roomMap;
+	
+	//maps the Strings of the names of the cards with the Card Objects, for maps only
+	private Map<String, Card> cardMap;
 
 	//strings that hold the filename of the config files.
 	private String layoutConfigFile, setupConfigFile;
@@ -288,6 +291,7 @@ public class Board {
 		playerCards = new ArrayList<>();
 		weaponCards = new ArrayList<>();
 		roomCards = new ArrayList<>();
+		cardMap = new HashMap<>();
 
 		playerCount = 0;
 		try {
@@ -373,6 +377,7 @@ public class Board {
 		Card card = new Card(roomName, CardType.ROOM);
 		gameCards.add(card);
 		roomCards.add(card);
+		cardMap.put(roomName, card);
 	}
 
 	//helper function for when load setup determines it is adding a weapon card
@@ -381,6 +386,7 @@ public class Board {
 		Card card = new Card(data, CardType.WEAPON);
 		gameCards.add(card);
 		weaponCards.add(card);
+		cardMap.put(data, card);
 	}
 
 	//helper function for when load setup determines it is adding a player card
@@ -417,6 +423,8 @@ public class Board {
 
 		gameCards.add(card);
 		playerCards.add(card);
+		
+		cardMap.put(playerName, card);
 
 		playerCount++;
 
