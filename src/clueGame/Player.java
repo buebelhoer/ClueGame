@@ -73,8 +73,8 @@ public abstract class Player {
 			}
 		}
 		
-		if (disproveEvidenceList.size() == 0) return null;
-		return disproveEvidenceList.get(rng.nextInt(disproveEvidenceList.size() - 1));
+		if (disproveEvidenceList.isEmpty()) return null;
+		return disproveEvidenceList.get(rng.nextInt(disproveEvidenceList.size()));
 	}
 
 

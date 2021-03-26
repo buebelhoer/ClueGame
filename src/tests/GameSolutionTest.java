@@ -80,17 +80,14 @@ public class GameSolutionTest {
 		
 		//Testing person disproves
 		testPlayer.setHand(personDisproveHand);
-		testSolution = new Solution(personTestCard, roomTestSolutionCard, weaponTestSolutionCard);
 		assertEquals(personTestCard, testPlayer.disproveSuggestion(testSolution));
 		
 		//Testing room disproves
 		testPlayer.setHand(roomDisproveHand);
-		testSolution = new Solution(playerTestSolutionCard, roomTestCard, weaponTestSolutionCard);
 		assertEquals(roomTestCard, testPlayer.disproveSuggestion(testSolution));
 		
 		//Testing weapon disproves
 		testPlayer.setHand(weaponDisproveHand);
-		testSolution = new Solution(playerTestSolutionCard, roomTestSolutionCard, weaponTestCard);
 		assertEquals(weaponTestCard, testPlayer.disproveSuggestion(testSolution));
 		
 		//Testing random of two cards disproves
@@ -99,7 +96,6 @@ public class GameSolutionTest {
 		
 		for (int i = 0; i < NUM_RUNS; i++) {
 			testPlayer.setHand(twoDisproveHand);
-			testSolution = new Solution(personTestCard, roomTestCard, weaponTestSolutionCard);
 			if (testPlayer.disproveSuggestion(testSolution).equals(personTestCard)) {
 				personCount++;
 			} else if (testPlayer.disproveSuggestion(testSolution).equals(roomTestCard)) {
