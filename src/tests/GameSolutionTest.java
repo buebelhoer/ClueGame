@@ -163,7 +163,7 @@ public class GameSolutionTest {
 		//checks 50 solutions to test randomly returning one of the two cards
 		for (int i = 0; i < 50; i++) {
 			checkedCard = board.checkSuggestion(new Solution((Card)cardMap.get("Blaster"), new Card(),(Card)cardMap.get("Laptop")));
-			//setermines which card was returned
+			//determines which card was returned
 			if (checkedCard == (Card)cardMap.get("Blaster")) personcount++;
 			if (checkedCard == (Card)cardMap.get("Laptop")) weaponcount++;
 		}

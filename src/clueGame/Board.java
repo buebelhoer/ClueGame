@@ -627,14 +627,16 @@ public class Board {
 	}
 	
 	public Card checkSuggestion(Solution solution) {
-//		ArrayList<Card> disproved = new ArrayList<>();
-//		for (Player p : playerList) {
-//			Card d = p.disproveSuggestion(solution);
-//			if (!d.equals(null)) {
-//				disproved.add(d);
-//			}
-//		}
-		return new Card();
+		ArrayList<Card> disproved = new ArrayList<>();
+		for (Player p : playerList) {
+			Card d = p.disproveSuggestion(solution);
+			if (!(d==null)) {
+				disproved.add(d);
+			}
+		}
+		if (disproved.isEmpty()) return null;
+		
+		return disproved.get(random.nextInt(Integer.MAX_VALUE)%disproved.size());
 	}
 	
 	/*
