@@ -10,8 +10,6 @@ public class ComputerPlayer extends Player {
 	Random random;
 	
 	Set<Card> seenCards;
-
-	
 	
 	public ComputerPlayer(String name, Color color, Random random, ArrayList<Card> roomCards,  ArrayList<Card> personCards, ArrayList<Card> weaponCards) {
 		super(name, color);

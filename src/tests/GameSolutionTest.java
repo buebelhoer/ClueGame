@@ -48,7 +48,9 @@ public class GameSolutionTest {
 	public void testCheckSuggestion() {
 		//intentionally unseeded to ensure consistent results with randomness, prevents tests failing with
 		//a one in a million unlucky roll
-		Player testPlayer = new ComputerPlayer("Test Player", Color.red, new Random());
+		Player testPlayer = new ComputerPlayer("Test Player", Color.red, new Random(), new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
+		board.setPlayerCount(1);
+		board.setPlayerList(new ArrayList<>(Arrays.asList(testPlayer)));
 		Solution testSolution;
 		
 		//Cards that do not match the solution
