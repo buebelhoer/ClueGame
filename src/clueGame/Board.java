@@ -623,8 +623,7 @@ public class Board {
 	}
 
 	public boolean checkAccusation(Solution accusation) {
-		//TODO complete function
-		return false;
+		return accusation.equals(theAnswer);
 	}
 	
 	public Card checkSuggestion(Solution solution) {
@@ -706,9 +705,16 @@ public class Board {
 		return theAnswer;
 	}
 
+    
+
 	public Map<String, Card> getCardMap() {
 		return cardMap;
 	}
 	
 	
+    
+	
+	public void setSolution(Solution s) {
+		theAnswer = s;
+	}
 }

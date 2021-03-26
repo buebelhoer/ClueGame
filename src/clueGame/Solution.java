@@ -1,19 +1,19 @@
 package clueGame;
 
 public class Solution {
-	private Card player;
+	private Card person;
 	private Card room;
 	private Card weapon;
 	
 	public Solution(Card player, Card room, Card weapon) {
 		super();
-		this.player = player;
+		this.person = player;
 		this.room = room;
 		this.weapon = weapon;
 	}
 
-	public Card getPlayer() {
-		return player;
+	public Card getPerson() {
+		return person;
 	}
 
 	public Card getRoom() {
@@ -25,6 +25,6 @@ public class Solution {
 	}
 	
 	public boolean equals(Solution s) {
-		return s.getPlayer().equals(player) && s.getRoom().equals(room) && s.getWeapon().equals(weapon);
+		return s.getPerson().equals(person) && s.getRoom().equals(room) && s.getWeapon().equals(weapon);
 	}
 }
