@@ -23,4 +23,8 @@ public class Solution {
 	public Card getWeapon() {
 		return weapon;
 	}
+	
+	public boolean equals(Solution s) {
+		return s.getPlayer().equals(player) && s.getRoom().equals(room) && s.getWeapon().equals(weapon);
+	}
 }
