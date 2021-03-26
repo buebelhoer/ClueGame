@@ -116,4 +116,9 @@ public class GameSolutionTest {
 		//Assures only people and rooms were returned
 		assertTrue(otherCount == 0);
 	}
+	
+	@Test
+	public void testSuggestionHandling() {
+		
+	}
 }
