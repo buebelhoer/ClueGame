@@ -1,6 +1,7 @@
 package clueGame;
 
 import java.awt.Color;
+import java.util.Set;
 
 public class ComputerPlayer extends Player {
 
@@ -14,7 +15,7 @@ public class ComputerPlayer extends Player {
 		return null;
 	}
 	
-	public BoardCell selectMove(set<BoardCell> targets) {
+	public BoardCell selectMove(Set<BoardCell> targets) {
 		//TODO
 		return null;
 	}
