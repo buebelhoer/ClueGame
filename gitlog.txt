@@ -1,3 +1,203 @@
+commit b65f747a65ec265faba856cfb6fa7a9339c89cc1
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Fri Mar 26 00:32:59 2021 -0600
+
+    fixed error relating to hand in tests
+
+commit e5723d253d53035e435f52c16e32da19a562e3da
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Fri Mar 26 00:17:00 2021 -0600
+
+    Auto stash before merge of "master" and "origin/master"
+
+commit 4f2fac4b6c7b2b8da3d58ad0abcd142c211bea93
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Fri Mar 26 00:15:03 2021 -0600
+
+    fixed disprove sugg
+
+commit ec5236e8dd70efdc483e6bcc03739b1f59f724c3
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Thu Mar 25 23:58:58 2021 -0600
+
+    more attempted fixes
+
+commit 2b452048f573af8eef88a0a07fc1710ff3e7ad38
+Merge: 3bcefc8 19f8aa7
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Thu Mar 25 23:49:35 2021 -0600
+
+    Merge branch 'master' of https://github.com/buebelhoer/ClueLayout
+
+commit 3bcefc85ce8e3698390a4a37e2a7909b14fb15bf
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Thu Mar 25 23:49:12 2021 -0600
+
+    attempting to fix disprove sugg
+
+commit 19f8aa768c15029726194a82fc08d5de4739e443
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Thu Mar 25 23:48:21 2021 -0600
+
+    implemented handle suggestion, need player disprove suggestion to function before debuging
+
+commit 3ff6a3175b0fe8f3b051feb602c2a01c40f6b07f
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Thu Mar 25 23:42:24 2021 -0600
+
+    implemented handle suggestion test
+
+commit 64f4bd0cd878835ca589968966eac4eab8439eae
+Merge: 7566bd1 b18b25c
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Thu Mar 25 23:20:52 2021 -0600
+
+    Merge branch 'master' of https://github.com/buebelhoer/ClueLayout
+
+commit 7566bd17379636a705b616f54b916e36da681138
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Thu Mar 25 23:20:44 2021 -0600
+
+    changed check sugg test to disprove test
+
+commit b18b25cdff71ee3dbcc75eb664b4a5dfbb61c911
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Thu Mar 25 23:20:40 2021 -0600
+
+    Added check suggestion handling function stub
+
+commit 132adc9cb98dfa3d4160b10352806e18848b2b19
+Merge: c053669 f8b6083
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Thu Mar 25 23:14:17 2021 -0600
+
+    Merge remote-tracking branch 'origin/master'
+
+commit c053669cffc8b4f3b969485e1e6aefd34f2d6016
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Thu Mar 25 23:14:15 2021 -0600
+
+    finished implementing createsuggestion
+
+commit f8b6083ec8cbdedbd62c2080224d809032cc6abc
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Thu Mar 25 23:06:47 2021 -0600
+
+    fixed check suggest test to use test player as board player list
+
+commit 70d5157788afb50811947ef1f7068fcca9426564
+Merge: e94bbea d41d2f1
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Thu Mar 25 22:58:56 2021 -0600
+
+    Merge remote-tracking branch 'origin/master'
+
+commit e94bbeae7419f3b384abaab00912b68f2a1fbf85
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Thu Mar 25 22:58:50 2021 -0600
+
+    Started imlementing generatesuggestion
+
+commit d41d2f1f62693a8e3f92c86552610c0f4e81a167
+Merge: b21b3f9 913b233
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Thu Mar 25 22:57:30 2021 -0600
+
+    Merge branch 'master' of https://github.com/buebelhoer/ClueLayout
+
+commit b21b3f93edfcb2097db87075454ab6af2a471aa5
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Thu Mar 25 22:57:20 2021 -0600
+
+    implemented check suggest test
+
+commit 913b233fee98faa108d4c50d62a729f67a6d5ba1
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Thu Mar 25 22:42:02 2021 -0600
+
+    implemented createSOlution tests
+
+commit b3199ee807cd21f91303ff424944d7f6d1aa9d39
+Merge: a36de4e 3f50266
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Thu Mar 25 22:35:33 2021 -0600
+
+    Merge remote-tracking branch 'origin/master'
+
+commit a36de4e5aa94584a855123891d07b6ef094a1d98
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Thu Mar 25 22:34:47 2021 -0600
+
+    started player disprove suggestion
+
+commit 3f50266ebff5806b9d4a964c05f4ef1220bb9146
+Merge: 41fa9fd 2500a5a
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Thu Mar 25 22:28:25 2021 -0600
+
+    Merge branch 'master' of https://github.com/buebelhoer/ClueLayout
+
+commit 41fa9fd0b6cd6390398054327569e38063dd864a
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Thu Mar 25 22:28:14 2021 -0600
+
+    implemented check acc test
+
+commit 2500a5a9ba80a616815cf193e5eba8be2e734661
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Thu Mar 25 22:27:56 2021 -0600
+
+    Added CardMap
+
+commit 71eac3de0bfbc7692e82b2dfb10f51a0be11b637
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Thu Mar 25 22:09:24 2021 -0600
+
+    Implemented AI moves
+
+commit 02cba2ba5d98f39e169ccc283e314ac03c8d30c7
+Merge: af93b52 1d9d2ea
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Thu Mar 25 21:54:49 2021 -0600
+
+    Merge remote-tracking branch 'origin/master'
+
+commit af93b52662898816775a5158f53888dbf970819e
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Thu Mar 25 21:54:48 2021 -0600
+
+    implemented AI movement tests
+
+commit 1d9d2ea52cbd041bbacf4e6adfae97ee97bff528
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Thu Mar 25 21:47:29 2021 -0600
+
+    implemented equals function to solution
+
+commit 3d8e23d74003b7dbacf943b51310cd5c9620043e
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Thu Mar 25 21:24:32 2021 -0600
+
+    fixed Set refrence
+
+commit 73985b12950c635a75a398fd12f8ad531fe53d8c
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Thu Mar 25 21:23:54 2021 -0600
+
+    Added function stubs for next tests
+
+commit 002d2e2041833462dd0b02dd48356172a3e10a34
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Thu Mar 25 21:15:09 2021 -0600
+
+    Added test classes for solution logic
+
+commit 85f635de4a448df6be2147560ab3e684fb2130cc
+Author: Buebelhoer <buebelhoer@mymail.mines.edu>
+Date:   Sun Mar 21 20:39:39 2021 -0600
+
+    added c18 submission
+
 commit 72659f039677f7817d8ec80ac38c63655b5f8ace
 Author: bMorgan01 <ben.morgan5000@gmail.com>
 Date:   Sun Mar 21 20:26:36 2021 -0600
