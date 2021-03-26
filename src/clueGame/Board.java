@@ -630,10 +630,13 @@ public class Board {
 		ArrayList<Card> disproved = new ArrayList<>();
 		for (Player p : playerList) {
 			Card d = p.disproveSuggestion(solution);
-			if (!d.equals(null)) {
+			if (!(d==null)) {
 				disproved.add(d);
 			}
 		}
+		if (disproved.isEmpty()) return null;
+		
+		return disproved.get(random.nextInt(Integer.MAX_VALUE)%disproved.size());
 	}
 	
 	/*

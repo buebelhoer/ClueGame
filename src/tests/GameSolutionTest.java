@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Map;
 import java.util.Random;
 
 import org.junit.jupiter.api.Test;
@@ -117,6 +118,60 @@ public class GameSolutionTest {
 	
 	@Test
 	public void testSuggestionHandling() {
+		//creates three players and overrides Board's playerlist to be just these three
+		ComputerPlayer player1 = new ComputerPlayer("test1",Color.red, new Random(System.currentTimeMillis()), board.getRoomCards(), board.getPersonCards(), board.getWeaponCards());
+		ComputerPlayer player2 = new ComputerPlayer("test2",Color.red, new Random(System.currentTimeMillis()), board.getRoomCards(), board.getPersonCards(), board.getWeaponCards());
+		ComputerPlayer player3 = new ComputerPlayer("test3",Color.red, new Random(System.currentTimeMillis()), board.getRoomCards(), board.getPersonCards(), board.getWeaponCards());
+		ArrayList<Player> players = new ArrayList<Player>();
+		players.add(player1);
+		players.add(player2);
+		players.add(player3);
+		board.setPlayerList(players);
+		board.setPlayerCount(3);
+		
+		//gets the map of cards
+		Map cardMap = board.getCardMap();
+		
+		//adds a single card to each player
+		player1.updateHand((Card)cardMap.get("Blaster"));
+		player2.updateHand((Card)cardMap.get("Marvin"));
+		player3.updateHand((Card)cardMap.get("PCJ"));
+		
+		//creates a solution designed to force player 1 to show their card
+		Card checkedCard = board.checkSuggestion(new Solution((Card)cardMap.get("Blaster"), new Card(), new Card()));
+		assertTrue(checkedCard == (Card)cardMap.get("Blaster"));
+		
+		//creates a solution designed to force player 2 to show their card
+		checkedCard = board.checkSuggestion(new Solution((Card)cardMap.get("Marvin"), new Card(), new Card()));
+		assertTrue(checkedCard == (Card)cardMap.get("Marvin"));
+		
+		//creates a solution designed to force player 3 to show their card
+		checkedCard = board.checkSuggestion(new Solution((Card)cardMap.get("PCJ"), new Card(), new Card()));
+		assertTrue(checkedCard == (Card)cardMap.get("PCJ"));
+		
+		//creates a solution where no one can disprove
+		checkedCard = board.checkSuggestion(new Solution((Card)cardMap.get("Paone"), new Card(), new Card()));
+		assertTrue(checkedCard == null);
+		
+		//creates a situation where two players both have cards that can disprove
+		player2.updateHand((Card)cardMap.get("Laptop"));
+		
+		//tracks how many times each card was returned
+		int personcount= 0;
+		int weaponcount = 0;
+		
+		//checks 50 solutions to test randomly returning one of the two cards
+		for (int i = 0; i < 50; i++) {
+			checkedCard = board.checkSuggestion(new Solution((Card)cardMap.get("Blaster"), new Card(),(Card)cardMap.get("Laptop")));
+			//determines which card was returned
+			if (checkedCard == (Card)cardMap.get("Blaster")) personcount++;
+			if (checkedCard == (Card)cardMap.get("Laptop")) weaponcount++;
+		}
+		
+		//checks that both cards were returned at least once
+		assertTrue(personcount > 1);
+		assertTrue(weaponcount > 1);
+		
 		
 	}
 }
