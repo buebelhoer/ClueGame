@@ -1,6 +1,7 @@
 package clueGame;
 
 import java.awt.Color;
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Set;
 
@@ -10,12 +11,29 @@ public class ComputerPlayer extends Player {
 	
 	Set<Card> seenCards;
 
-	public ComputerPlayer(String name, Color color, Random random) {
+	
+	
+	public ComputerPlayer(String name, Color color, Random random, ArrayList<Card> roomCards,  ArrayList<Card> personCards, ArrayList<Card> weaponCards) {
 		super(name, color);
 		this.random = random;
+		
 	}
 	
-	public Solution createSolution() {
+	public Solution createSuggestion(Card room) {
+		Card personCard;
+		Card weaponCard;
+		
+		
+		do {
+			personCard = personCards.get(random.nextInt(Integer.MAX_VALUE)%personCards.size());
+		} while (!seenCards.contains(personCard));
+		
+		do {
+			weaponCard = weaponCards.get(random.nextInt(Integer.MAX_VALUE)%weaponCards.size());
+		} while (!seenCards.contains(weaponCard));
+		
+		
+		
 		return new Solution();
 	}
 	

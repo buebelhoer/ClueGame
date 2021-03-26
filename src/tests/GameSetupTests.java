@@ -40,7 +40,7 @@ public class GameSetupTests {
 	
 	@Test
 	public void testCardDeck() {
-		assertEquals(NUM_PLAYERS, board.getPlayerCards().size());
+		assertEquals(NUM_PLAYERS, board.getPersonCards().size());
 		assertEquals(NUM_ROOMS, board.getRoomCards().size());
 		
 		assertEquals(NUM_WEAPONS, board.getWeaponCards().size());

@@ -21,7 +21,7 @@ public class Board {
 	private ArrayList<Card> gameCards;
 
 	//stores categorized cards, will not change as game progress, may prove useful later, may not
-	private ArrayList<Card> playerCards;
+	private ArrayList<Card> personCards;
 	private ArrayList<Card> roomCards;
 	private ArrayList<Card> weaponCards;
 
@@ -288,7 +288,7 @@ public class Board {
 		roomMap = new HashMap<>();
 		playerList = new ArrayList<>();
 		gameCards = new ArrayList<>();
-		playerCards = new ArrayList<>();
+		personCards = new ArrayList<>();
 		weaponCards = new ArrayList<>();
 		roomCards = new ArrayList<>();
 		cardMap = new HashMap<>();
@@ -413,16 +413,16 @@ public class Board {
 		Player player;
 
 		if (playerType.equals("Human")) {
-			player = new HumanPlayer(playerName, color);
+			player = new HumanPlayer(playerName, color, roomCards, personCards, weaponCards);
 		} else {
-			player = new ComputerPlayer(playerName, color, random);
+			player = new ComputerPlayer(playerName, color, random, roomCards, personCards, weaponCards);
 		}
 		playerList.add(player);
 
 		Card card = new Card(playerName, CardType.PERSON);
 
 		gameCards.add(card);
-		playerCards.add(card);
+		personCards.add(card);
 		
 		cardMap.put(playerName, card);
 
@@ -610,11 +610,11 @@ public class Board {
 		try {
 		int roomIndex = random.nextInt(Integer.MAX_VALUE)%roomCards.size();
 		int weaponIndex = random.nextInt(Integer.MAX_VALUE)%weaponCards.size();
-		int playerIndex = random.nextInt(Integer.MAX_VALUE)%playerCards.size();
+		int playerIndex = random.nextInt(Integer.MAX_VALUE)%personCards.size();
 		
-		theAnswer = new Solution(playerCards.get(playerIndex), roomCards.get(roomIndex), weaponCards.get(weaponIndex));
+		theAnswer = new Solution(personCards.get(playerIndex), roomCards.get(roomIndex), weaponCards.get(weaponIndex));
 		
-		gameCards.remove(playerCards.get(playerIndex));
+		gameCards.remove(personCards.get(playerIndex));
 		gameCards.remove(roomCards.get(roomIndex));
 		gameCards.remove(weaponCards.get(weaponIndex));
 		} catch (ArithmeticException e) {
@@ -689,8 +689,8 @@ public class Board {
 		this.gameCards = gameCards;
 	}
 
-	public ArrayList<Card> getPlayerCards() {
-		return playerCards;
+	public ArrayList<Card> getPersonCards() {
+		return personCards;
 	}
 
 	public ArrayList<Card> getRoomCards() {

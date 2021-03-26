@@ -64,7 +64,7 @@ public class ComputerAITest {
 	public void TestSuggestion() {
 		Random random = new Random(System.currentTimeMillis());
 		//Makes a player to test with
-		ComputerPlayer player = new ComputerPlayer("tester", Color.red, random);
+		ComputerPlayer player = new ComputerPlayer("tester", Color.red, random, board.getRoomCards(), board.getPersonCards(), board.getWeaponCards());
 		
 		Map<String,Card> cardMap = board.getCardMap();
 		
@@ -77,7 +77,7 @@ public class ComputerAITest {
 		hand.add(cardMap.get("CTLM"));
 		
 		
-		Solution playerSol = player.createSolution();
+		Solution playerSol = player.createSuggestion();
 		assertTrue(hand.contains(playerSol.getRoom()));
 		assertTrue(hand.contains(playerSol.getPerson()));
 		assertTrue(hand.contains(playerSol.getWeapon()));

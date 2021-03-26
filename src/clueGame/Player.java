@@ -19,6 +19,11 @@ public abstract class Player {
 	// Cards currently held by the player
 	private ArrayList<Card> hand;
 	
+	//stores all of the possible cards, passed in by constructor
+	ArrayList<Card> roomCards;
+	ArrayList<Card> personCards;
+	ArrayList<Card> weaponCards;
+	
 	public Player(String name, Color color, int row, int column, ArrayList<Card> hand) {
 		super();
 		this.name = name;
@@ -35,6 +40,16 @@ public abstract class Player {
 		this.name = name;
 		this.color = color;
 		hand = new ArrayList<>();
+	}
+	
+	public Player(String name, Color color, ArrayList<Card> roomCards,  ArrayList<Card> personCards, ArrayList<Card> weaponCards) {
+		super();
+		this.name = name;
+		this.color = color;
+		hand = new ArrayList<>();
+		this.roomCards = roomCards;
+		this.personCards = personCards;
+		this.weaponCards = weaponCards;
 	}
 
 
