@@ -75,6 +75,7 @@ public class ComputerAITest {
 		hand.add(cardMap.get("Laser"));
 		hand.add(cardMap.get("Brown"));
 		hand.add(cardMap.get("CTLM"));
+		player.setHand(hand);
 		
 		
 		Solution playerSol = player.createSuggestion(cardMap.get("Brown"));

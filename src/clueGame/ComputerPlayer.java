@@ -21,11 +21,11 @@ public class ComputerPlayer extends Player {
 		
 		do {
 			personCard = personCards.get(rng.nextInt(Integer.MAX_VALUE)%personCards.size());
-		} while (seenCards.contains(personCard));
+		} while (seenCards.contains(personCard) || hand.contains(personCard));
 		
 		do {
 			weaponCard = weaponCards.get(rng.nextInt(Integer.MAX_VALUE)%weaponCards.size());
-		} while (seenCards.contains(weaponCard));
+		} while (seenCards.contains(weaponCard)|| hand.contains(weaponCard));
 		
 		
 		
@@ -40,6 +40,7 @@ public class ComputerPlayer extends Player {
 		//checks for room center
 		for (BoardCell cell :targets) {
 			if(cell.isRoomCenter()) {
+				return cell;
 			}
 		}
 		

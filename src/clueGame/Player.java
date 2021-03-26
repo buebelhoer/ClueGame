@@ -9,16 +9,16 @@ public abstract class Player {
 	
 	
 	//The name of the player
-	private String name;
+	protected String name;
 	
 	// The color that represents this player
-	private Color color;
+	protected Color color;
 	
 	// The current location of the player
-	private int row, column;
+	protected int row, column;
 	
 	// Cards currently held by the player
-	private ArrayList<Card> hand;
+	protected ArrayList<Card> hand;
 	
 	//stores all of the possible cards, passed in by constructor
 	ArrayList<Card> roomCards;

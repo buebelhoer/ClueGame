@@ -135,19 +135,19 @@ public class GameSolutionTest {
 		player3.updateHand((Card)cardMap.get("PCJ"));
 		
 		//creates a solution designed to force player 1 to show their card
-		Card checkedCard = board.checkSuggestion(new Solution((Card)cardMap.get("Blaster"), new Card(), new Card()));
+		Card checkedCard = board.checkSuggestion(new Solution((Card)cardMap.get("Blaster"), new Card("Roomcard", CardType.ROOM), new Card("WeaponCard", CardType.WEAPON)));
 		assertTrue(checkedCard == (Card)cardMap.get("Blaster"));
 		
 		//creates a solution designed to force player 2 to show their card
-		checkedCard = board.checkSuggestion(new Solution((Card)cardMap.get("Marvin"), new Card(), new Card()));
+		checkedCard = board.checkSuggestion(new Solution((Card)cardMap.get("Marvin"), new Card("Roomcard", CardType.ROOM), new Card("WeaponCard", CardType.WEAPON)));
 		assertTrue(checkedCard == (Card)cardMap.get("Marvin"));
 		
 		//creates a solution designed to force player 3 to show their card
-		checkedCard = board.checkSuggestion(new Solution((Card)cardMap.get("PCJ"), new Card(), new Card()));
+		checkedCard = board.checkSuggestion(new Solution((Card)cardMap.get("PCJ"), new Card("Roomcard", CardType.ROOM), new Card("WeaponCard", CardType.WEAPON)));
 		assertTrue(checkedCard == (Card)cardMap.get("PCJ"));
 		
 		//creates a solution where no one can disprove
-		checkedCard = board.checkSuggestion(new Solution((Card)cardMap.get("Paone"), new Card(), new Card()));
+		checkedCard = board.checkSuggestion(new Solution((Card)cardMap.get("Paone"), new Card("Roomcard", CardType.ROOM), new Card("WeaponCard", CardType.WEAPON)));
 		assertTrue(checkedCard == null);
 		
 		//creates a situation where two players both have cards that can disprove
@@ -159,7 +159,7 @@ public class GameSolutionTest {
 		
 		//checks 50 solutions to test randomly returning one of the two cards
 		for (int i = 0; i < 50; i++) {
-			checkedCard = board.checkSuggestion(new Solution((Card)cardMap.get("Blaster"), new Card(),(Card)cardMap.get("Laptop")));
+			checkedCard = board.checkSuggestion(new Solution((Card)cardMap.get("Blaster"), new Card("Roomcard", CardType.ROOM),(Card)cardMap.get("Laptop")));
 			//determines which card was returned
 			if (checkedCard == (Card)cardMap.get("Blaster")) personcount++;
 			if (checkedCard == (Card)cardMap.get("Laptop")) weaponcount++;
