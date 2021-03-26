@@ -168,6 +168,7 @@ public class GameSolutionTest {
 		//checks that both cards were returned at least once
 		assertTrue(personcount > 1);
 		assertTrue(weaponcount > 1);
+		assertTrue(personcount + weaponcount == 50);
 		
 		
 	}
