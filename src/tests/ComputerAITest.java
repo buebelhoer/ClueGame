@@ -1,7 +1,9 @@
 package tests;
 
 import java.awt.Color;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 
@@ -27,6 +29,7 @@ public class ComputerAITest {
 	@Test
 	public void testMovement() {
 		Random random = new Random(System.currentTimeMillis());
+		//makes a player to test with
 		ComputerPlayer player = new ComputerPlayer("tester", Color.red, random);
 		
 		
@@ -54,6 +57,26 @@ public class ComputerAITest {
 		targets = board.getTargets();//gets the targets
 		chosenCell = player.selectMove(targets);//selects a target to move to
 		assertTrue(chosenCell == board.getCell(3, 11));//the chosen cell should be the room center
+		
+	}
+	
+	@Test
+	public void TestSuggestion() {
+		Random random = new Random(System.currentTimeMillis());
+		//Makes a player to test with
+		ComputerPlayer player = new ComputerPlayer("tester", Color.red, random);
+		
+		Map<String,Card> cardMap = board.getCardMap();
+		
+		ArrayList<Card> hand = new ArrayList<>();
+		
+		player.updateHand();
+		Solution playerSol = player.createSolution();
+		assertTrue(hand.contains(playerSol.getRoom()));
+		assertTrue(hand.contains(playerSol.getPlayer()));
+		assertTrue(hand.contains(playerSol.getWeapon()));
+		
+		
 		
 	}
 

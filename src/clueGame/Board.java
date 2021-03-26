@@ -705,4 +705,10 @@ public class Board {
 	public Solution getSolution() {
 		return theAnswer;
 	}
+
+	public Map<String, Card> getCardMap() {
+		return cardMap;
+	}
+	
+	
 }

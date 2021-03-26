@@ -7,13 +7,15 @@ import java.util.Set;
 public class ComputerPlayer extends Player {
 	
 	Random random;
+	
+	Set<Card> seenCards
 
 	public ComputerPlayer(String name, Color color, Random random) {
 		super(name, color);
 		this.random = random;
 	}
 	
-	public Solution generateSolution(Card room) {
+	public Solution createSolution() {
 		//TODO complete function
 		return null;
 	}
