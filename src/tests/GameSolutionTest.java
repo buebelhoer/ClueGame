@@ -58,7 +58,7 @@ public class GameSolutionTest {
 		Card weaponTestCard = new Card("Test Weapon", CardType.WEAPON);
 		
 		//Cards that make up the solution
-		Card playerTestSolutionCard = new Card("Solution Player", CardType.PERSON);
+		Card personTestSolutionCard = new Card("Solution Player", CardType.PERSON);
 		Card roomTestSolutionCard = new Card("Solution Room", CardType.ROOM);
 		Card weaponTestSolutionCard = new Card("Solution Weapon", CardType.WEAPON);
 
@@ -66,29 +66,29 @@ public class GameSolutionTest {
 		ArrayList<Card> noDisproveHand = new ArrayList<Card>(Arrays.asList(personTestCard, roomTestCard, weaponTestCard));
 		
 		//Hands that have one card that matches the solution
-		ArrayList<Card> personDisproveHand = new ArrayList<Card>(Arrays.asList(playerTestSolutionCard, roomTestCard, weaponTestCard));
+		ArrayList<Card> personDisproveHand = new ArrayList<Card>(Arrays.asList(personTestSolutionCard, roomTestCard, weaponTestCard));
 		ArrayList<Card> roomDisproveHand = new ArrayList<Card>(Arrays.asList(personTestCard, roomTestSolutionCard, weaponTestCard));
 		ArrayList<Card> weaponDisproveHand = new ArrayList<Card>(Arrays.asList(personTestCard, roomTestCard, weaponTestSolutionCard));
 		
 		//Hand that has two cards that match solution
-		ArrayList<Card> twoDisproveHand = new ArrayList<Card>(Arrays.asList(playerTestSolutionCard, roomTestSolutionCard, weaponTestCard));
+		ArrayList<Card> twoDisproveHand = new ArrayList<Card>(Arrays.asList(personTestSolutionCard, roomTestSolutionCard, weaponTestCard));
 	
 		//Testing no available disprove
 		testPlayer.setHand(noDisproveHand);
-		testSolution = new Solution(playerTestSolutionCard, roomTestSolutionCard, weaponTestSolutionCard);
+		testSolution = new Solution(personTestSolutionCard, roomTestSolutionCard, weaponTestSolutionCard);
 		assertEquals(null, testPlayer.disproveSuggestion(testSolution));
 		
 		//Testing person disproves
 		testPlayer.setHand(personDisproveHand);
-		assertEquals(personTestCard, testPlayer.disproveSuggestion(testSolution));
+		assertEquals(personTestSolutionCard, testPlayer.disproveSuggestion(testSolution));
 		
 		//Testing room disproves
 		testPlayer.setHand(roomDisproveHand);
-		assertEquals(roomTestCard, testPlayer.disproveSuggestion(testSolution));
+		assertEquals(roomTestSolutionCard, testPlayer.disproveSuggestion(testSolution));
 		
 		//Testing weapon disproves
 		testPlayer.setHand(weaponDisproveHand);
-		assertEquals(weaponTestCard, testPlayer.disproveSuggestion(testSolution));
+		assertEquals(weaponTestSolutionCard, testPlayer.disproveSuggestion(testSolution));
 		
 		//Testing random of two cards disproves
 		final int NUM_RUNS = 50;
@@ -96,9 +96,10 @@ public class GameSolutionTest {
 		
 		for (int i = 0; i < NUM_RUNS; i++) {
 			testPlayer.setHand(twoDisproveHand);
-			if (testPlayer.disproveSuggestion(testSolution).equals(personTestCard)) {
+			Card evidence = testPlayer.disproveSuggestion(testSolution);
+			if (evidence.equals(personTestSolutionCard)) {
 				personCount++;
-			} else if (testPlayer.disproveSuggestion(testSolution).equals(roomTestCard)) {
+			} else if (evidence.equals(roomTestSolutionCard)) {
 				roomCount++;
 			} else {
 				otherCount++;
