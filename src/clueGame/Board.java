@@ -672,7 +672,11 @@ public class Board {
 	public ArrayList<Player> getPlayerList() {
 		return playerList;
 	}
-
+	
+	public void setPlayerList(ArrayList<Player> playerList) {
+		this.playerList = playerList;
+	}
+ 
 	public int getPlayerCount() {
 		return playerCount;
 	}
@@ -705,14 +709,9 @@ public class Board {
 		return theAnswer;
 	}
 
-    
-
 	public Map<String, Card> getCardMap() {
 		return cardMap;
 	}
-	
-	
-    
 	
 	public void setSolution(Solution s) {
 		theAnswer = s;
