@@ -2,6 +2,7 @@ package tests;
 
 import java.awt.Color;
 import java.util.HashSet;
+import java.util.Random;
 import java.util.Set;
 
 import static org.junit.Assert.*;
@@ -25,7 +26,8 @@ public class ComputerAITest {
 	
 	@Test
 	public void testMovement() {
-		ComputerPlayer player = new ComputerPlayer("tester", Color.red);
+		Random random = new Random(System.currentTimeMillis());
+		ComputerPlayer player = new ComputerPlayer("tester", Color.red, random);
 		
 		
 		//tests that the cell chosen is in the possible options

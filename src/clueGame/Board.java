@@ -409,7 +409,7 @@ public class Board {
 		if (playerType.equals("Human")) {
 			player = new HumanPlayer(playerName, color);
 		} else {
-			player = new ComputerPlayer(playerName, color);
+			player = new ComputerPlayer(playerName, color, random);
 		}
 		playerList.add(player);
 
