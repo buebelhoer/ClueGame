@@ -14,8 +14,8 @@ import clueGame.ComputerPlayer;
 
 public class GameControlPanel extends JPanel {
 
-	String guessString = "TEST GUESS STRING";
-	String guessResultString = "TEST GUESS STRING";
+	JTextField guessString;
+	JTextField guessResultString;
 	
 	JTextField nameField;
 	JTextField rollField;
@@ -57,13 +57,23 @@ public class GameControlPanel extends JPanel {
 		//sets up the left side of the bottom of the control panel
 		JPanel guess = new JPanel();
 		guess.setBorder(BorderFactory.createTitledBorder("Guess"));
-		JTextField guessField = new JTextField(guessString);
+		
+		//sets up test field, inits to blank
+		JTextField guessField = new JTextField();
+		guessField.setEditable(false);
+		
+		//adds the text field to the panel
 		guess.add(guessField);
 		
 		//sets up the right side of the bottom half of the control panel
 		JPanel guessResult = new JPanel();
 		guessResult.setBorder(BorderFactory.createTitledBorder("Guess Result"));
-		JTextField guessResultField = new JTextField(guessResultString);
+		
+		//creates the text field, inits to blank
+		JTextField guessResultField = new JTextField();
+		guessResultField.setEditable(false);
+		
+		//adds text field
 		guessResult.add(guessResultField);
 		
 		//adds the left and right to the main frame
@@ -98,10 +108,10 @@ public class GameControlPanel extends JPanel {
 	}
 	
 	public void setGuess(String guess) {
-		guessString = guess;
+		guessString.setText(guess);
 	}
 	
 	public void setGuessResult(String guessResult) {
-		guessResultString = guessResult;
+		guessResultString.setText(guessResult);
 	}
 }
