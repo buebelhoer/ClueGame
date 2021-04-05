@@ -13,6 +13,8 @@ import sun.jvm.hotspot.runtime.aarch64.AARCH64CurrentFrameGuess;
 
 public class GameControlPanel extends JPanel {
 
+	String guessString = "TEST GUESS STRING";
+	String guessResultString = "TEST GUESS STRING";
 	
 	/**
 	 * Constructor for the panel, it does 90% of the work
@@ -20,19 +22,23 @@ public class GameControlPanel extends JPanel {
 	public GameControlPanel()  {
 		
 	
+		//sets up the jpanel that holds the bottom half of the control panel
 		JPanel guessPanel = new JPanel();
 		guessPanel.setLayout(new GridLayout(1,2));
 		
+		//sets up the left side of the bottom of the control panel
 		JPanel guess = new JPanel();
 		guess.setBorder(BorderFactory.createTitledBorder("Guess"));
-		JTextField guessField = new JTextField();
+		JTextField guessField = new JTextField(guessString);
 		guess.add(guessField);
 		
+		//sets up the right side of the bottom half of the control panel
 		JPanel guessResult = new JPanel();
 		guessResult.setBorder(BorderFactory.createTitledBorder("Guess Result"));
-		JTextField guessResultField = new JTextField();
+		JTextField guessResultField = new JTextField(guessResultString);
 		guessResult.add(guessResultField);
 		
+		//adds the left and right to the main frame
 		guessPanel.add(guess);
 		guessPanel.add(guessResult);
 		
