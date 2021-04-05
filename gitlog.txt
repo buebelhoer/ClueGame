@@ -1,3 +1,165 @@
+commit ae5342296b6822d0fba7bc23fc0689689490fe64
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Mon Apr 5 15:36:34 2021 -0600
+
+    extended roll field
+
+commit 1ac0e0bef91c440567c2f5c6cf1eb0e115e83bc1
+Merge: 775eb30 8ef3e87
+Author: Buebelhoer <buebelhoer@mymail.mines.edu>
+Date:   Mon Apr 5 15:27:03 2021 -0600
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 775eb30a903af9fb1ddcaa6a39530ec5c8bbe607
+Author: Buebelhoer <buebelhoer@mymail.mines.edu>
+Date:   Mon Apr 5 15:27:02 2021 -0600
+
+    changed guess layout to grid
+
+commit 8ef3e8743f2b882de7b4ef041fea614a004e2f59
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Mon Apr 5 15:25:12 2021 -0600
+
+    centered whose label
+
+commit 997e1ff0932994ed558850cab736a27faeb07756
+Merge: 6277563 d398684
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Mon Apr 5 15:23:05 2021 -0600
+
+    Merge branch 'master' of https://github.com/buebelhoer/ClueLayout
+
+commit 6277563ea52d28e315b98c212e9b9ebc89e7f454
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Mon Apr 5 15:22:47 2021 -0600
+
+    fixed display issue
+
+commit d398684ed0b4b17ae3f0af0dbd3f0edb83a02f65
+Author: Buebelhoer <buebelhoer@mymail.mines.edu>
+Date:   Mon Apr 5 15:22:18 2021 -0600
+
+    changed layout type of guessresult to grid
+
+commit 6a474eeef89e9181bf892d65de1f749f32243fd7
+Author: Buebelhoer <buebelhoer@mymail.mines.edu>
+Date:   Mon Apr 5 15:19:28 2021 -0600
+
+    fixed layout
+
+commit c4ab858fbd309f5e8a816dcbf6fb943c7443e0c5
+Merge: f729bc9 3f31a91
+Author: Buebelhoer <buebelhoer@mymail.mines.edu>
+Date:   Mon Apr 5 15:12:17 2021 -0600
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 3f31a91e48765e1355c77b632a4233e365a907ce
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Mon Apr 5 15:12:10 2021 -0600
+
+    commented
+
+commit f729bc9ed16881eb8ede2e46a4cafaaa8fceb70b
+Author: Buebelhoer <buebelhoer@mymail.mines.edu>
+Date:   Mon Apr 5 15:11:17 2021 -0600
+
+    fixed updating of text fields
+
+commit 51b3ae412d5b6d30933afb39e9f2a2c2b61e8867
+Merge: dd652ec 647b903
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Mon Apr 5 15:02:54 2021 -0600
+
+    Merge branch 'master' of https://github.com/buebelhoer/ClueLayout
+    
+    Conflicts:
+            src/GUI/GameControlPanel.java
+
+commit dd652ec4d7c9073e734bccea54dd700e68817337
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Mon Apr 5 15:01:49 2021 -0600
+
+    added setTurn
+
+commit 647b90380a23185bb05720577e0bcc8b8643b9c8
+Author: Buebelhoer <buebelhoer@mymail.mines.edu>
+Date:   Mon Apr 5 14:59:38 2021 -0600
+
+    added set guess and set guess result
+
+commit 9512fbcd4f1a1330cc99ae2b51a16891bf93990f
+Merge: 3bc0ac4 022cc25
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Mon Apr 5 14:55:47 2021 -0600
+
+    Merge branch 'master' of https://github.com/buebelhoer/ClueLayout
+    
+    Conflicts:
+            src/GUI/GameControlPanel.java
+
+commit 3bc0ac4cf149dfdd4b5ec233642acff7f86d1091
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Mon Apr 5 14:54:32 2021 -0600
+
+    added top part of panel
+
+commit 022cc25b48e099d8302da68aa20145510927f08a
+Author: Buebelhoer <buebelhoer@mymail.mines.edu>
+Date:   Mon Apr 5 14:54:22 2021 -0600
+
+    added test text to guesses
+
+commit 19850d1555e48433ca3be1e7b8639c7b23efefb9
+Author: Buebelhoer <buebelhoer@mymail.mines.edu>
+Date:   Mon Apr 5 14:50:56 2021 -0600
+
+    added guess panel
+
+commit 16c9111b0e5fcfa0d54541059ac729dd3b1677df
+Merge: 3779ded 0b785e3
+Author: Buebelhoer <buebelhoer@mymail.mines.edu>
+Date:   Mon Apr 5 14:40:12 2021 -0600
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 3779ded30f9f9ea9dc23a5022da988e7b037815e
+Author: Buebelhoer <buebelhoer@mymail.mines.edu>
+Date:   Mon Apr 5 14:40:07 2021 -0600
+
+    started guess panel
+
+commit 0b785e38e56e61dfc21d97f049b6feefbc8a9fa7
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Mon Apr 5 14:39:21 2021 -0600
+
+    added comp player constructor
+
+commit 63aff84ceea673fc5b8332cacdc9f3687a62e9e8
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Mon Apr 5 14:33:29 2021 -0600
+
+    moved to gui package
+
+commit fb2e69a02e73c07a9e4693567f50b846c1f0068b
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Mon Apr 5 14:30:41 2021 -0600
+
+    added game control panel
+
+commit 40d9c61df271d93dd85d91e08f842b652741dde9
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Fri Mar 26 00:44:26 2021 -0600
+
+    added zip
+
+commit 030f429af21e9fd4e3a03b463e85ac0ba2c14331
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Fri Mar 26 00:44:13 2021 -0600
+
+    updated git log
+
 commit b65f747a65ec265faba856cfb6fa7a9339c89cc1
 Author: Brendan <buebelhoer@mymail.mines.edu>
 Date:   Fri Mar 26 00:32:59 2021 -0600
