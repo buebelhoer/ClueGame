@@ -14,8 +14,8 @@ public class ComputerPlayer extends Player {
 		seenCards = new HashSet<>();
 	}
 	
-	public ComputerPlayer(String name, int i, int j, String string2) {
-		// TODO Auto-generated constructor stub
+	public ComputerPlayer(String name, int row, int col, Color color) {
+		super(name, color, row, col, null);
 	}
 
 	public Solution createSuggestion(Card roomCard) {

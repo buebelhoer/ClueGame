@@ -1,7 +1,11 @@
 package GUI;
 
+import java.awt.Color;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import clueGame.ComputerPlayer;
 
 public class GameControlPanel extends JPanel {
 
@@ -30,7 +34,7 @@ public class GameControlPanel extends JPanel {
 		frame.setVisible(true); // make it visible
 		
 		// test filling in the data
-		panel.setTurn(new ComputerPlayer( "Col. Mustard", 0, 0, "orange"), 5);
+		panel.setTurn(new ComputerPlayer( "Col. Mustard", 0, 0, Color.orange), 5);
 		panel.setGuess( "I have no guess!");
 		panel.setGuessResult( "So you have nothing?");
 	}
