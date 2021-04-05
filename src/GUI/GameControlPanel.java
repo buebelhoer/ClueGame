@@ -96,4 +96,12 @@ public class GameControlPanel extends JPanel {
 		
 		rollField.setText(((Integer)roll).toString());
 	}
+	
+	public void setGuess(String guess) {
+		guessString = guess;
+	}
+	
+	public void setGuessResult(String guessResult) {
+		guessResultString = guessResult;
+	}
 }
