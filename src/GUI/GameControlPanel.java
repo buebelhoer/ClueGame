@@ -3,23 +3,22 @@ package GUI;
 import java.awt.Color;
 import java.awt.GridLayout;
 
-<<<<<<< HEAD
 import javax.swing.JButton;
-=======
 import javax.swing.BorderFactory;
->>>>>>> branch 'master' of https://github.com/buebelhoer/ClueLayout
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import clueGame.ComputerPlayer;
-import sun.jvm.hotspot.runtime.aarch64.AARCH64CurrentFrameGuess;
 
 public class GameControlPanel extends JPanel {
 
 	String guessString = "TEST GUESS STRING";
 	String guessResultString = "TEST GUESS STRING";
+	
+	JTextField nameField;
+	JTextField rollField;
 	
 	/**
 	 * Constructor for the panel, it does 90% of the work
@@ -29,7 +28,7 @@ public class GameControlPanel extends JPanel {
 		
 		JPanel playerPanel = new JPanel(new GridLayout(2, 1));
 		JLabel whoseLabel = new JLabel("Whose turn?");
-		JTextField nameField = new JTextField();
+		nameField = new JTextField();
 		nameField.setEditable(false);
 		
 		playerPanel.add(whoseLabel);
@@ -37,7 +36,7 @@ public class GameControlPanel extends JPanel {
 		
 		JPanel rollPanel = new JPanel();
 		JLabel rollLabel = new JLabel("Roll:");
-		JTextField rollField = new JTextField();
+		rollField = new JTextField();
 		rollField.setEditable(false);
 		
 		rollPanel.add(rollLabel);
@@ -70,7 +69,6 @@ public class GameControlPanel extends JPanel {
 		//adds the left and right to the main frame
 		guessPanel.add(guess);
 		guessPanel.add(guessResult);
-		
 	}
 	
 	/**
@@ -90,5 +88,12 @@ public class GameControlPanel extends JPanel {
 		panel.setTurn(new ComputerPlayer( "Col. Mustard", 0, 0, Color.orange), 5);
 		panel.setGuess( "I have no guess!");
 		panel.setGuessResult( "So you have nothing?");
+	}
+	
+	private void setTurn(ComputerPlayer cp, int roll) {
+		nameField.setText(cp.getName());
+		nameField.setBackground(cp.getColor());
+		
+		rollField.setText(((Integer)roll).toString());
 	}
 }
