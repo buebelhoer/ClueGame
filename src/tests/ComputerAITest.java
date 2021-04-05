@@ -81,13 +81,9 @@ public class ComputerAITest {
 		Solution playerSol = player.createSuggestion(cardMap.get("Brown"));
 		assertFalse(hand.contains(playerSol.getPerson()));
 		assertFalse(hand.contains(playerSol.getWeapon()));
-		board.getRoomCards().contains(playerSol.getRoom());
-		board.getPersonCards().contains(playerSol.getPerson());
-		board.getWeaponCards().contains(playerSol.getWeapon());
-		
-		
-		
-		
+		assertTrue(board.getRoomCards().contains(playerSol.getRoom()));
+		assertTrue(board.getPersonCards().contains(playerSol.getPerson()));
+		assertTrue(board.getWeaponCards().contains(playerSol.getWeapon()));
 	}
 
 }
