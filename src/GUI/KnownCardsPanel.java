@@ -34,4 +34,14 @@ public class KnownCardsPanel extends JPanel {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // allow it to close
 		frame.setVisible(true); // make it visible
 	}
+	
+	private class CardPanel extends JPanel {
+		
+		public CardPanel(String name) {
+			super();
+			setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.black), name));
+			
+			
+		}
+	}
 }
