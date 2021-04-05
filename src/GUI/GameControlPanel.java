@@ -10,6 +10,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 import clueGame.ComputerPlayer;
 
@@ -42,7 +44,7 @@ public class GameControlPanel extends JPanel {
 		//panel to display roll result
 		JPanel rollPanel = new JPanel();
 		JLabel rollLabel = new JLabel("Roll:");
-		rollField = new JTextField();
+		rollField = new JTextField(5);
 		rollField.setEditable(false);
 		
 		rollPanel.add(rollLabel);
@@ -65,7 +67,7 @@ public class GameControlPanel extends JPanel {
 		//sets up the left side of the bottom of the control panel
 		JPanel guess = new JPanel();
 		guess.setLayout(new GridLayout(1,1));
-		guess.setBorder(BorderFactory.createTitledBorder("Guess"));
+		guess.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.black), "Guess"));
 		
 		//sets up test field, inits to blank
 		guessField = new JTextField();
@@ -77,7 +79,7 @@ public class GameControlPanel extends JPanel {
 		//sets up the right side of the bottom half of the control panel
 		JPanel guessResult = new JPanel();
 		guessResult.setLayout(new GridLayout(1,1));
-		guessResult.setBorder(BorderFactory.createTitledBorder("Guess Result"));
+		guessResult.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.black), "Guess Result"));
 		
 		//creates the text field, inits to blank
 		guessResultField = new JTextField();
