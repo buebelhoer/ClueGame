@@ -31,9 +31,8 @@ public class GameControlPanel extends JPanel {
 		JPanel turnPanel = new JPanel(new GridLayout(1, 4));
 		
 		//panel to hold player turn info
-		JPanel playerPanel = new JPanel();
-		playerPanel.setLayout(new BoxLayout(playerPanel, BoxLayout.Y_AXIS));
-		JLabel whoseLabel = new JLabel("Whose turn?");
+		JPanel playerPanel = new JPanel(new GridLayout(2, 1));
+		JLabel whoseLabel = new JLabel("Whose turn?", JLabel.CENTER);
 		nameField = new JTextField();
 		nameField.setEditable(false);
 		
