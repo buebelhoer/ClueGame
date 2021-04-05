@@ -1,11 +1,15 @@
 package GUI;
 
 import java.awt.Color;
+import java.awt.GridLayout;
 
+import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 import clueGame.ComputerPlayer;
+import sun.jvm.hotspot.runtime.aarch64.AARCH64CurrentFrameGuess;
 
 public class GameControlPanel extends JPanel {
 
@@ -17,7 +21,21 @@ public class GameControlPanel extends JPanel {
 		
 	
 		JPanel guessPanel = new JPanel();
-		JPanel 
+		guessPanel.setLayout(new GridLayout(1,2));
+		
+		JPanel guess = new JPanel();
+		guess.setBorder(BorderFactory.createTitledBorder("Guess"));
+		JTextField guessField = new JTextField();
+		guess.add(guessField);
+		
+		JPanel guessResult = new JPanel();
+		guessResult.setBorder(BorderFactory.createTitledBorder("Guess Result"));
+		JTextField guessResultField = new JTextField();
+		guessResult.add(guessResultField);
+		
+		guessPanel.add(guess);
+		guessPanel.add(guessResult);
+		
 	}
 	
 	/**
