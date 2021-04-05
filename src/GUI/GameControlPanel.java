@@ -65,6 +65,7 @@ public class GameControlPanel extends JPanel {
 		
 		//sets up the left side of the bottom of the control panel
 		JPanel guess = new JPanel();
+		guess.setLayout(new GridLayout(1,1));
 		guess.setBorder(BorderFactory.createTitledBorder("Guess"));
 		
 		//sets up test field, inits to blank
@@ -100,7 +101,7 @@ public class GameControlPanel extends JPanel {
 	 * 
 	 * @param args
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) {		
 		GameControlPanel panel = new GameControlPanel();  // create the panel
 		panel.setLayout(new GridLayout(2, 1));
 		JFrame frame = new JFrame();  // create the frame 
