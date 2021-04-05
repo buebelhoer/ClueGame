@@ -24,8 +24,10 @@ public class GameControlPanel extends JPanel {
 	 * Constructor for the panel, it does 90% of the work
 	 */
 	public GameControlPanel()  {
+		//panel to hold the the turn, rolls, and turn buttons
 		JPanel turnPanel = new JPanel(new GridLayout(1, 4));
 		
+		//panel to hold player turn info
 		JPanel playerPanel = new JPanel(new GridLayout(2, 1));
 		JLabel whoseLabel = new JLabel("Whose turn?");
 		nameField = new JTextField();
@@ -34,6 +36,7 @@ public class GameControlPanel extends JPanel {
 		playerPanel.add(whoseLabel);
 		playerPanel.add(nameField);
 		
+		//panel to display roll result
 		JPanel rollPanel = new JPanel();
 		JLabel rollLabel = new JLabel("Roll:");
 		rollField = new JTextField();
@@ -42,9 +45,11 @@ public class GameControlPanel extends JPanel {
 		rollPanel.add(rollLabel);
 		rollPanel.add(rollField);
 		
+		//turn advance buttons
 		JButton accuseButton = new JButton("Make Accusation");
 		JButton nextButton = new JButton("NEXT!");
 		
+		//add everything to host element
 		turnPanel.add(playerPanel);
 		turnPanel.add(rollPanel);
 		turnPanel.add(accuseButton);
@@ -79,6 +84,10 @@ public class GameControlPanel extends JPanel {
 		//adds the left and right to the main frame
 		guessPanel.add(guess);
 		guessPanel.add(guessResult);
+		
+		//add to main panel
+		add(turnPanel);
+		add(guessPanel);
 	}
 	
 	/**
