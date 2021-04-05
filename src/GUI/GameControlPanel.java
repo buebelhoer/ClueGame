@@ -91,4 +91,12 @@ public class GameControlPanel extends JPanel {
 		panel.setGuess( "I have no guess!");
 		panel.setGuessResult( "So you have nothing?");
 	}
+	
+	public void setGuess(String guess) {
+		guessString = guess;
+	}
+	
+	public void setGuessResult(String guessResult) {
+		guessResultString = guessResult;
+	}
 }
