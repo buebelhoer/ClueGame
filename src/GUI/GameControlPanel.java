@@ -5,11 +5,15 @@ import javax.swing.JPanel;
 
 public class GameControlPanel extends JPanel {
 
+	
 	/**
 	 * Constructor for the panel, it does 90% of the work
 	 */
 	public GameControlPanel()  {
 		
+	
+		JPanel guessPanel = new JPanel();
+		JPanel 
 	}
 	
 	/**
