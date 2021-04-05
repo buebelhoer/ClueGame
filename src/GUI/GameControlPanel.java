@@ -3,16 +3,23 @@ package GUI;
 import java.awt.Color;
 import java.awt.GridLayout;
 
+<<<<<<< HEAD
 import javax.swing.JButton;
+=======
+import javax.swing.BorderFactory;
+>>>>>>> branch 'master' of https://github.com/buebelhoer/ClueLayout
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import clueGame.ComputerPlayer;
+import sun.jvm.hotspot.runtime.aarch64.AARCH64CurrentFrameGuess;
 
 public class GameControlPanel extends JPanel {
 
+	String guessString = "TEST GUESS STRING";
+	String guessResultString = "TEST GUESS STRING";
 	
 	/**
 	 * Constructor for the panel, it does 90% of the work
@@ -44,8 +51,26 @@ public class GameControlPanel extends JPanel {
 		turnPanel.add(accuseButton);
 		turnPanel.add(nextButton);
 	
+		//sets up the jpanel that holds the bottom half of the control panel
 		JPanel guessPanel = new JPanel();
-		JPanel 
+		guessPanel.setLayout(new GridLayout(1,2));
+		
+		//sets up the left side of the bottom of the control panel
+		JPanel guess = new JPanel();
+		guess.setBorder(BorderFactory.createTitledBorder("Guess"));
+		JTextField guessField = new JTextField(guessString);
+		guess.add(guessField);
+		
+		//sets up the right side of the bottom half of the control panel
+		JPanel guessResult = new JPanel();
+		guessResult.setBorder(BorderFactory.createTitledBorder("Guess Result"));
+		JTextField guessResultField = new JTextField(guessResultString);
+		guessResult.add(guessResultField);
+		
+		//adds the left and right to the main frame
+		guessPanel.add(guess);
+		guessPanel.add(guessResult);
+		
 	}
 	
 	/**
