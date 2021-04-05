@@ -38,8 +38,8 @@ public class KnownCardsPanel extends JPanel {
 		add(weaponsPanel);
 	}
 
-	private void populateCardPanels(ArrayList<Card> hand, HashMap<Player, ArrayList<Card>> seenCards, CardPanel peoplePanel,
-			CardPanel roomsPanel, CardPanel weaponsPanel) {
+	private void populateCardPanels(ArrayList<Card> hand, HashMap<Player, ArrayList<Card>> seenCards, CardTypePanel peoplePanel,
+			CardTypePanel roomsPanel, CardTypePanel weaponsPanel) {
 		for (Card c : hand) {
 			switch (c.getCardType()) {
 			case PERSON:
