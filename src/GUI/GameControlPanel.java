@@ -76,6 +76,7 @@ public class GameControlPanel extends JPanel {
 		
 		//sets up the right side of the bottom half of the control panel
 		JPanel guessResult = new JPanel();
+		guessResult.setLayout(new GridLayout(1,1));
 		guessResult.setBorder(BorderFactory.createTitledBorder("Guess Result"));
 		
 		//creates the text field, inits to blank
