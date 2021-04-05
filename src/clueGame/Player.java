@@ -2,12 +2,11 @@ package clueGame;
 
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Random;
+import java.util.Set;
 
 public abstract class Player {
-	
-	
-	
 	//The name of the player
 	protected String name;
 	
@@ -20,13 +19,17 @@ public abstract class Player {
 	// Cards currently held by the player
 	protected ArrayList<Card> hand;
 	
+	//tracks seen cards
+	protected Set<Card> seenCards;
+	protected HashMap<K, V>
+	
 	//stores all of the possible cards, passed in by constructor
-	ArrayList<Card> roomCards;
-	ArrayList<Card> personCards;
-	ArrayList<Card> weaponCards;
+	protected ArrayList<Card> roomCards;
+	protected ArrayList<Card> personCards;
+	protected ArrayList<Card> weaponCards;
 	
 	//Random number gen from host
-	Random rng;
+	protected Random rng;
 	
 	public Player(String name, Color color, int row, int column, ArrayList<Card> hand) {
 		super();

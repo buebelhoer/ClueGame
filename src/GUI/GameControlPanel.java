@@ -27,8 +27,7 @@ public class GameControlPanel extends JPanel {
 	 * Constructor for the panel, it does 90% of the work
 	 */
 	public GameControlPanel()  {
-		
-		//setLayout(new GridLayout(2,1));
+		setLayout(new GridLayout(2,1));
 		//panel to hold the the turn, rolls, and turn buttons
 		JPanel turnPanel = new JPanel(new GridLayout(1, 4));
 		
@@ -104,7 +103,6 @@ public class GameControlPanel extends JPanel {
 	 */
 	public static void main(String[] args) {		
 		GameControlPanel panel = new GameControlPanel();  // create the panel
-		panel.setLayout(new GridLayout(2, 1));
 		JFrame frame = new JFrame();  // create the frame 
 		frame.setContentPane(panel); // put the panel in the frame
 		frame.setSize(750, 180);  // size the frame

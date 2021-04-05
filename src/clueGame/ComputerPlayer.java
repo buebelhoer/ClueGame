@@ -7,8 +7,6 @@ import java.util.Random;
 import java.util.Set;
 
 public class ComputerPlayer extends Player {	
-	Set<Card> seenCards;
-	
 	public ComputerPlayer(String name, Color color, Random random, ArrayList<Card> roomCards,  ArrayList<Card> personCards, ArrayList<Card> weaponCards) {
 		super(name, color, random, roomCards,personCards,weaponCards);
 		seenCards = new HashSet<>();
