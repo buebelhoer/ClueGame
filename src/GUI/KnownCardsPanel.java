@@ -43,10 +43,27 @@ public class KnownCardsPanel extends JPanel {
 		frame.setVisible(true); // make it visible
 	}
 	
-	private class CardPanel extends JPanel {
-		public CardPanel(String name) {
+	//class that forms the panel for each of the three types of cards
+	private class CardTypePanel extends JPanel {
+		public CardTypePanel(String name) {
 			super();
 			setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.black), name));			
+			setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.black), name));
+			setLayout(new GridLayout(2, 1));
+			
+			JPanel handPanel = new JPanel();
+			handPanel.setLayout(new GridLayout(2,1));
+			
+			handPanel.add(new JTextField("In Hand:"));
 		}
 	}
+	
+	//class that forms a panel and shows all the cards in a particular category(Type and seen status)
+	private class CardPanel extends JPanel {
+		
+	}
+	
+	
+	
+	
 }
