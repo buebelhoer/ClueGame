@@ -21,7 +21,9 @@ public abstract class Player {
 	
 	//tracks seen cards
 	protected Set<Card> seenCards;
-	protected HashMap<K, V>
+	
+	//tracks who revealed seen cards
+	protected HashMap<Player, ArrayList<Card>> revealedCards;
 	
 	//stores all of the possible cards, passed in by constructor
 	protected ArrayList<Card> roomCards;
