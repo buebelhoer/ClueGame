@@ -5,6 +5,7 @@ import java.awt.GridLayout;
 
 import javax.swing.JButton;
 import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -30,7 +31,8 @@ public class GameControlPanel extends JPanel {
 		JPanel turnPanel = new JPanel(new GridLayout(1, 4));
 		
 		//panel to hold player turn info
-		JPanel playerPanel = new JPanel(new GridLayout(2, 1));
+		JPanel playerPanel = new JPanel();
+		playerPanel.setLayout(new BoxLayout(playerPanel, BoxLayout.Y_AXIS));
 		JLabel whoseLabel = new JLabel("Whose turn?");
 		nameField = new JTextField();
 		nameField.setEditable(false);
@@ -99,6 +101,7 @@ public class GameControlPanel extends JPanel {
 	 */
 	public static void main(String[] args) {
 		GameControlPanel panel = new GameControlPanel();  // create the panel
+		panel.setLayout(new GridLayout(2, 1));
 		JFrame frame = new JFrame();  // create the frame 
 		frame.setContentPane(panel); // put the panel in the frame
 		frame.setSize(750, 180);  // size the frame
