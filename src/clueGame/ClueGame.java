@@ -16,7 +16,7 @@ public class ClueGame extends JFrame {
 
 	public static void main(String[] args) {
 		JPanel mainPanel = new JPanel();  // create the panel
-		ClueGame frame = new ClueGame("Mines Clue");  // create the frame 
+		ClueGame frame = new ClueGame("Mines Mystery");  // create the frame 
 		Board board;
 		
 		ArrayList<Card> hand = new ArrayList<>();
