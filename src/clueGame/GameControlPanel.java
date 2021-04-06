@@ -1,4 +1,4 @@
-package GUI;
+package clueGame;
 
 import java.awt.Color;
 import java.awt.GridLayout;
@@ -12,8 +12,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-
-import clueGame.ComputerPlayer;
 
 public class GameControlPanel extends JPanel {
 	

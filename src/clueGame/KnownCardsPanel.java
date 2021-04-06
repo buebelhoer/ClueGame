@@ -1,4 +1,4 @@
-package GUI;
+package clueGame;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -15,11 +15,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-
-import clueGame.Card;
-import clueGame.CardType;
-import clueGame.ComputerPlayer;
-import clueGame.Player;
 
 public class KnownCardsPanel extends JPanel {
 	/**

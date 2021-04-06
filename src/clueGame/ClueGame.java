@@ -1,4 +1,4 @@
-package GUI;
+package clueGame;
 
 import java.awt.Color;
 import java.awt.FlowLayout;
@@ -7,11 +7,6 @@ import java.util.HashMap;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-
-import clueGame.Card;
-import clueGame.CardType;
-import clueGame.ComputerPlayer;
-import clueGame.Player;
 
 public class ClueGame extends JFrame {
 	public ClueGame(String title) {
