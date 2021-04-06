@@ -1,9 +1,18 @@
 //Authors: Brendan Uebelhoer, Ben Morgan
 package clueGame;
 
+import java.awt.Color;
+import java.awt.Graphics;
 import java.util.*;
 
 public class BoardCell {
+	
+	//Constants for colors for painting cells
+	private final static Color walkwayColor = Color.yellow;
+	private final static Color targetColor = Color.cyan;
+	private final static Color roomColors = Color.lightGray;
+	private final static Color doorColor = Color.blue;
+	private final static Color backgroundColor = Color.black;
 	
 	//the position of this cell in the board, declared at creation
 	private int row;
@@ -42,6 +51,15 @@ public class BoardCell {
 		isLabel = false;
 		isRoom = false;
 		isSecretPassage = false;
+	}
+	
+	public void Draw(Graphics g, int x, int y, int width, int height) {
+		g.setColor(walkwayColor);
+		g.fillRect(x, y, width, height);
+		g.setColor(backgroundColor);
+		g.drawRect(x, y, width, height);
+		
+		
 	}
 	
 	/*
