@@ -6,7 +6,9 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.*;
 
-public class Board {
+import javax.swing.JPanel;
+
+public class Board extends JPanel {
 
 	// number of rows in the board
 	private int numRows;
