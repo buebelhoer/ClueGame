@@ -87,6 +87,10 @@ public class KnownCardsPanel extends JPanel {
 		hand.add(new Card("handTestweapon2", CardType.WEAPON));
 		
 		HashMap<Player, ArrayList<Card>> seenCards = new HashMap<>();
+		ArrayList<Card> seen = new ArrayList<>();
+		seen.add(new Card("seenTestweapon", CardType.WEAPON));
+		seen.add(new Card("seenTestweapon2", CardType.WEAPON));
+		seenCards.put(new ComputerPlayer("Test Player", Color.red), seen);
 		
 		KnownCardsPanel panel = new KnownCardsPanel(hand, seenCards);  // create the panel
 		JFrame frame = new JFrame();  // create the frame 
@@ -107,12 +111,7 @@ public class KnownCardsPanel extends JPanel {
 			setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.black), name));
 			setLayout(new GridLayout(2, 1));
 			
-			//create a bold font
-			Font font = this.getFont();
-			font = font.deriveFont(Font.BOLD,font.getSize());
-			
-			
-			//creats the panel for cards in the players hand
+			//creates the panel for cards in the players hand
 			JPanel handPanel = new JPanel();
 			handPanel.setLayout(new GridLayout(2,1));
 			
@@ -133,7 +132,7 @@ public class KnownCardsPanel extends JPanel {
 			//creates the cardpanel that stores the cards that have been seen
 			
 			seenCardPanel = new CardPanel();
-			seenPanel.add(handCardPanel);
+			seenPanel.add(seenCardPanel);
 			
 			//adds the hand and seen panels to the overall panel
 			add(handPanel);
@@ -142,10 +141,12 @@ public class KnownCardsPanel extends JPanel {
 		}
 		
 		public void addHandCard(String cardName) {
+			System.out.println("card added to hand panel: " + cardName);
 			handCardPanel.addCard(Color.white, cardName);
 		}
 		
 		public void addSeenCard(Color color, String cardName) {
+			System.out.println("card added to seen panel: " + cardName);
 			seenCardPanel.addCard(color, cardName);
 		}
 	}

@@ -16,6 +16,12 @@ public class ComputerPlayer extends Player {
 		super(name, color, row, col, null);
 	}
 
+	public ComputerPlayer(String name, Color color) {
+		this.name = name;
+		this.color =color;
+		// TODO Auto-generated constructor stub
+	}
+
 	public Solution createSuggestion(Card roomCard) {
 		Card personCard;
 		Card weaponCard;
