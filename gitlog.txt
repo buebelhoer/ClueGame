@@ -1,3 +1,93 @@
+commit 09876bdceab4286a0dc253386323dc28484bc737
+Author: Buebelhoer <buebelhoer@mymail.mines.edu>
+Date:   Mon Apr 5 19:13:05 2021 -0600
+
+    Fixed obnoxius typo that was causing mis display
+
+commit 272f7a0d680c4c2f8cabe8d96fc52e9155fd661c
+Author: Buebelhoer <buebelhoer@mymail.mines.edu>
+Date:   Mon Apr 5 17:32:39 2021 -0600
+
+    added none card logic
+
+commit a587c1751aed2e834f808c15bf17ae2b525516af
+Author: Buebelhoer <buebelhoer@mymail.mines.edu>
+Date:   Mon Apr 5 16:44:03 2021 -0600
+
+    test push
+
+commit e805c81ed685b1a47a810ad91c5ca196c090fa9f
+Author: Buebelhoer <buebelhoer@mymail.mines.edu>
+Date:   Mon Apr 5 16:42:24 2021 -0600
+
+    fixed paraeter type error
+
+commit e4aa42a6d1c9aad1b904e9ed088a17ee86b36670
+Merge: 979ef3d ef7d297
+Author: Buebelhoer <buebelhoer@mymail.mines.edu>
+Date:   Mon Apr 5 16:39:50 2021 -0600
+
+    Merge remote-tracking branch 'origin/master'
+
+commit ef7d2975332a8456cdee394f29d2140c3866b388
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Mon Apr 5 16:39:45 2021 -0600
+
+    populated side panel
+
+commit 979ef3db46042fa1e328f618e4a5af73633029f1
+Author: Buebelhoer <buebelhoer@mymail.mines.edu>
+Date:   Mon Apr 5 16:39:37 2021 -0600
+
+    added CardPanels
+
+commit bd50aa99f5409e9f307bb9c57d054efc419d9f3a
+Merge: 83babb2 7dd4eb4
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Mon Apr 5 16:21:45 2021 -0600
+
+    Merge branch 'master' of https://github.com/buebelhoer/ClueLayout
+    
+    Conflicts:
+            src/GUI/KnownCardsPanel.java
+
+commit 83babb291b6fa2e2a49d04d9b280a3808f63e207
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Mon Apr 5 16:20:10 2021 -0600
+
+    preparing rest of code for color coding known cards
+
+commit 7dd4eb48f5f240245e037f9597944989342bdeeb
+Author: Buebelhoer <buebelhoer@mymail.mines.edu>
+Date:   Mon Apr 5 16:19:43 2021 -0600
+
+    added second function stub
+
+commit b0b80de7758c37eb83a90362d1b6c441aa20d0ef
+Author: Buebelhoer <buebelhoer@mymail.mines.edu>
+Date:   Mon Apr 5 16:01:39 2021 -0600
+
+    added custom class for cards
+
+commit 188b09efab508f198f8c3bd8b226c839c089fcc2
+Merge: 7b98b89 5f071f5
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Mon Apr 5 15:55:10 2021 -0600
+
+    Merge branch 'master' of https://github.com/buebelhoer/ClueLayout
+
+commit 7b98b89599e2d9d00095b52401f392b2328c8358
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Mon Apr 5 15:55:03 2021 -0600
+
+    added known card panel class
+
+commit 5f071f58978a45186bf95f9caf52a6aa67f1eb29
+Author: Buebelhoer <buebelhoer@mymail.mines.edu>
+Date:   Mon Apr 5 15:49:56 2021 -0600
+
+    21A-1 submission
+
 commit ae5342296b6822d0fba7bc23fc0689689490fe64
 Author: bMorgan01 <ben.morgan5000@gmail.com>
 Date:   Mon Apr 5 15:36:34 2021 -0600
