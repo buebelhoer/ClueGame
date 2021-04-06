@@ -2,6 +2,7 @@
 package clueGame;
 
 import java.awt.Color;
+import java.awt.Graphics;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.*;
@@ -641,10 +642,23 @@ public class Board extends JPanel {
 		return disproved.get(random.nextInt(Integer.MAX_VALUE)%disproved.size());
 	}
 	
+	@Override
+	protected void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		for (int row = 0; row < numRows; row ++) {
+			for (int column = 0; row < numCols; column++) {
+				board[row][column].Draw(g, column, row, 100, 100);
+			}
+		}
+	}
+	
+	
 	/*
 	 * ALL CODE BENEATH THIS POINT SHOULD BE GETTER/SETTERS
 	 */
 
+
+	
 
 	public Set<BoardCell> getTargets() {
 		return targets;
