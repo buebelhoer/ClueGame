@@ -137,7 +137,6 @@ public class KnownCardsPanel extends JPanel {
 			//adds the hand and seen panels to the overall panel
 			add(handPanel);
 			add(seenPanel);
-			
 		}
 		
 		public void addHandCard(String cardName) {
