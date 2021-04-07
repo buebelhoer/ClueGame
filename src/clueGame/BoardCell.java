@@ -55,6 +55,7 @@ public class BoardCell {
 	
 	public void Draw(Graphics g, int x, int y, int width, int height) {
 		g.setColor(walkwayColor);
+		if (isRoom) g.setColor(roomColors);
 		g.fillRect(x, y, width, height);
 		g.setColor(backgroundColor);
 		g.drawRect(x, y, width, height);

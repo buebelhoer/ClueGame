@@ -645,9 +645,15 @@ public class Board extends JPanel {
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
+		
+		g.setColor(Color.black);
+		
+		int cellheight = getHeight() / numRows;
+		int cellwidth = getWidth() / numCols;
+		
 		for (int row = 0; row < numRows; row ++) {
-			for (int column = 0; row < numCols; column++) {
-				board[row][column].Draw(g, column, row, 100, 100);
+			for (int column = 0; column < numCols; column++) {
+				board[row][column].Draw(g, column * cellwidth, row * cellheight, cellwidth, cellheight);
 			}
 		}
 	}
