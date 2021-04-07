@@ -2,7 +2,9 @@
 package clueGame;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.geom.Rectangle2D;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.*;
@@ -646,12 +648,28 @@ public class Board extends JPanel {
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		
-		int cellheight = getHeight() / numRows;
-		int cellwidth = getWidth() / numCols;
+		g.setColor(Color.black);
+		
+		int cellHeight = getHeight() / numRows;
+		int cellWidth = getWidth() / numCols;
 		
 		for (int row = 0; row < numRows; row ++) {
 			for (int column = 0; column < numCols; column++) {
-				board[row][column].Draw(g, column * cellwidth, row * cellheight, cellwidth, cellheight);
+				board[row][column].Draw(g, column * cellWidth, row * cellHeight, cellWidth, cellHeight);
+			}
+		}
+		
+		g.setColor(Color.blue);
+		g.setFont(g.getFont().deriveFont(Font.BOLD));
+		
+		for (int row = 0; row < numRows; row ++) {
+			for (int column = 0; column < numCols; column++) {
+				if (board[row][column].isDoorway()) {
+					board[row][column].DrawDoor(g, column * cellWidth, row * cellHeight, cellWidth, cellHeight);
+				} else if (board[row][column].isLabel()) {
+					Rectangle2D bounds = g.getFontMetrics().getStringBounds(board[row][column].getRoom().getName(), g);
+					g.drawString(board[row][column].getRoom().getName(), (int)((column * cellWidth + cellWidth/2) - (bounds.getWidth()/2)), (int)((row * cellHeight + cellHeight/2) - (bounds.getHeight()/2)));
+				}
 			}
 		}
 	}

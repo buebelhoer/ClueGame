@@ -73,19 +73,21 @@ public class BoardCell {
 	}
 	
 	public void DrawDoor(Graphics g, int x, int y, int width, int height) {
+		final int DOOR_WIDTH_FRACTION = 7;
+		
 		g.setColor(doorColor);
 		switch (doorDirection) {
 		case UP: 
-			g.fillRect(x, y - height/10, width, height/10);
+			g.fillRect(x, y - height/DOOR_WIDTH_FRACTION, width, height/DOOR_WIDTH_FRACTION);
 			break;
 		case DOWN:
-			g.fillRect(x, y + height, width, height/10);
+			g.fillRect(x, y + height, width, height/DOOR_WIDTH_FRACTION);
 			break;
 		case RIGHT:
-			g.fillRect(x + width, y, width/10, height);
+			g.fillRect(x + width, y, width/DOOR_WIDTH_FRACTION, height);
 			break;
 		case LEFT: 
-			g.fillRect(x - width/10, y, width/10, height);
+			g.fillRect(x - width/DOOR_WIDTH_FRACTION, y, width/DOOR_WIDTH_FRACTION, height);
 			break;
 		}
 	}
