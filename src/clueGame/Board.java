@@ -646,8 +646,6 @@ public class Board extends JPanel {
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		
-		g.setColor(Color.black);
-		
 		int cellheight = getHeight() / numRows;
 		int cellwidth = getWidth() / numCols;
 		
