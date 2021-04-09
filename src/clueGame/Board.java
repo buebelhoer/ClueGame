@@ -659,6 +659,24 @@ public class Board extends JPanel {
 			}
 		}
 		
+		for (int row = 0; row < numRows; row ++) {
+			for (int column = 0; column < numCols; column++) {
+				if (targets.contains(board[row][column])) {
+					if (board[row][column].isRoom()) {
+						for (int row2 = 0; row2 < numRows; row2 ++) {
+							for (int column2 = 0; column2 < numCols; column2++) {
+								if (board[row2][column2].isRoom() && board[row2][column2].getRoom().equals(board[row][column].getRoom())) {
+									board[row][column].drawTargetRoom(g, column*cellWidth, row * cellHeight, cellWidth, cellHeight);
+								}
+							}
+						}
+					} else {
+						board[row][column].drawTarget(g, column*cellWidth, row * cellHeight, cellWidth, cellHeight);
+					}
+				}
+			}
+		}
+		
 		g.setColor(Color.blue);
 		g.setFont(g.getFont().deriveFont(Font.BOLD));
 		
