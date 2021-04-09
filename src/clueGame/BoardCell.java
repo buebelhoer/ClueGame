@@ -53,7 +53,7 @@ public class BoardCell {
 		isSecretPassage = false;
 	}
 	
-	public void Draw(Graphics g, int x, int y, int width, int height) {
+	public void draw(Graphics g, int x, int y, int width, int height) {
 		
 		
 		if (isRoom) {
