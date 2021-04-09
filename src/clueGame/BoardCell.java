@@ -58,13 +58,13 @@ public class BoardCell {
 		
 		if (isRoom) {
 			g.setColor(roomColors);
-			g.fillRect(x, y, width - 1, height - 1);
+			g.fillRect(x, y, width , height);
 		} else if (room.getName().equals("Unused")) {
 			g.setColor(backgroundColor);
-			g.fillRect(x, y, width - 1, height - 1);
+			g.fillRect(x, y, width, height);
 		}else {
 			g.setColor(walkwayColor);
-			g.fillRect(x, y, width - 1, height - 1);
+			g.fillRect(x, y, width, height);
 			g.setColor(backgroundColor);
 			g.drawRect(x, y, width - 1, height - 1);
 		}
@@ -94,14 +94,14 @@ public class BoardCell {
 	
 	public void drawTarget(Graphics g, int x, int y, int width, int height) {
 		g.setColor(targetColor);
-		g.fillRect(x, y, width - 1, height - 1);
+		g.fillRect(x, y, width, height);
 		g.setColor(backgroundColor);
 		g.drawRect(x, y, width - 1, height - 1);		
 	}
 	
 	public void drawTargetRoom(Graphics g, int x, int y, int width, int height) {
 		g.setColor(targetColor);
-		g.fillRect(x, y, width - 1, height - 1);		
+		g.fillRect(x, y, width, height);		
 	}
 	
 	/*
