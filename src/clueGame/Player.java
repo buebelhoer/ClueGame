@@ -8,6 +8,10 @@ import java.util.Random;
 import java.util.Set;
 
 public abstract class Player {
+	
+	//The color the borders are drawn
+	private static final Color BORDER_COLOR = Color.black;
+
 	//The name of the player
 	protected String name;
 	
@@ -96,9 +100,11 @@ public abstract class Player {
 		hand.add(c);
 	}
 	
-	public void draw(Graphics g, int width, int height) {
+	public void draw(Graphics g, int x, int y, int width, int height) {
 		g.setColor(color);
-		g.fillOval(column*width, row*height, width, height);
+		g.fillOval(x, y, width, height);
+		g.setColor(BORDER_COLOR);
+		g.drawOval(x, y, width, height);
 	}
 
 	/*
@@ -145,6 +151,8 @@ public abstract class Player {
 		this.row = row;
 		this.column = column;
 	}
+	
+	
 	
 	
 	

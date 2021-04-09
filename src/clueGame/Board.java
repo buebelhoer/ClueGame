@@ -13,6 +13,8 @@ import javax.swing.JPanel;
 
 public class Board extends JPanel {
 
+	private static final Color TEXT_COLOR = Color.blue;
+
 	// number of rows in the board
 	private int numRows;
 
@@ -443,7 +445,7 @@ public class Board extends JPanel {
 			color = Color.black;
 			break;
 		case "blue":
-			color = Color.blue;
+			color = TEXT_COLOR;
 			break;
 		case "cyan":
 			color = Color.cyan;
@@ -648,18 +650,17 @@ public class Board extends JPanel {
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		
-		g.setColor(Color.black);
 		
 		int cellHeight = getHeight() / numRows;
 		int cellWidth = getWidth() / numCols;
 		
 		for (int row = 0; row < numRows; row ++) {
 			for (int column = 0; column < numCols; column++) {
-				board[row][column].Draw(g, column * cellWidth, row * cellHeight, cellWidth, cellHeight);
+				board[row][column].draw(g, column * cellWidth, row * cellHeight, cellWidth, cellHeight);
 			}
 		}
 		
-		g.setColor(Color.blue);
+		g.setColor(TEXT_COLOR);
 		g.setFont(g.getFont().deriveFont(Font.BOLD));
 		
 		for (int row = 0; row < numRows; row ++) {
@@ -673,8 +674,33 @@ public class Board extends JPanel {
 			}
 		}
 		
+		Set<Player> drawnPlayer = new HashSet<Player>();
+		
 		for (Player p : playerList) {
-			p.draw(g, cellWidth, cellWidth);
+			final double playerOffset = .3;
+			if (drawnPlayer.contains(p)) continue; // if the player has been drawn out of order, do not attempt to draw again
+			int row = p.getRow();
+			int column = p.getColumn();
+			if(board[row][column].isRoom()) {
+				ArrayList<Player> inThisRoom = new ArrayList<Player>();
+				for (Player player : playerList) {
+					if(player.getColumn() == column && player.getRow() == row) {
+						inThisRoom.add(player);
+					}
+				}
+				// if p is the only player in the room, draw as normal
+				if (inThisRoom.size() == 1) {
+					p.draw(g, column * cellWidth, row * cellHeight, cellWidth, cellHeight);
+				} else {
+					// if there are multiple 
+					for (int i = -inThisRoom.size() / 2; i < inThisRoom.size() / 2; i++) {
+						p.draw(g, (int) (column  + i * playerOffset)* cellWidth, row * cellHeight, cellWidth, cellHeight);
+					}
+				}
+			} else {
+				p.draw(g, column * cellWidth, row * cellHeight, cellWidth, cellHeight);
+				drawnPlayer.add(p);
+			}
 		}
 	}
 	
