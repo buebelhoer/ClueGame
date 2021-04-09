@@ -36,6 +36,9 @@ public class ClueGame extends JFrame {
 		board.initialize();
 		board.calcTargets(board.getCell(19, 23), 5);
 		
+		board.getPlayerList().get(0).setLocation(2, 2);
+		board.getPlayerList().get(1).setLocation(2, 2);
+		
 		KnownCardsPanel cardsPanel = new KnownCardsPanel(hand, seenCards);
 		GameControlPanel controlPanel = new GameControlPanel();
 		

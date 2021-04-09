@@ -61,6 +61,8 @@ public class Board extends JPanel {
 
 	//specific instance of the board
 	private static Board instance = new Board();
+	
+	private static ArrayList<BoardCell> startPostions;
 
 	// constructor is private to ensure only one can be created
 	private Board() {
@@ -95,8 +97,27 @@ public class Board extends JPanel {
 		
 		generateSolution();
 		
+		generateStartPositons();
+		assignStartPositions();
+		
 		Collections.shuffle(gameCards);
 		dealCards();
+	}
+	
+	private void generateStartPositons() {
+		startPostions = new ArrayList<BoardCell>();
+		startPostions.add(board[5][0]);
+		startPostions.add(board[19][0]);
+		startPostions.add(board[23][7]);
+		startPostions.add(board[23][16]);
+		startPostions.add(board[19][23]);
+		startPostions.add(board[7][23]);
+	}
+	
+	private void assignStartPositions() {
+		for (int i = 0; i < playerList.size(); i++) {
+			playerList.get(i).setLocation(startPostions.get(i).getRow(), startPostions.get(i).getColumn());
+		}
 	}
 	
 	private void dealCards() {
@@ -703,14 +724,10 @@ public class Board extends JPanel {
 						inThisRoom.add(player);
 					}
 				}
-				// if p is the only player in the room, draw as normal
-				if (inThisRoom.size() == 1) {
-					p.draw(g, column * cellWidth, row * cellHeight, cellWidth, cellHeight);
-				} else {
-					// if there are multiple 
-					for (int i = -inThisRoom.size() / 2; i < inThisRoom.size() / 2; i++) {
-						p.draw(g, (int) (column  + i * playerOffset)* cellWidth, row * cellHeight, cellWidth, cellHeight);
-					}
+				int widthNeeded = (int)(((inThisRoom.size() - 1) * playerOffset + 1) * cellWidth);
+				int startPos = column * cellWidth - widthNeeded/2 + cellWidth/2;
+				for (int i = 0; i < inThisRoom.size(); i++) {
+					inThisRoom.get(i).draw(g, startPos + (int)(i*playerOffset*cellWidth), row * cellHeight, cellWidth, cellHeight);
 				}
 			} else {
 				p.draw(g, column * cellWidth, row * cellHeight, cellWidth, cellHeight);
