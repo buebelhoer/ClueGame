@@ -92,6 +92,18 @@ public class BoardCell {
 		}
 	}
 	
+	public void drawTarget(Graphics g, int x, int y, int width, int height) {
+		g.setColor(targetColor);
+		g.fillRect(x, y, width, height);
+		g.setColor(backgroundColor);
+		g.drawRect(x, y, width, height);		
+	}
+	
+	public void drawTargetRoom(Graphics g, int x, int y, int width, int height) {
+		g.setColor(targetColor);
+		g.fillRect(x, y, width, height);		
+	}
+	
 	/*
 	 * All functions below this point should be getters/setters
 	 */
