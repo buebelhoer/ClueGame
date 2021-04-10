@@ -710,25 +710,47 @@ public class Board extends JPanel {
 			}
 		}
 		
+		//tracks what players have been draw, to avoid double drawing when some players are drawn out of order		
 		Set<Player> drawnPlayer = new HashSet<Player>();
 		
 		for (Player p : playerList) {
 			final double playerOffset = .3;
 			if (drawnPlayer.contains(p)) continue; // if the player has been drawn out of order, do not attempt to draw again
+			
+			//gets the location of the current player
 			int row = p.getRow();
 			int column = p.getColumn();
+			
+			//if the player is in a room, we must account for multiple players in the same room
 			if(board[row][column].isRoom()) {
+				
+				//stores the players that are in the same room
 				ArrayList<Player> inThisRoom = new ArrayList<Player>();
+				
+				//checks every player to see if its in the same room as the current player, and adds it to the arraylist if it is
 				for (Player player : playerList) {
 					if(player.getColumn() == column && player.getRow() == row) {
 						inThisRoom.add(player);
 					}
 				}
+				
+				//calculates the total width needed to draw all of the player
 				int widthNeeded = (int)(((inThisRoom.size() - 1) * playerOffset + 1) * cellWidth);
-				int startPos = column * cellWidth - widthNeeded/2 + cellWidth/2;
+				
+				//calculates where the first player should be drawn, half the total width to the left of the center of the cell they are in
+				int startPos = column * cellWidth + cellWidth/2 - widthNeeded/2 ;
+				
+				//draws each player that is in the room
 				for (int i = 0; i < inThisRoom.size(); i++) {
+					
+					//draws the player 1 offset further than the previous one. if first player drawn, draws at startpos
 					inThisRoom.get(i).draw(g, startPos + (int)(i*playerOffset*cellWidth), row * cellHeight, cellWidth, cellHeight);
+					
+					//this player is drawn out of order if i >=1, and is added to the drawn list regardless
+					drawnPlayer.add(inThisRoom.get(i));
 				}
+				
+			//if the player is not in the same room, we simply draw it where it is, and add it to the drawn players
 			} else {
 				p.draw(g, column * cellWidth, row * cellHeight, cellWidth, cellHeight);
 				drawnPlayer.add(p);

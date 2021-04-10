@@ -101,8 +101,10 @@ public abstract class Player {
 	}
 	
 	public void draw(Graphics g, int x, int y, int width, int height) {
+		//sets the color to the players assigned color
 		g.setColor(color);
 		g.fillOval(x, y, width, height);
+		//draws in the boarder in the predetermined border color
 		g.setColor(BORDER_COLOR);
 		g.drawOval(x, y, width, height);
 	}

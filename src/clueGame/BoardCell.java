@@ -57,14 +57,18 @@ public class BoardCell {
 		
 		
 		if (isRoom) {
+			//rooms are drawn in a different color, and done have borders for each cell
 			g.setColor(roomColors);
 			g.fillRect(x, y, width, height);
 		} else if (room.getName().equals("Unused")) {
+			// unused cells are drawn in as the background color allways
 			g.setColor(backgroundColor);
 			g.fillRect(x, y, width, height);
 		}else {
+			//the cell itself is filled in
 			g.setColor(walkwayColor);
 			g.fillRect(x, y, width, height);
+			//the border is drawn
 			g.setColor(backgroundColor);
 			g.drawRect(x, y, width - 1, height - 1);
 		}
@@ -73,9 +77,11 @@ public class BoardCell {
 	}
 	
 	public void DrawDoor(Graphics g, int x, int y, int width, int height) {
+		//how big the door should be based on the height of a cell
 		final int DOOR_WIDTH_FRACTION = 7;
 		
 		g.setColor(doorColor);
+		//draws the door in the appropriate direction relative to the cell
 		switch (doorDirection) {
 		case UP: 
 			g.fillRect(x, y - height/DOOR_WIDTH_FRACTION, width, height/DOOR_WIDTH_FRACTION);
@@ -92,6 +98,7 @@ public class BoardCell {
 		}
 	}
 	
+	//draws the targets in the desired color, same as draw(), just different color
 	public void drawTarget(Graphics g, int x, int y, int width, int height) {
 		g.setColor(targetColor);
 		g.fillRect(x, y, width, height);
@@ -99,9 +106,12 @@ public class BoardCell {
 		g.drawRect(x, y, width - 1, height - 1);		
 	}
 	
+	
+	//targets that are room are colored in, but their borders are not drawn
 	public void drawTargetRoom(Graphics g, int x, int y, int width, int height) {
 		g.setColor(targetColor);
-		g.fillRect(x, y, width, height);		
+		g.fillRect(x, y, width, height);
+		
 	}
 	
 	/*
