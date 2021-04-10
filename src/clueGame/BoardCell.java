@@ -72,7 +72,7 @@ public class BoardCell {
 
 	}
 	
-	public void DrawDoor(Graphics g, int x, int y, int width, int height) {
+	public void drawDoor(Graphics g, int x, int y, int width, int height) {
 		final int DOOR_WIDTH_FRACTION = 7;
 		
 		g.setColor(doorColor);
