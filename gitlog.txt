@@ -1,3 +1,185 @@
+commit 6d376894f033c889cca90957042f5e8d30bdc1e5
+Merge: 458ace6 b2c0bb7
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Fri Apr 9 18:06:54 2021 -0600
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 458ace6df5d365e7fcc13f5349645533d6142e9b
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Fri Apr 9 18:06:24 2021 -0600
+
+    Comments anyone?
+
+commit b2c0bb79d1ba9d454ae01e7f196ababc31dadd93
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Fri Apr 9 18:03:27 2021 -0600
+
+    lots of comments
+
+commit d6f2c216c784cc9e33cb94b310813e6b813f8bc7
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Fri Apr 9 17:54:29 2021 -0600
+
+    Centered player drawing
+
+commit ef6bbf7e397da4f23882a33d0cfdb4b94dbbb13d
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Fri Apr 9 17:27:54 2021 -0600
+
+    fixed borders
+
+commit 1ba7fa35e2ddea7c96e9df751326a4b2ad723e12
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Fri Apr 9 17:26:30 2021 -0600
+
+    Revert "throw away"
+    
+    This reverts commit bb669399befdf2f82ebc7271b93f14cd7a3eeaa1.
+
+commit bb669399befdf2f82ebc7271b93f14cd7a3eeaa1
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Fri Apr 9 17:26:30 2021 -0600
+
+    throw away
+
+commit 643b72ddb555093c17a5556aeb9027daa3313485
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Fri Apr 9 17:22:59 2021 -0600
+
+    fixed drawing offset issue
+
+commit 2c1918b1978bfc9a4c10aa9e1ceed007bd71959d
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Fri Apr 9 17:22:12 2021 -0600
+
+    fixed room fill
+
+commit 008c10fbf1b70032ba552468a0d80ae3abf56e6e
+Merge: d3a5d78 f7473f2
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Fri Apr 9 17:14:36 2021 -0600
+
+    Merge branch 'master' of https://github.com/buebelhoer/ClueLayout
+
+commit d3a5d785ab4efe0766c851637e63d02bb6f1cf96
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Fri Apr 9 17:14:26 2021 -0600
+
+    added test target
+
+commit f7473f2b101619f63a7bd0fa3c671f68cdd17db7
+Merge: 6639f90 0737787
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Fri Apr 9 17:12:46 2021 -0600
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 6639f9098d127de693dc571e8600d09e92842d7d
+Author: Brendan <buebelhoer@mymail.mines.edu>
+Date:   Fri Apr 9 17:11:35 2021 -0600
+
+    fixed palyer Drawing
+
+commit 07377876f8db67c904c4e83db5ac18c629125af3
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Fri Apr 9 17:04:39 2021 -0600
+
+    impolemented draw targets
+
+commit 9afdb84fde70f82c92add0d5048b11f2eae49864
+Author: Buebelhoer <buebelhoer@mymail.mines.edu>
+Date:   Thu Apr 8 17:07:05 2021 -0600
+
+    Implemented player drawing
+
+commit cc41618b2fdfe1b57d0bdb2ddec1c1f0cd2c346a
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Wed Apr 7 10:53:51 2021 -0600
+
+    labels and doors
+
+commit 4717097d53b2b6e6a43652f32c83c4ee9cc4c2f4
+Author: Buebelhoer <buebelhoer@mymail.mines.edu>
+Date:   Tue Apr 6 18:18:58 2021 -0600
+
+    added DrawDoor
+
+commit db464a2ecc5af55f9d2f1c87f09d5efb6edec3cd
+Author: Buebelhoer <buebelhoer@mymail.mines.edu>
+Date:   Tue Apr 6 18:02:01 2021 -0600
+
+    added adaptive sizing to board cells
+
+commit 19cc69eedd728f921c69c400ecf8ba3a860e04e3
+Merge: d601b61 cba17c8
+Author: Buebelhoer <buebelhoer@mymail.mines.edu>
+Date:   Tue Apr 6 17:44:31 2021 -0600
+
+    Merge remote-tracking branch 'origin/master'
+
+commit d601b61a719fd5f58696d1511b6b5f1bdc8b6f05
+Author: Buebelhoer <buebelhoer@mymail.mines.edu>
+Date:   Tue Apr 6 17:44:29 2021 -0600
+
+    started paint components override
+
+commit cba17c89447cfcc9baa316ce8d89df9a778c443d
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Tue Apr 6 17:43:57 2021 -0600
+
+    updated frame to show test data from previous assignments
+
+commit 0fcbf114e804511517b2bfefbeea8ebf2a5928ab
+Merge: d207c32 f05cfa7
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Tue Apr 6 17:40:44 2021 -0600
+
+    Merge branch 'master' of https://github.com/buebelhoer/ClueLayout
+
+commit d207c32e6401f038b816e7cb4b330bf93e340e29
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Tue Apr 6 17:40:38 2021 -0600
+
+    changed window title
+
+commit f05cfa7a7ec34b4adf5d25eed38cd372c946ecf0
+Merge: b5bc518 57b29e5
+Author: Buebelhoer <buebelhoer@mymail.mines.edu>
+Date:   Tue Apr 6 17:39:33 2021 -0600
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 57b29e56179cdc1853213d1301954e60cd1dfa47
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Tue Apr 6 17:39:31 2021 -0600
+
+    sized frame
+
+commit b5bc51865d39cd985e862965d551302248887a6c
+Author: Buebelhoer <buebelhoer@mymail.mines.edu>
+Date:   Tue Apr 6 17:39:28 2021 -0600
+
+    implemented basic draw method
+
+commit 9665c239b7725bd25dcc4cc926421946b12c9c3e
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Tue Apr 6 17:23:36 2021 -0600
+
+    moved to clueGame package
+
+commit 49c42a16cfc1123938a33af47e033e652073bf0d
+Author: bMorgan01 <ben.morgan5000@gmail.com>
+Date:   Tue Apr 6 17:20:35 2021 -0600
+
+    added frame class
+
+commit c2190909badc0277b7dc7f036331b37ce0adc77d
+Author: Buebelhoer <buebelhoer@mymail.mines.edu>
+Date:   Mon Apr 5 19:17:34 2021 -0600
+
+    submission for 21A-2
+
 commit 09876bdceab4286a0dc253386323dc28484bc737
 Author: Buebelhoer <buebelhoer@mymail.mines.edu>
 Date:   Mon Apr 5 19:13:05 2021 -0600
