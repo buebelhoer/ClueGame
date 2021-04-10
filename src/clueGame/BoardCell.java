@@ -76,7 +76,7 @@ public class BoardCell {
 
 	}
 	
-	public void DrawDoor(Graphics g, int x, int y, int width, int height) {
+	public void drawDoor(Graphics g, int x, int y, int width, int height) {
 		//how big the door should be based on the height of a cell
 		final int DOOR_WIDTH_FRACTION = 7;
 		

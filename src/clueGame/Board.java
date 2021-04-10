@@ -671,19 +671,21 @@ public class Board extends JPanel {
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		
-		
+		//calculate the pixels per side of the cells based on the width of the current game window
 		int cellHeight = getHeight() / numRows;
 		int cellWidth = getWidth() / numCols;
 		
+		//draw all cells, fill with corresponding room color
 		for (int row = 0; row < numRows; row ++) {
 			for (int column = 0; column < numCols; column++) {
 				board[row][column].draw(g, column * cellWidth, row * cellHeight, cellWidth, cellHeight);
 			}
 		}
 		
-	
+		//highlight all target cells
 		for (BoardCell target : targets) {
 			if (target.isRoom()) {
+				//if room center targeted, highlight rest of room
 				for (int row = 0; row < numRows; row ++) {
 					for (int column = 0; column < numCols; column++) {
 						if (board[row][column].isRoom() && board[row][column].getRoom().equals(target.getRoom())) {
@@ -692,19 +694,24 @@ public class Board extends JPanel {
 					}
 				}
 			} else {
+				//single target cell, a walkway
 				target.drawTarget(g, target.getColumn()*cellWidth, target.getRow() * cellHeight, cellWidth, cellHeight);
 			}
 		}
 		
+		
+		//draw room doors and labels
 		g.setColor(TEXT_COLOR);
 		g.setFont(g.getFont().deriveFont(Font.BOLD));
 		
 		for (int row = 0; row < numRows; row ++) {
 			for (int column = 0; column < numCols; column++) {
-				if (board[row][column].isDoorway()) {
-					board[row][column].DrawDoor(g, column * cellWidth, row * cellHeight, cellWidth, cellHeight);
-				} else if (board[row][column].isLabel()) {
+				if (board[row][column].isDoorway()) { 			//doors
+					board[row][column].drawDoor(g, column * cellWidth, row * cellHeight, cellWidth, cellHeight);
+				} else if (board[row][column].isLabel()) { 		//labels
+					//calculate width of string when drawn using selected font
 					Rectangle2D bounds = g.getFontMetrics().getStringBounds(board[row][column].getRoom().getName(), g);
+					//draw string centered based on bounds
 					g.drawString(board[row][column].getRoom().getName(), (int)((column * cellWidth + cellWidth/2) - (bounds.getWidth()/2)), (int)((row * cellHeight + cellHeight/2) - (bounds.getHeight()/2)));
 				}
 			}
