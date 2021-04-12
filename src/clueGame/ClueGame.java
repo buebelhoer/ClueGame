@@ -82,7 +82,7 @@ public class ClueGame extends JFrame implements MouseListener{
 		}
 		
 		Point clickLocation = new Point(e.getX(), e.getY());
-		BoardCell clickedCell;
+		BoardCell clickedCell = null;
 		for(int row = 0; row < board.getNumRows(); row ++) {
 			for (int col = 0; col < board.getNumColumns(); col ++) {
 				if (board.getCell(row, col).containsClick(clickLocation)) {
@@ -93,13 +93,17 @@ public class ClueGame extends JFrame implements MouseListener{
 		
 		if (clickedCell == null) {
 			JOptionPane.showMessageDialog(this, "That is not a cell, plase click a cell to move to it", "Not A Cell", JOptionPane.ERROR_MESSAGE);
+			return;
 		}
 		
 		if (board.getTargets().contains(clickLocation)) {
 			currentPLayer.setLocation(clickedCell);
 		} else {
 			JOptionPane.showMessageDialog(this, "That is not a cell you can move to!", "Invalid Move!", JOptionPane.ERROR_MESSAGE);
+			return;
 		}
+		
+		hasMoved = true;
 	}
 
 	@Override
