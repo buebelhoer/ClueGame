@@ -57,9 +57,13 @@ public class ClueGame extends JFrame implements MouseListener{
 	}
 
 	private void setCurrentPlayer(GameControlPanel controlPanel, Player p) {
-		controlPanel.setTurn(p, rng.nextInt(6) + 1);
+		int roll = rng.nextInt(6) + 1;
+		
+		controlPanel.setTurn(p, roll);
 		controlPanel.setGuess("I have no guess!");
 		controlPanel.setGuessResult( "So you have nothing?");
+		
+		board.calcTargets(board.getCell(p.getRow(), p.getColumn()), roll);
 	}
 
 	public static void main(String[] args) {

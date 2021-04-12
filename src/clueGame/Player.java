@@ -2,6 +2,7 @@ package clueGame;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Point;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -164,6 +165,10 @@ public abstract class Player {
 	public void setLocation(BoardCell cell) {
 		this.row = cell.getRow();
 		this.column = cell.getColumn();
+	}
+	
+	public Point getLocation() {
+		return new Point(row, column);
 	}
 
 	public Set<Card> getSeenCards() {
