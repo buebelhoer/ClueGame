@@ -47,6 +47,7 @@ public abstract class Player {
 		this.column = column;
 		this.hand = hand;
 		seenCards = new HashSet<Card>();
+		revealedCards = new HashMap<Player, ArrayList<Card>>();
 	}
 
 
@@ -57,6 +58,7 @@ public abstract class Player {
 		this.color = color;
 		hand = new ArrayList<>();
 		seenCards = new HashSet<Card>();
+		revealedCards = new HashMap<Player, ArrayList<Card>>();
 	}
 	
 	public Player(String name, Color color, Random rng, ArrayList<Card> roomCards,  ArrayList<Card> personCards, ArrayList<Card> weaponCards) {
@@ -69,6 +71,7 @@ public abstract class Player {
 		this.weaponCards = weaponCards;
 		this.rng = rng;
 		seenCards = new HashSet<Card>();
+		revealedCards = new HashMap<Player, ArrayList<Card>>();
 	}
 
 
