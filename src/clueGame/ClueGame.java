@@ -13,47 +13,29 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class ClueGame extends JFrame implements MouseListener{
-	
 	Player currentPLayer;
 	boolean hasMoved;
 	boolean hasSuggested;
-	
+	Board board;
 	public ClueGame(String title) {
 		super(title);
-	}
-
-	public static void main(String[] args) {
+		
 		JPanel mainPanel = new JPanel();  // create the panel
 		ClueGame frame = new ClueGame("Mines Mystery");  // create the frame 
-		Board board;
 		
-		//test player for known cards
-		ArrayList<Card> hand = new ArrayList<>();
-		hand.add(new Card("handTestweapon", CardType.WEAPON));
-		hand.add(new Card("handTestweapon2", CardType.WEAPON));
-		
-		HashMap<Player, ArrayList<Card>> seenCards = new HashMap<>();
-		ArrayList<Card> seen = new ArrayList<>();
-		seen.add(new Card("seenTestweapon", CardType.WEAPON));
-		seen.add(new Card("seenTestweapon2", CardType.WEAPON));
-		seenCards.put(new ComputerPlayer("Test Player", Color.red), seen);
-		
-		//create singleton board panel
+		//calls standard setup functions
 		board = Board.getInstance();
 		board.setConfigFiles("ClueLayout.csv", "ClueSetup.txt");
 		board.initialize();
-		board.calcTargets(board.getCell(19, 23), 5);
 		
-		board.getPlayerList().get(0).setLocation(2, 2);
-		board.getPlayerList().get(1).setLocation(2, 2);
+		//player for known cards
+		ArrayList<Card> hand = board.getHumanPlayer().getHand();
+		HashMap<Player, ArrayList<Card>> seenCards = board.getHumanPlayer().getRevealedCards();
 		
 		KnownCardsPanel cardsPanel = new KnownCardsPanel(hand, seenCards);
 		GameControlPanel controlPanel = new GameControlPanel();
 		
-		// test filling in the lower panel data
-		controlPanel.setTurn(new ComputerPlayer( "Col. Mustard", 0, 0, Color.orange), 5);
-		controlPanel.setGuess( "I have no guess!");
-		controlPanel.setGuessResult( "So you have nothing?");
+		setCurrentPlayer(controlPanel, board.getHumanPlayer());
 		
 		//add components to parent panel
 		mainPanel.setLayout(new BorderLayout());
@@ -66,6 +48,16 @@ public class ClueGame extends JFrame implements MouseListener{
 		frame.setContentPane(mainPanel); // put the panel in the frame
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // allow it to close
 		frame.setVisible(true); // make it visible
+	}
+
+	private void extracted(GameControlPanel controlPanel, Player p) {
+		controlPanel.setTurn(p, );
+		controlPanel.setGuess("I have no guess!");
+		controlPanel.setGuessResult( "So you have nothing?");
+	}
+
+	public static void main(String[] args) {
+		
 	}
 	@Override
 	public void mouseClicked(MouseEvent e) {}

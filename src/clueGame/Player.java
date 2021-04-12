@@ -153,10 +153,12 @@ public abstract class Player {
 		this.row = row;
 		this.column = column;
 	}
-	
-	
-	
-	
-	
-	
+
+	public Set<Card> getSeenCards() {
+		return seenCards;
+	}
+
+	public HashMap<Player, ArrayList<Card>> getRevealedCards() {
+		return revealedCards;
+	}
 }

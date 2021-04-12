@@ -113,7 +113,7 @@ public class GameControlPanel extends JPanel {
 		panel.setGuessResult( "So you have nothing?");
 	}
 	
-	public void setTurn(ComputerPlayer cp, int roll) {
+	public void setTurn(Player cp, int roll) {
 		nameField.setText(cp.getName());
 		nameField.setBackground(cp.getColor());
 		
