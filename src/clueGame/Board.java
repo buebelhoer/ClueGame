@@ -73,9 +73,14 @@ public class Board extends JPanel {
 	public static Board getInstance() {
 		return instance;
 	}
-
+	
 	//initialize board
 	public void initialize() {
+		Random rng = new Random(System.currentTimeMillis());
+		initialize(rng);
+	}
+
+	public void initialize(Random rng) {
 		// BadConfigException indicates invalid format in the config files
 		try {
 			//loads the setup file
@@ -90,7 +95,7 @@ public class Board extends JPanel {
 		visited = new HashSet<>();
 		targets = new HashSet<>();
 		
-		random = new Random(System.currentTimeMillis());
+		random = rng;
 
 		//generates the list of adjacencies for each cell
 		generateAdjacencies();
