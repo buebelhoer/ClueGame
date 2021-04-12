@@ -9,18 +9,23 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class ClueGame extends JFrame implements MouseListener{
-	Player currentPLayer;
-	boolean hasMoved;
-	boolean hasSuggested;
-	Board board;
+	private Player currentPLayer;
+	private boolean hasMoved;
+	private boolean hasSuggested;
+	private Board board;
+	private Random rng;
+	
 	public ClueGame(String title) {
 		super(title);
+		
+		rng = new Random(System.currentTimeMillis());
 		
 		JPanel mainPanel = new JPanel();  // create the panel
 		ClueGame frame = new ClueGame("Mines Mystery");  // create the frame 
@@ -28,7 +33,7 @@ public class ClueGame extends JFrame implements MouseListener{
 		//calls standard setup functions
 		board = Board.getInstance();
 		board.setConfigFiles("ClueLayout.csv", "ClueSetup.txt");
-		board.initialize();
+		board.initialize(rng);
 		
 		//player for known cards
 		ArrayList<Card> hand = board.getHumanPlayer().getHand();
@@ -52,8 +57,8 @@ public class ClueGame extends JFrame implements MouseListener{
 		frame.setVisible(true); // make it visible
 	}
 
-	private void extracted(GameControlPanel controlPanel, Player p) {
-		controlPanel.setTurn(p, );
+	private void setCurrentPlayer(GameControlPanel controlPanel, Player p) {
+		controlPanel.setTurn(p, rng.nextInt(6) + 1);
 		controlPanel.setGuess("I have no guess!");
 		controlPanel.setGuessResult( "So you have nothing?");
 	}
@@ -61,6 +66,7 @@ public class ClueGame extends JFrame implements MouseListener{
 	public static void main(String[] args) {
 		
 	}
+	
 	@Override
 	public void mouseClicked(MouseEvent e) {}
 
