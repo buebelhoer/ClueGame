@@ -69,7 +69,14 @@ public class ClueGame extends JFrame implements MouseListener{
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		Point clickLocation = new Point(e.getX(), e.getY());
-		for (BoardCell b : board.)
+		BoardCell clickedCell;
+		for(int row = 0; row < board.getNumRows(); row ++) {
+			for (int col = 0; col < board.getNumColumns(); col ++) {
+				if (board.getCell(row, col).containsClick(clickLocation)) {
+					clickedCell = board.getCell(row, col);
+				}
+			}
+		}
 	}
 
 	@Override
