@@ -54,7 +54,7 @@ public class ClueGame extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // allow it to close
 		setVisible(true); // make it visible
 		
-		
+		JOptionPane.showMessageDialog(this, "You are " + board.getHumanPlayer().getName() + ". \nCan you find the solution\nbefore the Computer players?");
 	}
 
 	private void setCurrentPlayer(Player p) {
