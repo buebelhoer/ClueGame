@@ -853,4 +853,13 @@ public class Board extends JPanel {
 	public void setSolution(Solution s) {
 		theAnswer = s;
 	}
+	
+	public HumanPlayer getHumanPlayer() {
+		for (Player p : playerList) {
+			if (p instanceof HumanPlayer) {
+				return (HumanPlayer)p;
+			}
+		}
+		return null;
+	}
 }
