@@ -791,44 +791,53 @@ public class Board extends JPanel implements MouseListener {
 	@Override
 	public void mouseReleased(MouseEvent e) {
 
+		//if the player has already moved, we dont need to check mouse clicks
 		if (hasMoved) {
 			return;
 		}
 
+		//determines which cell the player clicked on on
 		Point clickLocation = new Point(e.getX(), e.getY());
 		BoardCell clickedCell = null;
 		for(int row = 0; row < numRows; row ++) {
 			for (int col = 0; col < numCols; col ++) {
 				if (board[row][col].containsClick(clickLocation)) {
+					// stores the cell that the player clicked
 					clickedCell = board[row][col];
 				}
 			}
 		}
 
+		//this means the player released the mouse outside of the pane, and therefore not on a cell
 		if (clickedCell == null) {
 			JOptionPane.showMessageDialog(this, "That is not a cell, plase click a cell to move to it", "Not A Cell", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 
-		//		System.out.println(clickedCell.getRow() + "," + clickedCell.getColumn() + "\n");
 
+		//if the player clicks on a cell that is a room, but not its center, the clicked cell is adjusted to be the room center
 		if (clickedCell.isRoom()) {
 			clickedCell = clickedCell.getRoom().getCenterCell();
 		}
 
+		//if the clicked cell is on the targets list, the player moves to it
 		if (targets.contains(clickedCell)) {
 			currentPlayer.setLocation(clickedCell);
 		} else {
+			//if the clicked cell is not a valid target, an error is displayed
 			JOptionPane.showMessageDialog(this, "That is not a cell you can move to!", "Invalid Move!", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 
+		//update the moved flag
 		hasMoved = true;
 
+		//redraws the board without the targets to look nice
 		targets.clear();
 		repaint();
 	}
 
+	//unused mouse listener methods
 	@Override
 	public void mouseClicked(MouseEvent e) {}
 
