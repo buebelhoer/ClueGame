@@ -19,6 +19,8 @@ public class ClueGame extends JFrame {
 	private Board board;
 	private Random rng;
 	
+	private GameControlPanel controlPanel; 
+	private KnownCardsPanel cardsPanel;
 	public ClueGame(String title) {
 		super(title);
 		
@@ -35,10 +37,10 @@ public class ClueGame extends JFrame {
 		ArrayList<Card> hand = board.getHumanPlayer().getHand();
 		HashMap<Player, ArrayList<Card>> seenCards = board.getHumanPlayer().getRevealedCards();
 		
-		KnownCardsPanel cardsPanel = new KnownCardsPanel(hand, seenCards);
-		GameControlPanel controlPanel = new GameControlPanel();
+		cardsPanel = new KnownCardsPanel(hand, seenCards);
+		controlPanel = new GameControlPanel(this);
 		
-		setCurrentPlayer(controlPanel, board.getHumanPlayer());
+		setCurrentPlayer(board.getHumanPlayer());
 		
 		//add components to parent panel
 		mainPanel.setLayout(new BorderLayout());
@@ -55,16 +57,37 @@ public class ClueGame extends JFrame {
 		
 	}
 
-	private void setCurrentPlayer(GameControlPanel controlPanel, Player p) {
+	private void setCurrentPlayer(Player p) {
 		int roll = rng.nextInt(6) + 1;
 		
-		board.setCurrentPlayer(p);
+		
 	
 		controlPanel.setTurn(p, roll);
 		controlPanel.setGuess("I have no guess!");
 		controlPanel.setGuessResult( "So you have nothing?");
 		
 		board.calcTargets(board.getCell(p.getRow(), p.getColumn()), roll);
+		board.setCurrentPlayer(p);
+		board.setHasMoved(board.getTargets().isEmpty());
+		board.setHasSuggested(false);
+		
+		board.repaint();
+	}
+	
+	public void nextTurn() {
+		if (!board.hasMoved()) {
+			JOptionPane.showMessageDialog(this, "You have not moved yet!", "Cannot move to next player", JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+		
+		if (!board.hasSuggested()) {
+			if (board.getCell(board.getCurrentPlayer().getRow(),board.getCurrentPlayer().getColumn()).isRoom()) {
+				JOptionPane.showMessageDialog(this, "You have not made a suggestion yet!", "Cannot move to next player", JOptionPane.ERROR_MESSAGE);
+				return;
+			}
+		}
+		
+		setCurrentPlayer(board.getNextPlayer());
 	}
 
 	public static void main(String[] args) {

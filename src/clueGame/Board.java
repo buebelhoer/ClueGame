@@ -47,7 +47,7 @@ public class Board extends JPanel implements MouseListener{
 
 	//maps the character symbol of a room to the room object itself
 	private Map<Character,Room> roomMap;
-	
+
 	//maps the Strings of the names of the cards with the Card Objects, for maps only
 	private Map<String, Card> cardMap;
 
@@ -59,15 +59,15 @@ public class Board extends JPanel implements MouseListener{
 
 	//number of players in the game
 	private int playerCount;
-	
+
 	//random number generator used in the game
 	private Random random;
 
 	//specific instance of the board
 	private static Board instance = new Board();
-	
+
 	private static ArrayList<BoardCell> startPostions;
-	
+
 	private Player currentPlayer;
 	private boolean hasMoved;
 	private boolean hasSuggested;
@@ -81,7 +81,7 @@ public class Board extends JPanel implements MouseListener{
 	public static Board getInstance() {
 		return instance;
 	}
-	
+
 	//initialize board
 	public void initialize() {
 		Random rng = new Random(System.currentTimeMillis());
@@ -102,22 +102,22 @@ public class Board extends JPanel implements MouseListener{
 		// allocates the visited and target sets
 		visited = new HashSet<>();
 		targets = new HashSet<>();
-		
+
 		random = rng;
 
 		//generates the list of adjacencies for each cell
 		generateAdjacencies();
-		
+
 		generateSolution();
-		
+
 		generateStartPositons();
 		assignStartPositions();
-		
+
 		Collections.shuffle(gameCards);
 		dealCards();
 		addMouseListener(this);
 	}
-	
+
 	private void generateStartPositons() {
 		startPostions = new ArrayList<BoardCell>();
 		startPostions.add(board[5][0]);
@@ -127,19 +127,19 @@ public class Board extends JPanel implements MouseListener{
 		startPostions.add(board[19][23]);
 		startPostions.add(board[7][23]);
 	}
-	
+
 	private void assignStartPositions() {
 		for (int i = 0; i < playerList.size(); i++) {
 			playerList.get(i).setLocation(startPostions.get(i).getRow(), startPostions.get(i).getColumn());
 		}
 	}
-	
+
 	private void dealCards() {
 		try {
 			int player = 0;
 			for (Card c : gameCards) {
 				playerList.get(player).addCard(c);
-				
+
 				player += 1;
 				player = player % playerList.size();
 			}
@@ -465,7 +465,7 @@ public class Board extends JPanel implements MouseListener{
 
 		gameCards.add(card);
 		personCards.add(card);
-		
+
 		cardMap.put(playerName, card);
 
 		playerCount++;
@@ -646,19 +646,19 @@ public class Board extends JPanel implements MouseListener{
 			System.out.println(e);
 		}
 	}
-	
-	
+
+
 	private void generateSolution() {
 		try {
-		int roomIndex = random.nextInt(Integer.MAX_VALUE)%roomCards.size();
-		int weaponIndex = random.nextInt(Integer.MAX_VALUE)%weaponCards.size();
-		int playerIndex = random.nextInt(Integer.MAX_VALUE)%personCards.size();
-		
-		theAnswer = new Solution(personCards.get(playerIndex), roomCards.get(roomIndex), weaponCards.get(weaponIndex));
-		
-		gameCards.remove(personCards.get(playerIndex));
-		gameCards.remove(roomCards.get(roomIndex));
-		gameCards.remove(weaponCards.get(weaponIndex));
+			int roomIndex = random.nextInt(Integer.MAX_VALUE)%roomCards.size();
+			int weaponIndex = random.nextInt(Integer.MAX_VALUE)%weaponCards.size();
+			int playerIndex = random.nextInt(Integer.MAX_VALUE)%personCards.size();
+
+			theAnswer = new Solution(personCards.get(playerIndex), roomCards.get(roomIndex), weaponCards.get(weaponIndex));
+
+			gameCards.remove(personCards.get(playerIndex));
+			gameCards.remove(roomCards.get(roomIndex));
+			gameCards.remove(weaponCards.get(weaponIndex));
 		} catch (ArithmeticException e) {
 			System.out.println("divide by zero error from 306 test");
 		}
@@ -667,7 +667,7 @@ public class Board extends JPanel implements MouseListener{
 	public boolean checkAccusation(Solution accusation) {
 		return accusation.equals(theAnswer);
 	}
-	
+
 	public Card checkSuggestion(Solution solution) {
 		ArrayList<Card> disproved = new ArrayList<>();
 		for (Player p : playerList) {
@@ -677,25 +677,25 @@ public class Board extends JPanel implements MouseListener{
 			}
 		}
 		if (disproved.isEmpty()) return null;
-		
+
 		return disproved.get(random.nextInt(Integer.MAX_VALUE)%disproved.size());
 	}
-	
+
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		
+
 		//calculate the pixels per side of the cells based on the width of the current game window
 		int cellHeight = getHeight() / numRows;
 		int cellWidth = getWidth() / numCols;
-		
+
 		//draw all cells, fill with corresponding room color
 		for (int row = 0; row < numRows; row ++) {
 			for (int column = 0; column < numCols; column++) {
 				board[row][column].draw(g, column * cellWidth, row * cellHeight, cellWidth, cellHeight);
 			}
 		}
-		
+
 		//highlight all target cells
 		for (BoardCell target : targets) {
 			if (target.isRoom()) {
@@ -712,12 +712,12 @@ public class Board extends JPanel implements MouseListener{
 				target.drawTarget(g, target.getColumn()*cellWidth, target.getRow() * cellHeight, cellWidth, cellHeight);
 			}
 		}
-		
-		
+
+
 		//draw room doors and labels
 		g.setColor(TEXT_COLOR);
 		g.setFont(g.getFont().deriveFont(Font.BOLD));
-		
+
 		for (int row = 0; row < numRows; row ++) {
 			for (int column = 0; column < numCols; column++) {
 				if (board[row][column].isDoorway()) { 			//doors
@@ -730,55 +730,55 @@ public class Board extends JPanel implements MouseListener{
 				}
 			}
 		}
-		
+
 		//tracks what players have been draw, to avoid double drawing when some players are drawn out of order		
 		Set<Player> drawnPlayer = new HashSet<Player>();
-		
+
 		for (Player p : playerList) {
 			final double playerOffset = .3;
 			if (drawnPlayer.contains(p)) continue; // if the player has been drawn out of order, do not attempt to draw again
-			
+
 			//gets the location of the current player
 			int row = p.getRow();
 			int column = p.getColumn();
-			
+
 			//if the player is in a room, we must account for multiple players in the same room
 			if(board[row][column].isRoom()) {
-				
+
 				//stores the players that are in the same room
 				ArrayList<Player> inThisRoom = new ArrayList<Player>();
-				
+
 				//checks every player to see if its in the same room as the current player, and adds it to the arraylist if it is
 				for (Player player : playerList) {
 					if(player.getColumn() == column && player.getRow() == row) {
 						inThisRoom.add(player);
 					}
 				}
-				
+
 				//calculates the total width needed to draw all of the player
 				int widthNeeded = (int)(((inThisRoom.size() - 1) * playerOffset + 1) * cellWidth);
-				
+
 				//calculates where the first player should be drawn, half the total width to the left of the center of the cell they are in
 				int startPos = column * cellWidth + cellWidth/2 - widthNeeded/2 ;
-				
+
 				//draws each player that is in the room
 				for (int i = 0; i < inThisRoom.size(); i++) {
-					
+
 					//draws the player 1 offset further than the previous one. if first player drawn, draws at startpos
 					inThisRoom.get(i).draw(g, startPos + (int)(i*playerOffset*cellWidth), row * cellHeight, cellWidth, cellHeight);
-					
+
 					//this player is drawn out of order if i >=1, and is added to the drawn list regardless
 					drawnPlayer.add(inThisRoom.get(i));
 				}
-				
-			//if the player is not in the same room, we simply draw it where it is, and add it to the drawn players
+
+				//if the player is not in the same room, we simply draw it where it is, and add it to the drawn players
 			} else {
 				p.draw(g, column * cellWidth, row * cellHeight, cellWidth, cellHeight);
 				drawnPlayer.add(p);
 			}
 		}
 	}
-	
+
 	/*
 	 * mouse listener sutff
 	 */
@@ -787,11 +787,11 @@ public class Board extends JPanel implements MouseListener{
 	//used to determine if the cell clicked was a cell
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		
+
 		if (hasMoved) {
 			return;
 		}
-		
+
 		Point clickLocation = new Point(e.getX(), e.getY());
 		BoardCell clickedCell = null;
 		for(int row = 0; row < numRows; row ++) {
@@ -801,31 +801,31 @@ public class Board extends JPanel implements MouseListener{
 				}
 			}
 		}
-		
+
 		if (clickedCell == null) {
 			JOptionPane.showMessageDialog(this, "That is not a cell, plase click a cell to move to it", "Not A Cell", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
-		
-//		System.out.println(clickedCell.getRow() + "," + clickedCell.getColumn() + "\n");
-		
+
+		//		System.out.println(clickedCell.getRow() + "," + clickedCell.getColumn() + "\n");
+
 		if (clickedCell.isRoom()) {
 			clickedCell = clickedCell.getRoom().getCenterCell();
 		}
-		
+
 		if (targets.contains(clickedCell)) {
 			currentPlayer.setLocation(clickedCell);
 		} else {
 			JOptionPane.showMessageDialog(this, "That is not a cell you can move to!", "Invalid Move!", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
-		
+
 		hasMoved = true;
-		
+
 		targets.clear();
 		repaint();
 	}
-	
+
 	@Override
 	public void mouseClicked(MouseEvent e) {}
 
@@ -837,15 +837,15 @@ public class Board extends JPanel implements MouseListener{
 
 	@Override
 	public void mouseExited(MouseEvent e) {}
-	
+
 	/*
 	 * ALL CODE BENEATH THIS POINT SHOULD BE GETTER/SETTERS
 	 */
 
-public void setCurrentPlayer(Player currentPlayer) {
+	public void setCurrentPlayer(Player currentPlayer) {
 		this.currentPlayer = currentPlayer;
 	}
-	
+
 
 	public Set<BoardCell> getTargets() {
 		return targets;
@@ -883,11 +883,11 @@ public void setCurrentPlayer(Player currentPlayer) {
 	public ArrayList<Player> getPlayerList() {
 		return playerList;
 	}
-	
+
 	public void setPlayerList(ArrayList<Player> playerList) {
 		this.playerList = playerList;
 	}
- 
+
 	public int getPlayerCount() {
 		return playerCount;
 	}
@@ -923,11 +923,11 @@ public void setCurrentPlayer(Player currentPlayer) {
 	public Map<String, Card> getCardMap() {
 		return cardMap;
 	}
-	
+
 	public void setSolution(Solution s) {
 		theAnswer = s;
 	}
-	
+
 	public HumanPlayer getHumanPlayer() {
 		for (Player p : playerList) {
 			if (p instanceof HumanPlayer) {
@@ -936,4 +936,29 @@ public void setCurrentPlayer(Player currentPlayer) {
 		}
 		return null;
 	}
+
+	public boolean hasMoved() {
+		return hasMoved;
+	}
+
+	public void setHasMoved(boolean hasMoved) {
+		this.hasMoved = hasMoved;
+	}
+
+	public void setHasSuggested(boolean hasSuggested) {
+		this.hasSuggested = hasSuggested;
+	}
+
+	public boolean hasSuggested() {
+		return hasSuggested;
+	}
+
+	public Player getCurrentPlayer() {
+		return currentPlayer;
+	}
+	
+	public Player getNextPlayer() {
+		return playerList.get((playerList.indexOf(currentPlayer) + 1) % playerCount);
+	}
+	
 }
