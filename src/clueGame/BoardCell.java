@@ -3,6 +3,8 @@ package clueGame;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Point;
+import java.awt.Rectangle;
 import java.util.*;
 
 public class BoardCell {
@@ -17,6 +19,8 @@ public class BoardCell {
 	//the position of this cell in the board, declared at creation
 	private int row;
 	private int column;
+	
+	private Rectangle guiPosition;
 	
 	//list of adjacent cells (including teleports)
 	private Set<BoardCell> adjList;
@@ -55,13 +59,14 @@ public class BoardCell {
 	
 	public void draw(Graphics g, int x, int y, int width, int height) {
 		
+		guiPosition = new Rectangle(x,y,width,height);
 		
 		if (isRoom) {
 			//rooms are drawn in a different color, and done have borders for each cell
 			g.setColor(roomColors);
 			g.fillRect(x, y, width, height);
 		} else if (room.getName().equals("Unused")) {
-			// unused cells are drawn in as the background color allways
+			// unused cells are drawn in as the background color always
 			g.setColor(backgroundColor);
 			g.fillRect(x, y, width, height);
 		}else {
@@ -112,6 +117,10 @@ public class BoardCell {
 		g.setColor(targetColor);
 		g.fillRect(x, y, width, height);
 		
+	}
+	
+	public boolean containsClick(Point p) {
+		return guiPosition.contains(p);
 	}
 	
 	/*
