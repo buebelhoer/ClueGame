@@ -80,14 +80,26 @@ public class ClueGame extends JFrame {
 			return;
 		}
 		
-		if (!board.hasSuggested()) {
-			if (board.getCell(board.getCurrentPlayer().getRow(),board.getCurrentPlayer().getColumn()).isRoom()) {
-				JOptionPane.showMessageDialog(this, "You have not made a suggestion yet!", "Cannot move to next player", JOptionPane.ERROR_MESSAGE);
-				return;
-			}
-		}
+//		if (!board.hasSuggested()) {
+//			if (board.getCell(board.getCurrentPlayer().getRow(),board.getCurrentPlayer().getColumn()).isRoom()) {
+//				JOptionPane.showMessageDialog(this, "You have not made a suggestion yet!", "Cannot move to next player", JOptionPane.ERROR_MESSAGE);
+//				return;
+//			}
+//		}
 		
 		setCurrentPlayer(board.getNextPlayer());
+		
+		if (board.getCurrentPlayer() instanceof ComputerPlayer) {
+			ComputerPlayer player = ((ComputerPlayer)board.getCurrentPlayer());
+			BoardCell target = player.selectMove(board.getTargets());
+			
+			player.setLocation(target);
+			board.setHasMoved(true);
+			
+			
+			
+
+		}
 	}
 
 	public static void main(String[] args) {

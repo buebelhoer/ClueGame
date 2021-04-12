@@ -90,6 +90,7 @@ public class Board extends JPanel implements MouseListener{
 
 	public void initialize(Random rng) {
 		// BadConfigException indicates invalid format in the config files
+		random = rng;
 		try {
 			//loads the setup file
 			loadSetupConfig();
@@ -103,7 +104,7 @@ public class Board extends JPanel implements MouseListener{
 		visited = new HashSet<>();
 		targets = new HashSet<>();
 
-		random = rng;
+		
 
 		//generates the list of adjacencies for each cell
 		generateAdjacencies();
@@ -697,19 +698,21 @@ public class Board extends JPanel implements MouseListener{
 		}
 
 		//highlight all target cells
-		for (BoardCell target : targets) {
-			if (target.isRoom()) {
-				//if room center targeted, highlight rest of room
-				for (int row = 0; row < numRows; row ++) {
-					for (int column = 0; column < numCols; column++) {
-						if (board[row][column].isRoom() && board[row][column].getRoom().equals(target.getRoom())) {
-							board[row][column].drawTargetRoom(g, column *cellWidth, row * cellHeight, cellWidth, cellHeight);
+		if (currentPlayer instanceof HumanPlayer) {
+			for (BoardCell target : targets) {
+				if (target.isRoom()) {
+					//if room center targeted, highlight rest of room
+					for (int row = 0; row < numRows; row ++) {
+						for (int column = 0; column < numCols; column++) {
+							if (board[row][column].isRoom() && board[row][column].getRoom().equals(target.getRoom())) {
+								board[row][column].drawTargetRoom(g, column *cellWidth, row * cellHeight, cellWidth, cellHeight);
+							}
 						}
 					}
+				} else {
+					//single target cell, a walkway
+					target.drawTarget(g, target.getColumn()*cellWidth, target.getRow() * cellHeight, cellWidth, cellHeight);
 				}
-			} else {
-				//single target cell, a walkway
-				target.drawTarget(g, target.getColumn()*cellWidth, target.getRow() * cellHeight, cellWidth, cellHeight);
 			}
 		}
 
