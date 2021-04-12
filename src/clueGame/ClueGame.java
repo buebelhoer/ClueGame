@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class ClueGame extends JFrame implements MouseListener{
-	private Player currentPLayer;
+	private Player currentPlayer;
 	private boolean hasMoved;
 	private boolean hasSuggested;
 	private Board board;
@@ -61,6 +61,8 @@ public class ClueGame extends JFrame implements MouseListener{
 	private void setCurrentPlayer(GameControlPanel controlPanel, Player p) {
 		int roll = rng.nextInt(6) + 1;
 		
+		currentPlayer = p;
+	
 		controlPanel.setTurn(p, roll);
 		controlPanel.setGuess("I have no guess!");
 		controlPanel.setGuessResult( "So you have nothing?");
@@ -101,8 +103,10 @@ public class ClueGame extends JFrame implements MouseListener{
 			return;
 		}
 		
-		if (board.getTargets().contains(clickLocation)) {
-			currentPLayer.setLocation(clickedCell);
+		System.out.println(clickedCell.getRow() + "," + clickedCell.getColumn() + "\n");
+		
+		if (board.getTargets().contains(clickedCell)) {
+			currentPlayer.setLocation(clickedCell);
 		} else {
 			JOptionPane.showMessageDialog(this, "That is not a cell you can move to!", "Invalid Move!", JOptionPane.ERROR_MESSAGE);
 			return;
