@@ -1,12 +1,6 @@
 package clueGame;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.FlowLayout;
-import java.awt.Point;
-import java.awt.TrayIcon.MessageType;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
@@ -60,12 +54,12 @@ public class ClueGame extends JFrame {
 	private void setCurrentPlayer(Player p) {
 		int roll = rng.nextInt(6) + 1;
 		
-		
-	
+		//sets lower panel info on new player
 		controlPanel.setTurn(p, roll);
 		controlPanel.setGuess("I have no guess!");
 		controlPanel.setGuessResult( "So you have nothing?");
 		
+		//set board new player and update gui
 		board.calcTargets(board.getCell(p.getRow(), p.getColumn()), roll);
 		board.setCurrentPlayer(p);
 		board.setHasMoved(board.getTargets().isEmpty());
@@ -89,24 +83,17 @@ public class ClueGame extends JFrame {
 		
 		setCurrentPlayer(board.getNextPlayer());
 		
+		//if computer player, move
 		if (board.getCurrentPlayer() instanceof ComputerPlayer) {
 			ComputerPlayer player = ((ComputerPlayer)board.getCurrentPlayer());
 			BoardCell target = player.selectMove(board.getTargets());
 			
 			player.setLocation(target);
 			board.setHasMoved(true);
-			
-			
-			
-
 		}
 	}
 
 	public static void main(String[] args) {
 		ClueGame frame = new ClueGame("Mines Mystery");  // create the frame 
 	}
-	
-	
-
-
 }

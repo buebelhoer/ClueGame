@@ -7,7 +7,6 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Random;
 import java.util.Set;
-import java.util.Stack;
 
 public class ComputerPlayer extends Player {	
 

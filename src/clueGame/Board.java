@@ -15,7 +15,7 @@ import java.util.*;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-public class Board extends JPanel implements MouseListener{
+public class Board extends JPanel implements MouseListener {
 
 	private static final Color TEXT_COLOR = Color.blue;
 
