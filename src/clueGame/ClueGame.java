@@ -28,7 +28,6 @@ public class ClueGame extends JFrame implements MouseListener{
 		rng = new Random(System.currentTimeMillis());
 		
 		JPanel mainPanel = new JPanel();  // create the panel
-		ClueGame frame = new ClueGame("Mines Mystery");  // create the frame 
 		
 		//calls standard setup functions
 		board = Board.getInstance();
@@ -51,10 +50,10 @@ public class ClueGame extends JFrame implements MouseListener{
 		mainPanel.add(controlPanel, BorderLayout.SOUTH);
 		
 		//prepare frame
-		frame.setSize(750, 180+650);
-		frame.setContentPane(mainPanel); // put the panel in the frame
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // allow it to close
-		frame.setVisible(true); // make it visible
+		setSize(750, 180+650);
+		setContentPane(mainPanel); // put the panel in the frame
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // allow it to close
+		setVisible(true); // make it visible
 	}
 
 	private void setCurrentPlayer(GameControlPanel controlPanel, Player p) {
@@ -64,7 +63,7 @@ public class ClueGame extends JFrame implements MouseListener{
 	}
 
 	public static void main(String[] args) {
-		
+		ClueGame frame = new ClueGame("Mines Mystery");  // create the frame 
 	}
 	
 	@Override
