@@ -3,13 +3,21 @@ package clueGame;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.Point;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class ClueGame extends JFrame {
+public class ClueGame extends JFrame implements MouseListener{
+	
+	Player currentPLayer;
+	boolean hasMoved;
+	boolean hasSuggested;
+	
 	public ClueGame(String title) {
 		super(title);
 	}
@@ -59,4 +67,22 @@ public class ClueGame extends JFrame {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // allow it to close
 		frame.setVisible(true); // make it visible
 	}
+	@Override
+	public void mouseClicked(MouseEvent e) {}
+
+	@Override
+	public void mousePressed(MouseEvent e) {}
+
+	//used to determine if the cell clicked was a cell
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		Point clickLocation = new Point(e.getX(), e.getY());
+		for (BoardCell b : board.)
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {}
+
+	@Override
+	public void mouseExited(MouseEvent e) {}
 }
