@@ -54,6 +54,8 @@ public class ClueGame extends JFrame implements MouseListener{
 		setContentPane(mainPanel); // put the panel in the frame
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // allow it to close
 		setVisible(true); // make it visible
+		
+		addMouseListener(this);
 	}
 
 	private void setCurrentPlayer(GameControlPanel controlPanel, Player p) {
@@ -103,6 +105,9 @@ public class ClueGame extends JFrame implements MouseListener{
 		}
 		
 		hasMoved = true;
+		
+		board.getTargets().clear();
+		repaint();
 	}
 
 	@Override
