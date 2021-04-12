@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Point;
+import java.awt.TrayIcon.MessageType;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ import java.util.HashMap;
 import java.util.Random;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class ClueGame extends JFrame implements MouseListener{
@@ -73,6 +75,11 @@ public class ClueGame extends JFrame implements MouseListener{
 	//used to determine if the cell clicked was a cell
 	@Override
 	public void mouseReleased(MouseEvent e) {
+		
+		if (hasMoved) {
+			return;
+		}
+		
 		Point clickLocation = new Point(e.getX(), e.getY());
 		BoardCell clickedCell;
 		for(int row = 0; row < board.getNumRows(); row ++) {
@@ -81,6 +88,16 @@ public class ClueGame extends JFrame implements MouseListener{
 					clickedCell = board.getCell(row, col);
 				}
 			}
+		}
+		
+		if (clickedCell == null) {
+			JOptionPane.showMessageDialog(this, "That is not a cell, plase click a cell to move to it", "Not A Cell", JOptionPane.ERROR_MESSAGE);
+		}
+		
+		if (board.getTargets().contains(clickLocation)) {
+			currentPLayer.setLocation(clickedCell);
+		} else {
+			JOptionPane.showMessageDialog(this, "That is not a cell you can move to!", "Invalid Move!", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 
