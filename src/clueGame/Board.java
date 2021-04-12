@@ -4,14 +4,18 @@ package clueGame;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Point;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.geom.Rectangle2D;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.*;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-public class Board extends JPanel {
+public class Board extends JPanel implements MouseListener{
 
 	private static final Color TEXT_COLOR = Color.blue;
 
@@ -63,6 +67,10 @@ public class Board extends JPanel {
 	private static Board instance = new Board();
 	
 	private static ArrayList<BoardCell> startPostions;
+	
+	private Player currentPlayer;
+	private boolean hasMoved;
+	private boolean hasSuggested;
 
 	// constructor is private to ensure only one can be created
 	private Board() {
@@ -107,6 +115,7 @@ public class Board extends JPanel {
 		
 		Collections.shuffle(gameCards);
 		dealCards();
+		addMouseListener(this);
 	}
 	
 	private void generateStartPositons() {
@@ -770,12 +779,72 @@ public class Board extends JPanel {
 		}
 	}
 	
+	/*
+	 * mouse listener sutff
+	 */
+
+
+	//used to determine if the cell clicked was a cell
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		
+		if (hasMoved) {
+			return;
+		}
+		
+		Point clickLocation = new Point(e.getX(), e.getY());
+		BoardCell clickedCell = null;
+		for(int row = 0; row < numRows; row ++) {
+			for (int col = 0; col < numCols; col ++) {
+				if (board[row][col].containsClick(clickLocation)) {
+					clickedCell = board[row][col];
+				}
+			}
+		}
+		
+		if (clickedCell == null) {
+			JOptionPane.showMessageDialog(this, "That is not a cell, plase click a cell to move to it", "Not A Cell", JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+		
+//		System.out.println(clickedCell.getRow() + "," + clickedCell.getColumn() + "\n");
+		
+		if (clickedCell.isRoom()) {
+			clickedCell = clickedCell.getRoom().getCenterCell();
+		}
+		
+		if (targets.contains(clickedCell)) {
+			currentPlayer.setLocation(clickedCell);
+		} else {
+			JOptionPane.showMessageDialog(this, "That is not a cell you can move to!", "Invalid Move!", JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+		
+		hasMoved = true;
+		
+		targets.clear();
+		repaint();
+	}
+	
+	@Override
+	public void mouseClicked(MouseEvent e) {}
+
+	@Override
+	public void mousePressed(MouseEvent e) {}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {}
+
+	@Override
+	public void mouseExited(MouseEvent e) {}
 	
 	/*
 	 * ALL CODE BENEATH THIS POINT SHOULD BE GETTER/SETTERS
 	 */
 
-
+public void setCurrentPlayer(Player currentPlayer) {
+		this.currentPlayer = currentPlayer;
+	}
 	
 
 	public Set<BoardCell> getTargets() {

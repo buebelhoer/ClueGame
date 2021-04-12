@@ -7,18 +7,18 @@ public class Room {
 
 	//Name of the room
 	//set in constructor
-	String name;
+	private String name;
 	
 	//cell at the middle of the room where the player should be shown
 	//set manually from setter function
-	BoardCell centerCell;
+	private BoardCell centerCell;
 	
 	//Cell where the name of the room should be displayed
 	//Set manually from setter function
-	BoardCell labelCell;
+	private BoardCell labelCell;
 	
 	//tracks the cells corresponding with the doorway cells and the secret passage cells
-	Set<BoardCell> exits;
+	private Set<BoardCell> exits;
 	
 	public Room(String name) {
 		super();

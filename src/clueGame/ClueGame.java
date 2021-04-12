@@ -15,10 +15,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-public class ClueGame extends JFrame implements MouseListener{
-	private Player currentPlayer;
-	private boolean hasMoved;
-	private boolean hasSuggested;
+public class ClueGame extends JFrame {
 	private Board board;
 	private Random rng;
 	
@@ -55,13 +52,13 @@ public class ClueGame extends JFrame implements MouseListener{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // allow it to close
 		setVisible(true); // make it visible
 		
-		addMouseListener(this);
+		
 	}
 
 	private void setCurrentPlayer(GameControlPanel controlPanel, Player p) {
 		int roll = rng.nextInt(6) + 1;
 		
-		currentPlayer = p;
+		board.setCurrentPlayer(p);
 	
 		controlPanel.setTurn(p, roll);
 		controlPanel.setGuess("I have no guess!");
@@ -74,53 +71,7 @@ public class ClueGame extends JFrame implements MouseListener{
 		ClueGame frame = new ClueGame("Mines Mystery");  // create the frame 
 	}
 	
-	@Override
-	public void mouseClicked(MouseEvent e) {}
+	
 
-	@Override
-	public void mousePressed(MouseEvent e) {}
 
-	//used to determine if the cell clicked was a cell
-	@Override
-	public void mouseReleased(MouseEvent e) {
-		
-		if (hasMoved) {
-			return;
-		}
-		
-		Point clickLocation = new Point(e.getX(), e.getY());
-		BoardCell clickedCell = null;
-		for(int row = 0; row < board.getNumRows(); row ++) {
-			for (int col = 0; col < board.getNumColumns(); col ++) {
-				if (board.getCell(row, col).containsClick(clickLocation)) {
-					clickedCell = board.getCell(row, col);
-				}
-			}
-		}
-		
-		if (clickedCell == null) {
-			JOptionPane.showMessageDialog(this, "That is not a cell, plase click a cell to move to it", "Not A Cell", JOptionPane.ERROR_MESSAGE);
-			return;
-		}
-		
-		System.out.println(clickedCell.getRow() + "," + clickedCell.getColumn() + "\n");
-		
-		if (board.getTargets().contains(clickedCell)) {
-			currentPlayer.setLocation(clickedCell);
-		} else {
-			JOptionPane.showMessageDialog(this, "That is not a cell you can move to!", "Invalid Move!", JOptionPane.ERROR_MESSAGE);
-			return;
-		}
-		
-		hasMoved = true;
-		
-		board.getTargets().clear();
-		repaint();
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent e) {}
-
-	@Override
-	public void mouseExited(MouseEvent e) {}
 }
