@@ -53,8 +53,8 @@ public class GameControlPanel extends JPanel {
 		JButton accuseButton = new JButton("Make Accusation");
 		JButton nextButton = new JButton("NEXT!");
 		
+		//responsible for the next button logic, just calls clueGame's next turn method
 		ActionListener buttonListener = new ActionListener() {
-			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				clueGame.nextTurn();				

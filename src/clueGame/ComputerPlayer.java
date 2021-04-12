@@ -57,8 +57,12 @@ public class ComputerPlayer extends Player {
 		//checks for room center
 		for (BoardCell cell :targets) {
 			if(cell.isRoomCenter()) {
+				//if the cell is a room that has been visited recently, it is not given priority over other cells to avoid looping
 				if (!lastRooms.contains(cell.getRoom())) {
+					//adds cell to the recently visited list
 					lastRooms.add(cell.getRoom());
+					
+					//only removes from the list when the size is large enough
 					if (lastRooms.size() > 2) {
 						lastRooms.remove();
 					}
