@@ -153,6 +153,11 @@ public abstract class Player {
 		this.row = row;
 		this.column = column;
 	}
+	
+	public void setLocation(BoardCell cell) {
+		this.row = cell.getRow();
+		this.column = cell.getColumn();
+	}
 
 	public Set<Card> getSeenCards() {
 		return seenCards;
