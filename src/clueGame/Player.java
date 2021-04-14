@@ -2,8 +2,10 @@ package clueGame;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Point;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
 
@@ -45,6 +47,8 @@ public abstract class Player {
 		this.row = row;
 		this.column = column;
 		this.hand = hand;
+		seenCards = new HashSet<Card>();
+		revealedCards = new HashMap<Player, ArrayList<Card>>();
 	}
 
 
@@ -54,6 +58,8 @@ public abstract class Player {
 		this.name = name;
 		this.color = color;
 		hand = new ArrayList<>();
+		seenCards = new HashSet<Card>();
+		revealedCards = new HashMap<Player, ArrayList<Card>>();
 	}
 	
 	public Player(String name, Color color, Random rng, ArrayList<Card> roomCards,  ArrayList<Card> personCards, ArrayList<Card> weaponCards) {
@@ -65,6 +71,8 @@ public abstract class Player {
 		this.personCards = personCards;
 		this.weaponCards = weaponCards;
 		this.rng = rng;
+		seenCards = new HashSet<Card>();
+		revealedCards = new HashMap<Player, ArrayList<Card>>();
 	}
 
 
@@ -154,9 +162,20 @@ public abstract class Player {
 		this.column = column;
 	}
 	
+	public void setLocation(BoardCell cell) {
+		this.row = cell.getRow();
+		this.column = cell.getColumn();
+	}
 	
-	
-	
-	
-	
+	public Point getLocation() {
+		return new Point(row, column);
+	}
+
+	public Set<Card> getSeenCards() {
+		return seenCards;
+	}
+
+	public HashMap<Player, ArrayList<Card>> getRevealedCards() {
+		return revealedCards;
+	}
 }

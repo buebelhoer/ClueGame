@@ -3,6 +3,8 @@ package clueGame;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Point;
+import java.awt.Rectangle;
 import java.util.*;
 
 public class BoardCell {
@@ -17,6 +19,8 @@ public class BoardCell {
 	//the position of this cell in the board, declared at creation
 	private int row;
 	private int column;
+	
+	private Rectangle guiPosition;
 	
 	//list of adjacent cells (including teleports)
 	private Set<BoardCell> adjList;
@@ -34,6 +38,8 @@ public class BoardCell {
 	private boolean isSecretPassage; //if is secret tunnel
 	private char secretPassage; // contains symbol of room that there is a secret passage to
 	private boolean isRoom;  //indicates if cell is a part of a room rather than a walkspace, etc.
+	
+	private boolean isHovered;
 	
 	//initializes variables
 	public BoardCell(int row, int column) {
@@ -55,13 +61,14 @@ public class BoardCell {
 	
 	public void draw(Graphics g, int x, int y, int width, int height) {
 		
+		guiPosition = new Rectangle(x,y,width,height);
 		
 		if (isRoom) {
 			//rooms are drawn in a different color, and done have borders for each cell
 			g.setColor(roomColors);
 			g.fillRect(x, y, width, height);
 		} else if (room.getName().equals("Unused")) {
-			// unused cells are drawn in as the background color allways
+			// unused cells are drawn in as the background color always
 			g.setColor(backgroundColor);
 			g.fillRect(x, y, width, height);
 		}else {
@@ -112,6 +119,18 @@ public class BoardCell {
 		g.setColor(targetColor);
 		g.fillRect(x, y, width, height);
 		
+	}
+	
+	public void drawHovered(Graphics g) {	
+		float[] components = new float[4];
+		Color.gray.getRGBComponents(components);
+		
+		g.setColor(new Color(components[0], components[1], components[2], components[3]/2));
+		g.fillRect((int)guiPosition.getX(), (int)guiPosition.getY(), (int)guiPosition.getWidth(), (int)guiPosition.getHeight());
+	}
+	
+	public boolean containsClick(Point p) {
+		return guiPosition.contains(p);
 	}
 	
 	/*
@@ -194,5 +213,13 @@ public class BoardCell {
 
 	public boolean isSecretPassage() {
 		return isSecretPassage;
+	}
+
+	public boolean isHovered() {
+		return isHovered;
+	}
+
+	public void setHovered(boolean isHovered) {
+		this.isHovered = isHovered;
 	}
 }

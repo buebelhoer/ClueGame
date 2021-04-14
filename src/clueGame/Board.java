@@ -2,16 +2,22 @@
 package clueGame;
 
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Point;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.awt.geom.Rectangle2D;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.*;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-public class Board extends JPanel {
+public class Board extends JPanel implements MouseMotionListener, MouseListener {
 
 	private static final Color TEXT_COLOR = Color.blue;
 
@@ -43,7 +49,7 @@ public class Board extends JPanel {
 
 	//maps the character symbol of a room to the room object itself
 	private Map<Character,Room> roomMap;
-	
+
 	//maps the Strings of the names of the cards with the Card Objects, for maps only
 	private Map<String, Card> cardMap;
 
@@ -55,14 +61,18 @@ public class Board extends JPanel {
 
 	//number of players in the game
 	private int playerCount;
-	
+
 	//random number generator used in the game
 	private Random random;
 
 	//specific instance of the board
 	private static Board instance = new Board();
-	
+
 	private static ArrayList<BoardCell> startPostions;
+
+	private Player currentPlayer;
+	private boolean hasMoved;
+	private boolean hasSuggested;
 
 	// constructor is private to ensure only one can be created
 	private Board() {
@@ -76,7 +86,13 @@ public class Board extends JPanel {
 
 	//initialize board
 	public void initialize() {
+		Random rng = new Random(System.currentTimeMillis());
+		initialize(rng);
+	}
+
+	public void initialize(Random rng) {
 		// BadConfigException indicates invalid format in the config files
+		random = rng;
 		try {
 			//loads the setup file
 			loadSetupConfig();
@@ -89,21 +105,23 @@ public class Board extends JPanel {
 		// allocates the visited and target sets
 		visited = new HashSet<>();
 		targets = new HashSet<>();
+
 		
-		random = new Random(System.currentTimeMillis());
 
 		//generates the list of adjacencies for each cell
 		generateAdjacencies();
-		
+
 		generateSolution();
-		
+
 		generateStartPositons();
 		assignStartPositions();
-		
+
 		Collections.shuffle(gameCards);
 		dealCards();
+		addMouseListener(this);
+		addMouseMotionListener(this);
 	}
-	
+
 	private void generateStartPositons() {
 		startPostions = new ArrayList<BoardCell>();
 		startPostions.add(board[5][0]);
@@ -113,19 +131,19 @@ public class Board extends JPanel {
 		startPostions.add(board[19][23]);
 		startPostions.add(board[7][23]);
 	}
-	
+
 	private void assignStartPositions() {
 		for (int i = 0; i < playerList.size(); i++) {
 			playerList.get(i).setLocation(startPostions.get(i).getRow(), startPostions.get(i).getColumn());
 		}
 	}
-	
+
 	private void dealCards() {
 		try {
 			int player = 0;
 			for (Card c : gameCards) {
 				playerList.get(player).addCard(c);
-				
+
 				player += 1;
 				player = player % playerList.size();
 			}
@@ -451,7 +469,7 @@ public class Board extends JPanel {
 
 		gameCards.add(card);
 		personCards.add(card);
-		
+
 		cardMap.put(playerName, card);
 
 		playerCount++;
@@ -632,19 +650,19 @@ public class Board extends JPanel {
 			System.out.println(e);
 		}
 	}
-	
-	
+
+
 	private void generateSolution() {
 		try {
-		int roomIndex = random.nextInt(Integer.MAX_VALUE)%roomCards.size();
-		int weaponIndex = random.nextInt(Integer.MAX_VALUE)%weaponCards.size();
-		int playerIndex = random.nextInt(Integer.MAX_VALUE)%personCards.size();
-		
-		theAnswer = new Solution(personCards.get(playerIndex), roomCards.get(roomIndex), weaponCards.get(weaponIndex));
-		
-		gameCards.remove(personCards.get(playerIndex));
-		gameCards.remove(roomCards.get(roomIndex));
-		gameCards.remove(weaponCards.get(weaponIndex));
+			int roomIndex = random.nextInt(Integer.MAX_VALUE)%roomCards.size();
+			int weaponIndex = random.nextInt(Integer.MAX_VALUE)%weaponCards.size();
+			int playerIndex = random.nextInt(Integer.MAX_VALUE)%personCards.size();
+
+			theAnswer = new Solution(personCards.get(playerIndex), roomCards.get(roomIndex), weaponCards.get(weaponIndex));
+
+			gameCards.remove(personCards.get(playerIndex));
+			gameCards.remove(roomCards.get(roomIndex));
+			gameCards.remove(weaponCards.get(weaponIndex));
 		} catch (ArithmeticException e) {
 			System.out.println("divide by zero error from 306 test");
 		}
@@ -653,7 +671,7 @@ public class Board extends JPanel {
 	public boolean checkAccusation(Solution accusation) {
 		return accusation.equals(theAnswer);
 	}
-	
+
 	public Card checkSuggestion(Solution solution) {
 		ArrayList<Card> disproved = new ArrayList<>();
 		for (Player p : playerList) {
@@ -663,49 +681,55 @@ public class Board extends JPanel {
 			}
 		}
 		if (disproved.isEmpty()) return null;
-		
+
 		return disproved.get(random.nextInt(Integer.MAX_VALUE)%disproved.size());
 	}
-	
+
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		
+
 		//calculate the pixels per side of the cells based on the width of the current game window
 		int cellHeight = getHeight() / numRows;
 		int cellWidth = getWidth() / numCols;
-		
+
 		//draw all cells, fill with corresponding room color
 		for (int row = 0; row < numRows; row ++) {
 			for (int column = 0; column < numCols; column++) {
 				board[row][column].draw(g, column * cellWidth, row * cellHeight, cellWidth, cellHeight);
 			}
 		}
-		
+
 		//highlight all target cells
-		for (BoardCell target : targets) {
-			if (target.isRoom()) {
-				//if room center targeted, highlight rest of room
-				for (int row = 0; row < numRows; row ++) {
-					for (int column = 0; column < numCols; column++) {
-						if (board[row][column].isRoom() && board[row][column].getRoom().equals(target.getRoom())) {
-							board[row][column].drawTargetRoom(g, column *cellWidth, row * cellHeight, cellWidth, cellHeight);
+		if (currentPlayer instanceof HumanPlayer) {
+			for (BoardCell target : targets) {
+				if (target.isRoom()) {
+					//if room center targeted, highlight rest of room
+					for (int row = 0; row < numRows; row ++) {
+						for (int column = 0; column < numCols; column++) {
+							if (board[row][column].isRoom() && board[row][column].getRoom().equals(target.getRoom())) {
+								board[row][column].drawTargetRoom(g, column *cellWidth, row * cellHeight, cellWidth, cellHeight);
+							}
 						}
 					}
+				} else {
+					//single target cell, a walkway
+					target.drawTarget(g, target.getColumn()*cellWidth, target.getRow() * cellHeight, cellWidth, cellHeight);
 				}
-			} else {
-				//single target cell, a walkway
-				target.drawTarget(g, target.getColumn()*cellWidth, target.getRow() * cellHeight, cellWidth, cellHeight);
 			}
 		}
-		
-		
+
 		//draw room doors and labels
-		g.setColor(TEXT_COLOR);
 		g.setFont(g.getFont().deriveFont(Font.BOLD));
-		
+
 		for (int row = 0; row < numRows; row ++) {
 			for (int column = 0; column < numCols; column++) {
+				if (board[row][column].isHovered()) {
+					board[row][column].drawHovered(g);
+				}
+				
+				g.setColor(TEXT_COLOR);
+				
 				if (board[row][column].isDoorway()) { 			//doors
 					board[row][column].drawDoor(g, column * cellWidth, row * cellHeight, cellWidth, cellHeight);
 				} else if (board[row][column].isLabel()) { 		//labels
@@ -716,62 +740,190 @@ public class Board extends JPanel {
 				}
 			}
 		}
-		
+
 		//tracks what players have been draw, to avoid double drawing when some players are drawn out of order		
 		Set<Player> drawnPlayer = new HashSet<Player>();
-		
+
 		for (Player p : playerList) {
 			final double playerOffset = .3;
 			if (drawnPlayer.contains(p)) continue; // if the player has been drawn out of order, do not attempt to draw again
-			
+
 			//gets the location of the current player
 			int row = p.getRow();
 			int column = p.getColumn();
-			
+
 			//if the player is in a room, we must account for multiple players in the same room
 			if(board[row][column].isRoom()) {
-				
+
 				//stores the players that are in the same room
 				ArrayList<Player> inThisRoom = new ArrayList<Player>();
-				
+
 				//checks every player to see if its in the same room as the current player, and adds it to the arraylist if it is
 				for (Player player : playerList) {
 					if(player.getColumn() == column && player.getRow() == row) {
 						inThisRoom.add(player);
 					}
 				}
-				
+
 				//calculates the total width needed to draw all of the player
 				int widthNeeded = (int)(((inThisRoom.size() - 1) * playerOffset + 1) * cellWidth);
-				
+
 				//calculates where the first player should be drawn, half the total width to the left of the center of the cell they are in
 				int startPos = column * cellWidth + cellWidth/2 - widthNeeded/2 ;
-				
+
 				//draws each player that is in the room
 				for (int i = 0; i < inThisRoom.size(); i++) {
-					
+
 					//draws the player 1 offset further than the previous one. if first player drawn, draws at startpos
 					inThisRoom.get(i).draw(g, startPos + (int)(i*playerOffset*cellWidth), row * cellHeight, cellWidth, cellHeight);
-					
+
 					//this player is drawn out of order if i >=1, and is added to the drawn list regardless
 					drawnPlayer.add(inThisRoom.get(i));
 				}
-				
-			//if the player is not in the same room, we simply draw it where it is, and add it to the drawn players
+
+				//if the player is not in the same room, we simply draw it where it is, and add it to the drawn players
 			} else {
 				p.draw(g, column * cellWidth, row * cellHeight, cellWidth, cellHeight);
 				drawnPlayer.add(p);
 			}
 		}
 	}
+
+	/*
+	 * mouse listener sutff
+	 */
+
+
+	//used to determine if the cell clicked was a cell
+	@Override
+	public void mouseReleased(MouseEvent e) {
+
+		//if the player has already moved, we dont need to check mouse clicks
+		if (hasMoved) {
+			return;
+		}
+
+		//determines which cell the player clicked on on
+		Point clickLocation = new Point(e.getX(), e.getY());
+		BoardCell clickedCell = null;
+		for(int row = 0; row < numRows; row ++) {
+			for (int col = 0; col < numCols; col ++) {
+				if (board[row][col].containsClick(clickLocation)) {
+					// stores the cell that the player clicked
+					clickedCell = board[row][col];
+				}
+			}
+		}
+
+		//this means the player released the mouse outside of the pane, and therefore not on a cell
+		if (clickedCell == null) {
+			JOptionPane.showMessageDialog(this, "That is not a cell, plase click a cell to move to it", "Not A Cell", JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+
+
+		//if the player clicks on a cell that is a room, but not its center, the clicked cell is adjusted to be the room center
+		if (clickedCell.isRoom()) {
+			clickedCell = clickedCell.getRoom().getCenterCell();
+		}
+
+		//if the clicked cell is on the targets list, the player moves to it
+		if (targets.contains(clickedCell)) {
+			currentPlayer.setLocation(clickedCell);
+		} else {
+			//if the clicked cell is not a valid target, an error is displayed
+			JOptionPane.showMessageDialog(this, "That is not a cell you can move to!", "Invalid Move!", JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+
+		//update the moved flag
+		hasMoved = true;
+
+		//redraws the board without the targets to look nice
+		targets.clear();
+		repaint();
+		
+		//after click change from pointer hand to regular arrow
+		setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+	}
+
+	//unused mouse listener methods
+	@Override
+	public void mouseClicked(MouseEvent e) {}
+
+	@Override
+	public void mousePressed(MouseEvent e) {}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {}
+
+	@Override
+	public void mouseExited(MouseEvent e) {}
 	
-	
+	@Override
+	public void mouseDragged(MouseEvent e) {
+		
+	}
+
+	@Override
+	public void mouseMoved(MouseEvent e) {
+		//resets default mouse cursor
+		setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+		
+		//determines which cell the player moved over
+		Point hoverLocation = new Point(e.getX(), e.getY());
+		BoardCell hoveredCell = null;
+		for(int row = 0; row < numRows; row ++) {
+			for (int col = 0; col < numCols; col ++) {
+				//resets default state
+				board[row][col].setHovered(false);
+				
+				if (board[row][col].containsClick(hoverLocation)) {
+					// stores the cell that the player hovered
+					hoveredCell = board[row][col];
+				}
+			}
+		}
+		
+		if (hoveredCell != null) {
+			if (hoveredCell.isRoom()) {
+				//highlight entire hovered room
+				for(int row = 0; row < numRows; row ++) {
+					for (int col = 0; col < numCols; col ++) {
+						if (board[row][col].getRoom() == hoveredCell.getRoom()) {
+							board[row][col].setHovered(true);
+							
+							//if room is target change cursor to pointer hand
+							if (targets.contains(board[row][col])) {
+								setCursor(new Cursor(Cursor.HAND_CURSOR));
+							}
+						}
+					}
+				}
+			} else {
+				//highlight hovered cell
+				if (!hoveredCell.getRoom().getName().equals("Unused")) {
+					hoveredCell.setHovered(true);
+				}
+				
+				//if cell is target change cursor to pointer hand
+				if (targets.contains(hoveredCell)) {
+					setCursor(new Cursor(Cursor.HAND_CURSOR));
+				}
+			}
+		}
+		
+		repaint();
+	}
+
 	/*
 	 * ALL CODE BENEATH THIS POINT SHOULD BE GETTER/SETTERS
 	 */
 
+	public void setCurrentPlayer(Player currentPlayer) {
+		this.currentPlayer = currentPlayer;
+	}
 
-	
 
 	public Set<BoardCell> getTargets() {
 		return targets;
@@ -809,11 +961,11 @@ public class Board extends JPanel {
 	public ArrayList<Player> getPlayerList() {
 		return playerList;
 	}
-	
+
 	public void setPlayerList(ArrayList<Player> playerList) {
 		this.playerList = playerList;
 	}
- 
+
 	public int getPlayerCount() {
 		return playerCount;
 	}
@@ -849,8 +1001,41 @@ public class Board extends JPanel {
 	public Map<String, Card> getCardMap() {
 		return cardMap;
 	}
-	
+
 	public void setSolution(Solution s) {
 		theAnswer = s;
 	}
+
+	public HumanPlayer getHumanPlayer() {
+		for (Player p : playerList) {
+			if (p instanceof HumanPlayer) {
+				return (HumanPlayer)p;
+			}
+		}
+		return null;
+	}
+
+	public boolean hasMoved() {
+		return hasMoved;
+	}
+
+	public void setHasMoved(boolean hasMoved) {
+		this.hasMoved = hasMoved;
+	}
+
+	public void setHasSuggested(boolean hasSuggested) {
+		this.hasSuggested = hasSuggested;
+	}
+
+	public boolean hasSuggested() {
+		return hasSuggested;
+	}
+
+	public Player getCurrentPlayer() {
+		return currentPlayer;
+	}
+	
+	public Player getNextPlayer() {
+		return playerList.get((playerList.indexOf(currentPlayer) + 1) % playerCount);
+	}	
 }
