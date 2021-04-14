@@ -2,11 +2,13 @@
 package clueGame;
 
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.awt.geom.Rectangle2D;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -15,7 +17,7 @@ import java.util.*;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-public class Board extends JPanel implements MouseListener {
+public class Board extends JPanel implements MouseMotionListener, MouseListener {
 
 	private static final Color TEXT_COLOR = Color.blue;
 
@@ -117,6 +119,7 @@ public class Board extends JPanel implements MouseListener {
 		Collections.shuffle(gameCards);
 		dealCards();
 		addMouseListener(this);
+		addMouseMotionListener(this);
 	}
 
 	private void generateStartPositons() {
@@ -715,13 +718,17 @@ public class Board extends JPanel implements MouseListener {
 			}
 		}
 
-
 		//draw room doors and labels
-		g.setColor(TEXT_COLOR);
 		g.setFont(g.getFont().deriveFont(Font.BOLD));
 
 		for (int row = 0; row < numRows; row ++) {
 			for (int column = 0; column < numCols; column++) {
+				if (board[row][column].isHovered()) {
+					board[row][column].drawHovered(g);
+				}
+				
+				g.setColor(TEXT_COLOR);
+				
 				if (board[row][column].isDoorway()) { 			//doors
 					board[row][column].drawDoor(g, column * cellWidth, row * cellHeight, cellWidth, cellHeight);
 				} else if (board[row][column].isLabel()) { 		//labels
@@ -834,6 +841,9 @@ public class Board extends JPanel implements MouseListener {
 		//redraws the board without the targets to look nice
 		targets.clear();
 		repaint();
+		
+		//after click change from pointer hand to regular arrow
+		setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 	}
 
 	//unused mouse listener methods
@@ -848,6 +858,62 @@ public class Board extends JPanel implements MouseListener {
 
 	@Override
 	public void mouseExited(MouseEvent e) {}
+	
+	@Override
+	public void mouseDragged(MouseEvent e) {
+		
+	}
+
+	@Override
+	public void mouseMoved(MouseEvent e) {
+		//resets default mouse cursor
+		setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+		
+		//determines which cell the player moved over
+		Point hoverLocation = new Point(e.getX(), e.getY());
+		BoardCell hoveredCell = null;
+		for(int row = 0; row < numRows; row ++) {
+			for (int col = 0; col < numCols; col ++) {
+				//resets default state
+				board[row][col].setHovered(false);
+				
+				if (board[row][col].containsClick(hoverLocation)) {
+					// stores the cell that the player hovered
+					hoveredCell = board[row][col];
+				}
+			}
+		}
+		
+		if (hoveredCell != null) {
+			if (hoveredCell.isRoom()) {
+				//highlight entire hovered room
+				for(int row = 0; row < numRows; row ++) {
+					for (int col = 0; col < numCols; col ++) {
+						if (board[row][col].getRoom() == hoveredCell.getRoom()) {
+							board[row][col].setHovered(true);
+							
+							//if room is target change cursor to pointer hand
+							if (targets.contains(board[row][col])) {
+								setCursor(new Cursor(Cursor.HAND_CURSOR));
+							}
+						}
+					}
+				}
+			} else {
+				//highlight hovered cell
+				if (!hoveredCell.getRoom().getName().equals("Unused")) {
+					hoveredCell.setHovered(true);
+				}
+				
+				//if cell is target change cursor to pointer hand
+				if (targets.contains(hoveredCell)) {
+					setCursor(new Cursor(Cursor.HAND_CURSOR));
+				}
+			}
+		}
+		
+		repaint();
+	}
 
 	/*
 	 * ALL CODE BENEATH THIS POINT SHOULD BE GETTER/SETTERS
@@ -970,6 +1036,5 @@ public class Board extends JPanel implements MouseListener {
 	
 	public Player getNextPlayer() {
 		return playerList.get((playerList.indexOf(currentPlayer) + 1) % playerCount);
-	}
-	
+	}	
 }

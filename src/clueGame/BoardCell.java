@@ -39,6 +39,8 @@ public class BoardCell {
 	private char secretPassage; // contains symbol of room that there is a secret passage to
 	private boolean isRoom;  //indicates if cell is a part of a room rather than a walkspace, etc.
 	
+	private boolean isHovered;
+	
 	//initializes variables
 	public BoardCell(int row, int column) {
 		super();
@@ -117,6 +119,14 @@ public class BoardCell {
 		g.setColor(targetColor);
 		g.fillRect(x, y, width, height);
 		
+	}
+	
+	public void drawHovered(Graphics g) {	
+		float[] components = new float[4];
+		Color.gray.getRGBComponents(components);
+		
+		g.setColor(new Color(components[0], components[1], components[2], components[3]/2));
+		g.fillRect((int)guiPosition.getX(), (int)guiPosition.getY(), (int)guiPosition.getWidth(), (int)guiPosition.getHeight());
 	}
 	
 	public boolean containsClick(Point p) {
@@ -203,5 +213,13 @@ public class BoardCell {
 
 	public boolean isSecretPassage() {
 		return isSecretPassage;
+	}
+
+	public boolean isHovered() {
+		return isHovered;
+	}
+
+	public void setHovered(boolean isHovered) {
+		this.isHovered = isHovered;
 	}
 }
