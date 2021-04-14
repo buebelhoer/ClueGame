@@ -670,16 +670,16 @@ public class Board extends JPanel implements MouseListener {
 	}
 
 	public Card checkSuggestion(Solution solution) {
-		ArrayList<Card> disproved = new ArrayList<>();
-		for (Player p : playerList) {
-			Card d = p.disproveSuggestion(solution);
-			if (!(d==null)) {
-				disproved.add(d);
+		int currentIndex = playerList.indexOf(currentPlayer);
+		Card disprove = null;
+		for (int i = currentIndex + 1; i < currentIndex + playerCount; i++) {
+			disprove = playerList.get(i%playerCount).disproveSuggestion(solution);
+			if (disprove != null) {
+				break;
 			}
 		}
-		if (disproved.isEmpty()) return null;
-
-		return disproved.get(random.nextInt(Integer.MAX_VALUE)%disproved.size());
+		
+		return disprove;
 	}
 
 	@Override
