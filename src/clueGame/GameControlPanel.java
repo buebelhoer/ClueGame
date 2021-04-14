@@ -13,10 +13,15 @@ import javax.swing.JTextField;
 
 public class GameControlPanel extends JPanel {
 	
-	JTextField nameField;
-	JTextField rollField;
-	JTextField guessField;
-	JTextField guessResultField;
+	private JTextField nameField;
+	private JTextField rollField;
+	private JTextField turnField;
+	private JTextField guessField;
+	private JTextField guessResultField;
+	private JButton nextButton;
+	private JButton accuseButton;
+	
+	private Integer turnNumber;
 
 	
 	/**
@@ -37,17 +42,26 @@ public class GameControlPanel extends JPanel {
 		playerPanel.add(nameField);
 		
 		//panel to display roll result
-		JPanel rollPanel = new JPanel();
+		JPanel rollPanel = new JPanel(new GridLayout(2, 1));
+		
+		turnNumber = 1;
+		JLabel turnLabel = new JLabel("Turn:");
+		turnField = new JTextField(5);
+		turnField.setText(turnNumber.toString());
+		turnField.setEditable(false);
+				
 		JLabel rollLabel = new JLabel("Roll:");
 		rollField = new JTextField(5);
 		rollField.setEditable(false);
 		
+		rollPanel.add(turnLabel);
+		rollPanel.add(turnField);
 		rollPanel.add(rollLabel);
 		rollPanel.add(rollField);
 		
 		//turn advance buttons
-		JButton accuseButton = new JButton("Make Accusation");
-		JButton nextButton = new JButton("NEXT!");
+		accuseButton = new JButton("Make Accusation");
+		nextButton = new JButton("NEXT!");
 		
 		//responsible for the next button logic, just calls clueGame's next turn method
 		ActionListener buttonListener = new ActionListener() {
@@ -111,11 +125,25 @@ public class GameControlPanel extends JPanel {
 		rollField.setText(((Integer)roll).toString());
 	}
 	
+	public void incrementTurnNumber() {
+		turnNumber++;
+		turnField.setText(turnNumber.toString());
+	}
+	
 	public void setGuess(String guess) {
 		guessField.setText(guess);
 	}
 	
 	public void setGuessResult(String guessResult) {
 		guessResultField.setText(guessResult);
+	}
+	
+	//disables the buttons for computer simulation
+	public void disableButtons() {
+		nextButton.removeActionListener(nextButton.getActionListeners()[0]);
+	}
+	
+	public int getTurnNumber() {
+		return turnNumber.intValue();
 	}
 }

@@ -931,6 +931,10 @@ public class Board extends JPanel implements MouseMotionListener, MouseListener 
 	public BoardCell getCell( int row, int col ) {
 		return board[row][col];
 	}
+	
+	public BoardCell getCell(Point p) {
+		return board[p.y][p.x];
+	}
 
 	public Room getRoom(BoardCell cell) {
 		return cell.getRoom();
@@ -1037,4 +1041,9 @@ public class Board extends JPanel implements MouseMotionListener, MouseListener 
 	public Player getNextPlayer() {
 		return playerList.get((playerList.indexOf(currentPlayer) + 1) % playerCount);
 	}	
+	
+	public void disableMouseInput() {
+		removeMouseListener(this);
+		removeMouseMotionListener(this);
+	}
 }

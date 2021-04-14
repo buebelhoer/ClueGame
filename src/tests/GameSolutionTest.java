@@ -161,24 +161,6 @@ public class GameSolutionTest {
 		
 		//player 1 is the next player in line so they should be the one to disporve
 		assertTrue(checkedCard == (Card)cardMap.get("Blaster"));
-				
-		
-//		//tracks how many times each card was returned
-//		int personcount= 0;
-//		int weaponcount = 0;
-//		
-//		//checks 50 solutions to test randomly returning one of the two cards
-//		for (int i = 0; i < 50; i++) {
-//			
-//			//determines which card was returned
-//			if (checkedCard == (Card)cardMap.get("Blaster")) personcount++;
-//			if (checkedCard == (Card)cardMap.get("Laptop")) weaponcount++;
-//		}
-//		
-//		//checks that both cards were returned at least once
-//		assertTrue(personcount > 1);
-//		assertTrue(weaponcount > 1);
-//		assertTrue(personcount + weaponcount == 50);
 		
 		
 	}

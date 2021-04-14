@@ -20,8 +20,16 @@ public class Room {
 	//tracks the cells corresponding with the doorway cells and the secret passage cells
 	private Set<BoardCell> exits;
 	
+	//room number, used for debug
+	private int roomNumber;
+	
+	private static int nextRoomNumber = 0;
+	
 	public Room(String name) {
 		super();
+		roomNumber = nextRoomNumber;
+		nextRoomNumber++;
+		nextRoomNumber %= 9;
 		this.name = name;
 		exits = new HashSet<BoardCell>();
 	}
@@ -53,5 +61,16 @@ public class Room {
 	public Set<BoardCell> getExits() {
 		return exits;
 	}
+
+	@Override
+	public String toString() {
+		return name;
+	}
+	
+	public int getRoomNumber() {
+		return roomNumber;
+	}
+	
+	
 			
 }

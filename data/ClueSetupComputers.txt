@@ -1,0 +1,29 @@
+// Rooms and room cards
+Room, Brown, B
+Room, Mines Market, M
+Room, Maple, P
+Room, CoorsTek, C
+Room, CTLM, T
+Room, Elm, E
+Room, Alderson, A
+Room, Student Center, S
+Room, Rec Center, R
+// other spaces on board
+Space, Unused, X
+Space, Walkway, W
+
+//Weapons
+Weapon, Sulfuric Acid
+Weapon, Laptop
+Weapon, Mines Market Food
+Weapon, Keystone
+Weapon, Laser
+Weapon, Math Homework
+
+// Players
+Player, Blaster, Computer, blue
+Player, Mark Baldwin, Computer, red
+Player, PCJ, Computer, green
+Player, Paone, Computer, magenta
+Player, CPW, Computer, black
+Player, Marvin, Computer, white
