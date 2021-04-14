@@ -20,14 +20,14 @@ public class ClueGame extends JFrame {
 	private Random rng;
 
 	//optional flag for computer only simulation
-	private final static Boolean COMPUTERS_ONLY = true;
+	private final static Boolean COMPUTERS_ONLY = false;
 	// how many turns the turns per game should simulate
 	private final static int MAX_TURNS = 10000;
 	//how many turns the games should simulate
 	private final static int NUMBER_OF_GAME = 1;
 	private static int gameNumber;
 	
-	private final static boolean LOG_ROOMS = true;
+	private final static boolean LOG_ROOMS = false;
 	private final static String LOG_FILE = "roomlogs.csv";
 	private static FileWriter fileWriter;
 	private static PrintWriter printWriter;
