@@ -123,7 +123,7 @@ public class Board extends JPanel implements MouseMotionListener, MouseListener 
 	}
 
 	private void generateStartPositons() {
-		startPostions = new ArrayList<BoardCell>();
+		startPostions = new ArrayList<>();
 		startPostions.add(board[5][0]);
 		startPostions.add(board[19][0]);
 		startPostions.add(board[23][7]);
@@ -428,7 +428,6 @@ public class Board extends JPanel implements MouseMotionListener, MouseListener 
 
 	//helper function for when load setup determines it is adding a weapon card
 	private void addWeapon(String data) {
-		int commaIndex;
 		Card card = new Card(data, CardType.WEAPON);
 		gameCards.add(card);
 		weaponCards.add(card);
@@ -673,16 +672,16 @@ public class Board extends JPanel implements MouseMotionListener, MouseListener 
 	}
 
 	public Card checkSuggestion(Solution solution) {
-		ArrayList<Card> disproved = new ArrayList<>();
-		for (Player p : playerList) {
-			Card d = p.disproveSuggestion(solution);
-			if (!(d==null)) {
-				disproved.add(d);
+		int currentIndex = playerList.indexOf(currentPlayer);
+		Card disprove = null;
+		for (int i = currentIndex + 1; i < currentIndex + playerCount; i++) {
+			disprove = playerList.get(i%playerCount).disproveSuggestion(solution);
+			if (disprove != null) {
+				break;
 			}
 		}
-		if (disproved.isEmpty()) return null;
-
-		return disproved.get(random.nextInt(Integer.MAX_VALUE)%disproved.size());
+		
+		return disprove;
 	}
 
 	@Override
@@ -742,7 +741,7 @@ public class Board extends JPanel implements MouseMotionListener, MouseListener 
 		}
 
 		//tracks what players have been draw, to avoid double drawing when some players are drawn out of order		
-		Set<Player> drawnPlayer = new HashSet<Player>();
+		Set<Player> drawnPlayer = new HashSet<>();
 
 		for (Player p : playerList) {
 			final double playerOffset = .3;
@@ -756,7 +755,7 @@ public class Board extends JPanel implements MouseMotionListener, MouseListener 
 			if(board[row][column].isRoom()) {
 
 				//stores the players that are in the same room
-				ArrayList<Player> inThisRoom = new ArrayList<Player>();
+				ArrayList<Player> inThisRoom = new ArrayList<>();
 
 				//checks every player to see if its in the same room as the current player, and adds it to the arraylist if it is
 				for (Player player : playerList) {
@@ -942,6 +941,10 @@ public class Board extends JPanel implements MouseMotionListener, MouseListener 
 	public BoardCell getCell( int row, int col ) {
 		return board[row][col];
 	}
+	
+	public BoardCell getCell(Point p) {
+		return board[p.y][p.x];
+	}
 
 	public Room getRoom(BoardCell cell) {
 		return cell.getRoom();
@@ -1048,4 +1051,9 @@ public class Board extends JPanel implements MouseMotionListener, MouseListener 
 	public Player getNextPlayer() {
 		return playerList.get((playerList.indexOf(currentPlayer) + 1) % playerCount);
 	}	
+	
+	public void disableMouseInput() {
+		removeMouseListener(this);
+		removeMouseMotionListener(this);
+	}
 }

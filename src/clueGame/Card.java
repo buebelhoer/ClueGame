@@ -30,6 +30,14 @@ public class Card {
 	public CardType getCardType() {
 		return cardType;
 	}
+
+
+	@Override
+	public String toString() {
+		return cardName;
+	}
+	
+	
 	
 	
 }

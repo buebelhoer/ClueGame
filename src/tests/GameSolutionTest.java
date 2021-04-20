@@ -119,12 +119,15 @@ public class GameSolutionTest {
 		ComputerPlayer player1 = new ComputerPlayer("test1",Color.red, new Random(System.currentTimeMillis()), board.getRoomCards(), board.getPersonCards(), board.getWeaponCards());
 		ComputerPlayer player2 = new ComputerPlayer("test2",Color.red, new Random(System.currentTimeMillis()), board.getRoomCards(), board.getPersonCards(), board.getWeaponCards());
 		ComputerPlayer player3 = new ComputerPlayer("test3",Color.red, new Random(System.currentTimeMillis()), board.getRoomCards(), board.getPersonCards(), board.getWeaponCards());
+		ComputerPlayer player4 = new ComputerPlayer("test3",Color.red, new Random(System.currentTimeMillis()), board.getRoomCards(), board.getPersonCards(), board.getWeaponCards());
 		ArrayList<Player> players = new ArrayList<Player>();
 		players.add(player1);
 		players.add(player2);
 		players.add(player3);
+		players.add(player4);
 		board.setPlayerList(players);
-		board.setPlayerCount(3);
+		board.setPlayerCount(4);
+		board.setCurrentPlayer(player4);
 		
 		//gets the map of cards
 		Map cardMap = board.getCardMap();
@@ -153,22 +156,11 @@ public class GameSolutionTest {
 		//creates a situation where two players both have cards that can disprove
 		player2.updateHand((Card)cardMap.get("Laptop"));
 		
-		//tracks how many times each card was returned
-		int personcount= 0;
-		int weaponcount = 0;
 		
-		//checks 50 solutions to test randomly returning one of the two cards
-		for (int i = 0; i < 50; i++) {
-			checkedCard = board.checkSuggestion(new Solution((Card)cardMap.get("Blaster"), new Card("Roomcard", CardType.ROOM),(Card)cardMap.get("Laptop")));
-			//determines which card was returned
-			if (checkedCard == (Card)cardMap.get("Blaster")) personcount++;
-			if (checkedCard == (Card)cardMap.get("Laptop")) weaponcount++;
-		}
+		checkedCard = board.checkSuggestion(new Solution((Card)cardMap.get("Blaster"), new Card("Roomcard", CardType.ROOM),(Card)cardMap.get("Laptop")));
 		
-		//checks that both cards were returned at least once
-		assertTrue(personcount > 1);
-		assertTrue(weaponcount > 1);
-		assertTrue(personcount + weaponcount == 50);
+		//player 1 is the next player in line so they should be the one to disporve
+		assertTrue(checkedCard == (Card)cardMap.get("Blaster"));
 		
 		
 	}

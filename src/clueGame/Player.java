@@ -168,7 +168,7 @@ public abstract class Player {
 	}
 	
 	public Point getLocation() {
-		return new Point(row, column);
+		return new Point(column, row);
 	}
 
 	public Set<Card> getSeenCards() {
