@@ -40,10 +40,10 @@ public class ClueGame extends JFrame {
 		mainPanel.setLayout(new BorderLayout());
 		mainPanel.add(board, BorderLayout.CENTER);
 		mainPanel.add(cardsPanel, BorderLayout.EAST);
-		mainPanel.add(controlPanel, BorderLayout.SOUTH);
+		mainPanel.add(controlPanel, BorderLayout.PAGE_END);
 		
 		//prepare frame
-		setSize(750, 180+650);
+		setSize(750, 200+650);
 		setContentPane(mainPanel); // put the panel in the frame
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // allow it to close
 		setVisible(true); // make it visible

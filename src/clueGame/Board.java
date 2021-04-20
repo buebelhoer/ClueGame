@@ -856,13 +856,23 @@ public class Board extends JPanel implements MouseMotionListener, MouseListener 
 
 	@Override
 	public void mouseEntered(MouseEvent e) {}
-
-	@Override
-	public void mouseExited(MouseEvent e) {}
 	
 	@Override
-	public void mouseDragged(MouseEvent e) {
+	public void mouseDragged(MouseEvent e) {}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		//unhighlight all previously hovered cells
+		Point hoverLocation = new Point(e.getX(), e.getY());
 		
+		for(int row = 0; row < numRows; row ++) {
+			for (int col = 0; col < numCols; col ++) {
+				//resets default state
+				board[row][col].setHovered(false);
+			}
+		}
+		
+		repaint();
 	}
 
 	@Override

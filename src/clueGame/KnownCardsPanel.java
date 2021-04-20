@@ -1,6 +1,8 @@
 package clueGame;
 
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,7 +19,7 @@ public class KnownCardsPanel extends JPanel {
 	/**
 	 * Constructor for the panel, it does 90% of the work
 	 */
-	public KnownCardsPanel(ArrayList<Card> hand, HashMap<Player, ArrayList<Card>> seenCards)  {
+	public KnownCardsPanel(ArrayList<Card> hand, HashMap<Player, ArrayList<Card>> seenCards)  {		
 		setLayout(new GridLayout(3, 1));
 		setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.black), "Known Cards"));
 		
@@ -87,7 +89,7 @@ public class KnownCardsPanel extends JPanel {
 		KnownCardsPanel panel = new KnownCardsPanel(hand, seenCards);  // create the panel
 		JFrame frame = new JFrame();  // create the frame 
 		frame.setContentPane(panel); // put the panel in the frame
-		frame.setSize(180,650);  // size the frame
+		frame.setSize(200,650);  // size the frame
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // allow it to close
 		frame.setVisible(true); // make it visible
 	}
@@ -156,7 +158,6 @@ public class KnownCardsPanel extends JPanel {
 			noneCard.setEditable(false);
 			noneCard.setHorizontalAlignment(JTextField.CENTER);
 			add(noneCard);
-			
 		}
 		
 		public void addCard(Color color, String cardName) {
@@ -167,6 +168,7 @@ public class KnownCardsPanel extends JPanel {
 			cardField.setBackground(color);
 			cardField.setEditable(false);
 			cardField.setHorizontalAlignment(JTextField.CENTER);
+
 			add(cardField);
 		}
 	}
