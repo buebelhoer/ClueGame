@@ -8,6 +8,7 @@ import java.io.PrintWriter;
 import java.nio.file.FileAlreadyExistsException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map.Entry;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -150,7 +151,45 @@ public class ClueGame extends JFrame {
 		//if computer player, move
 		if (board.getCurrentPlayer() instanceof ComputerPlayer) {
 			moveComputerPlayer();
+			
+			if (board.getCell(board.getCurrentPlayer().getLocation()).isRoom()) {
+				Solution attempedSolution = ((ComputerPlayer)board.getCurrentPlayer()).createSuggestion(board.getCardMap().get(board.getCell(board.getCurrentPlayer().getLocation()).getRoom().getName()));
+				System.out.println(attempedSolution);
+				Card disprovedCard = board.checkSuggestion(attempedSolution);			
+				if (disprovedCard != null) {
+					board.getCurrentPlayer().getSeenCards().add(disprovedCard);
+				} 
+				
+				Card cardToTeleport = attempedSolution.getPerson();
+				
+				findPlayerFromCard(cardToTeleport).setLocation(board.getCell(board.getCurrentPlayer().getLocation()));
+			}
+			//TODO: DIALOG HERE
 		}
+	}
+	
+	private Player findPlayerWithCard(Card card) {
+		for (Player p : board.getPlayerList()) {
+			if (p.getHand().contains(card)) {
+				return p;
+			}
+		}
+		
+		return null;
+	}
+	
+	private Player findPlayerFromCard(Card card) {
+		for (Entry<String, Card> e : board.getCardMap().entrySet()) {
+			if (board.getCardMap().get(e.getKey()) == card) {
+				for (Player p : board.getPlayerList()) {
+					if (p.getName() == e.getKey()) {
+						return p;
+					}
+				}
+			}
+		}
+		
+		return null;
 	}
 
 	/**

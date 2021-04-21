@@ -2,12 +2,14 @@ package clueGame;
 
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class HumanPlayer extends Player {
 
-	public HumanPlayer(String name, Color color, ArrayList<Card> roomCards,  ArrayList<Card> personCards, ArrayList<Card> weaponCards) {
+	public HumanPlayer(String name, Color color, Random random, ArrayList<Card> roomCards,  ArrayList<Card> personCards, ArrayList<Card> weaponCards) {
 		super(name, color);
-		// TODO Auto-generated constructor stub
+
+		rng = random;
 	}
 
 }

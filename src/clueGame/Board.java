@@ -458,7 +458,7 @@ public class Board extends JPanel implements MouseMotionListener, MouseListener 
 		Player player;
 
 		if (playerType.equals("Human")) {
-			player = new HumanPlayer(playerName, color, roomCards, personCards, weaponCards);
+			player = new HumanPlayer(playerName, color, random, roomCards, personCards, weaponCards);
 		} else {
 			player = new ComputerPlayer(playerName, color, random, roomCards, personCards, weaponCards);
 		}

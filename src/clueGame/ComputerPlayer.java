@@ -17,6 +17,8 @@ public class ComputerPlayer extends Player {
 		super(name, color, random, roomCards,personCards,weaponCards);
 		seenCards = new HashSet<>();
 		lastRooms = new LinkedList<Room>();
+		
+		rng = random;
 	}
 
 	public ComputerPlayer(String name, int row, int col, Color color) {

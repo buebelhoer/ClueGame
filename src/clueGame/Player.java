@@ -51,8 +51,6 @@ public abstract class Player {
 		revealedCards = new HashMap<Player, ArrayList<Card>>();
 	}
 
-
-
 	public Player(String name, Color color) {
 		super();
 		this.name = name;
