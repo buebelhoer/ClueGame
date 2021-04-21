@@ -91,12 +91,11 @@ public class ClueGame extends JFrame {
 			moveComputerPlayer();
 			
 			while (true) {
-//				try {
-//					TimeUnit.SECONDS.sleep(1);
-//					TimeUnit.MILLISECONDS.sleep(1);
-//				} catch (InterruptedException e) {
-//					e.printStackTrace();
-//				}
+				try {
+					TimeUnit.SECONDS.sleep(2);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
 				nextTurn();
 				if (controlPanel.getTurnNumber() >= MAX_TURNS) {
 					break;
@@ -125,6 +124,8 @@ public class ClueGame extends JFrame {
 
 		board.repaint();
 	}
+	
+	
 
 	public void nextTurn() {
 
@@ -162,6 +163,10 @@ public class ClueGame extends JFrame {
 
 		player.setLocation(target);
 		board.setHasMoved(true);
+	}
+	
+	private void makeSuggestion(Solution solution) {
+		
 	}
 
 	public static void main(String[] args) {
