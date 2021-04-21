@@ -73,6 +73,17 @@ public class GameControlPanel extends JPanel {
 		
 		nextButton.addActionListener(buttonListener);
 		
+		//responsible for the accusation button
+		ActionListener accusationListener = new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				clueGame.makeAccusation();
+				
+			}
+		};
+		accuseButton.addActionListener(accusationListener);
+		
 		//add everything to host element
 		turnPanel.add(playerPanel);
 		turnPanel.add(rollPanel);

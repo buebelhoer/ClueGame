@@ -207,6 +207,10 @@ public class ClueGame extends JFrame {
 	private void makeSuggestion(Solution solution) {
 		
 	}
+	
+	public void makeAccusation() {
+		SuggestionDialog accusationDialog = new SuggestionDialog(board, board.getRoomCards(), board.getPersonCards(), board.getWeaponCards());
+	}
 
 	public static void main(String[] args) {
 		if (LOG_ROOMS) {

@@ -848,7 +848,7 @@ public class Board extends JPanel implements MouseMotionListener, MouseListener 
 		
 		
 		if(hasMoved && board[currentPlayer.getRow()][currentPlayer.getColumn()].isRoom()) {
-			JDialog suggestionBox
+//			JDialog suggestionBox
 		}
 	}
 
