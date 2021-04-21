@@ -14,6 +14,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.*;
 
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -844,6 +845,11 @@ public class Board extends JPanel implements MouseMotionListener, MouseListener 
 		
 		//after click change from pointer hand to regular arrow
 		setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+		
+		
+		if(hasMoved && board[currentPlayer.getRow()][currentPlayer.getColumn()].isRoom()) {
+			JDialog suggestionBox
+		}
 	}
 
 	//unused mouse listener methods
