@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -111,7 +112,16 @@ public class SuggestionDialog extends JDialog {
 				personCard = (Card)personBox.getSelectedItem();
 				weaponCard = (Card)weaponBox.getSelectedItem();
 				
-				board.checkSuggestion(new Solution(personCard, roomCard, weaponCard));
+				Object[] cardPlayer = board.checkSuggestion(new Solution(personCard, roomCard, weaponCard));
+				
+				Card solutionCard = (Card)cardPlayer[0];
+				Player solutionPlayer = (Player)cardPlayer[1];
+				
+				if (solutionCard != null) {
+					JOptionPane.showMessageDialog(panel, solutionCard.toString() +  " Showed you " + solutionCard.toString());
+				} else {
+					JOptionPane.showMessageDialog(panel, "No one could disprove you!");
+				}
 				
 				dispose();
 				
