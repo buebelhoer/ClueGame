@@ -17,74 +17,62 @@ public class SuggestionDialog extends JDialog {
 	Card roomCard;
 	Card weaponCard;
 	
-	public SuggestionDialog(Board board, ArrayList<Card> roomCards, ArrayList<Card> personCards, ArrayList<Card> weaponCards) {
+	Board board;
+	ClueGame game;
+	
+	JTextField roomField;
+	JComboBox<Card> personBox;
+	JComboBox<Card> weaponBox;
+	JPanel panel;
+	
+	
+	public SuggestionDialog(ClueGame game, Card room, ArrayList<Card> personCards, ArrayList<Card> weaponCards) {
 		super();
 		
-		//inits the dialoge box
-		setVisible(true);
-		setSize(400,400);
+		this.game = game;
+		board = game.getBoard();
 		
-		//creates the panel and adds it to the dialog box
-		JPanel panel = new JPanel();
-		add(panel);
+		panel = initBox();
 		
-		panel.setLayout(new GridLayout(4, 2));
+		personBox = initPersonBox(personCards);
 		
-		//creates and adds the room label
-		JTextField room = new JTextField("Room");
-		room.setEditable(false);
-		room.setSize(100, 20);
-		panel.add(room);
+		weaponBox = initWeaponBox(weaponCards);
 		
-		//
-		JComboBox<Card> roomBox = new JComboBox<>();
-		roomBox.setSize(100, 20);
-		for (Card c : roomCards) {
-			roomBox.addItem(c);
-		}
-		panel.add(roomBox);
+		roomCard = room;
 		
-		JTextField person = new JTextField("Person");
-		person.setEditable(false);
-		panel.add(person);
+		initRoomField(room);
 		
-		JComboBox<Card> personBox = new JComboBox<>();
-		for (Card c : personCards) {
-			personBox.addItem(c);
-		}
-		panel.add(personBox);
+		createSaveButton();
 		
-		JTextField weapon = new JTextField("Weapon");
-		weapon.setEditable(false);
-		panel.add(weapon);
+		createCancelButton();
+	}
+
+
+	/**
+	 * @param room
+	 */
+	private void initRoomField(Card room) {
+		JTextField roomLabel = new JTextField("Room");
+		roomLabel.setEditable(false);
+		roomLabel.setSize(100, 20);
+		panel.add(roomLabel);
 		
-		JComboBox<Card> weaponBox = new JComboBox<>();
-		for (Card c : weaponCards) {
-			weaponBox.addItem(c);
-		}
-		panel.add(weaponBox);
-		
-		JButton saveButton = new JButton("Save");
-		saveButton.setVisible(true);
-		
-		ActionListener saveListener = new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				
-				roomCard = (Card)roomBox.getSelectedItem();
-				personCard = (Card)personBox.getSelectedItem();
-				weaponCard = (Card)weaponBox.getSelectedItem();
-				
-				dispose();
-				
-				
-			}
-		};
-		
-		saveButton.addActionListener(saveListener);
-		panel.add(saveButton);
-		
+		roomField = new JTextField(room.toString());
+		roomField.setEditable(false);
+		roomField.setSize(100, 20);
+		panel.add(roomField);
+	}
+
+
+	public SuggestionDialog() {
+		super();
+	}
+
+
+	/**
+	 * @param panel
+	 */
+	protected void createCancelButton() {
 		JButton cancelButton = new JButton("Cancel");
 		cancelButton.setVisible(true);
 		
@@ -102,8 +90,92 @@ public class SuggestionDialog extends JDialog {
 		panel.add(cancelButton);
 	}
 
-	
-	public Solution getSuggestion() {
-		return new Solution(personCard, roomCard, weaponCard);
+
+	/**
+	 * @param panel
+	 * @param roomBox
+	 * @param personBox
+	 * @param weaponBox
+	 */
+	protected void createSaveButton() {
+		//creates save button
+		JButton saveButton = new JButton("Save");
+		saveButton.setVisible(true);
+		
+		ActionListener saveListener = new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+
+				personCard = (Card)personBox.getSelectedItem();
+				weaponCard = (Card)weaponBox.getSelectedItem();
+				
+				board.checkSuggestion(new Solution(personCard, roomCard, weaponCard));
+				
+				dispose();
+				
+				
+			}
+		};
+		
+		saveButton.addActionListener(saveListener);
+		panel.add(saveButton);
 	}
+
+
+	/**
+	 * @return
+	 */
+	protected JPanel initBox() {
+		//inits the dialoge box
+		setVisible(true);
+		setSize(400,400);
+		
+		//creates the panel and adds it to the dialog box
+		JPanel panel = new JPanel();
+		add(panel);
+		
+		panel.setLayout(new GridLayout(4, 2));
+		return panel;
+	}
+
+
+	/**
+	 * @param weaponCards
+	 * @param panel
+	 * @return
+	 */
+	protected JComboBox<Card> initWeaponBox(ArrayList<Card> weaponCards) {
+		JTextField weapon = new JTextField("Weapon");
+		weapon.setEditable(false);
+		panel.add(weapon);
+		
+		JComboBox<Card> weaponBox = new JComboBox<>();
+		for (Card c : weaponCards) {
+			weaponBox.addItem(c);
+		}
+		panel.add(weaponBox);
+		return weaponBox;
+	}
+
+
+	/**
+	 * @param personCards
+	 * @param panel
+	 * @return
+	 */
+	protected JComboBox<Card> initPersonBox(ArrayList<Card> personCards) {
+		JTextField person = new JTextField("Person");
+		person.setEditable(false);
+		panel.add(person);
+		
+		JComboBox<Card> personBox = new JComboBox<>();
+		for (Card c : personCards) {
+			personBox.addItem(c);
+		}
+		panel.add(personBox);
+		return personBox;
+	}
+
 }

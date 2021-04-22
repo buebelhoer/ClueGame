@@ -2,6 +2,7 @@ package clueGame;
 
 import java.awt.BorderLayout;
 import java.awt.Point;
+import java.awt.event.WindowEvent;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -209,7 +210,7 @@ public class ClueGame extends JFrame {
 	}
 	
 	public void makeAccusation() {
-		SuggestionDialog accusationDialog = new SuggestionDialog(board, board.getRoomCards(), board.getPersonCards(), board.getWeaponCards());
+		SuggestionDialog accusationDialog = new AccusationDialog(this, board.getRoomCards(), board.getPersonCards(), board.getWeaponCards());
 	}
 
 	public static void main(String[] args) {
@@ -238,6 +239,22 @@ public class ClueGame extends JFrame {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+		}
+	}
+
+
+
+	public Board getBoard() {
+		return board;
+	}
+	
+	public void checkAccusation(Solution solution) {
+		if(board.checkAccusation(solution)) {
+			JOptionPane.showMessageDialog(this, board.getCurrentPlayer().getName() + " has won! The solution was " + solution.getPerson() + " in the " + solution.getRoom() + " with the " + solution.getWeapon() );
+			dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
+		} else {
+			board.getCurrentPlayer().eliminate();
+			JOptionPane.showMessageDialog(this, board.getCurrentPlayer().getName() + " accused incorrectly and has been eliminated! Their guess was " + solution.getPerson() + " in the " + solution.getRoom() + " with the " + solution.getWeapon() );
 		}
 	}
 }

@@ -115,7 +115,6 @@ public class KnownCardsPanel extends JPanel {
 			//creates the cardpanel that stores the card in the hand
 			handCardPanel = new CardPanel();
 			handPanel.add(handCardPanel);
-			System.out.println("hand panel added");
 			
 			JPanel seenPanel = new JPanel();
 			seenPanel.setLayout(new GridLayout(2,1));
@@ -134,12 +133,10 @@ public class KnownCardsPanel extends JPanel {
 		}
 		
 		public void addHandCard(String cardName) {
-			System.out.println("card added to hand panel: " + cardName);
 			handCardPanel.addCard(Color.white, cardName);
 		}
 		
 		public void addSeenCard(Color color, String cardName) {
-			System.out.println("card added to seen panel: " + cardName);
 			seenCardPanel.addCard(color, cardName);
 		}
 	}
@@ -150,7 +147,6 @@ public class KnownCardsPanel extends JPanel {
 		
 		CardPanel() {
 			super();
-			System.out.println("card panel created");
 			setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 			noneCard = new JTextField("None");
 			noneCard.setBorder(BorderFactory.createLineBorder(Color.black));

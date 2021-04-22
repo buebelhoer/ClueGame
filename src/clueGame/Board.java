@@ -930,6 +930,14 @@ public class Board extends JPanel implements MouseMotionListener, MouseListener 
 		
 		repaint();
 	}
+	
+	public void makeAccustion(Solution solution) {
+		
+		if (checkAccusation(solution)) {
+			JOptionPane.showMessageDialog(this, currentPlayer + "has won! The solution was " + solution.getPerson() + " in the " + solution.getRoom() + " with the " + solution.getWeapon() );
+			
+		}
+	}
 
 	/*
 	 * ALL CODE BENEATH THIS POINT SHOULD BE GETTER/SETTERS
@@ -1055,7 +1063,13 @@ public class Board extends JPanel implements MouseMotionListener, MouseListener 
 	}
 	
 	public Player getNextPlayer() {
-		return playerList.get((playerList.indexOf(currentPlayer) + 1) % playerCount);
+		Player nextPlayer = playerList.get((playerList.indexOf(currentPlayer) + 1) % playerCount);
+		
+		while (nextPlayer.isEliminated()) {
+			nextPlayer = playerList.get((playerList.indexOf(nextPlayer) + 1) % playerCount);
+		}
+		
+		return nextPlayer;
 	}	
 	
 	public void disableMouseInput() {

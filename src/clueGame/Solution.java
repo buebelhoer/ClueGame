@@ -1,6 +1,8 @@
 package clueGame;
 
 public class Solution {
+	private final static boolean DEBUG = true;
+	
 	private Card person;
 	private Card room;
 	private Card weapon;
@@ -10,6 +12,10 @@ public class Solution {
 		this.person = player;
 		this.room = room;
 		this.weapon = weapon;
+		
+		if (DEBUG) {
+			System.out.println( room + " " + player + " " + weapon);
+		}
 	}
 
 	public Solution() {

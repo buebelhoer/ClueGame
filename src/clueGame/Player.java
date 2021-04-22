@@ -37,6 +37,8 @@ public abstract class Player {
 	protected ArrayList<Card> personCards;
 	protected ArrayList<Card> weaponCards;
 	
+	protected boolean eliminated = false;
+	
 	//Random number gen from host
 	protected Random rng;
 	
@@ -176,4 +178,14 @@ public abstract class Player {
 	public HashMap<Player, ArrayList<Card>> getRevealedCards() {
 		return revealedCards;
 	}
+
+	public boolean isEliminated() {
+		return eliminated;
+	}
+
+	public void eliminate() {
+		this.eliminated = true;
+	}
+	
+	
 }
