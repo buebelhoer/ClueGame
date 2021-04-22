@@ -69,19 +69,7 @@ public class BoardCell {
 		
 		if (isRoom) {
 			if (isSecretPassage) {
-				g.setColor(passageColor);
-				g.fillRect(x, y, width, height);
-				
-				//the border is drawn
-				g.setColor(backgroundColor);
-				g.drawRect(x, y, width - 1, height - 1);
-				
-				g.setColor(textColor);
-				g.setFont(g.getFont().deriveFont(Font.BOLD));
-				//calculate width of string when drawn using selected font
-				Rectangle2D bounds = g.getFontMetrics().getStringBounds(String.valueOf(getSecretPassage()), g);
-				//draw string centered based on bounds
-				g.drawString(String.valueOf(getSecretPassage()), (int)(x + width/2 - bounds.getWidth()/2), (int)(y + height/2 + bounds.getHeight()/4));
+				drawSecretPassage(g, x, y, width, height);
 			} else {
 				//rooms are drawn in a different color, and done have borders for each cell
 				g.setColor(roomColors);
@@ -135,10 +123,29 @@ public class BoardCell {
 	
 	
 	//targets that are room are colored in, but their borders are not drawn
-	public void drawTargetRoom(Graphics g, int x, int y, int width, int height) {
-		g.setColor(targetColor);
+	public void drawTargetRoom(Graphics g, int x, int y, int width, int height) {	
+		if (isSecretPassage) {
+			drawSecretPassage(g, x, y, width, height);
+		} else {
+			g.setColor(targetColor);
+			g.fillRect(x, y, width, height);
+		}
+	}
+
+	private void drawSecretPassage(Graphics g, int x, int y, int width, int height) {
+		g.setColor(passageColor);
 		g.fillRect(x, y, width, height);
 		
+		//the border is drawn
+		g.setColor(backgroundColor);
+		g.drawRect(x, y, width - 1, height - 1);
+		
+		g.setColor(textColor);
+		g.setFont(g.getFont().deriveFont(Font.BOLD));
+		//calculate width of string when drawn using selected font
+		Rectangle2D bounds = g.getFontMetrics().getStringBounds(String.valueOf(getSecretPassage()), g);
+		//draw string centered based on bounds
+		g.drawString(String.valueOf(getSecretPassage()), (int)(x + width/2 - bounds.getWidth()/2), (int)(y + height/2 + bounds.getHeight()/4));
 	}
 	
 	public void drawHovered(Graphics g) {	

@@ -157,14 +157,13 @@ public class ClueGame extends JFrame {
 			if (board.getCell(board.getCurrentPlayer().getLocation()).isRoom()) {
 				Solution attempedSolution = ((ComputerPlayer)board.getCurrentPlayer()).createSuggestion(board.getCardMap().get(board.getCell(board.getCurrentPlayer().getLocation()).getRoom().getName()));
 //				System.out.println(attempedSolution);
-				Card disprovedCard = board.checkSuggestion(attempedSolution);			
+				Object tuple[] = board.checkSuggestion(attempedSolution);
+				Card disprovedCard = (Card) tuple[0];
 				if (disprovedCard != null) {
 					board.getCurrentPlayer().getSeenCards().add(disprovedCard);
 				} 
 				
-				Card cardToTeleport = attempedSolution.getPerson();
-				
-				findPlayerFromCard(cardToTeleport).setLocation(board.getCell(board.getCurrentPlayer().getLocation()));
+				((Player)tuple[1]).setLocation(board.getCell(board.getCurrentPlayer().getLocation()));
 			}
 			//TODO: DIALOG HERE
 		}
