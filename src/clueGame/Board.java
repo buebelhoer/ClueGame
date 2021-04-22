@@ -672,18 +672,22 @@ public class Board extends JPanel implements MouseMotionListener, MouseListener 
 		return accusation.equals(theAnswer);
 	}
 
-	public Card checkSuggestion(Solution solution) {
+	public Object[] checkSuggestion(Solution solution) {
 		int currentIndex = playerList.indexOf(currentPlayer);
 		Card disprove = null;
+		Player player = null;
 		for (int i = currentIndex + 1; i < currentIndex + playerCount; i++) {
 			disprove = playerList.get(i%playerCount).disproveSuggestion(solution);
 			if (disprove != null) {
+				player = playerList.get(i%playerCount);
 				break;
+				
 			}
 		}
 		
-		return disprove;
+		return new Object[]{disprove, player};
 	}
+	
 
 	@Override
 	protected void paintComponent(Graphics g) {
@@ -941,7 +945,9 @@ public class Board extends JPanel implements MouseMotionListener, MouseListener 
 	}
 	
 	public void handleSuggestion(Solution solution) {
-		Card solutionCard = checkSuggestion(solution);
+		Object[] cardPlayer =checkSuggestion(solution);
+		Card solutionCard = (Card)cardPlayer[0];
+		Player solutionPlayer = (Player)cardPlayer[1];
 	}
 
 	/*
