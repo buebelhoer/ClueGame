@@ -2,9 +2,11 @@
 package clueGame;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.geom.Rectangle2D;
 import java.util.*;
 
 public class BoardCell {
@@ -15,6 +17,8 @@ public class BoardCell {
 	private final static Color roomColors = Color.lightGray;
 	private final static Color doorColor = Color.blue;
 	private final static Color backgroundColor = Color.black;
+	private final static Color textColor = Color.blue;
+	private final static Color passageColor = Color.gray;
 	
 	//the position of this cell in the board, declared at creation
 	private int row;
@@ -64,9 +68,25 @@ public class BoardCell {
 		guiPosition = new Rectangle(x,y,width,height);
 		
 		if (isRoom) {
-			//rooms are drawn in a different color, and done have borders for each cell
-			g.setColor(roomColors);
-			g.fillRect(x, y, width, height);
+			if (isSecretPassage) {
+				g.setColor(passageColor);
+				g.fillRect(x, y, width, height);
+				
+				//the border is drawn
+				g.setColor(backgroundColor);
+				g.drawRect(x, y, width - 1, height - 1);
+				
+				g.setColor(textColor);
+				g.setFont(g.getFont().deriveFont(Font.BOLD));
+				//calculate width of string when drawn using selected font
+				Rectangle2D bounds = g.getFontMetrics().getStringBounds(String.valueOf(getSecretPassage()), g);
+				//draw string centered based on bounds
+				g.drawString(String.valueOf(getSecretPassage()), (int)(x + width/2 - bounds.getWidth()/2), (int)(y + height/2 + bounds.getHeight()/4));
+			} else {
+				//rooms are drawn in a different color, and done have borders for each cell
+				g.setColor(roomColors);
+				g.fillRect(x, y, width, height);
+			}
 		} else if (room.getName().equals("Unused")) {
 			// unused cells are drawn in as the background color always
 			g.setColor(backgroundColor);
