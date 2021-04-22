@@ -156,7 +156,7 @@ public class ClueGame extends JFrame {
 			
 			if (board.getCell(board.getCurrentPlayer().getLocation()).isRoom()) {
 				Solution attempedSolution = ((ComputerPlayer)board.getCurrentPlayer()).createSuggestion(board.getCardMap().get(board.getCell(board.getCurrentPlayer().getLocation()).getRoom().getName()));
-				System.out.println(attempedSolution);
+//				System.out.println(attempedSolution);
 				Card disprovedCard = board.checkSuggestion(attempedSolution);			
 				if (disprovedCard != null) {
 					board.getCurrentPlayer().getSeenCards().add(disprovedCard);
@@ -213,6 +213,27 @@ public class ClueGame extends JFrame {
 		SuggestionDialog accusationDialog = new AccusationDialog(this, board.getRoomCards(), board.getPersonCards(), board.getWeaponCards());
 	}
 
+	public Board getBoard() {
+		return board;
+	}
+	
+	public void checkAccusation(Solution solution) {
+		if(board.checkAccusation(solution)) {
+			JOptionPane.showMessageDialog(this, board.getCurrentPlayer().getName() + " has won! The solution was " + solution.getPerson() + " in the " + solution.getRoom() + " with the " + solution.getWeapon() );
+			dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
+		} else {
+			if (board.getCurrentPlayer() instanceof HumanPlayer ) {
+				board.setHasMoved(true);
+				board.getTargets().clear();
+				board.repaint();
+			}
+			board.getCurrentPlayer().eliminate();
+			JOptionPane.showMessageDialog(this, board.getCurrentPlayer().getName() + " accused incorrectly and has been eliminated! Their guess was " + solution.getPerson() + " in the " + solution.getRoom() + " with the " + solution.getWeapon() );
+		}
+	}
+
+
+
 	public static void main(String[] args) {
 		if (LOG_ROOMS) {
 			try {
@@ -229,7 +250,7 @@ public class ClueGame extends JFrame {
 				frame.setVisible(false);
 			}
 		} else {
-
+	
 			ClueGame frame = new ClueGame("Mines Mystery");  // create the frame 
 		}
 		if (LOG_ROOMS) {
@@ -239,22 +260,6 @@ public class ClueGame extends JFrame {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-		}
-	}
-
-
-
-	public Board getBoard() {
-		return board;
-	}
-	
-	public void checkAccusation(Solution solution) {
-		if(board.checkAccusation(solution)) {
-			JOptionPane.showMessageDialog(this, board.getCurrentPlayer().getName() + " has won! The solution was " + solution.getPerson() + " in the " + solution.getRoom() + " with the " + solution.getWeapon() );
-			dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
-		} else {
-			board.getCurrentPlayer().eliminate();
-			JOptionPane.showMessageDialog(this, board.getCurrentPlayer().getName() + " accused incorrectly and has been eliminated! Their guess was " + solution.getPerson() + " in the " + solution.getRoom() + " with the " + solution.getWeapon() );
 		}
 	}
 }

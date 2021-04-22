@@ -26,11 +26,11 @@ public class SuggestionDialog extends JDialog {
 	JPanel panel;
 	
 	
-	public SuggestionDialog(ClueGame game, Card room, ArrayList<Card> personCards, ArrayList<Card> weaponCards) {
+	public SuggestionDialog(Board board, Card room, ArrayList<Card> personCards, ArrayList<Card> weaponCards) {
 		super();
 		
-		this.game = game;
-		board = game.getBoard();
+		
+		this.board = board;
 		
 		panel = initBox();
 		

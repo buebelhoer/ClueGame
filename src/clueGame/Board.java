@@ -848,7 +848,8 @@ public class Board extends JPanel implements MouseMotionListener, MouseListener 
 		
 		
 		if(hasMoved && board[currentPlayer.getRow()][currentPlayer.getColumn()].isRoom()) {
-//			JDialog suggestionBox
+			SuggestionDialog suggestionDialog = new SuggestionDialog(this, cardMap.get(board[currentPlayer.getRow()][currentPlayer.getColumn()].getRoom().getName()), personCards, weaponCards);
+			
 		}
 	}
 
@@ -937,6 +938,10 @@ public class Board extends JPanel implements MouseMotionListener, MouseListener 
 			JOptionPane.showMessageDialog(this, currentPlayer + "has won! The solution was " + solution.getPerson() + " in the " + solution.getRoom() + " with the " + solution.getWeapon() );
 			
 		}
+	}
+	
+	public void handleSuggestion(Solution solution) {
+		Card solutionCard = checkSuggestion(solution);
 	}
 
 	/*

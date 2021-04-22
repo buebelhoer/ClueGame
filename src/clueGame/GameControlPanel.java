@@ -78,7 +78,9 @@ public class GameControlPanel extends JPanel {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				clueGame.makeAccusation();
+				if (!clueGame.getBoard().getHumanPlayer().isEliminated()) {
+					clueGame.makeAccusation();
+				}
 				
 			}
 		};
