@@ -142,6 +142,7 @@ public class KnownCardsPanel extends JPanel {
 		
 		public void addSeenCard(Color color, String cardName) {
 			seenCardPanel.addCard(color, cardName);
+			repaint();
 		}
 	}
 	

@@ -123,6 +123,7 @@ public class SuggestionDialog extends JDialog {
 				if (solutionCard != null) {
 					JOptionPane.showMessageDialog(panel, solutionPlayer.getName() +  " Showed you " + solutionCard.toString());
 					game.getCardsPanel().addSeenCard(solutionCard, solutionPlayer);
+					game.getCardsPanel().repaint();
 				} else {
 					JOptionPane.showMessageDialog(panel, "No one could disprove you!");
 				}
