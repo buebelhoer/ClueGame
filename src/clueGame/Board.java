@@ -938,11 +938,7 @@ public class Board extends JPanel implements MouseMotionListener, MouseListener 
 		}
 	}
 	
-	public void handleSuggestion(Solution solution) {
-		Object[] cardPlayer =checkSuggestion(solution);
-		Card solutionCard = (Card)cardPlayer[0];
-		Player solutionPlayer = (Player)cardPlayer[1];
-	}
+
 
 	/*
 	 * ALL CODE BENEATH THIS POINT SHOULD BE GETTER/SETTERS
