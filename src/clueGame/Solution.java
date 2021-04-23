@@ -1,7 +1,7 @@
 package clueGame;
 
 public class Solution {
-	private final static boolean DEBUG = true;
+	public static boolean DEBUG;
 	
 	private Card person;
 	private Card room;

@@ -6,7 +6,6 @@ import java.awt.event.WindowEvent;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.nio.file.FileAlreadyExistsException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map.Entry;
@@ -21,6 +20,9 @@ public class ClueGame extends JFrame {
 	private Board board;
 	private Random rng;
 
+	//debug flag
+	private static Boolean DEBUG = true;
+	
 	//optional flag for computer only simulation
 	private final static Boolean COMPUTERS_ONLY = false;
 	// how many turns the turns per game should simulate
@@ -263,6 +265,10 @@ public class ClueGame extends JFrame {
 
 
 	public static void main(String[] args) {
+		if(DEBUG) {
+			Solution.DEBUG = true;
+		}
+		
 		if (LOG_ROOMS) {
 			try {
 				fileWriter = new FileWriter(LOG_FILE);
