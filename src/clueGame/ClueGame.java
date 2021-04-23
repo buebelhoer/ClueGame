@@ -170,8 +170,10 @@ public class ClueGame extends JFrame {
 				} 
 				
 				((Player)tuple[1]).setLocation(board.getCell(board.getCurrentPlayer().getLocation()));
+				
+				JOptionPane.showMessageDialog(this, board.getCurrentPlayer().getName() + " made the suggestion: " + attempedSolution.getPerson() + " in " + attempedSolution.getRoom() + " with " + attempedSolution.getWeapon() + ". It was disproved by " + ((Player)tuple[1]).getName());
 			}
-			//TODO: DIALOG HERE
+			
 		}
 	}
 	
