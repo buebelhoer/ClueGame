@@ -84,10 +84,11 @@ public class ClueGame extends JFrame {
 		setContentPane(mainPanel); // put the panel in the frame
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // allow it to close
 		setVisible(true); // make it visible
-		if (gameNumber == 1) {
-		JOptionPane.showMessageDialog(this, "You are Specting Computer Players for " + NUMBER_OF_GAME + " Games!");
-		}
+		
 		if (COMPUTERS_ONLY) {
+			if (gameNumber == 1) {
+				JOptionPane.showMessageDialog(this, "You are Specting Computer Players for " + NUMBER_OF_GAME + " Games!");
+			}
 			controlPanel.disableButtons();
 			board.disableMouseInput();
 			moveComputerPlayer();
