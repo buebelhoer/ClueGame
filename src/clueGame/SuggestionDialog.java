@@ -31,9 +31,12 @@ public class SuggestionDialog extends JDialog {
 		super();
 		
 		
+		
 		this.board = board;
 		
 		panel = initBox();
+		
+		initRoomField(room);
 		
 		personBox = initPersonBox(personCards);
 		
@@ -41,7 +44,7 @@ public class SuggestionDialog extends JDialog {
 		
 		roomCard = room;
 		
-		initRoomField(room);
+		
 		
 		createSaveButton();
 		
@@ -118,7 +121,7 @@ public class SuggestionDialog extends JDialog {
 				Player solutionPlayer = (Player)cardPlayer[1];
 				
 				if (solutionCard != null) {
-					JOptionPane.showMessageDialog(panel, solutionCard.toString() +  " Showed you " + solutionCard.toString());
+					JOptionPane.showMessageDialog(panel, solutionPlayer.getName() +  " Showed you " + solutionCard.toString());
 				} else {
 					JOptionPane.showMessageDialog(panel, "No one could disprove you!");
 				}
@@ -142,7 +145,7 @@ public class SuggestionDialog extends JDialog {
 	protected JPanel initBox() {
 		//inits the dialoge box
 		setVisible(true);
-		setSize(400,400);
+		setSize(200,150);
 		
 		//creates the panel and adds it to the dialog box
 		JPanel panel = new JPanel();
