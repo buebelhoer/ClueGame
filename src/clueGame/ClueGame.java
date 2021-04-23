@@ -129,10 +129,24 @@ public class ClueGame extends JFrame {
 	
 	
 
+	public KnownCardsPanel getCardsPanel() {
+		return cardsPanel;
+	}
+
+
+
+	public GameControlPanel getControlPanel() {
+		return controlPanel;
+	}
+
+
+
 	public void nextTurn() {
 		if(board.hasMoved() && !board.hasSuggested() && board.getCell(board.getCurrentPlayer().getLocation()).isRoom()) {
 			SuggestionDialog suggestionDialog = new SuggestionDialog(this, board.getCardMap().get(board.getCell(board.getCurrentPlayer().getLocation()).getRoom().getName()), board.getPersonCards(), board.getWeaponCards());
+			repaint();
 			return;
+			
 		}
 
 		if (!board.hasMoved()) {

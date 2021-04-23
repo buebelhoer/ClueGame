@@ -30,7 +30,7 @@ public class SuggestionDialog extends JDialog {
 	public SuggestionDialog(ClueGame game, Card room, ArrayList<Card> personCards, ArrayList<Card> weaponCards) {
 		super();
 		
-		
+		this.game = game;
 		
 		this.board = game.getBoard();
 		
@@ -122,11 +122,13 @@ public class SuggestionDialog extends JDialog {
 				
 				if (solutionCard != null) {
 					JOptionPane.showMessageDialog(panel, solutionPlayer.getName() +  " Showed you " + solutionCard.toString());
+					game.getCardsPanel().addSeenCard(solutionCard, solutionPlayer);
 				} else {
 					JOptionPane.showMessageDialog(panel, "No one could disprove you!");
 				}
 				
 				board.setHasSuggested(true);
+				
 				
 				dispose();
 				

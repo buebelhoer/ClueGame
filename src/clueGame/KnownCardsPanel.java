@@ -16,6 +16,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class KnownCardsPanel extends JPanel {
+	CardTypePanel peoplePanel;
+	CardTypePanel roomsPanel;
+	CardTypePanel weaponsPanel;
+	
 	/**
 	 * Constructor for the panel, it does 90% of the work
 	 */
@@ -23,9 +27,9 @@ public class KnownCardsPanel extends JPanel {
 		setLayout(new GridLayout(3, 1));
 		setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.black), "Known Cards"));
 		
-		CardTypePanel peoplePanel = new CardTypePanel("People");
-		CardTypePanel roomsPanel = new CardTypePanel("Rooms");
-		CardTypePanel weaponsPanel = new CardTypePanel("Weapons");
+		peoplePanel = new CardTypePanel("People");
+		roomsPanel = new CardTypePanel("Rooms");
+		weaponsPanel = new CardTypePanel("Weapons");
 		
 		populateCardPanels(hand, seenCards, peoplePanel, roomsPanel, weaponsPanel);
 		
@@ -166,10 +170,27 @@ public class KnownCardsPanel extends JPanel {
 			cardField.setHorizontalAlignment(JTextField.CENTER);
 
 			add(cardField);
+			repaint();
 		}
+		
+		
 	}
 	
-	
+	public void addSeenCard(Card card, Player player) {
+			switch(card.getCardType()) {
+
+			case PERSON:
+				peoplePanel.addSeenCard(player.getColor(), card.getCardName());
+				break;
+			case ROOM:
+				roomsPanel.addSeenCard(player.getColor(), card.getCardName());
+				break;
+			case WEAPON:
+				weaponsPanel.addSeenCard(player.getColor(), card.getCardName());
+				break;
+			}
+			repaint();
+	}
 	
 	
 }
