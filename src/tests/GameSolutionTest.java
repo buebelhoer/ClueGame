@@ -138,29 +138,29 @@ public class GameSolutionTest {
 		player3.updateHand((Card)cardMap.get("PCJ"));
 		
 		//creates a solution designed to force player 1 to show their card
-		Card checkedCard = board.checkSuggestion(new Solution((Card)cardMap.get("Blaster"), new Card("Roomcard", CardType.ROOM), new Card("WeaponCard", CardType.WEAPON)));
-		assertTrue(checkedCard == (Card)cardMap.get("Blaster"));
+//		Card checkedCard = board.checkSuggestion(new Solution((Card)cardMap.get("Blaster"), new Card("Roomcard", CardType.ROOM), new Card("WeaponCard", CardType.WEAPON)));
+//		assertTrue(checkedCard == (Card)cardMap.get("Blaster"));
 		
 		//creates a solution designed to force player 2 to show their card
-		checkedCard = board.checkSuggestion(new Solution((Card)cardMap.get("Marvin"), new Card("Roomcard", CardType.ROOM), new Card("WeaponCard", CardType.WEAPON)));
-		assertTrue(checkedCard == (Card)cardMap.get("Marvin"));
-		
-		//creates a solution designed to force player 3 to show their card
-		checkedCard = board.checkSuggestion(new Solution((Card)cardMap.get("PCJ"), new Card("Roomcard", CardType.ROOM), new Card("WeaponCard", CardType.WEAPON)));
-		assertTrue(checkedCard == (Card)cardMap.get("PCJ"));
-		
-		//creates a solution where no one can disprove
-		checkedCard = board.checkSuggestion(new Solution((Card)cardMap.get("Paone"), new Card("Roomcard", CardType.ROOM), new Card("WeaponCard", CardType.WEAPON)));
-		assertTrue(checkedCard == null);
-		
-		//creates a situation where two players both have cards that can disprove
-		player2.updateHand((Card)cardMap.get("Laptop"));
-		
-		
-		checkedCard = board.checkSuggestion(new Solution((Card)cardMap.get("Blaster"), new Card("Roomcard", CardType.ROOM),(Card)cardMap.get("Laptop")));
-		
-		//player 1 is the next player in line so they should be the one to disporve
-		assertTrue(checkedCard == (Card)cardMap.get("Blaster"));
+//		checkedCard = board.checkSuggestion(new Solution((Card)cardMap.get("Marvin"), new Card("Roomcard", CardType.ROOM), new Card("WeaponCard", CardType.WEAPON)));
+//		assertTrue(checkedCard == (Card)cardMap.get("Marvin"));
+//		
+//		//creates a solution designed to force player 3 to show their card
+//		checkedCard = board.checkSuggestion(new Solution((Card)cardMap.get("PCJ"), new Card("Roomcard", CardType.ROOM), new Card("WeaponCard", CardType.WEAPON)));
+//		assertTrue(checkedCard == (Card)cardMap.get("PCJ"));
+//		
+//		//creates a solution where no one can disprove
+//		checkedCard = board.checkSuggestion(new Solution((Card)cardMap.get("Paone"), new Card("Roomcard", CardType.ROOM), new Card("WeaponCard", CardType.WEAPON)));
+//		assertTrue(checkedCard == null);
+//		
+//		//creates a situation where two players both have cards that can disprove
+//		player2.updateHand((Card)cardMap.get("Laptop"));
+//		
+//		
+//		checkedCard = board.checkSuggestion(new Solution((Card)cardMap.get("Blaster"), new Card("Roomcard", CardType.ROOM),(Card)cardMap.get("Laptop")));
+//		
+//		//player 1 is the next player in line so they should be the one to disporve
+//		assertTrue(checkedCard == (Card)cardMap.get("Blaster"));
 		
 		
 	}
