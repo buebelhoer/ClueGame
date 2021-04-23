@@ -24,7 +24,7 @@ public class ClueGame extends JFrame {
 	//optional flag for computer only simulation
 	private final static Boolean COMPUTERS_ONLY = true;
 	// how many turns the turns per game should simulate
-	private final static int MAX_TURNS = 10000;
+	private final static int MAX_TURNS = 100000;
 	//how many turns the games should simulate
 	private final static int NUMBER_OF_GAME = 1;
 	private static int gameNumber;
