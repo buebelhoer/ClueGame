@@ -82,6 +82,33 @@ public class ComputerPlayer extends Player {
 		this.seenCards = seenCards;
 	}
 
-
+	public boolean accusationReady() {
+		return (seenCards.size() + hand.size()) == (roomCards.size() + weaponCards.size() + personCards.size());
+	}
+	
+	public Solution generateAccusation() {
+		Card roomCard = null, weaponCard = null, personCard = null;
+		for (Card c : roomCards) {
+			if (!seenCards.contains(c) && !hand.contains(c)) {
+				roomCard = c;
+				break;
+			}
+		}
+		
+		for (Card c : weaponCards ) {
+			if (!seenCards.contains(c)&& !hand.contains(c)) {
+				weaponCard = c;
+				break;
+			}
+		}
+		
+		for (Card c : personCards ) {
+			if (!seenCards.contains(c)&& !hand.contains(c)) {
+				personCard = c;
+				break;
+			}
+		}
+		return new Solution(personCard, roomCard, weaponCard);
+	}
 
 }

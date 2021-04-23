@@ -131,7 +131,7 @@ public class ClueGame extends JFrame {
 
 	public void nextTurn() {
 		if(board.hasMoved() && !board.hasSuggested() && board.getCell(board.getCurrentPlayer().getLocation()).isRoom()) {
-			SuggestionDialog suggestionDialog = new SuggestionDialog(board, board.getCardMap().get(board.getCell(board.getCurrentPlayer().getLocation()).getRoom().getName()), board.getPersonCards(), board.getWeaponCards());
+			SuggestionDialog suggestionDialog = new SuggestionDialog(this, board.getCardMap().get(board.getCell(board.getCurrentPlayer().getLocation()).getRoom().getName()), board.getPersonCards(), board.getWeaponCards());
 			return;
 		}
 
@@ -156,6 +156,12 @@ public class ClueGame extends JFrame {
 
 		//if computer player, move
 		if (board.getCurrentPlayer() instanceof ComputerPlayer) {
+			
+			if (((ComputerPlayer)board.getCurrentPlayer()).accusationReady()) {
+				Solution accusation = ((ComputerPlayer)board.getCurrentPlayer()).generateAccusation();
+				checkAccusation(accusation);
+			}
+			
 			moveComputerPlayer();
 			
 			if (board.getCell(board.getCurrentPlayer().getLocation()).isRoom()) {
