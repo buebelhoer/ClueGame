@@ -130,6 +130,10 @@ public class ClueGame extends JFrame {
 	
 
 	public void nextTurn() {
+		if(board.hasMoved() && !board.hasSuggested() && board.getCell(board.getCurrentPlayer().getLocation()).isRoom()) {
+			SuggestionDialog suggestionDialog = new SuggestionDialog(board, board.getCardMap().get(board.getCell(board.getCurrentPlayer().getLocation()).getRoom().getName()), board.getPersonCards(), board.getWeaponCards());
+			return;
+		}
 
 		if (!board.hasMoved()) {
 			JOptionPane.showMessageDialog(this, "You have not moved yet!", "Cannot move to next player", JOptionPane.ERROR_MESSAGE);
@@ -158,6 +162,8 @@ public class ClueGame extends JFrame {
 				Solution attempedSolution = ((ComputerPlayer)board.getCurrentPlayer()).createSuggestion(board.getCardMap().get(board.getCell(board.getCurrentPlayer().getLocation()).getRoom().getName()));
 //				System.out.println(attempedSolution);
 				Object tuple[] = board.checkSuggestion(attempedSolution);
+				board.setHasSuggested(true);
+				
 				Card disprovedCard = (Card) tuple[0];
 				if (disprovedCard != null) {
 					board.getCurrentPlayer().getSeenCards().add(disprovedCard);

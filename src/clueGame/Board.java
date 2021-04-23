@@ -849,12 +849,6 @@ public class Board extends JPanel implements MouseMotionListener, MouseListener 
 		
 		//after click change from pointer hand to regular arrow
 		setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-		
-		
-		if(hasMoved && board[currentPlayer.getRow()][currentPlayer.getColumn()].isRoom()) {
-			SuggestionDialog suggestionDialog = new SuggestionDialog(this, cardMap.get(board[currentPlayer.getRow()][currentPlayer.getColumn()].getRoom().getName()), personCards, weaponCards);
-			
-		}
 	}
 
 	//unused mouse listener methods

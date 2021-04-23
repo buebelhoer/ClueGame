@@ -123,6 +123,8 @@ public class SuggestionDialog extends JDialog {
 					JOptionPane.showMessageDialog(panel, "No one could disprove you!");
 				}
 				
+				board.setHasSuggested(true);
+				
 				dispose();
 				
 				
