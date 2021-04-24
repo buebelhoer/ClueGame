@@ -4,6 +4,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Map.Entry;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -115,6 +116,11 @@ public class SuggestionDialog extends JDialog {
 				personCard = (Card)personBox.getSelectedItem();
 				weaponCard = (Card)weaponBox.getSelectedItem();
 				
+				findPlayerFromCard(personCard).setLocation(board.getCell(board.getCurrentPlayer().getLocation()));
+				findPlayerFromCard(personCard).setTeleported(true);
+				
+				game.getControlPanel().setGuess(personCard + " in " + roomCard + " with the " + weaponCard);
+				
 				Object[] cardPlayer = board.checkSuggestion(new Solution(personCard, roomCard, weaponCard));
 				
 				Card solutionCard = (Card)cardPlayer[0];
@@ -123,9 +129,11 @@ public class SuggestionDialog extends JDialog {
 				if (solutionCard != null) {
 					JOptionPane.showMessageDialog(panel, solutionPlayer.getName() +  " Showed you " + solutionCard.toString());
 					game.getCardsPanel().addSeenCard(solutionCard, solutionPlayer);
-					game.getCardsPanel().repaint();
+					game.getControlPanel().setGuessResult(solutionPlayer.getName() + " showed you " + solutionCard);
+					
 				} else {
 					JOptionPane.showMessageDialog(panel, "No one could disprove you!");
+					game.getControlPanel().setGuessResult("No one could disprove you");
 				}
 				
 				board.setHasSuggested(true);
@@ -194,6 +202,20 @@ public class SuggestionDialog extends JDialog {
 		}
 		panel.add(personBox);
 		return personBox;
+	}
+	
+	private Player findPlayerFromCard(Card card) {
+		for (Entry<String, Card> e : board.getCardMap().entrySet()) {
+			if (board.getCardMap().get(e.getKey()) == card) {
+				for (Player p : board.getPlayerList()) {
+					if (p.getName() == e.getKey()) {
+						return p;
+					}
+				}
+			}
+		}
+		
+		return null;
 	}
 
 }

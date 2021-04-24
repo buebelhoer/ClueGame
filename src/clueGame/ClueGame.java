@@ -28,11 +28,13 @@ public class ClueGame extends JFrame {
 	// how many turns the turns per game should simulate
 	public  static int MAX_TURNS = 10000;
 	//how many turns the games should simulate
-	private final static int NUMBER_OF_GAME = 1;
+	private static int NUMBER_OF_GAMES = 1;
 	private static int gameNumber;
 	
+	private static Boolean SUPERSPEED = false;
+	
 	public  static boolean LOG_ROOMS = false;
-	private final static String LOG_FILE = "roomlogs.csv";
+	private static String LOG_FILE = "roomlogs.csv";
 	private static FileWriter fileWriter;
 	private static PrintWriter printWriter;
 	
@@ -88,23 +90,26 @@ public class ClueGame extends JFrame {
 		setVisible(true); // make it visible
 		
 		if (COMPUTERS_ONLY) {
-			if (gameNumber == 1) {
-				JOptionPane.showMessageDialog(this, "You are Specting Computer Players for " + NUMBER_OF_GAME + " Games!");
-			}
+
+			JOptionPane.showMessageDialog(this, "You are Specting Computer Players for " + NUMBER_OF_GAMES + " Games!");
+
 			controlPanel.disableButtons();
 			board.disableMouseInput();
 			moveComputerPlayer();
 			
 			while (true) {
-//				try {
-//					TimeUnit.SECONDS.sleep(2);
-//				} catch (InterruptedException e) {
-//					e.printStackTrace();
-//				}
+				if (!SUPERSPEED) {
+					try {
+						TimeUnit.SECONDS.sleep(2);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
 				nextTurn();
 				if (controlPanel.getTurnNumber() >= MAX_TURNS) {
 					break;
 				}
+
 			}
 		} else {
 			JOptionPane.showMessageDialog(this, "You are " + board.getHumanPlayer().getName() + ". \nCan you find the solution\nbefore the Computer players?");
@@ -126,6 +131,35 @@ public class ClueGame extends JFrame {
 		board.setCurrentPlayer(p);
 		board.setHasMoved(board.getTargets().isEmpty());
 		board.setHasSuggested(false);
+		
+		if (p.getTeleported()) {
+			if (p instanceof HumanPlayer) {
+				SuggestionDialog suggestionDialog = new SuggestionDialog(this, board.getCardMap().get(board.getCell(board.getCurrentPlayer().getLocation()).getRoom().getName()), board.getPersonCards(), board.getWeaponCards());
+			} else {
+				Solution attempedSolution = ((ComputerPlayer)board.getCurrentPlayer()).createSuggestion(board.getCardMap().get(board.getCell(board.getCurrentPlayer().getLocation()).getRoom().getName()));
+//				System.out.println(attempedSolution);
+				Object tuple[] = board.checkSuggestion(attempedSolution);
+				board.setHasSuggested(true);
+				
+				Card disprovedCard = (Card) tuple[0];
+				Player disprovingPlayer = (Player) tuple[1];
+				if (disprovedCard != null) {
+					board.getCurrentPlayer().getSeenCards().add(disprovedCard);
+					ArrayList<Card> cardList = board.getCurrentPlayer().getRevealedCards().get(disprovingPlayer);
+					if (cardList == null) {
+						cardList = new ArrayList<Card>();
+					}
+					cardList.add(disprovedCard);
+					
+					
+				} 
+				
+				findPlayerFromCard(attempedSolution.getPerson()).setLocation(board.getCell(board.getCurrentPlayer().getLocation()));
+				findPlayerFromCard(attempedSolution.getPerson()).setTeleported(true);
+				
+			}
+			p.setTeleported(false);
+		}
 
 		board.repaint();
 	}
@@ -147,7 +181,6 @@ public class ClueGame extends JFrame {
 	public void nextTurn() {
 		if(board.hasMoved() && !board.hasSuggested() && board.getCell(board.getCurrentPlayer().getLocation()).isRoom() && board.getCurrentPlayer() instanceof HumanPlayer) {
 			SuggestionDialog suggestionDialog = new SuggestionDialog(this, board.getCardMap().get(board.getCell(board.getCurrentPlayer().getLocation()).getRoom().getName()), board.getPersonCards(), board.getWeaponCards());
-			repaint();
 			return;
 			
 		}
@@ -171,9 +204,9 @@ public class ClueGame extends JFrame {
 		
 		setCurrentPlayer(board.getNextPlayer());
 		
-//		if (COMPUTERS_ONLY) {
-//			cardsPanel = new KnownCardsPanel(board.getCurrentPlayer().getHand(), board.getCurrentPlayer().getRevealedCards());
-//		}
+		if (COMPUTERS_ONLY) {
+			cardsPanel = new KnownCardsPanel(board.getCurrentPlayer().getHand(), board.getCurrentPlayer().getRevealedCards());
+		}
 		//if computer player, move
 		if (board.getCurrentPlayer() instanceof ComputerPlayer) {
 			
@@ -188,7 +221,7 @@ public class ClueGame extends JFrame {
 			
 			if (board.getCell(board.getCurrentPlayer().getLocation()).isRoom()) {
 				
-				System.out.println("Next PLayer: " + board.getPlayerList().get((board.getPlayerList().indexOf(board.getCurrentPlayer()) + 1) % board.getPlayerCount()).getHand());
+//				System.out.println("Next PLayer: " + board.getPlayerList().get((board.getPlayerList().indexOf(board.getCurrentPlayer()) + 1) % board.getPlayerCount()).getHand());
 				
 				Solution attempedSolution = ((ComputerPlayer)board.getCurrentPlayer()).createSuggestion(board.getCardMap().get(board.getCell(board.getCurrentPlayer().getLocation()).getRoom().getName()));
 //				System.out.println(attempedSolution);
@@ -196,13 +229,22 @@ public class ClueGame extends JFrame {
 				board.setHasSuggested(true);
 				
 				Card disprovedCard = (Card) tuple[0];
+				Player disprovingPlayer = (Player) tuple[1];
 				if (disprovedCard != null) {
 					board.getCurrentPlayer().getSeenCards().add(disprovedCard);
-					((Player)tuple[1]).setLocation(board.getCell(board.getCurrentPlayer().getLocation()));
+					ArrayList<Card> cardList = board.getCurrentPlayer().getRevealedCards().get(disprovingPlayer);
+					if (cardList == null) {
+						cardList = new ArrayList<Card>();
+					}
+					cardList.add(disprovedCard);
+					
 				} 
 				
+				findPlayerFromCard(attempedSolution.getPerson()).setLocation(board.getCell(board.getCurrentPlayer().getLocation()));
+				findPlayerFromCard(attempedSolution.getPerson()).setTeleported(true);
 				
-				if (!COMPUTERS_ONLY) {
+				
+				if (!SUPERSPEED) {
 					JOptionPane.showMessageDialog(this, board.getCurrentPlayer().getName() + " made the suggestion: " + attempedSolution.getPerson() + " in " + attempedSolution.getRoom() + " with " + attempedSolution.getWeapon() + ". It was disproved by " + ((Player)tuple[1]).getName());
 				}
 			}
@@ -260,6 +302,7 @@ public class ClueGame extends JFrame {
 	public void checkAccusation(Solution solution) {
 		if(board.checkAccusation(solution)) {
 			JOptionPane.showMessageDialog(this, board.getCurrentPlayer().getName() + " has won! The solution was " + solution.getPerson() + " in the " + solution.getRoom() + " with the " + solution.getWeapon() );
+			
 			dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
 		} else {
 			if (board.getCurrentPlayer() instanceof HumanPlayer ) {
@@ -276,16 +319,23 @@ public class ClueGame extends JFrame {
 
 	public static void main(String[] args) {
 		
-		for (String s: args) {
-			switch(s ) {
+		for (int i = 0; i < args.length; i++) {
+			switch(args[i]) {
 			case "DEBUG":
 				ClueGame.DEBUG = true;
 				break;
 			case "LOG":
 				ClueGame.LOG_ROOMS = true;
+				LOG_FILE = args[i+1];
+				i++;
 				break;
 			case "SIMULATE":
 				ClueGame.COMPUTERS_ONLY = true;
+				MAX_TURNS = Integer.parseInt(args[i+1]);
+				i++;
+				break;
+			case "SUPERSPEED":
+				SUPERSPEED = true;
 				break;
 			}
 		}
@@ -302,16 +352,8 @@ public class ClueGame extends JFrame {
 				e.printStackTrace();
 			}
 		}
-		
-		if (COMPUTERS_ONLY) {
-			for(gameNumber = 1; gameNumber <= NUMBER_OF_GAME; gameNumber++) {
-				ClueGame frame = new ClueGame("Mines Mystery");  // create the frame 
-				frame.setVisible(false);
-			}
-		} else {
-	
 			ClueGame frame = new ClueGame("Mines Mystery");  // create the frame 
-		}
+
 		if (LOG_ROOMS) {
 			printWriter.close();
 			try {

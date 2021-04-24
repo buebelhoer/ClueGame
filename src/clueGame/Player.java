@@ -14,6 +14,8 @@ public abstract class Player {
 	//The color the borders are drawn
 	private static final Color BORDER_COLOR = Color.black;
 
+	protected Boolean teleported;
+	
 	//The name of the player
 	protected String name;
 	
@@ -49,6 +51,7 @@ public abstract class Player {
 		this.row = row;
 		this.column = column;
 		this.hand = hand;
+		this.teleported = false;
 		seenCards = new HashSet<Card>();
 		revealedCards = new HashMap<Player, ArrayList<Card>>();
 	}
@@ -57,6 +60,7 @@ public abstract class Player {
 		super();
 		this.name = name;
 		this.color = color;
+		this.teleported = false;
 		hand = new ArrayList<>();
 		seenCards = new HashSet<Card>();
 		revealedCards = new HashMap<Player, ArrayList<Card>>();
@@ -71,6 +75,7 @@ public abstract class Player {
 		this.personCards = personCards;
 		this.weaponCards = weaponCards;
 		this.rng = rng;
+		this.teleported = false;
 		seenCards = new HashSet<Card>();
 		revealedCards = new HashMap<Player, ArrayList<Card>>();
 	}
@@ -80,6 +85,7 @@ public abstract class Player {
 	//used only for testing
 	public Player() {
 		super();
+		this.teleported = false;
 	}
 
 	
@@ -185,6 +191,14 @@ public abstract class Player {
 
 	public void eliminate() {
 		this.eliminated = true;
+	}
+
+	public Boolean getTeleported() {
+		return teleported;
+	}
+
+	public void setTeleported(Boolean teleported) {
+		this.teleported = teleported;
 	}
 	
 	
