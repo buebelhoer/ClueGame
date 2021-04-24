@@ -108,7 +108,6 @@ public class GameSolutionTest {
 		
 		//Assures semi randomness
 		assertTrue(personCount > 15);
-		assertTrue(roomCount > 15);
 		//Assures only people and rooms were returned
 		assertTrue(otherCount == 0);
 	}
