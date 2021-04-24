@@ -3,6 +3,10 @@ package clueGame;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.util.ArrayList;
 import java.util.Map.Entry;
 
@@ -45,11 +49,80 @@ public class SuggestionDialog extends JDialog {
 		
 		roomCard = room;
 		
-		
-		
 		createSaveButton();
 		
 		createCancelButton();
+		
+		setAlwaysOnTop(true);
+		
+		createCloseListener();
+		
+		createFocusListener();
+	}
+
+
+	private void createFocusListener() {
+		addFocusListener(new FocusListener() {
+			
+			@Override
+			public void focusLost(FocusEvent e) {
+				game.setSuggestionDialogIsOpen(false);
+				dispose();
+			}
+			
+			@Override
+			public void focusGained(FocusEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+	}
+
+
+	private void createCloseListener() {
+		this.addWindowListener(new WindowListener() {
+			
+			@Override
+			public void windowOpened(WindowEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void windowIconified(WindowEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void windowDeiconified(WindowEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void windowDeactivated(WindowEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void windowClosing(WindowEvent e) {
+				game.setSuggestionDialogIsOpen(false);
+			}
+			
+			@Override
+			public void windowClosed(WindowEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void windowActivated(WindowEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 	}
 
 
@@ -85,9 +158,9 @@ public class SuggestionDialog extends JDialog {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				game.setSuggestionDialogIsOpen(false);
+				
 				dispose();
-				
-				
 			}
 		};
 		
@@ -137,7 +210,7 @@ public class SuggestionDialog extends JDialog {
 				}
 				
 				board.setHasSuggested(true);
-				
+				board.setHasMoved(true);
 				
 				dispose();
 				

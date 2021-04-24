@@ -38,6 +38,7 @@ public class ClueGame extends JFrame {
 	private static FileWriter fileWriter;
 	private static PrintWriter printWriter;
 	
+	private boolean suggestionDialogIsOpen = false;	
 
 	private GameControlPanel controlPanel; 
 	private KnownCardsPanel cardsPanel;
@@ -179,7 +180,8 @@ public class ClueGame extends JFrame {
 
 
 	public void nextTurn() {
-		if(board.hasMoved() && !board.hasSuggested() && board.getCell(board.getCurrentPlayer().getLocation()).isRoom() && board.getCurrentPlayer() instanceof HumanPlayer) {
+		if(!suggestionDialogIsOpen && board.hasMoved() && !board.hasSuggested() && board.getCell(board.getCurrentPlayer().getLocation()).isRoom() && board.getCurrentPlayer() instanceof HumanPlayer) {
+			suggestionDialogIsOpen = true;
 			SuggestionDialog suggestionDialog = new SuggestionDialog(this, board.getCardMap().get(board.getCell(board.getCurrentPlayer().getLocation()).getRoom().getName()), board.getPersonCards(), board.getWeaponCards());
 			return;
 			
@@ -314,8 +316,10 @@ public class ClueGame extends JFrame {
 			JOptionPane.showMessageDialog(this, board.getCurrentPlayer().getName() + " accused incorrectly and has been eliminated! Their guess was " + solution.getPerson() + " in the " + solution.getRoom() + " with the " + solution.getWeapon() );
 		}
 	}
-
-
+	
+	void setSuggestionDialogIsOpen(boolean flag) {
+		suggestionDialogIsOpen = flag;
+	}
 
 	public static void main(String[] args) {
 		
