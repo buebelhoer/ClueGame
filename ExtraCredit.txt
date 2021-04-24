@@ -1,0 +1,8 @@
+Added Computer only play
+Added logging of what rooms players are in for analysis purposes
+exported to jar
+added command like options to enable certain compiler options:
+	DEBUG - prints soluitons to the consoles as they are created
+	SIMULATE (max turns) - simulates up to (max turns) turns of a game with all computer players
+	LOG (filename) - logs the room each player is in to the filename specified
+	SUPERSPEED - disables delays between turns when simulating and disables popup dialogs during the game
