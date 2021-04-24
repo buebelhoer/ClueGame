@@ -34,6 +34,8 @@ public abstract class Player {
 	//tracks who revealed seen cards
 	protected HashMap<Player, ArrayList<Card>> revealedCards;
 	
+	private Set<Card> cardsShown;
+	
 	//stores all of the possible cards, passed in by constructor
 	protected ArrayList<Card> roomCards;
 	protected ArrayList<Card> personCards;
@@ -54,6 +56,7 @@ public abstract class Player {
 		this.teleported = false;
 		seenCards = new HashSet<Card>();
 		revealedCards = new HashMap<Player, ArrayList<Card>>();
+		cardsShown = new HashSet<Card>();
 	}
 
 	public Player(String name, Color color) {
@@ -64,6 +67,7 @@ public abstract class Player {
 		hand = new ArrayList<>();
 		seenCards = new HashSet<Card>();
 		revealedCards = new HashMap<Player, ArrayList<Card>>();
+		cardsShown = new HashSet<Card>();
 	}
 	
 	public Player(String name, Color color, Random rng, ArrayList<Card> roomCards,  ArrayList<Card> personCards, ArrayList<Card> weaponCards) {
@@ -78,6 +82,7 @@ public abstract class Player {
 		this.teleported = false;
 		seenCards = new HashSet<Card>();
 		revealedCards = new HashMap<Player, ArrayList<Card>>();
+		cardsShown = new HashSet<Card>();
 	}
 
 
@@ -86,6 +91,7 @@ public abstract class Player {
 	public Player() {
 		super();
 		this.teleported = false;
+		cardsShown = new HashSet<Card>();
 	}
 
 	
@@ -98,7 +104,15 @@ public abstract class Player {
 		}
 		
 		if (disproveEvidenceList.isEmpty()) return null;
-		return disproveEvidenceList.get(rng.nextInt(disproveEvidenceList.size()));
+		
+		for (Card c: disproveEvidenceList) {
+			if (cardsShown.contains(c)) {
+				return c;
+			}
+		}
+		Card c = disproveEvidenceList.get(rng.nextInt(disproveEvidenceList.size()));
+		cardsShown.add(c);
+		return c;
 	}
 
 
@@ -115,6 +129,7 @@ public abstract class Player {
 	}
 	
 	public void draw(Graphics g, int x, int y, int width, int height) {
+		if (eliminated) return;
 		//sets the color to the players assigned color
 		g.setColor(color);
 		g.fillOval(x, y, width, height);

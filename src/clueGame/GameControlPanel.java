@@ -6,8 +6,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -20,6 +22,9 @@ public class GameControlPanel extends JPanel {
 	private JTextField guessResultField;
 	private JButton nextButton;
 	private JButton accuseButton;
+	
+	private ActionListener nextButtonListener;
+	private ActionListener accuseButtonListener;
 	
 	private Integer turnNumber;
 
@@ -64,27 +69,29 @@ public class GameControlPanel extends JPanel {
 		nextButton = new JButton("NEXT!");
 		
 		//responsible for the next button logic, just calls clueGame's next turn method
-		ActionListener buttonListener = new ActionListener() {
+		nextButtonListener = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				clueGame.nextTurn();				
 			}
 		};
 		
-		nextButton.addActionListener(buttonListener);
+		nextButton.addActionListener(nextButtonListener);
 		
 		//responsible for the accusation button
-		ActionListener accusationListener = new ActionListener() {
+		accuseButtonListener = new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (!clueGame.getBoard().getHumanPlayer().isEliminated()) {
+				if (!clueGame.getBoard().getHumanPlayer().isEliminated() && clueGame.getBoard().getCurrentPlayer() instanceof HumanPlayer) {
 					clueGame.makeAccusation();
+				} else {
+					JOptionPane.showMessageDialog(clueGame, "You cannot do that right now");
 				}
 				
 			}
 		};
-		accuseButton.addActionListener(accusationListener);
+		accuseButton.addActionListener(accuseButtonListener);
 		
 		//add everything to host element
 		turnPanel.add(playerPanel);
@@ -153,7 +160,13 @@ public class GameControlPanel extends JPanel {
 	
 	//disables the buttons for computer simulation
 	public void disableButtons() {
-		nextButton.removeActionListener(nextButton.getActionListeners()[0]);
+		nextButton.removeActionListener(nextButtonListener);
+		accuseButton.removeActionListener(accuseButtonListener);
+	}
+	
+	public void enableButtons() {
+		nextButton.addActionListener(nextButtonListener);
+		accuseButton.addActionListener(accuseButtonListener);
 	}
 	
 	public int getTurnNumber() {
