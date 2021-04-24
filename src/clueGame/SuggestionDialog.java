@@ -58,6 +58,8 @@ public class SuggestionDialog extends JDialog {
 		createCloseListener();
 		
 		createFocusListener();
+		
+		game.getControlPanel().disableButtons();
 	}
 
 
@@ -67,6 +69,7 @@ public class SuggestionDialog extends JDialog {
 			@Override
 			public void focusLost(FocusEvent e) {
 				game.setSuggestionDialogIsOpen(false);
+				game.getControlPanel().enableButtons();
 				dispose();
 			}
 			
@@ -109,6 +112,7 @@ public class SuggestionDialog extends JDialog {
 			@Override
 			public void windowClosing(WindowEvent e) {
 				game.setSuggestionDialogIsOpen(false);
+				game.getControlPanel().enableButtons();
 			}
 			
 			@Override
@@ -159,6 +163,7 @@ public class SuggestionDialog extends JDialog {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				game.setSuggestionDialogIsOpen(false);
+				game.getControlPanel().enableButtons();
 				
 				dispose();
 			}
@@ -211,6 +216,10 @@ public class SuggestionDialog extends JDialog {
 				
 				board.setHasSuggested(true);
 				board.setHasMoved(true);
+				
+				board.repaint();
+				
+				game.getControlPanel().enableButtons();
 				
 				dispose();
 				
