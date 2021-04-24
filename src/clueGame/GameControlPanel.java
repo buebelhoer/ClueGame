@@ -6,8 +6,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -78,8 +80,10 @@ public class GameControlPanel extends JPanel {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (!clueGame.getBoard().getHumanPlayer().isEliminated()) {
+				if (!clueGame.getBoard().getHumanPlayer().isEliminated() && clueGame.getBoard().getCurrentPlayer() instanceof HumanPlayer) {
 					clueGame.makeAccusation();
+				} else {
+					JOptionPane.showMessageDialog(clueGame, "You cannot do that right now");
 				}
 				
 			}
