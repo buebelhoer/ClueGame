@@ -912,7 +912,7 @@ public class Board extends JPanel implements MouseMotionListener, MouseListener 
 							board[row][col].setHovered(true);
 							
 							//if room is target change cursor to pointer hand
-							if (targets.contains(board[row][col])) {
+							if (targets.contains(board[row][col]) && currentPlayer instanceof HumanPlayer) {
 								setCursor(new Cursor(Cursor.HAND_CURSOR));
 							}
 						}
@@ -925,7 +925,7 @@ public class Board extends JPanel implements MouseMotionListener, MouseListener 
 				}
 				
 				//if cell is target change cursor to pointer hand
-				if (targets.contains(hoveredCell)) {
+				if (targets.contains(hoveredCell) && currentPlayer instanceof HumanPlayer) {
 					setCursor(new Cursor(Cursor.HAND_CURSOR));
 				}
 			}
