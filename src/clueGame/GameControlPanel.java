@@ -23,6 +23,9 @@ public class GameControlPanel extends JPanel {
 	private JButton nextButton;
 	private JButton accuseButton;
 	
+	private ActionListener nextButtonListener;
+	private ActionListener accuseButtonListener;
+	
 	private Integer turnNumber;
 
 	
@@ -66,17 +69,17 @@ public class GameControlPanel extends JPanel {
 		nextButton = new JButton("NEXT!");
 		
 		//responsible for the next button logic, just calls clueGame's next turn method
-		ActionListener buttonListener = new ActionListener() {
+		nextButtonListener = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				clueGame.nextTurn();				
 			}
 		};
 		
-		nextButton.addActionListener(buttonListener);
+		nextButton.addActionListener(nextButtonListener);
 		
 		//responsible for the accusation button
-		ActionListener accusationListener = new ActionListener() {
+		accuseButtonListener = new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -88,7 +91,7 @@ public class GameControlPanel extends JPanel {
 				
 			}
 		};
-		accuseButton.addActionListener(accusationListener);
+		accuseButton.addActionListener(accuseButtonListener);
 		
 		//add everything to host element
 		turnPanel.add(playerPanel);
@@ -157,7 +160,13 @@ public class GameControlPanel extends JPanel {
 	
 	//disables the buttons for computer simulation
 	public void disableButtons() {
-		nextButton.removeActionListener(nextButton.getActionListeners()[0]);
+		nextButton.removeActionListener(nextButtonListener);
+		accuseButton.removeActionListener(accuseButtonListener);
+	}
+	
+	public void enableButtons() {
+		nextButton.addActionListener(nextButtonListener);
+		accuseButton.addActionListener(accuseButtonListener);
 	}
 	
 	public int getTurnNumber() {
