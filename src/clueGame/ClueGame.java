@@ -144,16 +144,7 @@ public class ClueGame extends JFrame {
 				
 				Card disprovedCard = (Card) tuple[0];
 				Player disprovingPlayer = (Player) tuple[1];
-				if (disprovedCard != null) {
-					board.getCurrentPlayer().getSeenCards().add(disprovedCard);
-					ArrayList<Card> cardList = board.getCurrentPlayer().getRevealedCards().get(disprovingPlayer);
-					if (cardList == null) {
-						cardList = new ArrayList<Card>();
-					}
-					cardList.add(disprovedCard);
-					
-					
-				} 
+				recordCardSeen(disprovedCard, disprovingPlayer);
 				
 				findPlayerFromCard(attempedSolution.getPerson()).setLocation(board.getCell(board.getCurrentPlayer().getLocation()));
 				findPlayerFromCard(attempedSolution.getPerson()).setTeleported(true);
@@ -232,15 +223,7 @@ public class ClueGame extends JFrame {
 				
 				Card disprovedCard = (Card) tuple[0];
 				Player disprovingPlayer = (Player) tuple[1];
-				if (disprovedCard != null) {
-					board.getCurrentPlayer().getSeenCards().add(disprovedCard);
-					ArrayList<Card> cardList = board.getCurrentPlayer().getRevealedCards().get(disprovingPlayer);
-					if (cardList == null) {
-						cardList = new ArrayList<Card>();
-					}
-					cardList.add(disprovedCard);
-					
-				} 
+				recordCardSeen(disprovedCard, disprovingPlayer); 
 				
 				findPlayerFromCard(attempedSolution.getPerson()).setLocation(board.getCell(board.getCurrentPlayer().getLocation()));
 				findPlayerFromCard(attempedSolution.getPerson()).setTeleported(true);
@@ -251,6 +234,26 @@ public class ClueGame extends JFrame {
 				}
 			}
 
+		}
+	}
+
+
+
+	/**
+	 * @param disprovedCard
+	 * @param disprovingPlayer
+	 */
+	private void recordCardSeen(Card disprovedCard, Player disprovingPlayer) {
+		if (disprovedCard != null) {
+			board.getCurrentPlayer().getSeenCards().add(disprovedCard);
+			ArrayList<Card> cardList = board.getCurrentPlayer().getRevealedCards().get(disprovingPlayer);
+			if (cardList == null) {
+				cardList = new ArrayList<Card>();
+			}
+			if (!cardList.contains(disprovedCard)) {
+				cardList.add(disprovedCard);
+			}
+			
 		}
 	}
 	
