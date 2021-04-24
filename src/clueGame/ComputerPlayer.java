@@ -83,7 +83,7 @@ public class ComputerPlayer extends Player {
 	}
 
 	public boolean accusationReady() {
-		return (seenCards.size() + hand.size()) == (roomCards.size() + weaponCards.size() + personCards.size());
+		return (seenCards.size() + hand.size()) == (roomCards.size() + weaponCards.size() + personCards.size()-3);
 	}
 	
 	public Solution generateAccusation() {

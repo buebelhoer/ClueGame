@@ -96,11 +96,11 @@ public class ClueGame extends JFrame {
 			moveComputerPlayer();
 			
 			while (true) {
-				try {
-					TimeUnit.SECONDS.sleep(2);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
+//				try {
+//					TimeUnit.SECONDS.sleep(2);
+//				} catch (InterruptedException e) {
+//					e.printStackTrace();
+//				}
 				nextTurn();
 				if (controlPanel.getTurnNumber() >= MAX_TURNS) {
 					break;
@@ -145,7 +145,7 @@ public class ClueGame extends JFrame {
 
 
 	public void nextTurn() {
-		if(board.hasMoved() && !board.hasSuggested() && board.getCell(board.getCurrentPlayer().getLocation()).isRoom()) {
+		if(board.hasMoved() && !board.hasSuggested() && board.getCell(board.getCurrentPlayer().getLocation()).isRoom() && board.getCurrentPlayer() instanceof HumanPlayer) {
 			SuggestionDialog suggestionDialog = new SuggestionDialog(this, board.getCardMap().get(board.getCell(board.getCurrentPlayer().getLocation()).getRoom().getName()), board.getPersonCards(), board.getWeaponCards());
 			repaint();
 			return;
@@ -170,9 +170,14 @@ public class ClueGame extends JFrame {
 		}
 		
 		setCurrentPlayer(board.getNextPlayer());
-
+		
+//		if (COMPUTERS_ONLY) {
+//			cardsPanel = new KnownCardsPanel(board.getCurrentPlayer().getHand(), board.getCurrentPlayer().getRevealedCards());
+//		}
 		//if computer player, move
 		if (board.getCurrentPlayer() instanceof ComputerPlayer) {
+			
+			
 			
 			if (((ComputerPlayer)board.getCurrentPlayer()).accusationReady()) {
 				Solution accusation = ((ComputerPlayer)board.getCurrentPlayer()).generateAccusation();
@@ -182,6 +187,9 @@ public class ClueGame extends JFrame {
 			moveComputerPlayer();
 			
 			if (board.getCell(board.getCurrentPlayer().getLocation()).isRoom()) {
+				
+				System.out.println("Next PLayer: " + board.getPlayerList().get((board.getPlayerList().indexOf(board.getCurrentPlayer()) + 1) % board.getPlayerCount()).getHand());
+				
 				Solution attempedSolution = ((ComputerPlayer)board.getCurrentPlayer()).createSuggestion(board.getCardMap().get(board.getCell(board.getCurrentPlayer().getLocation()).getRoom().getName()));
 //				System.out.println(attempedSolution);
 				Object tuple[] = board.checkSuggestion(attempedSolution);
@@ -190,13 +198,15 @@ public class ClueGame extends JFrame {
 				Card disprovedCard = (Card) tuple[0];
 				if (disprovedCard != null) {
 					board.getCurrentPlayer().getSeenCards().add(disprovedCard);
+					((Player)tuple[1]).setLocation(board.getCell(board.getCurrentPlayer().getLocation()));
 				} 
 				
-				((Player)tuple[1]).setLocation(board.getCell(board.getCurrentPlayer().getLocation()));
 				
-				JOptionPane.showMessageDialog(this, board.getCurrentPlayer().getName() + " made the suggestion: " + attempedSolution.getPerson() + " in " + attempedSolution.getRoom() + " with " + attempedSolution.getWeapon() + ". It was disproved by " + ((Player)tuple[1]).getName());
+				if (!COMPUTERS_ONLY) {
+					JOptionPane.showMessageDialog(this, board.getCurrentPlayer().getName() + " made the suggestion: " + attempedSolution.getPerson() + " in " + attempedSolution.getRoom() + " with " + attempedSolution.getWeapon() + ". It was disproved by " + ((Player)tuple[1]).getName());
+				}
 			}
-			
+
 		}
 	}
 	

@@ -677,9 +677,13 @@ public class Board extends JPanel implements MouseMotionListener, MouseListener 
 		Card disprove = null;
 		Player player = null;
 		for (int i = currentIndex + 1; i < currentIndex + playerCount; i++) {
-			disprove = playerList.get(i%playerCount).disproveSuggestion(solution);
+			int playerIndex = i;
+			if (playerIndex >= playerCount) {
+				playerIndex -= playerCount;
+			}
+			disprove = playerList.get(playerIndex).disproveSuggestion(solution);
 			if (disprove != null) {
-				player = playerList.get(i%playerCount);
+				player = playerList.get(playerIndex);
 				break;
 				
 			}
