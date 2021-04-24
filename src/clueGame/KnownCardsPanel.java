@@ -142,7 +142,6 @@ public class KnownCardsPanel extends JPanel {
 		
 		public void addSeenCard(Color color, String cardName) {
 			seenCardPanel.addCard(color, cardName);
-			repaint();
 		}
 	}
 	
@@ -171,7 +170,9 @@ public class KnownCardsPanel extends JPanel {
 			cardField.setHorizontalAlignment(JTextField.CENTER);
 
 			add(cardField);
+			revalidate();
 			repaint();
+			
 		}
 		
 		
@@ -190,7 +191,6 @@ public class KnownCardsPanel extends JPanel {
 				weaponsPanel.addSeenCard(player.getColor(), card.getCardName());
 				break;
 			}
-			repaint();
 	}
 	
 	
