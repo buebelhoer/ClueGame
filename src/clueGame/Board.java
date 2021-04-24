@@ -709,7 +709,7 @@ public class Board extends JPanel implements MouseMotionListener, MouseListener 
 		}
 
 		//highlight all target cells
-		if (currentPlayer instanceof HumanPlayer) {
+		if (currentPlayer instanceof HumanPlayer && !hasMoved) {
 			for (BoardCell target : targets) {
 				if (target.isRoom()) {
 					//if room center targeted, highlight rest of room
