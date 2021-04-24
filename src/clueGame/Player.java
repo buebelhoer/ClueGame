@@ -115,6 +115,7 @@ public abstract class Player {
 	}
 	
 	public void draw(Graphics g, int x, int y, int width, int height) {
+		if (eliminated) return;
 		//sets the color to the players assigned color
 		g.setColor(color);
 		g.fillOval(x, y, width, height);
